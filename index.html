@@ -3,169 +3,181 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation</title>
+    <title>Bitnation Pangea</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="stylesheets/app.css" />
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
-    <div class="row">
-      <div class="large-12 columns">
-        <h1>Welcome to Foundation</h1>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="panel">
-          <h3>We&rsquo;re stoked you want to try Foundation! </h3>
-          <p>To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
-          <p>Once you've exhausted the fun in this document, you should check out:</p>
-          <div class="row">
-            <div class="large-4 medium-4 columns">
-              <p><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</p>
-            </div>
-            <div class="large-4 medium-4 columns">
-              <p><a href="http://zurb.com/university/code-skills">Foundation Code Skills</a><br />These online courses offer you a chance to better understand how Foundation works and how you can master it to create awesome projects.</p>
-            </div>
-            <div class="large-4 medium-4 columns">
-              <p><a href="http://foundation.zurb.com/forum">Foundation Forum</a><br />Join the Foundation community to ask a question or show off your knowlege.</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-4 medium-4 medium-push-2 columns">
-              <p><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</p>
-            </div>
-            <div class="large-4 medium-4 medium-pull-2 columns">
-              <p><a href="https://twitter.com/ZURBfoundation">@zurbfoundation</a><br />Ping us on Twitter if you have questions. When you build something with this we'd love to see it (and send you a totally boss sticker).</p>
-            </div>        
-          </div>
+    <div id="wrapper" class="row">
+      <aside id="sidebar" class="large-3 columns height-page">
+        <div id="logo-box"></div>
+        <ul id="main-menu" class="side-nav">
+          <a href="#"><li>Dashboard</li></a>
+          <a href="#"><li>DApp Library</li></a>
+          <a href="#"><li>My DApps</li></a>
+          <a href="#"><li>My Data</li></a>
+          <a href="#"><li>Services</li></a>
+          <!-- <a href="#"><li>Legal</li></a>
+          <a href="#"><li>Insurance</li></a> -->
+          <a href="#"><li>Social</li></a>
+          <!-- <a href="#"><li>Security</li></a>
+          <a href="#"><li>Diplomacy</li></a> -->
+          <a href="#"><li>Utilities</li></a>
+        </ul>
+      </aside>
+      <div id="main" class="height-page">
+        <nav id="header-bar" role="navigation" class="large-10 columns">
+          <a href="#"><i id="menu-toggle" class="burger-icon fa fa-bars fa-2x"></i></a>
+        </nav>
+        <div id="message-bar" class="large-10 columns">
+          <p>Welcome to your Bitnation. The world's first virtual nation: borderless - decentralized - voluntary</p>
         </div>
-      </div>
-    </div>
+        <div id="profile-bar" class="large-10 columns">
+          <div id="name-address" class="text-center large-4 columns">
+            <h2 id="user-name">Jason Da Dude</h2>
+            <p id="profile-address">XBNXFMjZ1DJbndXa1A9eoRC8Vk6sg2</p>
+          </div>
 
-    <div class="row">
-      <div class="large-8 medium-8 columns">
-        <h5>Here&rsquo;s your basic grid:</h5>
-        <!-- Grid Example -->
+          <div class="profile-data-column large-4 large-offset-1 columns">
+            <div class="row profile-data-item">
+              <img class="profile-data-item-image" src="/images/nav-icon-url.png">
+              <p class="profile-data-item-content"><a href="http://bitnation.co/jasondadude">bitnation.co/jasondadude</a></p>
+            </div>
+            <div class="row profile-data-item">
+              <img class="profile-data-item-image" src="/images/nav-icon-key.png">
+              <p class="profile-data-item-content">D5DC 1253 7375 2452</p>
+            </div>
+            <div class="row profile-data-item">
+              <img class="profile-data-item-image" src="/images/nav-icon-twitter.png">
+              <p class="profile-data-item-content"><a href="https://www.twitter.com/tweetjasondadude">tweetjasondadude</a></p>
+            </div>
+          </div>
 
-        <div class="row">
-          <div class="large-12 columns">
-            <div class="callout panel">
-              <p><strong>This is a twelve column section in a row.</strong> Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
+          <div class="profile-data-column large-4 columns">
+            <div class="row profile-data-item">
+              <img class="profile-data-item-image" src="/images/nav-icon-reddit.png">
+              <p class="profile-data-item-content"><a href="https://www.reddit.com/u/jasondadude">redditjasondadude</a></p>
             </div>
+            <div class="row profile-data-item">
+              <img class="profile-data-item-image" src="/images/nav-icon-bitcoin.png">
+              <p class="profile-data-item-content">coinbase/susanne</p>
+            </div>
+            <div class="row profile-data-item">
+              <img class="profile-data-item-image" src="/images/nav-icon-www.png">
+              <p class="profile-data-item-content"><a href="http://www.bitnation.co">www.bitnation.co</a></p>
+            </div>
+          </div>
+
+          <div id="profile-image" class="large-2 columns">
+            <img src="/images/profiles/me.png">
           </div>
         </div>
-        <div class="row">
-          <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-              <p>Six columns</p>
-            </div>
-          </div>
-          <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-              <p>Six columns</p>
-            </div>
-          </div>
+        <div id="profile-menu-wrapper" class="large-10 columns">
+          <ul id="profile-menu" class="inline-list">
+            <li><a href="#">Passport</a></li>
+            <li><a href="#">Friends</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
         </div>
-        <div class="row">
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-        </div>
-        
-        <hr />
-                
-        <h5>We bet you&rsquo;ll need a form somewhere:</h5>
-        <form>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Input Label</label>
-              <input type="text" placeholder="large-12.columns" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-4 medium-4 columns">
-              <label>Input Label</label>
-              <input type="text" placeholder="large-4.columns" />
-            </div>
-            <div class="large-4 medium-4 columns">
-              <label>Input Label</label>
-              <input type="text" placeholder="large-4.columns" />
-            </div>
-            <div class="large-4 medium-4 columns">
-              <div class="row collapse">
-                <label>Input Label</label>
-                <div class="small-9 columns">
-                  <input type="text" placeholder="small-9.columns" />
+          <div id="content" class="large-10 columns">
+            <div id="my-dapps" class="panel">
+              <h3 class="panel-heading">My DApps</h3>
+              <div id="dapp-selector-wrapper" class="row" data-equalizer>
+                <div class="left-button large-1 columns" data-equalizer-watch>
+                &nbsp;
                 </div>
-                <div class="small-3 columns">
-                  <span class="postfix">.com</span>
+                <div class="dapp-selector large-13 columns" data-equalizer-watch>
+                  <div class="option">
+                    <a href="#">
+                      <img src="/images/dapps/owl.png" class="hvr-bob">
+                    </a>
+                  </div>
+                  <div class="option">
+                    <a href="#">
+                      <img src="/images/dapps/cup.png" class="hvr-bob">
+                    </a>
+                  </div>
+                  <div class="option">
+                    <a href="#">
+                      <img src="/images/dapps/chemistry.png" class="hvr-bob">
+                    </a>
+                  </div>
+                  <div class="option">
+                    <a href="#">
+                      <img src="/images/dapps/music.png" class="hvr-bob">
+                    </a>
+                  </div>
+                  <div class="option">
+                    <a href="#">
+                      <img src="/images/dapps/shoe.png" class="hvr-bob">
+                    </a>
+                  </div>
+                  <div class="option">
+                    <a href="#">
+                      <img src="/images/dapps/rocket.png" class="hvr-bob">
+                    </a>
+                  </div>
+                </div>
+                <div class="right-button large-1 columns" data-equalizer-watch>
+                &nbsp;
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Select Box</label>
-              <select>
-                <option value="husker">Husker</option>
-                <option value="starbuck">Starbuck</option>
-                <option value="hotdog">Hot Dog</option>
-                <option value="apollo">Apollo</option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-6 medium-6 columns">
-              <label>Choose Your Favorite</label>
-              <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Radio 1</label>
-              <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Radio 2</label>
-            </div>
-            <div class="large-6 medium-6 columns">
-              <label>Check these out</label>
-              <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-              <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Textarea Label</label>
-              <textarea placeholder="small-12.columns"></textarea>
-            </div>
-          </div>
-        </form>
-      </div>     
 
-      <div class="large-4 medium-4 columns">
-        <h5>Try one of these buttons:</h5>
-        <p><a href="#" class="small button">Simple Button</a><br/>
-        <a href="#" class="small radius button">Radius Button</a><br/>
-        <a href="#" class="small round button">Round Button</a><br/>            
-        <a href="#" class="medium success button">Success Btn</a><br/>
-        <a href="#" class="medium alert button">Alert Btn</a><br/>
-        <a href="#" class="medium secondary button">Secondary Btn</a></p>           
-        <div class="panel">
-          <h5>So many components, girl!</h5>
-          <p>A whole kitchen sink of goodies comes with Foundation. Check out the docs to see them all, along with details on making them your own.</p>
-          <a href="http://foundation.zurb.com/docs/" class="small button">Go to Foundation Docs</a>          
+            <!-- RECENT MESSAGES -->
+            <div id="recent-messages" class="large-5 columns">
+              <div class="panel">
+                <h3 class="panel-heading">Recent Messages</h3>
+                <div class="row message-user">
+                  <img class="message-user-image large-5 columns" src="/images/profiles/tm.png">
+                  <p class="message-user-name large-9 columns">Tatjana May</p>
+                  <p class="message-user-location large-9 columns">Moskow</p>
+                </div>
+                <div class="row message-user">
+                  <img class="message-user-image large-5 columns" src="/images/profiles/cb.png">
+                  <p class="message-user-name large-9 columns">Christoph Brown</p>
+                  <p class="message-user-location large-9 columns">Los Angeles</p>
+                </div>
+                <div class="row message-user">
+                  <img class="message-user-image large-5 columns" src="/images/profiles/sj.png">
+                  <p class="message-user-name large-9 columns">Silvia Jenson</p>
+                  <p class="message-user-location large-9 columns">New York City</p>
+                </div>
+              </div>
+            </div>
+            <!-- END RECENT MESSAGES -->
+
+            <!-- LATEST NEWS -->
+            <div id="latest-news" class="panel large-11 columns">
+              <h3 class="panel-heading">Latest News</h3>
+              <div class="row news-item">
+                <img class="news-item-image" src="/images/news/news-1.png">
+                <p class="news-item-title large-14 columns"><a href="#">Russian Ministry of Finance: Anti-Bitcoin Law 'Will Finally Be Passed This Year'</a></p>
+                <p class="news-item-snippet large-14 columns">Speaking at the All-Russian Banking Conference, Deputy Minister of Finance Alexey Moiseev stated that the bill proposing penalties for &hellip;</p>
+              </div>
+              <div class="row news-item">
+                <img class="news-item-image" src="/images/news/news-2.png">
+                <p class="news-item-title large-14 columns"><a href="#">Bitcoin in India ‘On the Rise’ says Sunny Ray, Unocoin Co-founder</a></p>
+                <p class="news-item-snippet large-14 columns">“India has one of the largest unbanked populations, 50% of the population is unbanked, I think Bitcoin can play a part in banking the unbanked.” &hellip;</p>
+              </div>
+              <div class="row news-item">
+                <img class="news-item-image" src="/images/news/news-3.png">
+                <p class="news-item-title large-14 columns"><a href="#">South Korea: Bitcoin Growth Fueled by Startups and Community</a></p>
+                <p class="news-item-snippet large-14 columns">South Korea’s development during the last half century has been nothing short of spectacular. The country is known for its home grown, &hellip;</p>
+              </div>
+            </div>
+            <!-- END LATEST NEWS -->
+          </div>
         </div>
       </div>
     </div>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <script src="bower_components/matchHeight/jquery.matchHeight-min.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

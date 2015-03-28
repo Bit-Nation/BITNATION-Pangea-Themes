@@ -1,5 +1,11 @@
 @import "settings";
 @import "foundation";
+@import "compass/css3/transition";
+
+$fa-font-path: "/bower_components/font-awesome/fonts" !default;
+@import "font-awesome";
+
+@import "hover";
 
 // Or selectively include components
 // @import
@@ -38,3 +44,262 @@
 //   "foundation/components/type",
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
+
+a:link, a:hover, a:visited {
+	font-weight: bold;
+}
+
+#logo-box {
+	background: $oil url('/images/logo.png') no-repeat center center;
+	background-size: 75% 75%;
+	height: $logoBoxHeight;
+}
+
+#header-bar {
+	height: $headerBarHeight;
+	background-color: $mgrey;
+
+	.burger-icon {
+		color: $white;
+		padding-left: 1rem;
+		line-height: $headerBarHeight;
+
+		&:hover {
+			color: $lgrey;
+		}
+	}
+}
+
+#message-bar {
+	height: $messageBarHeight;
+	background-color: $turquoise;
+
+	p {
+		padding-left: 1rem;
+		color: $white;
+		line-height: $messageBarHeight;
+	}
+}
+
+#profile-bar {
+	color: $white;
+	height: $profileBarHeight;
+	background-color: $orange;
+
+	h1, h2, h3, h4, h5, h6,
+	a:link, a:hover, a:visited {
+		color: $white;
+		font-weight: normal;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	#user-name {
+		font-size: 250%;
+		padding-top: 2rem;
+	}
+
+	#profile-address {
+		font-size: 100%;
+	}
+
+	#profile-image {
+		float: right;
+
+		img {
+			padding: 1rem;
+			max-width: $profileBarHeight;
+		}
+	}
+
+	.profile-data-column {
+		float: left;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-top: 1.1rem;
+
+		.profile-data-item {
+			margin-top: 0.7rem;
+			margin-bottom: 0.7rem;
+		}
+
+		.profile-data-item-image {
+			float: left;
+			max-width: rem-calc(25);
+		}
+		.profile-data-item-content {
+			margin: 0;
+			padding-left: 0.5rem;
+			float: left;
+		}
+	}
+}
+
+#wrapper {
+	display: flex;
+}
+
+#main, #sidebar {
+	//display: flex;
+}
+
+#main {
+	flex-grow: 1;
+}
+
+#sidebar {
+	flex-shrink: 0;
+	//width: 250px;
+	background-color: $mgrey;
+	padding: 0;
+
+	ul#main-menu {
+		li {
+			margin: 0;
+			&:hover {
+				background-color: $oil;
+			}
+			padding-left: 1.5rem;
+			font-size: 110%;
+			color: $white;
+			text-transform: uppercase;
+			line-height: 3.5rem;
+		}
+	}
+
+	//flex-shrink: 0;
+}
+
+#profile-menu-wrapper {
+	height: $profileMenuHeight;
+	border-bottom: 1px solid $lgrey;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, $lgrey), color-stop(100%, $white));
+  	background-image: -moz-linear-gradient($lgrey, $white);
+  	background-image: -webkit-linear-gradient($lgrey, $white);
+  	background-image: linear-gradient($lgrey, $white);
+
+  	li {
+  		font-weight: bold;
+  		line-height: $profileMenuHeight;
+  		padding-left: 1rem;
+  		padding-right: 1rem;
+  		height: $profileMenuHeight + rem-calc(4);
+
+  		a:link, a:hover, a:visited {
+  			color: $mgrey2;
+  		}
+
+  		a:hover {
+  			text-decoration: none;
+  			border-bottom: rem-calc(4) solid $green;
+  		}
+  	}
+}
+
+#content {
+	float: left;
+	margin-top: 1rem;
+}
+
+.panel {
+	margin-bottom: 0;
+	margin-top: 1rem;
+}
+
+.panel-heading {
+	padding-bottom: 1.5rem;
+	border-bottom: rem-calc(2) solid $mgrey;
+}
+
+#recent-messages {
+	padding-left: 0;
+	padding-right: 1rem;
+	margin-bottom: 1rem;
+
+	.message-user {
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.message-user-name,
+	.message-user-location {
+		float: left;
+		margin: 0.5rem 0 0.5rem 0;
+	}
+
+	.message-user-location {
+		&:before {
+			content: '@ ';
+		}
+	}
+}
+
+#latest-news {
+	.news-item {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.news-item-image {
+		float: left;
+		padding-left: 1rem;
+		max-width: rem-calc(90);
+	}
+
+	.news-item-title,
+	.news-item-snippet {
+		margin-bottom: 0;
+	}
+
+	.news-item-snippet {
+		float: left;
+	}
+}
+
+#my-dapps {
+	margin: 0 auto;
+
+	.left-button {
+		background: transparent url(/images/slider-left.png) no-repeat center center;
+	}
+
+	.right-button {
+		background: transparent url(/images/slider-right.png) no-repeat center center;
+	}
+
+	#dapp-selector-wrapper {
+		.dapp-selector {
+			margin-left: 3.5rem;
+			height: rem-calc(150);
+
+			.option {
+				float: left;
+				width: 16.5%;
+				padding: 1rem;
+			}
+		}
+	}
+}
+
+#sidebar {
+	//transition: all 1.5s;
+}
+
+// Animations/Transitions
+.slideMenu {
+	// visibility: hidden;
+}
+
+// Hacks
+@media only screen and (min-width: 64.063em) {
+	.large-10 {
+		width: 100%;
+	}
+}
+
+// THIS CAN BE REMOVED WHEN THE WIDTH BUG IS FIXED
+body {
+	overflow-x: hidden;
+}
