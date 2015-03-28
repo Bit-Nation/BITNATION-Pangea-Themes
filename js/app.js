@@ -5,6 +5,5 @@ $(document).foundation();
 $(function() {
 	$('#menu-toggle').click(function() {
 		$('#sidebar').toggle();
-		$('.dapp-selector .option').height('80%');
 	});
 });
