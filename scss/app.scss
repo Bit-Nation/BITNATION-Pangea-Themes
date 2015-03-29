@@ -50,17 +50,17 @@ a:link, a:hover, a:visited {
 }
 
 #logo-box {
-	background: $oil url('/images/logo.png') no-repeat center center;
+	background: $mgrey3 url('/images/logo.png') no-repeat center center;
 	background-size: 75% 75%;
 	height: $logoBoxHeight;
 }
 
 #header-bar {
 	height: $headerBarHeight;
-	background-color: $mgrey;
+	background-color: $lgrey2;
 
 	.burger-icon {
-		color: $white;
+		color: $mgrey2;
 		padding-left: 1rem;
 		line-height: $headerBarHeight;
 
@@ -151,19 +151,20 @@ a:link, a:hover, a:visited {
 
 #sidebar {
 	flex-shrink: 0;
-	//width: 250px;
-	background-color: $mgrey;
+	background-color: $lgrey2;
 	padding: 0;
 
 	ul#main-menu {
 		li {
 			margin: 0;
 			&:hover {
-				background-color: $oil;
+				text-decoration: none;
+				background-color: $mgrey;
+				color: $lgrey2;
 			}
 			padding-left: 1.5rem;
 			font-size: 110%;
-			color: $white;
+			color: $oil;
 			text-transform: uppercase;
 			line-height: 3.5rem;
 		}

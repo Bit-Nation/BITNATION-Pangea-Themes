@@ -85,7 +85,7 @@ body {
 
 /* line 417, ../bower_components/foundation/scss/foundation/components/_global.scss */
 body {
-  background: #fef4e8;
+  background: #f9f5f0;
   color: #222;
   padding: 0;
   margin: 0;
@@ -17409,7 +17409,7 @@ a:link, a:hover, a:visited {
 
 /* line 52, ../scss/app.scss */
 #logo-box {
-  background: #333333 url("/images/logo.png") no-repeat center center;
+  background: #5f5f5f url("/images/logo.png") no-repeat center center;
   background-size: 75% 75%;
   height: 18.5625rem;
 }
@@ -17417,11 +17417,11 @@ a:link, a:hover, a:visited {
 /* line 58, ../scss/app.scss */
 #header-bar {
   height: 5rem;
-  background-color: #4d4d4d;
+  background-color: #cbcbcb;
 }
 /* line 62, ../scss/app.scss */
 #header-bar .burger-icon {
-  color: #FFFFFF;
+  color: #666666;
   padding-left: 1rem;
   line-height: 5rem;
 }
@@ -17433,7 +17433,7 @@ a:link, a:hover, a:visited {
 /* line 73, ../scss/app.scss */
 #message-bar {
   height: 3.125rem;
-  background-color: #00a89c;
+  background-color: #6fa8d0;
 }
 /* line 77, ../scss/app.scss */
 #message-bar p {
@@ -17446,7 +17446,7 @@ a:link, a:hover, a:visited {
 #profile-bar {
   color: #FFFFFF;
   height: 10.4375rem;
-  background-color: #f39c12;
+  background-color: #d8c758;
 }
 /* line 89, ../scss/app.scss */
 #profile-bar h1, #profile-bar h2, #profile-bar h3, #profile-bar h4, #profile-bar h5, #profile-bar h6,
@@ -17513,24 +17513,26 @@ a:link, a:hover, a:visited {
 /* line 152, ../scss/app.scss */
 #sidebar {
   flex-shrink: 0;
-  background-color: #4d4d4d;
+  background-color: #cbcbcb;
   padding: 0;
 }
-/* line 159, ../scss/app.scss */
+/* line 158, ../scss/app.scss */
 #sidebar ul#main-menu li {
   margin: 0;
   padding-left: 1.5rem;
   font-size: 110%;
-  color: #FFFFFF;
+  color: #333333;
   text-transform: uppercase;
   line-height: 3.5rem;
 }
-/* line 161, ../scss/app.scss */
+/* line 160, ../scss/app.scss */
 #sidebar ul#main-menu li:hover {
-  background-color: #333333;
+  text-decoration: none;
+  background-color: #4d4d4d;
+  color: #cbcbcb;
 }
 
-/* line 175, ../scss/app.scss */
+/* line 176, ../scss/app.scss */
 #profile-menu-wrapper {
   height: 3.75rem;
   border-bottom: 1px solid #e5e5e5;
@@ -17539,7 +17541,7 @@ a:link, a:hover, a:visited {
   background-image: -webkit-linear-gradient(#e5e5e5, #FFFFFF);
   background-image: linear-gradient(#e5e5e5, #FFFFFF);
 }
-/* line 183, ../scss/app.scss */
+/* line 184, ../scss/app.scss */
 #profile-menu-wrapper li {
   font-weight: bold;
   line-height: 3.75rem;
@@ -17547,95 +17549,95 @@ a:link, a:hover, a:visited {
   padding-right: 1rem;
   height: 4rem;
 }
-/* line 190, ../scss/app.scss */
+/* line 191, ../scss/app.scss */
 #profile-menu-wrapper li a:link, #profile-menu-wrapper li a:hover, #profile-menu-wrapper li a:visited {
   color: #666666;
 }
-/* line 194, ../scss/app.scss */
+/* line 195, ../scss/app.scss */
 #profile-menu-wrapper li a:hover {
   text-decoration: none;
   border-bottom: 0.25rem solid #92bd2f;
 }
 
-/* line 201, ../scss/app.scss */
+/* line 202, ../scss/app.scss */
 #content {
   float: left;
   margin-top: 1rem;
 }
 
-/* line 206, ../scss/app.scss */
+/* line 207, ../scss/app.scss */
 .panel {
   margin-bottom: 0;
   margin-top: 1rem;
 }
 
-/* line 211, ../scss/app.scss */
+/* line 212, ../scss/app.scss */
 .panel-heading {
   padding-bottom: 1.5rem;
   border-bottom: 0.125rem solid #4d4d4d;
 }
 
-/* line 216, ../scss/app.scss */
+/* line 217, ../scss/app.scss */
 #recent-messages {
   padding-left: 0;
   padding-right: 1rem;
   margin-bottom: 1rem;
 }
-/* line 221, ../scss/app.scss */
+/* line 222, ../scss/app.scss */
 #recent-messages .message-user {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
-/* line 226, ../scss/app.scss */
+/* line 227, ../scss/app.scss */
 #recent-messages .message-user-name,
 #recent-messages .message-user-location {
   float: left;
   margin: 0.5rem 0 0.5rem 0;
 }
-/* line 233, ../scss/app.scss */
+/* line 234, ../scss/app.scss */
 #recent-messages .message-user-location:before {
   content: '@ ';
 }
 
-/* line 240, ../scss/app.scss */
+/* line 241, ../scss/app.scss */
 #latest-news .news-item {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-/* line 245, ../scss/app.scss */
+/* line 246, ../scss/app.scss */
 #latest-news .news-item-image {
   float: left;
   padding-left: 1rem;
   max-width: 5.625rem;
 }
-/* line 251, ../scss/app.scss */
+/* line 252, ../scss/app.scss */
 #latest-news .news-item-title,
 #latest-news .news-item-snippet {
   margin-bottom: 0;
 }
-/* line 256, ../scss/app.scss */
+/* line 257, ../scss/app.scss */
 #latest-news .news-item-snippet {
   float: left;
 }
 
-/* line 261, ../scss/app.scss */
+/* line 262, ../scss/app.scss */
 #my-dapps {
   margin: 0 auto;
 }
-/* line 264, ../scss/app.scss */
+/* line 265, ../scss/app.scss */
 #my-dapps .left-button {
   background: transparent url(/images/slider-left.png) no-repeat center center;
 }
-/* line 268, ../scss/app.scss */
+/* line 269, ../scss/app.scss */
 #my-dapps .right-button {
   background: transparent url(/images/slider-right.png) no-repeat center center;
 }
-/* line 273, ../scss/app.scss */
+/* line 274, ../scss/app.scss */
 #my-dapps #dapp-selector-wrapper .dapp-selector {
   margin-left: 3.5rem;
   height: 9.375rem;
 }
-/* line 277, ../scss/app.scss */
+/* line 278, ../scss/app.scss */
 #my-dapps #dapp-selector-wrapper .dapp-selector .option {
   float: left;
   width: 16.5%;
@@ -17643,12 +17645,12 @@ a:link, a:hover, a:visited {
 }
 
 @media only screen and (min-width: 64.063em) {
-  /* line 297, ../scss/app.scss */
+  /* line 298, ../scss/app.scss */
   .large-10 {
     width: 100%;
   }
 }
-/* line 303, ../scss/app.scss */
+/* line 304, ../scss/app.scss */
 body {
   overflow-x: hidden;
 }
