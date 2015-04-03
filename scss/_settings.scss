@@ -4,6 +4,8 @@
 
 //
 
+$sideBarWidth: 225px;
+
 // Table of Contents
 // Foundation Settings
 //
@@ -80,7 +82,7 @@ $include-html-global-classes: $include-html-classes;
 // $include-xl-html-grid-classes: false;
 
 $row-width: auto;
-$total-columns: 16;
+$total-columns: 20;
 // $column-gutter: rem-calc(30);
 
 // $last-child-float: $opposite-direction;
@@ -89,7 +91,7 @@ $total-columns: 16;
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to define default font stacks
-$font-family-sans-serif: Roboto ,"Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$font-family-sans-serif: Roboto ,"Helvetica Neue", Helvetica, Arial, sans-serif;
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
@@ -113,26 +115,46 @@ $white       : #FFFFFF;
 // $steel       : #666666;
 // $charcoal    : #555555;
 // $tuatara     : #444444;
-$mgrey       : #4d4d4d;
+$mgrey       : #3d3d3d;
 $mgrey2      : #666666;
 $lgrey       : #e5e5e5;
-$lgrey2      : #cbcbcb;
-$mgrey3      : #5f5f5f;
+$lgrey2      : #939393;
+$lgrey3      : #c5c5c5;
+$dnavy1      : #1B1D25;
+$dnavy2      : #22242d;
+$dnavy3      : #2d3841;
+$mnavy1      : #2C2F3B;
+$mnavy2      : #1B1D25;
+$lnavy1      : #7b8095;
+$lnavy2      : #444f57;
+$lblue1      : #7A8095;
 $oil         : #333333;
 //$turquoise   : #00a89c;
 $turquoise   : #6fa8d0;
-//$orange      : #f39c12;
-$orange      : #d8c758;
-$offWhite    : #f9f5f0;
+$orange      : #ff921e;
+$offWhite    : #F5F5F5;
 $green       : #92bd2f;
 // $jet         : #222222;
 // $black       : #000000;
 
-$logoBoxHeight: rem-calc(297);
-$headerBarHeight: rem-calc(80);
-$messageBarHeight: rem-calc(50);
-$profileBarHeight: $logoBoxHeight - $headerBarHeight - $messageBarHeight;
-$profileMenuHeight: rem-calc(60);
+$sidebarDark       : $dnavy1;
+$sidebarMid        : $mnavy1;
+$sidebarText       : $lblue1;
+$sidebarHoverText  : $white;
+$sidebarItemHeight : 2.5rem;
+
+$sidebarIconHoverColor : $dnavy1;
+
+$logoBoxHeight: rem-calc(225);
+$headerBarHeight: rem-calc(60);
+$profileBarHeight: rem-calc(275);
+
+$userImageWidth: 125;
+
+$messagePanelBorderColor: $lgrey3;
+$messagePanelBorder: 1px solid $messagePanelBorderColor;
+
+$messagePanelTextColor: $lgrey2;
 
 // We use these as default colors throughout
 // $primary-color: #008CBA;
@@ -985,7 +1007,7 @@ $anchor-font-color: $mgrey;
 // $include-html-panel-classes: $include-html-classes;
 
 // We use these to control the background and border styles
-$panel-bg: $white; 
+$panel-bg: $offWhite;
 $panel-border-style: none;
 // $panel-border-size: 1px;
 

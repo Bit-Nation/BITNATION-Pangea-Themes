@@ -80,19 +80,19 @@ html, body {
 /* line 413, ../bower_components/foundation/scss/foundation/components/_global.scss */
 html,
 body {
-  font-size: 100%;
+  font-size: 16px;
 }
 
 /* line 417, ../bower_components/foundation/scss/foundation/components/_global.scss */
 body {
-  background: #f9f5f0;
+  background: #F5F5F5;
   color: #222;
   padding: 0;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
-  line-height: 1.5;
+  line-height: 24px;
   position: relative;
   cursor: auto;
 }
@@ -276,210 +276,266 @@ select {
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-1 {
     position: relative;
-    left: 6.25%;
+    left: 5%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-1 {
     position: relative;
-    right: 6.25%;
+    right: 5%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-2 {
     position: relative;
-    left: 12.5%;
+    left: 10%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-2 {
     position: relative;
-    right: 12.5%;
+    right: 10%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-3 {
     position: relative;
-    left: 18.75%;
+    left: 15%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-3 {
     position: relative;
-    right: 18.75%;
+    right: 15%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-4 {
     position: relative;
-    left: 25%;
+    left: 20%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-4 {
     position: relative;
-    right: 25%;
+    right: 20%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-5 {
     position: relative;
-    left: 31.25%;
+    left: 25%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-5 {
     position: relative;
-    right: 31.25%;
+    right: 25%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-6 {
     position: relative;
-    left: 37.5%;
+    left: 30%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-6 {
     position: relative;
-    right: 37.5%;
+    right: 30%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-7 {
     position: relative;
-    left: 43.75%;
+    left: 35%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-7 {
     position: relative;
-    right: 43.75%;
+    right: 35%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-8 {
     position: relative;
-    left: 50%;
+    left: 40%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-8 {
     position: relative;
-    right: 50%;
+    right: 40%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-9 {
     position: relative;
-    left: 56.25%;
+    left: 45%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-9 {
     position: relative;
-    right: 56.25%;
+    right: 45%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-10 {
     position: relative;
-    left: 62.5%;
+    left: 50%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-10 {
     position: relative;
-    right: 62.5%;
+    right: 50%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-11 {
     position: relative;
-    left: 68.75%;
+    left: 55.0%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-11 {
     position: relative;
-    right: 68.75%;
+    right: 55.0%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-12 {
     position: relative;
-    left: 75%;
+    left: 60%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-12 {
     position: relative;
-    right: 75%;
+    right: 60%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-13 {
     position: relative;
-    left: 81.25%;
+    left: 65%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-13 {
     position: relative;
-    right: 81.25%;
+    right: 65%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-14 {
     position: relative;
-    left: 87.5%;
+    left: 70%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-14 {
     position: relative;
-    right: 87.5%;
+    right: 70%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-push-15 {
     position: relative;
-    left: 93.75%;
+    left: 75%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-pull-15 {
     position: relative;
-    right: 93.75%;
+    right: 75%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-push-16 {
+    position: relative;
+    left: 80%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-pull-16 {
+    position: relative;
+    right: 80%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-push-17 {
+    position: relative;
+    left: 85%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-pull-17 {
+    position: relative;
+    right: 85%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-push-18 {
+    position: relative;
+    left: 90%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-pull-18 {
+    position: relative;
+    right: 90%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-push-19 {
+    position: relative;
+    left: 95%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-pull-19 {
+    position: relative;
+    right: 95%;
     left: auto;
   }
 
@@ -494,81 +550,101 @@ select {
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-1 {
-    width: 6.25%;
+    width: 5%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-2 {
-    width: 12.5%;
+    width: 10%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-3 {
-    width: 18.75%;
+    width: 15%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-4 {
-    width: 25%;
+    width: 20%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-5 {
-    width: 31.25%;
+    width: 25%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-6 {
-    width: 37.5%;
+    width: 30%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-7 {
-    width: 43.75%;
+    width: 35%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-8 {
-    width: 50%;
+    width: 40%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-9 {
-    width: 56.25%;
+    width: 45%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-10 {
-    width: 62.5%;
+    width: 50%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-11 {
-    width: 68.75%;
+    width: 55.0%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-12 {
-    width: 75%;
+    width: 60%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-13 {
-    width: 81.25%;
+    width: 65%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-14 {
-    width: 87.5%;
+    width: 70%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-15 {
-    width: 93.75%;
+    width: 75%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-16 {
+    width: 80%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-17 {
+    width: 85%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-18 {
+    width: 90%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-19 {
+    width: 95%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-20 {
     width: 100%;
   }
 
@@ -579,77 +655,97 @@ select {
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-1 {
-    margin-left: 6.25% !important;
+    margin-left: 5% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-2 {
-    margin-left: 12.5% !important;
+    margin-left: 10% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-3 {
-    margin-left: 18.75% !important;
+    margin-left: 15% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-4 {
-    margin-left: 25% !important;
+    margin-left: 20% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-5 {
-    margin-left: 31.25% !important;
+    margin-left: 25% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-6 {
-    margin-left: 37.5% !important;
+    margin-left: 30% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-7 {
-    margin-left: 43.75% !important;
+    margin-left: 35% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-8 {
-    margin-left: 50% !important;
+    margin-left: 40% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-9 {
-    margin-left: 56.25% !important;
+    margin-left: 45% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-10 {
-    margin-left: 62.5% !important;
+    margin-left: 50% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-11 {
-    margin-left: 68.75% !important;
+    margin-left: 55.0% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-12 {
-    margin-left: 75% !important;
+    margin-left: 60% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-13 {
-    margin-left: 81.25% !important;
+    margin-left: 65% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-14 {
-    margin-left: 87.5% !important;
+    margin-left: 70% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .small-offset-15 {
-    margin-left: 93.75% !important;
+    margin-left: 75% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-offset-16 {
+    margin-left: 80% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-offset-17 {
+    margin-left: 85% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-offset-18 {
+    margin-left: 90% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .small-offset-19 {
+    margin-left: 95% !important;
   }
 
   /* line 179, ../bower_components/foundation/scss/foundation/components/_grid.scss */
@@ -732,210 +828,266 @@ select {
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-1 {
     position: relative;
-    left: 6.25%;
+    left: 5%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-1 {
     position: relative;
-    right: 6.25%;
+    right: 5%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-2 {
     position: relative;
-    left: 12.5%;
+    left: 10%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-2 {
     position: relative;
-    right: 12.5%;
+    right: 10%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-3 {
     position: relative;
-    left: 18.75%;
+    left: 15%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-3 {
     position: relative;
-    right: 18.75%;
+    right: 15%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-4 {
     position: relative;
-    left: 25%;
+    left: 20%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-4 {
     position: relative;
-    right: 25%;
+    right: 20%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-5 {
     position: relative;
-    left: 31.25%;
+    left: 25%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-5 {
     position: relative;
-    right: 31.25%;
+    right: 25%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-6 {
     position: relative;
-    left: 37.5%;
+    left: 30%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-6 {
     position: relative;
-    right: 37.5%;
+    right: 30%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-7 {
     position: relative;
-    left: 43.75%;
+    left: 35%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-7 {
     position: relative;
-    right: 43.75%;
+    right: 35%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-8 {
     position: relative;
-    left: 50%;
+    left: 40%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-8 {
     position: relative;
-    right: 50%;
+    right: 40%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-9 {
     position: relative;
-    left: 56.25%;
+    left: 45%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-9 {
     position: relative;
-    right: 56.25%;
+    right: 45%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-10 {
     position: relative;
-    left: 62.5%;
+    left: 50%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-10 {
     position: relative;
-    right: 62.5%;
+    right: 50%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-11 {
     position: relative;
-    left: 68.75%;
+    left: 55.0%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-11 {
     position: relative;
-    right: 68.75%;
+    right: 55.0%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-12 {
     position: relative;
-    left: 75%;
+    left: 60%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-12 {
     position: relative;
-    right: 75%;
+    right: 60%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-13 {
     position: relative;
-    left: 81.25%;
+    left: 65%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-13 {
     position: relative;
-    right: 81.25%;
+    right: 65%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-14 {
     position: relative;
-    left: 87.5%;
+    left: 70%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-14 {
     position: relative;
-    right: 87.5%;
+    right: 70%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-15 {
     position: relative;
-    left: 93.75%;
+    left: 75%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-pull-15 {
     position: relative;
-    right: 93.75%;
+    right: 75%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-push-16 {
+    position: relative;
+    left: 80%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-pull-16 {
+    position: relative;
+    right: 80%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-push-17 {
+    position: relative;
+    left: 85%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-pull-17 {
+    position: relative;
+    right: 85%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-push-18 {
+    position: relative;
+    left: 90%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-pull-18 {
+    position: relative;
+    right: 90%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-push-19 {
+    position: relative;
+    left: 95%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-pull-19 {
+    position: relative;
+    right: 95%;
     left: auto;
   }
 
@@ -950,81 +1102,101 @@ select {
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-1 {
-    width: 6.25%;
+    width: 5%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-2 {
-    width: 12.5%;
+    width: 10%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-3 {
-    width: 18.75%;
+    width: 15%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-4 {
-    width: 25%;
+    width: 20%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-5 {
-    width: 31.25%;
+    width: 25%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-6 {
-    width: 37.5%;
+    width: 30%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-7 {
-    width: 43.75%;
+    width: 35%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-8 {
-    width: 50%;
+    width: 40%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-9 {
-    width: 56.25%;
+    width: 45%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-10 {
-    width: 62.5%;
+    width: 50%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-11 {
-    width: 68.75%;
+    width: 55.0%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-12 {
-    width: 75%;
+    width: 60%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-13 {
-    width: 81.25%;
+    width: 65%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-14 {
-    width: 87.5%;
+    width: 70%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-15 {
-    width: 93.75%;
+    width: 75%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-16 {
+    width: 80%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-17 {
+    width: 85%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-18 {
+    width: 90%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-19 {
+    width: 95%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-20 {
     width: 100%;
   }
 
@@ -1035,77 +1207,97 @@ select {
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-1 {
-    margin-left: 6.25% !important;
+    margin-left: 5% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-2 {
-    margin-left: 12.5% !important;
+    margin-left: 10% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-3 {
-    margin-left: 18.75% !important;
+    margin-left: 15% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-4 {
-    margin-left: 25% !important;
+    margin-left: 20% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-5 {
-    margin-left: 31.25% !important;
+    margin-left: 25% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-6 {
-    margin-left: 37.5% !important;
+    margin-left: 30% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-7 {
-    margin-left: 43.75% !important;
+    margin-left: 35% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-8 {
-    margin-left: 50% !important;
+    margin-left: 40% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-9 {
-    margin-left: 56.25% !important;
+    margin-left: 45% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-10 {
-    margin-left: 62.5% !important;
+    margin-left: 50% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-11 {
-    margin-left: 68.75% !important;
+    margin-left: 55.0% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-12 {
-    margin-left: 75% !important;
+    margin-left: 60% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-13 {
-    margin-left: 81.25% !important;
+    margin-left: 65% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-14 {
-    margin-left: 87.5% !important;
+    margin-left: 70% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-offset-15 {
-    margin-left: 93.75% !important;
+    margin-left: 75% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-offset-16 {
+    margin-left: 80% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-offset-17 {
+    margin-left: 85% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-offset-18 {
+    margin-left: 90% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .medium-offset-19 {
+    margin-left: 95% !important;
   }
 
   /* line 179, ../bower_components/foundation/scss/foundation/components/_grid.scss */
@@ -1187,210 +1379,266 @@ select {
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-1 {
     position: relative;
-    left: 6.25%;
+    left: 5%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-1 {
     position: relative;
-    right: 6.25%;
+    right: 5%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-2 {
     position: relative;
-    left: 12.5%;
+    left: 10%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-2 {
     position: relative;
-    right: 12.5%;
+    right: 10%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-3 {
     position: relative;
-    left: 18.75%;
+    left: 15%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-3 {
     position: relative;
-    right: 18.75%;
+    right: 15%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-4 {
     position: relative;
-    left: 25%;
+    left: 20%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-4 {
     position: relative;
-    right: 25%;
+    right: 20%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-5 {
     position: relative;
-    left: 31.25%;
+    left: 25%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-5 {
     position: relative;
-    right: 31.25%;
+    right: 25%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-6 {
     position: relative;
-    left: 37.5%;
+    left: 30%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-6 {
     position: relative;
-    right: 37.5%;
+    right: 30%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-7 {
     position: relative;
-    left: 43.75%;
+    left: 35%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-7 {
     position: relative;
-    right: 43.75%;
+    right: 35%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-8 {
     position: relative;
-    left: 50%;
+    left: 40%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-8 {
     position: relative;
-    right: 50%;
+    right: 40%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-9 {
     position: relative;
-    left: 56.25%;
+    left: 45%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-9 {
     position: relative;
-    right: 56.25%;
+    right: 45%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-10 {
     position: relative;
-    left: 62.5%;
+    left: 50%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-10 {
     position: relative;
-    right: 62.5%;
+    right: 50%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-11 {
     position: relative;
-    left: 68.75%;
+    left: 55.0%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-11 {
     position: relative;
-    right: 68.75%;
+    right: 55.0%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-12 {
     position: relative;
-    left: 75%;
+    left: 60%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-12 {
     position: relative;
-    right: 75%;
+    right: 60%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-13 {
     position: relative;
-    left: 81.25%;
+    left: 65%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-13 {
     position: relative;
-    right: 81.25%;
+    right: 65%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-14 {
     position: relative;
-    left: 87.5%;
+    left: 70%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-14 {
     position: relative;
-    right: 87.5%;
+    right: 70%;
     left: auto;
   }
 
   /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-15 {
     position: relative;
-    left: 93.75%;
+    left: 75%;
     right: auto;
   }
 
   /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-15 {
     position: relative;
-    right: 93.75%;
+    right: 75%;
+    left: auto;
+  }
+
+  /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .push-16 {
+    position: relative;
+    left: 80%;
+    right: auto;
+  }
+
+  /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .pull-16 {
+    position: relative;
+    right: 80%;
+    left: auto;
+  }
+
+  /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .push-17 {
+    position: relative;
+    left: 85%;
+    right: auto;
+  }
+
+  /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .pull-17 {
+    position: relative;
+    right: 85%;
+    left: auto;
+  }
+
+  /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .push-18 {
+    position: relative;
+    left: 90%;
+    right: auto;
+  }
+
+  /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .pull-18 {
+    position: relative;
+    right: 90%;
+    left: auto;
+  }
+
+  /* line 261, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .push-19 {
+    position: relative;
+    left: 95%;
+    right: auto;
+  }
+
+  /* line 264, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .pull-19 {
+    position: relative;
+    right: 95%;
     left: auto;
   }
 }
@@ -1412,210 +1660,266 @@ select {
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-1 {
     position: relative;
-    left: 6.25%;
+    left: 5%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-1 {
     position: relative;
-    right: 6.25%;
+    right: 5%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-2 {
     position: relative;
-    left: 12.5%;
+    left: 10%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-2 {
     position: relative;
-    right: 12.5%;
+    right: 10%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-3 {
     position: relative;
-    left: 18.75%;
+    left: 15%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-3 {
     position: relative;
-    right: 18.75%;
+    right: 15%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-4 {
     position: relative;
-    left: 25%;
+    left: 20%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-4 {
     position: relative;
-    right: 25%;
+    right: 20%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-5 {
     position: relative;
-    left: 31.25%;
+    left: 25%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-5 {
     position: relative;
-    right: 31.25%;
+    right: 25%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-6 {
     position: relative;
-    left: 37.5%;
+    left: 30%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-6 {
     position: relative;
-    right: 37.5%;
+    right: 30%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-7 {
     position: relative;
-    left: 43.75%;
+    left: 35%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-7 {
     position: relative;
-    right: 43.75%;
+    right: 35%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-8 {
     position: relative;
-    left: 50%;
+    left: 40%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-8 {
     position: relative;
-    right: 50%;
+    right: 40%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-9 {
     position: relative;
-    left: 56.25%;
+    left: 45%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-9 {
     position: relative;
-    right: 56.25%;
+    right: 45%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-10 {
     position: relative;
-    left: 62.5%;
+    left: 50%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-10 {
     position: relative;
-    right: 62.5%;
+    right: 50%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-11 {
     position: relative;
-    left: 68.75%;
+    left: 55.0%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-11 {
     position: relative;
-    right: 68.75%;
+    right: 55.0%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-12 {
     position: relative;
-    left: 75%;
+    left: 60%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-12 {
     position: relative;
-    right: 75%;
+    right: 60%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-13 {
     position: relative;
-    left: 81.25%;
+    left: 65%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-13 {
     position: relative;
-    right: 81.25%;
+    right: 65%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-14 {
     position: relative;
-    left: 87.5%;
+    left: 70%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-14 {
     position: relative;
-    right: 87.5%;
+    right: 70%;
     left: auto;
   }
 
   /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-15 {
     position: relative;
-    left: 93.75%;
+    left: 75%;
     right: auto;
   }
 
   /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-pull-15 {
     position: relative;
-    right: 93.75%;
+    right: 75%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-push-16 {
+    position: relative;
+    left: 80%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-pull-16 {
+    position: relative;
+    right: 80%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-push-17 {
+    position: relative;
+    left: 85%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-pull-17 {
+    position: relative;
+    right: 85%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-push-18 {
+    position: relative;
+    left: 90%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-pull-18 {
+    position: relative;
+    right: 90%;
+    left: auto;
+  }
+
+  /* line 159, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-push-19 {
+    position: relative;
+    left: 95%;
+    right: auto;
+  }
+
+  /* line 162, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-pull-19 {
+    position: relative;
+    right: 95%;
     left: auto;
   }
 
@@ -1630,81 +1934,101 @@ select {
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-1 {
-    width: 6.25%;
+    width: 5%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-2 {
-    width: 12.5%;
+    width: 10%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-3 {
-    width: 18.75%;
+    width: 15%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-4 {
-    width: 25%;
+    width: 20%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-5 {
-    width: 31.25%;
+    width: 25%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-6 {
-    width: 37.5%;
+    width: 30%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-7 {
-    width: 43.75%;
+    width: 35%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-8 {
-    width: 50%;
+    width: 40%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-9 {
-    width: 56.25%;
+    width: 45%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-10 {
-    width: 62.5%;
+    width: 50%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-11 {
-    width: 68.75%;
+    width: 55.0%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-12 {
-    width: 75%;
+    width: 60%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-13 {
-    width: 81.25%;
+    width: 65%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-14 {
-    width: 87.5%;
+    width: 70%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-15 {
-    width: 93.75%;
+    width: 75%;
   }
 
   /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-16 {
+    width: 80%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-17 {
+    width: 85%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-18 {
+    width: 90%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-19 {
+    width: 95%;
+  }
+
+  /* line 172, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-20 {
     width: 100%;
   }
 
@@ -1715,77 +2039,97 @@ select {
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-1 {
-    margin-left: 6.25% !important;
+    margin-left: 5% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-2 {
-    margin-left: 12.5% !important;
+    margin-left: 10% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-3 {
-    margin-left: 18.75% !important;
+    margin-left: 15% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-4 {
-    margin-left: 25% !important;
+    margin-left: 20% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-5 {
-    margin-left: 31.25% !important;
+    margin-left: 25% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-6 {
-    margin-left: 37.5% !important;
+    margin-left: 30% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-7 {
-    margin-left: 43.75% !important;
+    margin-left: 35% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-8 {
-    margin-left: 50% !important;
+    margin-left: 40% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-9 {
-    margin-left: 56.25% !important;
+    margin-left: 45% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-10 {
-    margin-left: 62.5% !important;
+    margin-left: 50% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-11 {
-    margin-left: 68.75% !important;
+    margin-left: 55.0% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-12 {
-    margin-left: 75% !important;
+    margin-left: 60% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-13 {
-    margin-left: 81.25% !important;
+    margin-left: 65% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-14 {
-    margin-left: 87.5% !important;
+    margin-left: 70% !important;
   }
 
   /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-offset-15 {
-    margin-left: 93.75% !important;
+    margin-left: 75% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-offset-16 {
+    margin-left: 80% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-offset-17 {
+    margin-left: 85% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-offset-18 {
+    margin-left: 90% !important;
+  }
+
+  /* line 176, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .large-offset-19 {
+    margin-left: 95% !important;
   }
 
   /* line 179, ../bower_components/foundation/scss/foundation/components/_grid.scss */
@@ -1867,210 +2211,266 @@ select {
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-1 {
     position: relative;
-    left: 6.25%;
+    left: 5%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-1 {
     position: relative;
-    right: 6.25%;
+    right: 5%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-2 {
     position: relative;
-    left: 12.5%;
+    left: 10%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-2 {
     position: relative;
-    right: 12.5%;
+    right: 10%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-3 {
     position: relative;
-    left: 18.75%;
+    left: 15%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-3 {
     position: relative;
-    right: 18.75%;
+    right: 15%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-4 {
     position: relative;
-    left: 25%;
+    left: 20%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-4 {
     position: relative;
-    right: 25%;
+    right: 20%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-5 {
     position: relative;
-    left: 31.25%;
+    left: 25%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-5 {
     position: relative;
-    right: 31.25%;
+    right: 25%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-6 {
     position: relative;
-    left: 37.5%;
+    left: 30%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-6 {
     position: relative;
-    right: 37.5%;
+    right: 30%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-7 {
     position: relative;
-    left: 43.75%;
+    left: 35%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-7 {
     position: relative;
-    right: 43.75%;
+    right: 35%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-8 {
     position: relative;
-    left: 50%;
+    left: 40%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-8 {
     position: relative;
-    right: 50%;
+    right: 40%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-9 {
     position: relative;
-    left: 56.25%;
+    left: 45%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-9 {
     position: relative;
-    right: 56.25%;
+    right: 45%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-10 {
     position: relative;
-    left: 62.5%;
+    left: 50%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-10 {
     position: relative;
-    right: 62.5%;
+    right: 50%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-11 {
     position: relative;
-    left: 68.75%;
+    left: 55.0%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-11 {
     position: relative;
-    right: 68.75%;
+    right: 55.0%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-12 {
     position: relative;
-    left: 75%;
+    left: 60%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-12 {
     position: relative;
-    right: 75%;
+    right: 60%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-13 {
     position: relative;
-    left: 81.25%;
+    left: 65%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-13 {
     position: relative;
-    right: 81.25%;
+    right: 65%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-14 {
     position: relative;
-    left: 87.5%;
+    left: 70%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-14 {
     position: relative;
-    right: 87.5%;
+    right: 70%;
     left: auto;
   }
 
   /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .push-15 {
     position: relative;
-    left: 93.75%;
+    left: 75%;
     right: auto;
   }
 
   /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
   .pull-15 {
     position: relative;
-    right: 93.75%;
+    right: 75%;
+    left: auto;
+  }
+
+  /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .push-16 {
+    position: relative;
+    left: 80%;
+    right: auto;
+  }
+
+  /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .pull-16 {
+    position: relative;
+    right: 80%;
+    left: auto;
+  }
+
+  /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .push-17 {
+    position: relative;
+    left: 85%;
+    right: auto;
+  }
+
+  /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .pull-17 {
+    position: relative;
+    right: 85%;
+    left: auto;
+  }
+
+  /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .push-18 {
+    position: relative;
+    left: 90%;
+    right: auto;
+  }
+
+  /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .pull-18 {
+    position: relative;
+    right: 90%;
+    left: auto;
+  }
+
+  /* line 272, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .push-19 {
+    position: relative;
+    left: 95%;
+    right: auto;
+  }
+
+  /* line 275, ../bower_components/foundation/scss/foundation/components/_grid.scss */
+  .pull-19 {
+    position: relative;
+    right: 95%;
     left: auto;
   }
 }
@@ -2102,7 +2502,7 @@ select {
   color: #222222;
   padding: 1rem;
   display: block;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1rem;
 }
 /* line 143, ../bower_components/foundation/scss/foundation/components/_accordion.scss */
@@ -2809,7 +3209,7 @@ button, .button {
   border-style: solid;
   border-width: 0;
   cursor: pointer;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -4660,7 +5060,7 @@ select {
   border-color: #cccccc;
   padding: 0.5rem;
   font-size: 0.875rem;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: rgba(0, 0, 0, 0.75);
   line-height: normal;
   border-radius: 0;
@@ -5353,7 +5753,7 @@ kbd {
 /* line 91, ../bower_components/foundation/scss/foundation/components/_labels.scss */
 .label {
   font-weight: normal;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
   text-decoration: none;
   line-height: 1;
@@ -5833,11 +6233,11 @@ ul.pagination li {
 .panel {
   border-style: none;
   border-width: 1px;
-  border-color: #e3e3e3;
+  border-color: #dadada;
   margin-bottom: 1.25rem;
   padding: 1.25rem;
-  background: #FFFFFF;
-  color: #4d4d4d;
+  background: #F5F5F5;
+  color: #3d3d3d;
 }
 /* line 55, ../bower_components/foundation/scss/foundation/components/_panels.scss */
 .panel > :first-child {
@@ -5849,7 +6249,7 @@ ul.pagination li {
 }
 /* line 61, ../bower_components/foundation/scss/foundation/components/_panels.scss */
 .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, .panel dl {
-  color: #4d4d4d;
+  color: #3d3d3d;
 }
 /* line 68, ../bower_components/foundation/scss/foundation/components/_panels.scss */
 .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
@@ -5868,7 +6268,7 @@ ul.pagination li {
   margin-bottom: 1.25rem;
   padding: 1.25rem;
   background: #ecfaff;
-  color: #4d4d4d;
+  color: #3d3d3d;
 }
 /* line 55, ../bower_components/foundation/scss/foundation/components/_panels.scss */
 .panel.callout > :first-child {
@@ -5880,7 +6280,7 @@ ul.pagination li {
 }
 /* line 61, ../bower_components/foundation/scss/foundation/components/_panels.scss */
 .panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p, .panel.callout li, .panel.callout dl {
-  color: #4d4d4d;
+  color: #3d3d3d;
 }
 /* line 68, ../bower_components/foundation/scss/foundation/components/_panels.scss */
 .panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
@@ -5924,7 +6324,7 @@ ul.pagination li {
   color: #EEEEEE;
   font-weight: normal;
   font-size: 1rem;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /* line 143, ../bower_components/foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table .price {
@@ -5934,7 +6334,7 @@ ul.pagination li {
   color: #333333;
   font-weight: normal;
   font-size: 2rem;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /* line 144, ../bower_components/foundation/scss/foundation/components/_pricing-tables.scss */
 .pricing-table .description {
@@ -6290,7 +6690,7 @@ ul.pagination li {
   padding: 0.875rem 0;
   list-style-type: none;
   list-style-position: outside;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /* line 70, ../bower_components/foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li {
@@ -6314,7 +6714,7 @@ ul.pagination li {
 .side-nav li.active > a:first-child:not(.button) {
   color: #1cc7ff;
   font-weight: normal;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /* line 93, ../bower_components/foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li.divider {
@@ -6500,7 +6900,7 @@ ul.pagination li {
   float: left;
   margin-left: 1rem;
   margin-bottom: 0;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-size: 0.875rem;
   color: #999999;
@@ -6778,7 +7178,7 @@ table tr td {
   background-color: #EFEFEF;
   color: #222222;
   padding: 1rem 2rem;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1rem;
 }
 /* line 48, ../bower_components/foundation/scss/foundation/components/_tabs.scss */
@@ -7220,7 +7620,7 @@ meta.foundation-mq-topbar {
   color: #FFFFFF;
   padding: 12px 0 12px 0;
   padding-left: 0.9375rem;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8125rem;
   font-weight: normal;
   text-transform: none;
@@ -8014,13 +8414,13 @@ td {
 /* Default Link Styles */
 /* line 217, ../bower_components/foundation/scss/foundation/components/_type.scss */
 a {
-  color: #4d4d4d;
+  color: #3d3d3d;
   text-decoration: none;
   line-height: inherit;
 }
 /* line 222, ../bower_components/foundation/scss/foundation/components/_type.scss */
 a:hover, a:focus {
-  color: #424242;
+  color: #343434;
   text-decoration: underline;
 }
 /* line 230, ../bower_components/foundation/scss/foundation/components/_type.scss */
@@ -8053,7 +8453,7 @@ p aside {
 /* Default header styles */
 /* line 252, ../bower_components/foundation/scss/foundation/components/_type.scss */
 h1, h2, h3, h4, h5, h6 {
-  font-family: Roboto, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   color: #222222;
@@ -17275,7 +17675,7 @@ th.hide-for-touch {
   left: 0;
   background: white;
   /* IE9 */
-  background: linear-gradient(135deg, white 45%, #aaa 50%, #ccc 56%, white 80%);
+  background: linear-gradient(135deg, #ffffff 45%, #aaaaaa 50%, #cccccc 56%, #ffffff 80%);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#000000');
   /*For IE7-8-9*/
   z-index: 1000;
@@ -17315,7 +17715,7 @@ th.hide-for-touch {
   right: 0;
   background: white;
   /* IE9 */
-  background: linear-gradient(225deg, white 45%, #aaa 50%, #ccc 56%, white 80%);
+  background: linear-gradient(225deg, #ffffff 45%, #aaaaaa 50%, #cccccc 56%, #ffffff 80%);
   box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.4);
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -17352,7 +17752,7 @@ th.hide-for-touch {
   right: 0;
   background: white;
   /* IE9 */
-  background: linear-gradient(315deg, white 45%, #aaa 50%, #ccc 56%, white 80%);
+  background: linear-gradient(315deg, #ffffff 45%, #aaaaaa 50%, #cccccc 56%, #ffffff 80%);
   box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.4);
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -17389,7 +17789,7 @@ th.hide-for-touch {
   left: 0;
   background: white;
   /* IE9 */
-  background: linear-gradient(45deg, white 45%, #aaa 50%, #ccc 56%, white 80%);
+  background: linear-gradient(45deg, #ffffff 45%, #aaaaaa 50%, #cccccc 56%, #ffffff 80%);
   box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.4);
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -17402,242 +17802,315 @@ th.hide-for-touch {
   height: 25px;
 }
 
-/* line 48, ../scss/app.scss */
+/* line 49, ../scss/app.scss */
 a:link, a:hover, a:visited {
   font-weight: bold;
 }
 
-/* line 52, ../scss/app.scss */
+/* line 53, ../scss/app.scss */
 #logo-box {
-  background: #5f5f5f url("/images/logo.png") no-repeat center center;
-  background-size: 75% 75%;
-  height: 18.5625rem;
+  background: #1B1D25 url("/images/logo.svg") no-repeat center center;
+  background-size: 70%;
+  height: 14.0625rem;
 }
 
-/* line 58, ../scss/app.scss */
+/* line 59, ../scss/app.scss */
 #header-bar {
-  height: 5rem;
-  background-color: #cbcbcb;
+  height: 3.75rem;
+  background-color: #3d3d3d;
 }
-/* line 62, ../scss/app.scss */
+/* line 63, ../scss/app.scss */
 #header-bar .burger-icon {
   color: #666666;
   padding-left: 1rem;
-  line-height: 5rem;
+  line-height: 3.75rem;
 }
-/* line 67, ../scss/app.scss */
+/* line 68, ../scss/app.scss */
 #header-bar .burger-icon:hover {
   color: #e5e5e5;
 }
 
-/* line 73, ../scss/app.scss */
-#message-bar {
-  height: 3.125rem;
-  background-color: #6fa8d0;
-}
-/* line 77, ../scss/app.scss */
-#message-bar p {
-  padding-left: 1rem;
+/* line 74, ../scss/app.scss */
+#cover-bar {
   color: #FFFFFF;
-  line-height: 3.125rem;
+  height: 17.1875rem;
+  background-color: #5d5d5d;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF5D5D5D', endColorstr='#FF2B2B2B');
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzVkNWQ1ZCIvPjxzdG9wIG9mZnNldD0iNTclIiBzdG9wLWNvbG9yPSIjNWQ1ZDVkIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMmIyYjJiIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5d5d5d), color-stop(57%, #5d5d5d), color-stop(100%, #2b2b2b));
+  background-image: -moz-linear-gradient(top, #5d5d5d 0%, #5d5d5d 57%, #2b2b2b 100%);
+  background-image: -webkit-linear-gradient(top, #5d5d5d 0%, #5d5d5d 57%, #2b2b2b 100%);
+  background-image: linear-gradient(to bottom, #5d5d5d 0%, #5d5d5d 57%, #2b2b2b 100%);
+}
+/* line 81, ../scss/app.scss */
+#cover-bar h1, #cover-bar h2, #cover-bar h3, #cover-bar h4, #cover-bar h5, #cover-bar h6 {
+  color: #FFFFFF;
+}
+/* line 85, ../scss/app.scss */
+#cover-bar #welcome {
+  font-weight: 100;
+  position: absolute;
+  bottom: 0;
+  font-size: 350%;
+  padding: 0 0 0.5rem 0.5rem;
 }
 
-/* line 84, ../scss/app.scss */
-#profile-bar {
-  color: #FFFFFF;
-  height: 10.4375rem;
-  background-color: #d8c758;
-}
-/* line 89, ../scss/app.scss */
+/* line 95, ../scss/app.scss */
 #profile-bar h1, #profile-bar h2, #profile-bar h3, #profile-bar h4, #profile-bar h5, #profile-bar h6,
 #profile-bar a:link, #profile-bar a:hover, #profile-bar a:visited {
-  color: #FFFFFF;
+  color: #000;
   font-weight: normal;
 }
-/* line 95, ../scss/app.scss */
+/* line 101, ../scss/app.scss */
 #profile-bar a:hover {
   text-decoration: underline;
 }
-/* line 99, ../scss/app.scss */
-#profile-bar #user-name {
-  font-size: 250%;
-  padding-top: 2rem;
+/* line 105, ../scss/app.scss */
+#profile-bar #name-address {
+  width: 60%;
 }
-/* line 104, ../scss/app.scss */
-#profile-bar #profile-address {
-  font-size: 100%;
+/* line 109, ../scss/app.scss */
+#profile-bar #user-image {
+  float: left;
+  width: 7.8125rem;
 }
-/* line 108, ../scss/app.scss */
-#profile-bar #profile-image {
-  float: right;
+/* line 114, ../scss/app.scss */
+#profile-bar #profile-text {
+  margin-left: 9.375rem;
 }
-/* line 111, ../scss/app.scss */
-#profile-bar #profile-image img {
-  padding: 1rem;
-  max-width: 10.4375rem;
+/* line 118, ../scss/app.scss */
+#profile-bar #profile-text #profile-role {
+  text-transform: lowercase;
 }
-/* line 117, ../scss/app.scss */
-#profile-bar .profile-data-column {
+/* line 122, ../scss/app.scss */
+#profile-bar #profile-text #user-name {
+  font-weight: 500;
+  font-size: 175%;
+}
+/* line 127, ../scss/app.scss */
+#profile-bar #profile-text #profile-summary {
+  font-size: 95%;
+  color: #939393;
+}
+/* line 133, ../scss/app.scss */
+#profile-bar #profile-data {
+  width: 40%;
+}
+/* line 137, ../scss/app.scss */
+#profile-bar #profile-data .profile-data-column {
+  width: 50%;
   float: left;
   margin-top: 0;
   margin-bottom: 0;
-  padding-top: 1.1rem;
 }
-/* line 123, ../scss/app.scss */
-#profile-bar .profile-data-column .profile-data-item {
+/* line 143, ../scss/app.scss */
+#profile-bar #profile-data .profile-data-column .profile-data-item {
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
 }
-/* line 128, ../scss/app.scss */
-#profile-bar .profile-data-column .profile-data-item-image {
+/* line 148, ../scss/app.scss */
+#profile-bar #profile-data .profile-data-column .profile-data-item-image {
   float: left;
   max-width: 1.5625rem;
+  max-height: 1.5625rem;
 }
-/* line 132, ../scss/app.scss */
-#profile-bar .profile-data-column .profile-data-item-content {
+/* line 153, ../scss/app.scss */
+#profile-bar #profile-data .profile-data-column .profile-data-item-content {
+  float: left;
   margin: 0;
   padding-left: 0.5rem;
-  float: left;
 }
 
-/* line 140, ../scss/app.scss */
+/* line 162, ../scss/app.scss */
 #wrapper {
   display: flex;
 }
 
-/* line 148, ../scss/app.scss */
+/* line 170, ../scss/app.scss */
 #main {
   flex-grow: 1;
 }
 
-/* line 152, ../scss/app.scss */
+/* line 174, ../scss/app.scss */
 #sidebar {
   flex-shrink: 0;
-  background-color: #cbcbcb;
+  background-color: #2C2F3B;
   padding: 0;
+  width: 225px;
 }
-/* line 158, ../scss/app.scss */
+/* line 181, ../scss/app.scss */
 #sidebar ul#main-menu li {
+  font-weight: 300;
   margin: 0;
-  padding-left: 1.5rem;
-  font-size: 110%;
-  color: #333333;
-  text-transform: uppercase;
-  line-height: 3.5rem;
-}
-/* line 160, ../scss/app.scss */
-#sidebar ul#main-menu li:hover {
-  text-decoration: none;
-  background-color: #4d4d4d;
-  color: #cbcbcb;
-}
-
-/* line 176, ../scss/app.scss */
-#profile-menu-wrapper {
-  height: 3.75rem;
-  border-bottom: 1px solid #e5e5e5;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e5e5e5), color-stop(100%, #FFFFFF));
-  background-image: -moz-linear-gradient(#e5e5e5, #FFFFFF);
-  background-image: -webkit-linear-gradient(#e5e5e5, #FFFFFF);
-  background-image: linear-gradient(#e5e5e5, #FFFFFF);
+  padding-left: 2rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 90%;
+  color: #7A8095;
+  text-transform: capitalize;
+  line-height: 2.5rem;
 }
 /* line 184, ../scss/app.scss */
-#profile-menu-wrapper li {
-  font-weight: bold;
-  line-height: 3.75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  height: 4rem;
-}
-/* line 191, ../scss/app.scss */
-#profile-menu-wrapper li a:link, #profile-menu-wrapper li a:hover, #profile-menu-wrapper li a:visited {
-  color: #666666;
-}
-/* line 195, ../scss/app.scss */
-#profile-menu-wrapper li a:hover {
+#sidebar ul#main-menu li:hover {
   text-decoration: none;
-  border-bottom: 0.25rem solid #92bd2f;
+  background-color: #22242d;
+  color: #FFFFFF;
+}
+/* line 189, ../scss/app.scss */
+#sidebar ul#main-menu li:hover .xbnx-icon-dashboard {
+  background-color: #1B1D25;
+  background-image: url(/images/xbnx-icons/dashboard-hl.svg);
+}
+/* line 194, ../scss/app.scss */
+#sidebar ul#main-menu li:hover .xbnx-icon-dapp-library {
+  background-color: #1B1D25;
+  background-image: url(/images/xbnx-icons/dapp-library-hl.svg);
+}
+/* line 199, ../scss/app.scss */
+#sidebar ul#main-menu li:hover .xbnx-icon-my-dapps {
+  background-color: #1B1D25;
+  background-image: url(/images/xbnx-icons/my-dapps-hl.svg);
+}
+/* line 204, ../scss/app.scss */
+#sidebar ul#main-menu li:hover .xbnx-icon-my-data {
+  background-color: #1B1D25;
+  background-image: url(/images/xbnx-icons/my-data-hl.svg);
+}
+/* line 209, ../scss/app.scss */
+#sidebar ul#main-menu li:hover .xbnx-icon-services {
+  background-color: #1B1D25;
+  background-image: url(/images/xbnx-icons/services-hl.svg);
+}
+/* line 214, ../scss/app.scss */
+#sidebar ul#main-menu li:hover .xbnx-icon-utilities {
+  background-color: #1B1D25;
+  background-image: url(/images/xbnx-icons/utilities-hl.svg);
+}
+/* line 227, ../scss/app.scss */
+#sidebar ul#main-menu li .sidebar-menu-icon {
+  background-size: 40%;
+  height: 2.5rem;
+  width: 2.5rem;
+  line-height: 2.5rem;
+  margin-right: 1rem;
 }
 
-/* line 202, ../scss/app.scss */
+/* line 239, ../scss/app.scss */
 #content {
   float: left;
   margin-top: 1rem;
 }
 
-/* line 207, ../scss/app.scss */
+/* line 244, ../scss/app.scss */
 .panel {
   margin-bottom: 0;
   margin-top: 1rem;
 }
 
-/* line 212, ../scss/app.scss */
+/* line 249, ../scss/app.scss */
 .panel-heading {
   padding-bottom: 1.5rem;
-  border-bottom: 0.125rem solid #4d4d4d;
+  border-bottom: 0.125rem solid #3d3d3d;
 }
 
-/* line 217, ../scss/app.scss */
+/* line 254, ../scss/app.scss */
 #recent-messages {
+  float: right;
   padding-left: 0;
-  padding-right: 1rem;
   margin-bottom: 1rem;
 }
-/* line 222, ../scss/app.scss */
-#recent-messages .message-user {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+/* line 259, ../scss/app.scss */
+#recent-messages .message-thumbnail {
+  border: 1px solid #c5c5c5;
+  background-color: #FFFFFF;
+  margin-bottom: 1rem;
 }
-/* line 227, ../scss/app.scss */
-#recent-messages .message-user-name,
-#recent-messages .message-user-location {
+/* line 266, ../scss/app.scss */
+#recent-messages .message-thumbnail .message-user {
+  padding-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: 0;
+  border-bottom: 1px solid #c5c5c5;
+}
+/* line 272, ../scss/app.scss */
+#recent-messages .message-thumbnail .message-user .message-user-name,
+#recent-messages .message-thumbnail .message-user .message-info {
+  padding-left: 1rem;
+  margin-bottom: 0;
   float: left;
-  margin: 0.5rem 0 0.5rem 0;
 }
-/* line 234, ../scss/app.scss */
-#recent-messages .message-user-location:before {
-  content: '@ ';
+/* line 279, ../scss/app.scss */
+#recent-messages .message-thumbnail .message-user .message-user-name {
+  font-weight: 500;
+}
+/* line 283, ../scss/app.scss */
+#recent-messages .message-thumbnail .message-user .message-info {
+  color: #939393;
+  font-size: 90%;
+}
+/* line 288, ../scss/app.scss */
+#recent-messages .message-thumbnail .message-user .message-user-image {
+  float: left;
+  width: 15%;
+  margin-left: 8%;
+}
+/* line 295, ../scss/app.scss */
+#recent-messages .message-thumbnail .message-sample {
+  margin: 0 1rem 0 1rem;
+  padding: 1rem 0.5rem 0 0.5rem;
+}
+/* line 298, ../scss/app.scss */
+#recent-messages .message-thumbnail .message-sample p {
+  color: #666666;
+  font-size: 95%;
 }
 
-/* line 241, ../scss/app.scss */
+/* line 306, ../scss/app.scss */
+#latest-news {
+  float: left;
+  padding-right: 1rem;
+}
+/* line 310, ../scss/app.scss */
 #latest-news .news-item {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-/* line 246, ../scss/app.scss */
+/* line 315, ../scss/app.scss */
 #latest-news .news-item-image {
   float: left;
   padding-left: 1rem;
   max-width: 5.625rem;
 }
-/* line 252, ../scss/app.scss */
+/* line 321, ../scss/app.scss */
 #latest-news .news-item-title,
 #latest-news .news-item-snippet {
   margin-bottom: 0;
 }
-/* line 257, ../scss/app.scss */
+/* line 326, ../scss/app.scss */
 #latest-news .news-item-snippet {
   float: left;
 }
 
-/* line 262, ../scss/app.scss */
+/* line 331, ../scss/app.scss */
 #my-dapps {
   margin: 0 auto;
 }
-/* line 265, ../scss/app.scss */
+/* line 334, ../scss/app.scss */
 #my-dapps .left-button {
   background: transparent url(/images/slider-left.png) no-repeat center center;
 }
-/* line 269, ../scss/app.scss */
+/* line 338, ../scss/app.scss */
 #my-dapps .right-button {
   background: transparent url(/images/slider-right.png) no-repeat center center;
 }
-/* line 274, ../scss/app.scss */
+/* line 343, ../scss/app.scss */
 #my-dapps #dapp-selector-wrapper .dapp-selector {
   margin-left: 3.5rem;
   height: 9.375rem;
 }
-/* line 278, ../scss/app.scss */
+/* line 347, ../scss/app.scss */
 #my-dapps #dapp-selector-wrapper .dapp-selector .option {
   float: left;
   width: 16.5%;
@@ -17645,12 +18118,51 @@ a:link, a:hover, a:visited {
 }
 
 @media only screen and (min-width: 64.063em) {
-  /* line 298, ../scss/app.scss */
+  /* line 367, ../scss/app.scss */
   .large-10 {
     width: 100%;
   }
 }
-/* line 304, ../scss/app.scss */
+/* line 373, ../scss/app.scss */
 body {
   overflow-x: hidden;
+}
+
+/* line 378, ../scss/app.scss */
+.demibold {
+  font-weight: 400;
+}
+
+/* line 383, ../scss/app.scss */
+.xbnx-icon {
+  background-color: #22242d;
+}
+/* line 386, ../scss/app.scss */
+.xbnx-icon[class*="xbnx-icon-"] {
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+/* line 391, ../scss/app.scss */
+.xbnx-icon.xbnx-icon-dashboard {
+  background-image: url(/images/xbnx-icons/dashboard.svg);
+}
+/* line 395, ../scss/app.scss */
+.xbnx-icon.xbnx-icon-dapp-library {
+  background-image: url(/images/xbnx-icons/dapp-library.svg);
+}
+/* line 399, ../scss/app.scss */
+.xbnx-icon.xbnx-icon-my-dapps {
+  background-image: url(/images/xbnx-icons/my-dapps.svg);
+}
+/* line 403, ../scss/app.scss */
+.xbnx-icon.xbnx-icon-my-data {
+  background-image: url(/images/xbnx-icons/my-data.svg);
+}
+/* line 407, ../scss/app.scss */
+.xbnx-icon.xbnx-icon-services {
+  background-image: url(/images/xbnx-icons/services.svg);
+}
+/* line 411, ../scss/app.scss */
+.xbnx-icon.xbnx-icon-utilities {
+  background-image: url(/images/xbnx-icons/utilities.svg);
 }

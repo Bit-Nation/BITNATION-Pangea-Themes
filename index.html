@@ -4,173 +4,166 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bitnation Pangea</title>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,900,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="stylesheets/app.css" />
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
     <div id="wrapper" class="row">
-      <aside id="sidebar" class="large-3 columns height-page">
+      <aside id="sidebar" class="height-page">
         <div id="logo-box"></div>
         <ul id="main-menu" class="side-nav">
-          <a href="#"><li>Dashboard</li></a>
-          <a href="#"><li>DApp Library</li></a>
-          <a href="#"><li>My DApps</li></a>
-          <a href="#"><li>My Data</li></a>
-          <a href="#"><li>Services</li></a>
+          <a href="#"><li>Dashboard <i class="xbnx-icon xbnx-icon-dashboard pull-right sidebar-menu-icon"></i></li></a>
+          <a href="#"><li>DApp Library <i class="xbnx-icon xbnx-icon-dapp-library pull-right sidebar-menu-icon"></i></li></a>
+          <a href="#"><li>My DApps <i class="xbnx-icon xbnx-icon-my-dapps pull-right sidebar-menu-icon"></i></li></a>
+          <a href="#"><li>My Data <i class="xbnx-icon xbnx-icon-my-data pull-right sidebar-menu-icon"></i></li></a>
+          <a href="#"><li>Services <i class="xbnx-icon xbnx-icon-services pull-right sidebar-menu-icon"></i></li></a>
           <!-- <a href="#"><li>Legal</li></a>
           <a href="#"><li>Insurance</li></a> -->
-          <a href="#"><li>Social</li></a>
           <!-- <a href="#"><li>Security</li></a>
           <a href="#"><li>Diplomacy</li></a> -->
-          <a href="#"><li>Utilities</li></a>
+          <a href="#"><li>Utilities <i class="xbnx-icon xbnx-icon-utilities pull-right sidebar-menu-icon"></i></li></a>
         </ul>
       </aside>
       <div id="main" class="height-page">
         <nav id="header-bar" role="navigation" class="large-10 columns">
-          <a href="#"><i id="menu-toggle" class="burger-icon fa fa-bars fa-2x"></i></a>
+          <a href="#"><i id="menu-toggle" class="burger-icon fa fa-bars"></i></a>
         </nav>
-        <div id="message-bar" class="large-10 columns">
-          <p>Welcome to your Bitnation. The world's first virtual nation: borderless - decentralized - voluntary</p>
+        <div id="cover-bar" class="large-10 columns">
+          <h1 id="welcome">Welcome to your <span class="demibold">Bitnation</span></h1>
         </div>
-        <div id="profile-bar" class="large-10 columns">
-          <div id="name-address" class="text-center large-4 columns">
-            <h2 id="user-name">Jason Da Dude</h2>
-            <p id="profile-address">XBNXFMjZ1DJbndXa1A9eoRC8Vk6sg2</p>
-          </div>
-
-          <div class="profile-data-column large-4 large-offset-1 columns">
-            <div class="row profile-data-item">
-              <img class="profile-data-item-image" src="/images/nav-icon-url.png">
-              <p class="profile-data-item-content"><a href="http://bitnation.co/jasondadude">bitnation.co/jasondadude</a></p>
-            </div>
-            <div class="row profile-data-item">
-              <img class="profile-data-item-image" src="/images/nav-icon-key.png">
-              <p class="profile-data-item-content">D5DC 1253 7375 2452</p>
-            </div>
-            <div class="row profile-data-item">
-              <img class="profile-data-item-image" src="/images/nav-icon-twitter.png">
-              <p class="profile-data-item-content"><a href="https://www.twitter.com/tweetjasondadude">tweetjasondadude</a></p>
-            </div>
-          </div>
-
-          <div class="profile-data-column large-4 columns">
-            <div class="row profile-data-item">
-              <img class="profile-data-item-image" src="/images/nav-icon-reddit.png">
-              <p class="profile-data-item-content"><a href="https://www.reddit.com/u/jasondadude">redditjasondadude</a></p>
-            </div>
-            <div class="row profile-data-item">
-              <img class="profile-data-item-image" src="/images/nav-icon-bitcoin.png">
-              <p class="profile-data-item-content">coinbase/susanne</p>
-            </div>
-            <div class="row profile-data-item">
-              <img class="profile-data-item-image" src="/images/nav-icon-www.png">
-              <p class="profile-data-item-content"><a href="http://www.bitnation.co">www.bitnation.co</a></p>
-            </div>
-          </div>
-
-          <div id="profile-image" class="large-2 columns">
-            <img src="/images/profiles/me.png">
-          </div>
-        </div>
-        <div id="profile-menu-wrapper" class="large-10 columns">
-          <ul id="profile-menu" class="inline-list">
-            <li><a href="#">Passport</a></li>
-            <li><a href="#">Friends</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Logout</a></li>
-          </ul>
-        </div>
-          <div id="content" class="large-10 columns">
-            <div id="my-dapps" class="panel">
-              <h3 class="panel-heading">My DApps</h3>
-              <div id="dapp-selector-wrapper" class="row" data-equalizer>
-                <div class="left-button large-1 columns" data-equalizer-watch>
-                &nbsp;
-                </div>
-                <div class="dapp-selector large-13 columns" data-equalizer-watch>
-                  <div class="option">
-                    <a href="#">
-                      <img src="/images/dapps/owl.png" class="hvr-bob">
-                    </a>
-                  </div>
-                  <div class="option">
-                    <a href="#">
-                      <img src="/images/dapps/cup.png" class="hvr-bob">
-                    </a>
-                  </div>
-                  <div class="option">
-                    <a href="#">
-                      <img src="/images/dapps/chemistry.png" class="hvr-bob">
-                    </a>
-                  </div>
-                  <div class="option">
-                    <a href="#">
-                      <img src="/images/dapps/music.png" class="hvr-bob">
-                    </a>
-                  </div>
-                  <div class="option">
-                    <a href="#">
-                      <img src="/images/dapps/shoe.png" class="hvr-bob">
-                    </a>
-                  </div>
-                  <div class="option">
-                    <a href="#">
-                      <img src="/images/dapps/rocket.png" class="hvr-bob">
-                    </a>
-                  </div>
-                </div>
-                <div class="right-button large-1 columns" data-equalizer-watch>
-                &nbsp;
-                </div>
+        <div id="content" class="large-10 columns">
+          <div id="profile-bar" class="large-10 columns">
+            <div id="name-address" class="pull-left">
+              <img id="user-image" src="/images/profiles/me.png">
+              <div id="profile-text">
+                <h3 id="user-name">Susanne Tarkowski Tempelhof</h3>
+                <p id="profile-role">crypto enthusiast</p>
+                <p id="profile-summary">Stockholm, Sweden | CEO Bitnation | XBNXFMjZ1DJbndXa1A9eoRC8Vk6sg2</p>
               </div>
             </div>
 
-            <!-- RECENT MESSAGES -->
-            <div id="recent-messages" class="large-5 columns">
-              <div class="panel">
-                <h3 class="panel-heading">Recent Messages</h3>
-                <div class="row message-user">
-                  <img class="message-user-image large-5 columns" src="/images/profiles/tm.png">
-                  <p class="message-user-name large-9 columns">Tatjana May</p>
-                  <p class="message-user-location large-9 columns">Moskow</p>
+            <div id="profile-data" class="pull-right">
+              <div class="profile-data-column">
+                <div class="row profile-data-item">
+                  <img class="profile-data-item-image" src="/images/nav-icon-person.svg">
+                  <p class="profile-data-item-content"><a href="http://bitnation.co/jasondadude">bitnation.co/jasondadude</a></p>
                 </div>
-                <div class="row message-user">
-                  <img class="message-user-image large-5 columns" src="/images/profiles/cb.png">
-                  <p class="message-user-name large-9 columns">Christoph Brown</p>
-                  <p class="message-user-location large-9 columns">Los Angeles</p>
+                <div class="row profile-data-item">
+                  <img class="profile-data-item-image" src="/images/nav-icon-key.svg">
+                  <p class="profile-data-item-content">D5DC 1253 7375 2452</p>
                 </div>
-                <div class="row message-user">
-                  <img class="message-user-image large-5 columns" src="/images/profiles/sj.png">
-                  <p class="message-user-name large-9 columns">Silvia Jenson</p>
-                  <p class="message-user-location large-9 columns">New York City</p>
+                <div class="row profile-data-item">
+                  <img class="profile-data-item-image" src="/images/nav-icon-twitter.svg">
+                  <p class="profile-data-item-content"><a href="https://www.twitter.com/tweetjasondadude">tweetjasondadude</a></p>
                 </div>
               </div>
-            </div>
-            <!-- END RECENT MESSAGES -->
 
-            <!-- LATEST NEWS -->
-            <div id="latest-news" class="panel large-11 columns">
-              <h3 class="panel-heading">Latest News</h3>
-              <div class="row news-item">
-                <img class="news-item-image" src="/images/news/news-1.png">
-                <p class="news-item-title large-14 columns"><a href="#">Russian Ministry of Finance: Anti-Bitcoin Law 'Will Finally Be Passed This Year'</a></p>
-                <p class="news-item-snippet large-14 columns">Speaking at the All-Russian Banking Conference, Deputy Minister of Finance Alexey Moiseev stated that the bill proposing penalties for &hellip;</p>
-              </div>
-              <div class="row news-item">
-                <img class="news-item-image" src="/images/news/news-2.png">
-                <p class="news-item-title large-14 columns"><a href="#">Bitcoin in India ‘On the Rise’ says Sunny Ray, Unocoin Co-founder</a></p>
-                <p class="news-item-snippet large-14 columns">“India has one of the largest unbanked populations, 50% of the population is unbanked, I think Bitcoin can play a part in banking the unbanked.” &hellip;</p>
-              </div>
-              <div class="row news-item">
-                <img class="news-item-image" src="/images/news/news-3.png">
-                <p class="news-item-title large-14 columns"><a href="#">South Korea: Bitcoin Growth Fueled by Startups and Community</a></p>
-                <p class="news-item-snippet large-14 columns">South Korea’s development during the last half century has been nothing short of spectacular. The country is known for its home grown, &hellip;</p>
+              <div class="profile-data-column">
+                <div class="row profile-data-item">
+                  <img class="profile-data-item-image" src="/images/nav-icon-reddit.svg">
+                  <p class="profile-data-item-content"><a href="https://www.reddit.com/u/jasondadude">redditjasondadude</a></p>
+                </div>
+                <div class="row profile-data-item">
+                  <img class="profile-data-item-image" src="/images/nav-icon-bitcoin.svg">
+                  <p class="profile-data-item-content">coinbase/susanne</p>
+                </div>
+                <div class="row profile-data-item">
+                  <img class="profile-data-item-image" src="/images/nav-icon-web.svg">
+                  <p class="profile-data-item-content"><a href="http://www.bitnation.co">www.bitnation.co</a></p>
+                </div>
               </div>
             </div>
-            <!-- END LATEST NEWS -->
           </div>
+          <!-- <div id="my-dapps" class="panel">
+            <h3 class="panel-heading">My DApps</h3>
+            <div id="dapp-selector-wrapper" class="row" data-equalizer>
+              <div class="left-button large-1 columns" data-equalizer-watch>
+              &nbsp;
+              </div>
+              <div class="dapp-selector large-13 columns" data-equalizer-watch>
+                <div class="option">
+                  <a href="#">
+                    <img src="/images/dapps/owl.png" class="hvr-bob">
+                  </a>
+                </div>
+                <div class="option">
+                  <a href="#">
+                    <img src="/images/dapps/cup.png" class="hvr-bob">
+                  </a>
+                </div>
+                <div class="option">
+                  <a href="#">
+                    <img src="/images/dapps/chemistry.png" class="hvr-bob">
+                  </a>
+                </div>
+                <div class="option">
+                  <a href="#">
+                    <img src="/images/dapps/music.png" class="hvr-bob">
+                  </a>
+                </div>
+                <div class="option">
+                  <a href="#">
+                    <img src="/images/dapps/shoe.png" class="hvr-bob">
+                  </a>
+                </div>
+                <div class="option">
+                  <a href="#">
+                    <img src="/images/dapps/rocket.png" class="hvr-bob">
+                  </a>
+                </div>
+              </div>
+              <div class="right-button large-1 columns" data-equalizer-watch>
+              &nbsp;
+              </div>
+            </div>
+          </div> -->
+
+          <!-- RECENT MESSAGES -->
+          <div id="recent-messages" class="large-5 columns">
+            <div class="message-thumbnail">
+              <div class="row message-user">
+                <img class="message-user-image" src="/images/profiles/tm.png">
+                <p class="message-user-name">Tatjana Curtis</p>
+                <p class="message-info">sent a message | <span class="message-user-location">NYC, New York</span></p>
+              </div>
+              <div class="row message-sample">
+                <p>Hey Susannne! Long time no see! Hope you’re fine, please get back to me asap..</p>
+              </div>
+            </div>
+            <div class="message-thumbnail">
+              <div class="row message-user">
+                <img class="message-user-image" src="/images/profiles/sj.png">
+                <p class="message-user-name">Silvia Brown</p>
+                <p class="message-info">sent a message | <span class="message-user-location">SF, California</span></p>
+              </div>
+              <div class="row message-sample">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p>
+              </div>
+            </div>
+          </div>
+          <!-- END RECENT MESSAGES -->
+
+          <!-- LATEST NEWS -->
+          <div id="latest-news" class="panel large-15 columns">
+            <h3 class="panel-heading">Latest News</h3>
+            <div class="row news-item">
+              <img class="news-item-image" src="/images/news/news-1.png">
+              <p class="news-item-title large-14 columns"><a href="#">Russian Ministry of Finance: Anti-Bitcoin Law 'Will Finally Be Passed This Year'</a></p>
+              <p class="news-item-snippet large-14 columns">Speaking at the All-Russian Banking Conference, Deputy Minister of Finance Alexey Moiseev stated that the bill proposing penalties for &hellip;</p>
+            </div>
+            <div class="row news-item">
+              <img class="news-item-image" src="/images/news/news-2.png">
+              <p class="news-item-title large-14 columns"><a href="#">Bitcoin in India ‘On the Rise’ says Sunny Ray, Unocoin Co-founder</a></p>
+              <p class="news-item-snippet large-14 columns">“India has one of the largest unbanked populations, 50% of the population is unbanked, I think Bitcoin can play a part in banking the unbanked.” &hellip;</p>
+            </div>
+            <div class="row news-item">
+              <img class="news-item-image" src="/images/news/news-3.png">
+              <p class="news-item-title large-14 columns"><a href="#">South Korea: Bitcoin Growth Fueled by Startups and Community</a></p>
+              <p class="news-item-snippet large-14 columns">South Korea’s development during the last half century has been nothing short of spectacular. The country is known for its home grown, &hellip;</p>
+            </div>
+          </div>
+          <!-- END LATEST NEWS -->
         </div>
       </div>
     </div>

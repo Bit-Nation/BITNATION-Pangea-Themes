@@ -1,4 +1,5 @@
 @import "settings";
+@import "compass";
 @import "foundation";
 @import "compass/css3/transition";
 
@@ -50,14 +51,14 @@ a:link, a:hover, a:visited {
 }
 
 #logo-box {
-	background: $mgrey3 url('/images/logo.png') no-repeat center center;
-	background-size: 75% 75%;
+	background: $sidebarDark url('/images/logo.svg') no-repeat center center;
+	background-size: 70%;
 	height: $logoBoxHeight;
 }
 
 #header-bar {
 	height: $headerBarHeight;
-	background-color: $lgrey2;
+	background-color: $mgrey;
 
 	.burger-icon {
 		color: $mgrey2;
@@ -70,25 +71,30 @@ a:link, a:hover, a:visited {
 	}
 }
 
-#message-bar {
-	height: $messageBarHeight;
-	background-color: $turquoise;
+#cover-bar {
+	color: $white;
+	height: $profileBarHeight;
+	background-color: #5d5d5d; // Old browsers
+	@include filter-gradient(#5d5d5d, #2b2b2b, vertical); // IE6-9
+	@include background-image(linear-gradient(top, #5d5d5d 0%,#5d5d5d 57%,#2b2b2b 100%));
 
-	p {
-		padding-left: 1rem;
+	h1, h2, h3, h4, h5, h6 {
 		color: $white;
-		line-height: $messageBarHeight;
+	}
+
+	#welcome {
+		font-weight: 100;
+		position: absolute;
+		bottom: 0;
+		font-size: 350%;
+		padding: 0 0 0.5rem 0.5rem;
 	}
 }
 
 #profile-bar {
-	color: $white;
-	height: $profileBarHeight;
-	background-color: $orange;
-
 	h1, h2, h3, h4, h5, h6,
 	a:link, a:hover, a:visited {
-		color: $white;
+		color: #000;
 		font-weight: normal;
 	}
 
@@ -96,43 +102,59 @@ a:link, a:hover, a:visited {
 		text-decoration: underline;
 	}
 
-	#user-name {
-		font-size: 250%;
-		padding-top: 2rem;
+	#name-address {
+		width: 60%;
 	}
 
-	#profile-address {
-		font-size: 100%;
-	}
-
-	#profile-image {
-		float: right;
-
-		img {
-			padding: 1rem;
-			max-width: $profileBarHeight;
-		}
-	}
-
-	.profile-data-column {
+	#user-image {
 		float: left;
-		margin-top: 0;
-		margin-bottom: 0;
-		padding-top: 1.1rem;
+		width: rem-calc($userImageWidth);
+	}
 
-		.profile-data-item {
-			margin-top: 0.7rem;
-			margin-bottom: 0.7rem;
+	#profile-text {
+
+		margin-left: rem-calc($userImageWidth + 25);
+
+		#profile-role {
+			text-transform: lowercase;
 		}
 
-		.profile-data-item-image {
-			float: left;
-			max-width: rem-calc(25);
+		#user-name {
+			font-weight: 500;
+			font-size: 175%;
 		}
-		.profile-data-item-content {
-			margin: 0;
-			padding-left: 0.5rem;
+
+		#profile-summary {
+			font-size: 95%;
+			color: $lgrey2;
+		}
+	}
+
+	#profile-data {
+
+		width: 40%;
+
+		.profile-data-column {
+			width: 50%;
 			float: left;
+			margin-top: 0;
+			margin-bottom: 0;
+
+			.profile-data-item {
+				margin-top: 0.7rem;
+				margin-bottom: 0.7rem;
+			}
+
+			.profile-data-item-image {
+				float: left;
+				max-width: rem-calc(25);
+				max-height: rem-calc(25);
+			}
+			.profile-data-item-content {
+				float: left;
+				margin: 0;
+				padding-left: 0.5rem;
+			}
 		}
 	}
 }
@@ -151,52 +173,67 @@ a:link, a:hover, a:visited {
 
 #sidebar {
 	flex-shrink: 0;
-	background-color: $lgrey2;
+	background-color: $sidebarMid;
 	padding: 0;
+	width: $sideBarWidth;
 
 	ul#main-menu {
 		li {
+			font-weight: 300;
 			margin: 0;
 			&:hover {
 				text-decoration: none;
-				background-color: $mgrey;
-				color: $lgrey2;
+				background-color: $dnavy2;
+				color: $sidebarHoverText;
+
+				.xbnx-icon-dashboard {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/dashboard-hl.svg);
+				}
+
+				.xbnx-icon-dapp-library {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/dapp-library-hl.svg);
+				}
+
+				.xbnx-icon-my-dapps {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/my-dapps-hl.svg);
+				}
+
+				.xbnx-icon-my-data {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/my-data-hl.svg);
+				}
+
+				.xbnx-icon-services {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/services-hl.svg);
+				}
+
+				.xbnx-icon-utilities {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/utilities-hl.svg);
+				}
 			}
-			padding-left: 1.5rem;
-			font-size: 110%;
-			color: $oil;
-			text-transform: uppercase;
-			line-height: 3.5rem;
+			padding-left: 2rem;
+			margin-top: 0.25rem;
+			margin-bottom: 0.25rem;
+			font-size: 90%;
+			color: $sidebarText;
+			text-transform: capitalize;
+			line-height: $sidebarItemHeight;
+
+			.sidebar-menu-icon {
+				background-size: 40%;
+				height: $sidebarItemHeight;
+				width: $sidebarItemHeight;
+				line-height: $sidebarItemHeight;
+				margin-right: 1rem;
+			}
 		}
 	}
 
-	//flex-shrink: 0;
-}
-
-#profile-menu-wrapper {
-	height: $profileMenuHeight;
-	border-bottom: 1px solid $lgrey;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, $lgrey), color-stop(100%, $white));
-  	background-image: -moz-linear-gradient($lgrey, $white);
-  	background-image: -webkit-linear-gradient($lgrey, $white);
-  	background-image: linear-gradient($lgrey, $white);
-
-  	li {
-  		font-weight: bold;
-  		line-height: $profileMenuHeight;
-  		padding-left: 1rem;
-  		padding-right: 1rem;
-  		height: $profileMenuHeight + rem-calc(4);
-
-  		a:link, a:hover, a:visited {
-  			color: $mgrey2;
-  		}
-
-  		a:hover {
-  			text-decoration: none;
-  			border-bottom: rem-calc(4) solid $green;
-  		}
-  	}
 }
 
 #content {
@@ -215,29 +252,61 @@ a:link, a:hover, a:visited {
 }
 
 #recent-messages {
+	float: right;
 	padding-left: 0;
-	padding-right: 1rem;
 	margin-bottom: 1rem;
 
-	.message-user {
-		margin-top: 1.5rem;
-		margin-bottom: 1.5rem;
-	}
+	.message-thumbnail {
 
-	.message-user-name,
-	.message-user-location {
-		float: left;
-		margin: 0.5rem 0 0.5rem 0;
-	}
+		border: $messagePanelBorder;
+		background-color: $white;
 
-	.message-user-location {
-		&:before {
-			content: '@ ';
+		margin-bottom: 1rem;
+
+		.message-user {
+			padding-bottom: 0.5rem;
+			margin-top: 0.5rem;
+			margin-right: 0;
+			border-bottom: $messagePanelBorder;
+
+			.message-user-name,
+			.message-info {
+				padding-left: 1rem;
+				margin-bottom: 0;
+				float: left;
+			}
+
+			.message-user-name {
+				font-weight: 500;
+			}
+
+			.message-info {
+				color: $messagePanelTextColor;
+				font-size: 90%;
+			}
+
+			.message-user-image {
+				float: left;
+				width: 15%;
+				margin-left: 8%;
+			}
+		}
+
+		.message-sample {
+			margin: 0 1rem 0 1rem;
+			padding: 1rem 0.5rem 0 0.5rem;
+			p {
+				color: $mgrey2;
+				font-size: 95%;
+			}
 		}
 	}
 }
 
 #latest-news {
+	float: left;
+	padding-right: 1rem;
+
 	.news-item {
 		margin-top: 1rem;
 		margin-bottom: 1rem;
@@ -303,4 +372,43 @@ a:link, a:hover, a:visited {
 // THIS CAN BE REMOVED WHEN THE WIDTH BUG IS FIXED
 body {
 	overflow-x: hidden;
+}
+
+// Generic classes
+.demibold {
+	font-weight: 400;
+}
+
+// Icons
+.xbnx-icon {
+	background-color: $dnavy2;
+
+	&[class*="xbnx-icon-"] {
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
+	&.xbnx-icon-dashboard {
+		background-image: url(/images/xbnx-icons/dashboard.svg);
+	}
+
+	&.xbnx-icon-dapp-library {
+		background-image: url(/images/xbnx-icons/dapp-library.svg);
+	}
+
+	&.xbnx-icon-my-dapps {
+		background-image: url(/images/xbnx-icons/my-dapps.svg);
+	}
+
+	&.xbnx-icon-my-data {
+		background-image: url(/images/xbnx-icons/my-data.svg);
+	}
+
+	&.xbnx-icon-services {
+		background-image: url(/images/xbnx-icons/services.svg);
+	}
+
+	&.xbnx-icon-utilities {
+		background-image: url(/images/xbnx-icons/utilities.svg);
+	}
 }
