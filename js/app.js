@@ -3,8 +3,8 @@
 $(document).foundation();
 
 (function($) {
-	$('#menu-toggle').click(function(a, b, c) {
+	$('#menu-toggle').click(function(ev) {
 		$('#sidebar, #main').toggleClass('sidebarOffScreen');
-		$('#menu-toggle').toggleClass('fa-2x');
+		$(ev.target).toggleClass('fa-2x');
 	});
 })(jQuery);

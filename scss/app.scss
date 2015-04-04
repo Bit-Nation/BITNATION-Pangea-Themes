@@ -280,7 +280,7 @@ a:link, a:hover, a:visited {
 
 #content {
 	float: left;
-	margin-top: 1rem;
+	margin: 1rem 0 1rem 0;
 }
 
 .panel {
@@ -295,6 +295,7 @@ a:link, a:hover, a:visited {
 
 #recent-messages {
 	float: right;
+	width: 21%;
 	padding-left: 0;
 	margin-bottom: 1rem;
 
@@ -307,8 +308,7 @@ a:link, a:hover, a:visited {
 
 		.message-user {
 			padding-bottom: 0.5rem;
-			margin-top: 0.5rem;
-			margin-right: 0;
+			margin: 0.5rem 0 0 0;
 			border-bottom: $messagePanelBorder;
 
 			.message-user-name,
@@ -346,27 +346,97 @@ a:link, a:hover, a:visited {
 }
 
 #latest-news {
+	margin: 0 0 1rem 2rem;
+	width: 75%;
+	color: $white;
 	float: left;
-	padding-right: 1rem;
+	padding: 0;
+	display: flex;
+
+	.news-marker {
+		font-weight: 400;
+		padding: rem-calc(3) 1rem rem-calc(3) 1rem;
+		text-transform: uppercase;
+	}
+
+	.news-item, .news-item-right {
+		padding: $newsPadding;
+
+		.news-item-date {
+			font-weight: 300;
+			padding: 2rem 0 0.5rem 0;
+			margin: 0;
+			color: $white;
+		}
+	}
 
 	.news-item {
-		margin-top: 1rem;
-		margin-bottom: 1rem;
+		display: block;
+		position: relative;
+
+		.news-marker {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
 	}
 
-	.news-item-image {
+	.news-item-title {
+
+		a:link, a:visited, a:hover {
+			color: $white;
+			font-weight: 300;
+		}
+
+		padding-top: 0.5rem;
+	}
+
+	.news-items-left {
+		position: relative;
 		float: left;
-		padding-left: 1rem;
-		max-width: rem-calc(90);
+		width: 50%;
+
+		.news-item {
+			float: left;
+
+			&.top {
+				margin-bottom: 1rem;
+				background-color: $newsItemTopLeftColor;
+
+				.news-marker {
+					background-color: darken($newsItemTopLeftColor, percentage($newsItemMarkerDarkenPercent));
+				}
+			}
+
+			&.bottom {
+				background-color: $newsItemBottomLeftColor;
+
+				.news-marker {
+					background-color: darken($newsItemBottomLeftColor, percentage($newsItemMarkerDarkenPercent));
+				}
+			}
+		}
 	}
 
-	.news-item-title,
-	.news-item-snippet {
-		margin-bottom: 0;
-	}
+	.news-item-right {
+		margin-left: 1rem;
+		position: relative;
+		float: right;
+		width: 55%;
+		background-color: $newsItemRightColor;
 
-	.news-item-snippet {
-		float: left;
+		.news-item-title {
+			position: absolute;
+			bottom: $newsPadding;
+			padding-right: $newsPadding;
+		}
+
+		.news-marker {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: darken($newsItemRightColor, percentage($newsItemMarkerDarkenPercent));
+		}
 	}
 }
 
