@@ -174,12 +174,14 @@ a:link, a:hover, a:visited {
 	display: flex;
 }
 
-#main, #sidebar {
-	//display: flex;
-}
-
 #main {
 	flex-grow: 1;
+	// position: absolute;
+	// left: $sideBarWidth;
+
+	// .sidebarOffScreen {
+	// 	left: 0;
+	// }
 }
 
 #sidebar {
@@ -187,6 +189,7 @@ a:link, a:hover, a:visited {
 	background-color: $sidebarMid;
 	padding: 0;
 	width: $sideBarWidth;
+	@include transition(width 150ms ease-in-out);
 
 	ul#main-menu {
 		li {
@@ -241,7 +244,28 @@ a:link, a:hover, a:visited {
 				width: $sidebarItemHeight;
 				line-height: $sidebarItemHeight;
 				margin-right: 1rem;
+				margin-left: 1rem;
 			}
+		}
+	}
+
+	// Animations/Transitions
+	&.sidebarOffScreen {
+		width: rem-calc(25) + 3rem;
+
+		#logo-box {
+			background-image: url(/images/logo-sm.svg);
+			background-size: 40%;
+			height: $headerBarHeight;
+		}
+
+		.sidebar-menu-text {
+			position: absolute;
+			left: -1 * $sideBarWidth;
+		}
+
+		.xbnx-icon {
+			margin: 0.5rem;
 		}
 	}
 
@@ -362,15 +386,6 @@ a:link, a:hover, a:visited {
 			}
 		}
 	}
-}
-
-#sidebar {
-	//transition: all 1.5s;
-}
-
-// Animations/Transitions
-.slideMenu {
-	// visibility: hidden;
 }
 
 // Hacks
