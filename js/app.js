@@ -5,9 +5,6 @@ $(document).foundation();
 (function($) {
 	$('#menu-toggle').click(function(a, b, c) {
 		$('#sidebar, #main').toggleClass('sidebarOffScreen');
-
-		$('#sidebar ul li.sidebar-menu-item i.xbnx-icon').each(function(idx, el) {
-			$(el).attr('data-tooltip', '');
-		});
+		$('#menu-toggle').toggleClass('fa-2x');
 	});
 })(jQuery);
