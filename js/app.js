@@ -9,17 +9,5 @@ $(document).foundation();
 		$('#sidebar ul li.sidebar-menu-item i.xbnx-icon').each(function(idx, el) {
 			$(el).attr('data-tooltip', '');
 		});
-
-		$('#sidebar ul li.sidebar-menu-item i.xbnx-icon').hover(function(ev) {
-			switch(ev.type) {
-				case 'mouseenter':
-					$(ev.target).attr('data-tooltip', '');
-					break;
-				case 'mouseleave':
-					console.log($(ev.target));
-					console.log('exit');
-					break; 
-			}
-		});
 	});
 })(jQuery);

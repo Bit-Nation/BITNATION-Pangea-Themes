@@ -17843,12 +17843,16 @@ a:link, a:hover, a:visited {
   background-image: -moz-linear-gradient(top, #5d5d5d 0%, #5d5d5d 57%, #2b2b2b 100%);
   background-image: -webkit-linear-gradient(top, #5d5d5d 0%, #5d5d5d 57%, #2b2b2b 100%);
   background-image: linear-gradient(to bottom, #5d5d5d 0%, #5d5d5d 57%, #2b2b2b 100%);
+  -moz-transition: height 150ms ease-in-out;
+  -o-transition: height 150ms ease-in-out;
+  -webkit-transition: height 150ms ease-in-out;
+  transition: height 150ms ease-in-out;
 }
-/* line 82, ../scss/app.scss */
+/* line 83, ../scss/app.scss */
 #cover-bar h1, #cover-bar h2, #cover-bar h3, #cover-bar h4, #cover-bar h5, #cover-bar h6 {
   color: #FFFFFF;
 }
-/* line 86, ../scss/app.scss */
+/* line 87, ../scss/app.scss */
 #cover-bar #welcome {
   margin: 0;
   font-weight: 100;
@@ -17857,7 +17861,7 @@ a:link, a:hover, a:visited {
   bottom: 0.5rem;
   font-size: 350%;
 }
-/* line 95, ../scss/app.scss */
+/* line 96, ../scss/app.scss */
 #cover-bar #welcome-message {
   margin: 0;
   font-weight: 300;
@@ -17867,83 +17871,88 @@ a:link, a:hover, a:visited {
   right: 1.5rem;
 }
 
-/* line 106, ../scss/app.scss */
+/* line 107, ../scss/app.scss */
+.sidebarOffScreen #cover-bar {
+  height: 18.90625rem;
+}
+
+/* line 113, ../scss/app.scss */
 #profile-bar h1, #profile-bar h2, #profile-bar h3, #profile-bar h4, #profile-bar h5, #profile-bar h6,
 #profile-bar a:link, #profile-bar a:hover, #profile-bar a:visited {
   color: #000;
   font-weight: normal;
 }
-/* line 112, ../scss/app.scss */
+/* line 119, ../scss/app.scss */
 #profile-bar a:hover {
   text-decoration: underline;
 }
-/* line 116, ../scss/app.scss */
+/* line 123, ../scss/app.scss */
 #profile-bar #name-address {
   width: 60%;
 }
-/* line 120, ../scss/app.scss */
+/* line 127, ../scss/app.scss */
 #profile-bar #user-image {
   float: left;
   width: 7.8125rem;
 }
-/* line 125, ../scss/app.scss */
+/* line 132, ../scss/app.scss */
 #profile-bar #profile-text {
   margin-left: 9.375rem;
 }
-/* line 129, ../scss/app.scss */
+/* line 136, ../scss/app.scss */
 #profile-bar #profile-text #profile-role {
   text-transform: lowercase;
 }
-/* line 133, ../scss/app.scss */
+/* line 140, ../scss/app.scss */
 #profile-bar #profile-text #user-name {
   font-weight: 500;
   font-size: 175%;
 }
-/* line 138, ../scss/app.scss */
+/* line 145, ../scss/app.scss */
 #profile-bar #profile-text #profile-summary {
   font-size: 95%;
   color: #939393;
 }
-/* line 144, ../scss/app.scss */
+/* line 151, ../scss/app.scss */
 #profile-bar #profile-data {
   width: 40%;
 }
-/* line 148, ../scss/app.scss */
+/* line 155, ../scss/app.scss */
 #profile-bar #profile-data .profile-data-column {
   width: 50%;
   float: left;
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 154, ../scss/app.scss */
+/* line 161, ../scss/app.scss */
 #profile-bar #profile-data .profile-data-column .profile-data-item {
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
 }
-/* line 159, ../scss/app.scss */
+/* line 166, ../scss/app.scss */
 #profile-bar #profile-data .profile-data-column .profile-data-item-image {
   float: left;
   max-width: 1.5625rem;
   max-height: 1.5625rem;
 }
-/* line 164, ../scss/app.scss */
+/* line 171, ../scss/app.scss */
 #profile-bar #profile-data .profile-data-column .profile-data-item-content {
   float: left;
   margin: 0;
   padding-left: 0.5rem;
 }
 
-/* line 173, ../scss/app.scss */
+/* line 180, ../scss/app.scss */
 #wrapper {
   display: flex;
 }
 
-/* line 177, ../scss/app.scss */
+/* line 184, ../scss/app.scss */
 #main {
   flex-grow: 1;
 }
 
-/* line 187, ../scss/app.scss */
+/* line 194, ../scss/app.scss */
 #sidebar {
   flex-shrink: 0;
   background-color: #2C2F3B;
@@ -17954,7 +17963,7 @@ a:link, a:hover, a:visited {
   -webkit-transition: width 150ms ease-in-out;
   transition: width 150ms ease-in-out;
 }
-/* line 195, ../scss/app.scss */
+/* line 202, ../scss/app.scss */
 #sidebar ul#main-menu li {
   font-weight: 300;
   margin: 0;
@@ -17966,43 +17975,43 @@ a:link, a:hover, a:visited {
   text-transform: capitalize;
   line-height: 2.5rem;
 }
-/* line 198, ../scss/app.scss */
+/* line 205, ../scss/app.scss */
 #sidebar ul#main-menu li:hover {
   text-decoration: none;
   background-color: #22242d;
   color: #FFFFFF;
 }
-/* line 203, ../scss/app.scss */
+/* line 210, ../scss/app.scss */
 #sidebar ul#main-menu li:hover .xbnx-icon-dashboard {
   background-color: #1B1D25;
   background-image: url(/images/xbnx-icons/dashboard-hl.svg);
 }
-/* line 208, ../scss/app.scss */
+/* line 215, ../scss/app.scss */
 #sidebar ul#main-menu li:hover .xbnx-icon-dapp-library {
   background-color: #1B1D25;
   background-image: url(/images/xbnx-icons/dapp-library-hl.svg);
 }
-/* line 213, ../scss/app.scss */
+/* line 220, ../scss/app.scss */
 #sidebar ul#main-menu li:hover .xbnx-icon-my-dapps {
   background-color: #1B1D25;
   background-image: url(/images/xbnx-icons/my-dapps-hl.svg);
 }
-/* line 218, ../scss/app.scss */
+/* line 225, ../scss/app.scss */
 #sidebar ul#main-menu li:hover .xbnx-icon-my-data {
   background-color: #1B1D25;
   background-image: url(/images/xbnx-icons/my-data-hl.svg);
 }
-/* line 223, ../scss/app.scss */
+/* line 230, ../scss/app.scss */
 #sidebar ul#main-menu li:hover .xbnx-icon-services {
   background-color: #1B1D25;
   background-image: url(/images/xbnx-icons/services-hl.svg);
 }
-/* line 228, ../scss/app.scss */
+/* line 235, ../scss/app.scss */
 #sidebar ul#main-menu li:hover .xbnx-icon-utilities {
   background-color: #1B1D25;
   background-image: url(/images/xbnx-icons/utilities-hl.svg);
 }
-/* line 241, ../scss/app.scss */
+/* line 248, ../scss/app.scss */
 #sidebar ul#main-menu li .sidebar-menu-icon {
   background-size: 40%;
   height: 2.5rem;
@@ -18011,140 +18020,140 @@ a:link, a:hover, a:visited {
   margin-right: 1rem;
   margin-left: 1rem;
 }
-/* line 253, ../scss/app.scss */
+/* line 260, ../scss/app.scss */
 #sidebar.sidebarOffScreen {
   width: 4.5625rem;
 }
-/* line 256, ../scss/app.scss */
+/* line 263, ../scss/app.scss */
 #sidebar.sidebarOffScreen #logo-box {
   background-image: url(/images/logo-sm.svg);
   background-size: 40%;
   height: 3.75rem;
 }
-/* line 262, ../scss/app.scss */
+/* line 269, ../scss/app.scss */
 #sidebar.sidebarOffScreen .sidebar-menu-text {
   position: absolute;
   left: -225px;
 }
-/* line 267, ../scss/app.scss */
+/* line 274, ../scss/app.scss */
 #sidebar.sidebarOffScreen .xbnx-icon {
   margin: 0.5rem;
 }
 
-/* line 274, ../scss/app.scss */
+/* line 281, ../scss/app.scss */
 #content {
   float: left;
   margin-top: 1rem;
 }
 
-/* line 279, ../scss/app.scss */
+/* line 286, ../scss/app.scss */
 .panel {
   margin-bottom: 0;
   margin-top: 1rem;
 }
 
-/* line 284, ../scss/app.scss */
+/* line 291, ../scss/app.scss */
 .panel-heading {
   padding-bottom: 1.5rem;
   border-bottom: 0.125rem solid #3d3d3d;
 }
 
-/* line 289, ../scss/app.scss */
+/* line 296, ../scss/app.scss */
 #recent-messages {
   float: right;
   padding-left: 0;
   margin-bottom: 1rem;
 }
-/* line 294, ../scss/app.scss */
+/* line 301, ../scss/app.scss */
 #recent-messages .message-thumbnail {
   border: 1px solid #c5c5c5;
   background-color: #FFFFFF;
   margin-bottom: 1rem;
 }
-/* line 301, ../scss/app.scss */
+/* line 308, ../scss/app.scss */
 #recent-messages .message-thumbnail .message-user {
   padding-bottom: 0.5rem;
   margin-top: 0.5rem;
   margin-right: 0;
   border-bottom: 1px solid #c5c5c5;
 }
-/* line 307, ../scss/app.scss */
+/* line 314, ../scss/app.scss */
 #recent-messages .message-thumbnail .message-user .message-user-name,
 #recent-messages .message-thumbnail .message-user .message-info {
   padding-left: 1rem;
   margin-bottom: 0;
   float: left;
 }
-/* line 314, ../scss/app.scss */
+/* line 321, ../scss/app.scss */
 #recent-messages .message-thumbnail .message-user .message-user-name {
   font-weight: 500;
 }
-/* line 318, ../scss/app.scss */
+/* line 325, ../scss/app.scss */
 #recent-messages .message-thumbnail .message-user .message-info {
   color: #939393;
   font-size: 90%;
 }
-/* line 323, ../scss/app.scss */
+/* line 330, ../scss/app.scss */
 #recent-messages .message-thumbnail .message-user .message-user-image {
   float: left;
   width: 15%;
   margin-left: 8%;
 }
-/* line 330, ../scss/app.scss */
+/* line 337, ../scss/app.scss */
 #recent-messages .message-thumbnail .message-sample {
   margin: 0 1rem 0 1rem;
   padding: 1rem 0.5rem 0 0.5rem;
 }
-/* line 333, ../scss/app.scss */
+/* line 340, ../scss/app.scss */
 #recent-messages .message-thumbnail .message-sample p {
   color: #666666;
   font-size: 95%;
 }
 
-/* line 341, ../scss/app.scss */
+/* line 348, ../scss/app.scss */
 #latest-news {
   float: left;
   padding-right: 1rem;
 }
-/* line 345, ../scss/app.scss */
+/* line 352, ../scss/app.scss */
 #latest-news .news-item {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-/* line 350, ../scss/app.scss */
+/* line 357, ../scss/app.scss */
 #latest-news .news-item-image {
   float: left;
   padding-left: 1rem;
   max-width: 5.625rem;
 }
-/* line 356, ../scss/app.scss */
+/* line 363, ../scss/app.scss */
 #latest-news .news-item-title,
 #latest-news .news-item-snippet {
   margin-bottom: 0;
 }
-/* line 361, ../scss/app.scss */
+/* line 368, ../scss/app.scss */
 #latest-news .news-item-snippet {
   float: left;
 }
 
-/* line 366, ../scss/app.scss */
+/* line 373, ../scss/app.scss */
 #my-dapps {
   margin: 0 auto;
 }
-/* line 369, ../scss/app.scss */
+/* line 376, ../scss/app.scss */
 #my-dapps .left-button {
   background: transparent url(/images/slider-left.png) no-repeat center center;
 }
-/* line 373, ../scss/app.scss */
+/* line 380, ../scss/app.scss */
 #my-dapps .right-button {
   background: transparent url(/images/slider-right.png) no-repeat center center;
 }
-/* line 378, ../scss/app.scss */
+/* line 385, ../scss/app.scss */
 #my-dapps #dapp-selector-wrapper .dapp-selector {
   margin-left: 3.5rem;
   height: 9.375rem;
 }
-/* line 382, ../scss/app.scss */
+/* line 389, ../scss/app.scss */
 #my-dapps #dapp-selector-wrapper .dapp-selector .option {
   float: left;
   width: 16.5%;
@@ -18152,51 +18161,51 @@ a:link, a:hover, a:visited {
 }
 
 @media only screen and (min-width: 64.063em) {
-  /* line 393, ../scss/app.scss */
+  /* line 400, ../scss/app.scss */
   .large-10 {
     width: 100%;
   }
 }
-/* line 399, ../scss/app.scss */
+/* line 406, ../scss/app.scss */
 body {
   overflow-x: hidden;
 }
 
-/* line 404, ../scss/app.scss */
+/* line 411, ../scss/app.scss */
 .demibold {
   font-weight: 400;
 }
 
-/* line 409, ../scss/app.scss */
+/* line 416, ../scss/app.scss */
 .xbnx-icon {
   background-color: #22242d;
 }
-/* line 412, ../scss/app.scss */
+/* line 419, ../scss/app.scss */
 .xbnx-icon[class*="xbnx-icon-"] {
   background-repeat: no-repeat;
   background-position: center center;
 }
-/* line 417, ../scss/app.scss */
+/* line 424, ../scss/app.scss */
 .xbnx-icon.xbnx-icon-dashboard {
   background-image: url(/images/xbnx-icons/dashboard.svg);
 }
-/* line 421, ../scss/app.scss */
+/* line 428, ../scss/app.scss */
 .xbnx-icon.xbnx-icon-dapp-library {
   background-image: url(/images/xbnx-icons/dapp-library.svg);
 }
-/* line 425, ../scss/app.scss */
+/* line 432, ../scss/app.scss */
 .xbnx-icon.xbnx-icon-my-dapps {
   background-image: url(/images/xbnx-icons/my-dapps.svg);
 }
-/* line 429, ../scss/app.scss */
+/* line 436, ../scss/app.scss */
 .xbnx-icon.xbnx-icon-my-data {
   background-image: url(/images/xbnx-icons/my-data.svg);
 }
-/* line 433, ../scss/app.scss */
+/* line 440, ../scss/app.scss */
 .xbnx-icon.xbnx-icon-services {
   background-image: url(/images/xbnx-icons/services.svg);
 }
-/* line 437, ../scss/app.scss */
+/* line 444, ../scss/app.scss */
 .xbnx-icon.xbnx-icon-utilities {
   background-image: url(/images/xbnx-icons/utilities.svg);
 }

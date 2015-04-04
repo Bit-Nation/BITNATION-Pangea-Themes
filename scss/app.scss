@@ -78,6 +78,7 @@ a:link, a:hover, a:visited {
 	background-color: #5d5d5d; // Old browsers
 	@include filter-gradient(#5d5d5d, #2b2b2b, vertical); // IE6-9
 	@include background-image(linear-gradient(top, #5d5d5d 0%,#5d5d5d 57%,#2b2b2b 100%));
+	@include transition(height 150ms ease-in-out);
 
 	h1, h2, h3, h4, h5, h6 {
 		color: $white;
@@ -99,6 +100,12 @@ a:link, a:hover, a:visited {
 		position: absolute;
 		bottom: 1.25rem;
 		right: 1.5rem;
+	}
+}
+
+.sidebarOffScreen {
+	#cover-bar {
+		height: $profileBarHeight * 1.1;
 	}
 }
 
