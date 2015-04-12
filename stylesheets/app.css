@@ -18061,7 +18061,7 @@ a:link, a:hover, a:visited {
 /* line 296, ../scss/app.scss */
 #recent-messages {
   float: right;
-  width: 21%;
+  width: 22%;
   padding-left: 0;
   margin-bottom: 1rem;
 }
@@ -18097,7 +18097,7 @@ a:link, a:hover, a:visited {
 #recent-messages .message-thumbnail .message-user .message-user-image {
   float: left;
   width: 15%;
-  margin-left: 8%;
+  margin-left: 5%;
 }
 /* line 337, ../scss/app.scss */
 #recent-messages .message-thumbnail .message-sample {
@@ -18113,7 +18113,7 @@ a:link, a:hover, a:visited {
 /* line 348, ../scss/app.scss */
 #latest-news {
   margin: 0 0 1rem 2rem;
-  width: 75%;
+  width: 74.5%;
   color: #FFFFFF;
   float: left;
   padding: 0;
