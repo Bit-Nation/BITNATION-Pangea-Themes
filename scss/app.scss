@@ -1,0 +1,517 @@
+@import "settings";
+@import "compass";
+@import "foundation";
+@import "compass/css3/transition";
+
+$fa-font-path: "/bower_components/font-awesome/fonts" !default;
+@import "font-awesome";
+
+@import "hover";
+
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switches",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+
+a:link, a:hover, a:visited {
+	font-weight: bold;
+}
+
+#logo-box {
+	background: $sidebarDark url('/images/logo.svg') no-repeat center center;
+	background-size: 70%;
+	height: $logoBoxHeight;
+}
+
+#header-bar {
+	height: $headerBarHeight;
+	background-color: $mgrey;
+
+	.burger-icon {
+		color: $mgrey2;
+		padding-left: 1rem;
+		line-height: $headerBarHeight;
+
+		&:hover {
+			color: $lgrey;
+		}
+	}
+}
+
+#cover-bar {
+	color: $white;
+	height: $profileBarHeight;
+
+	background-color: #5d5d5d; // Old browsers
+	@include filter-gradient(#5d5d5d, #2b2b2b, vertical); // IE6-9
+	@include background-image(linear-gradient(top, #5d5d5d 0%,#5d5d5d 57%,#2b2b2b 100%));
+	@include transition(height 150ms ease-in-out);
+
+	h1, h2, h3, h4, h5, h6 {
+		color: $white;
+	}
+
+	#welcome {
+		margin: 0;
+		font-weight: 100;
+		position: absolute;
+		left: 1.5rem;
+		bottom: 0.5rem;
+		font-size: 350%;
+	}
+
+	#welcome-message {
+		margin: 0;
+		font-weight: 300;
+		text-align: right;
+		position: absolute;
+		bottom: 1.25rem;
+		right: 1.5rem;
+	}
+}
+
+.sidebarOffScreen {
+	#cover-bar {
+		height: $profileBarHeight * 1.1;
+	}
+}
+
+#profile-bar {
+	h1, h2, h3, h4, h5, h6,
+	a:link, a:hover, a:visited {
+		color: #000;
+		font-weight: normal;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	#name-address {
+		width: 60%;
+	}
+
+	#user-image {
+		float: left;
+		width: rem-calc($userImageWidth);
+	}
+
+	#profile-text {
+
+		margin-left: rem-calc($userImageWidth + 25);
+
+		#profile-role {
+			text-transform: lowercase;
+		}
+
+		#user-name {
+			font-weight: 500;
+			font-size: 175%;
+		}
+
+		#profile-summary {
+			font-size: 95%;
+			color: $lgrey2;
+		}
+	}
+
+	#profile-data {
+
+		width: 40%;
+
+		.profile-data-column {
+			width: 50%;
+			float: left;
+			margin-top: 0;
+			margin-bottom: 0;
+
+			.profile-data-item {
+				margin-top: 0.7rem;
+				margin-bottom: 0.7rem;
+			}
+
+			.profile-data-item-image {
+				float: left;
+				max-width: rem-calc(25);
+				max-height: rem-calc(25);
+			}
+			.profile-data-item-content {
+				float: left;
+				margin: 0;
+				padding-left: 0.5rem;
+			}
+		}
+	}
+}
+
+#wrapper {
+	display: flex;
+}
+
+#main {
+	flex-grow: 1;
+	// position: absolute;
+	// left: $sideBarWidth;
+
+	// .sidebarOffScreen {
+	// 	left: 0;
+	// }
+}
+
+#sidebar {
+	flex-shrink: 0;
+	background-color: $sidebarMid;
+	padding: 0;
+	width: $sideBarWidth;
+	@include transition(width 150ms ease-in-out);
+
+	ul#main-menu {
+		li {
+			font-weight: 300;
+			margin: 0;
+			&:hover {
+				text-decoration: none;
+				background-color: $dnavy2;
+				color: $sidebarHoverText;
+
+				.xbnx-icon-dashboard {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/dashboard-hl.svg);
+				}
+
+				.xbnx-icon-dapp-library {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/dapp-library-hl.svg);
+				}
+
+				.xbnx-icon-my-dapps {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/my-dapps-hl.svg);
+				}
+
+				.xbnx-icon-my-data {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/my-data-hl.svg);
+				}
+
+				.xbnx-icon-services {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/services-hl.svg);
+				}
+
+				.xbnx-icon-utilities {
+					background-color: $sidebarIconHoverColor;
+					background-image: url(/images/xbnx-icons/utilities-hl.svg);
+				}
+			}
+			padding-left: 2rem;
+			margin-top: 0.25rem;
+			margin-bottom: 0.25rem;
+			font-size: 90%;
+			color: $sidebarText;
+			text-transform: capitalize;
+			line-height: $sidebarItemHeight;
+
+			.sidebar-menu-icon {
+				background-size: 40%;
+				height: $sidebarItemHeight;
+				width: $sidebarItemHeight;
+				line-height: $sidebarItemHeight;
+				margin-right: 1rem;
+				margin-left: 1rem;
+			}
+		}
+	}
+
+	// Animations/Transitions
+	&.sidebarOffScreen {
+		width: rem-calc(25) + 3rem;
+
+		#logo-box {
+			background-image: url(/images/logo-sm.svg);
+			background-size: 40%;
+			height: $headerBarHeight;
+		}
+
+		.sidebar-menu-text {
+			position: absolute;
+			left: -1 * $sideBarWidth;
+		}
+
+		.xbnx-icon {
+			margin: 0.5rem;
+		}
+	}
+
+}
+
+#content {
+	float: left;
+	margin: 1rem 0 1rem 0;
+}
+
+.panel {
+	margin-bottom: 0;
+	margin-top: 1rem;
+}
+
+.panel-heading {
+	padding-bottom: 1.5rem;
+	border-bottom: rem-calc(2) solid $mgrey;
+}
+
+#recent-messages {
+	float: right;
+	width: 22%;
+	padding-left: 0;
+	margin-bottom: 1rem;
+
+	.message-thumbnail {
+
+		border: $messagePanelBorder;
+		background-color: $white;
+
+		margin-bottom: 1rem;
+
+		.message-user {
+			padding-bottom: 0.5rem;
+			margin: 0.5rem 0 0 0;
+			border-bottom: $messagePanelBorder;
+
+			.message-user-name,
+			.message-info {
+				padding-left: 1rem;
+				margin-bottom: 0;
+				float: left;
+			}
+
+			.message-user-name {
+				font-weight: 500;
+			}
+
+			.message-info {
+				color: $messagePanelTextColor;
+				font-size: 90%;
+			}
+
+			.message-user-image {
+				float: left;
+				width: 15%;
+				margin-left: 5%;
+			}
+		}
+
+		.message-sample {
+			margin: 0 1rem 0 1rem;
+			padding: 1rem 0.5rem 0 0.5rem;
+			p {
+				color: $mgrey2;
+				font-size: 95%;
+			}
+		}
+	}
+}
+
+#latest-news {
+	margin: 0 0 1rem 2rem;
+	width: 74.5%;
+	color: $white;
+	float: left;
+	padding: 0;
+	display: flex;
+
+	.news-marker {
+		font-weight: 400;
+		padding: rem-calc(3) 1rem rem-calc(3) 1rem;
+		text-transform: uppercase;
+	}
+
+	.news-item, .news-item-right {
+		padding: $newsPadding;
+
+		.news-item-date {
+			font-weight: 300;
+			padding: 2rem 0 0.5rem 0;
+			margin: 0;
+			color: $white;
+		}
+	}
+
+	.news-item {
+		display: block;
+		position: relative;
+
+		.news-marker {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	.news-item-title {
+
+		a:link, a:visited, a:hover {
+			color: $white;
+			font-weight: 300;
+		}
+
+		padding-top: 0.5rem;
+	}
+
+	.news-items-left {
+		position: relative;
+		float: left;
+		width: 50%;
+
+		.news-item {
+			float: left;
+
+			&.top {
+				margin-bottom: 1rem;
+				background-color: $newsItemTopLeftColor;
+
+				.news-marker {
+					background-color: darken($newsItemTopLeftColor, percentage($newsItemMarkerDarkenPercent));
+				}
+			}
+
+			&.bottom {
+				background-color: $newsItemBottomLeftColor;
+
+				.news-marker {
+					background-color: darken($newsItemBottomLeftColor, percentage($newsItemMarkerDarkenPercent));
+				}
+			}
+		}
+	}
+
+	.news-item-right {
+		margin-left: 1rem;
+		position: relative;
+		float: right;
+		width: 55%;
+		background-color: $newsItemRightColor;
+
+		.news-item-title {
+			position: absolute;
+			bottom: $newsPadding;
+			padding-right: $newsPadding;
+		}
+
+		.news-marker {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: darken($newsItemRightColor, percentage($newsItemMarkerDarkenPercent));
+		}
+	}
+}
+
+#my-dapps {
+	margin: 0 auto;
+
+	.left-button {
+		background: transparent url(/images/slider-left.png) no-repeat center center;
+	}
+
+	.right-button {
+		background: transparent url(/images/slider-right.png) no-repeat center center;
+	}
+
+	#dapp-selector-wrapper {
+		.dapp-selector {
+			margin-left: 3.5rem;
+			height: rem-calc(150);
+
+			.option {
+				float: left;
+				width: 16.5%;
+				padding: 1rem;
+			}
+		}
+	}
+}
+
+// Hacks
+@media only screen and (min-width: 64.063em) {
+	.large-10 {
+		width: 100%;
+	}
+}
+
+// THIS CAN BE REMOVED WHEN THE WIDTH BUG IS FIXED
+body {
+	overflow-x: hidden;
+}
+
+// Generic classes
+.demibold {
+	font-weight: 400;
+}
+
+// Icons
+.xbnx-icon {
+	background-color: $dnavy2;
+
+	&[class*="xbnx-icon-"] {
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
+	&.xbnx-icon-dashboard {
+		background-image: url(/images/xbnx-icons/dashboard.svg);
+	}
+
+	&.xbnx-icon-dapp-library {
+		background-image: url(/images/xbnx-icons/dapp-library.svg);
+	}
+
+	&.xbnx-icon-my-dapps {
+		background-image: url(/images/xbnx-icons/my-dapps.svg);
+	}
+
+	&.xbnx-icon-my-data {
+		background-image: url(/images/xbnx-icons/my-data.svg);
+	}
+
+	&.xbnx-icon-services {
+		background-image: url(/images/xbnx-icons/services.svg);
+	}
+
+	&.xbnx-icon-utilities {
+		background-image: url(/images/xbnx-icons/utilities.svg);
+	}
+}
