@@ -1,0 +1,20 @@
+@import '../component';
+
+.bitn-user-navigation {
+  height: $headerBarHeight;
+  background-color: $mgrey;
+
+  > .actions {
+    padding: 0 0.5rem;
+
+    > ul > li > a {
+      color: $mgrey2;
+      padding: 0 1rem;
+      line-height: $headerBarHeight;
+
+      &:hover {
+        color: $lgrey;
+      }
+    }
+  }
+}

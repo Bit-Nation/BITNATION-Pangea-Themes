@@ -7,7 +7,11 @@ Additional services includes Marriage, Wills, Childcare Contracts, Birth Certifi
 
 # Bitnation Compass project
 
-Bitnation Pangea's UI is built using [Zurb Foundation](http://foundation.zurb.com/) and [Compass](http://compass-style.org/)
+Bitnation Pangea's UI is built using
+
+  * [React](https://facebook.github.io/react/)
+  * [Bourbon](http://bourbon.io/)
+  * [Zurb Foundation](http://foundation.zurb.com/)
 
 ## Foundation docs
 
@@ -15,27 +19,13 @@ The easiest way to get started with Foundation + Compass.
 
 ## Requirements
 
-  * Ruby 1.9+
   * [Node.js](http://nodejs.org)
-  * [compass](http://compass-style.org/): `gem install compass`
-  * [bower](http://bower.io): `npm install bower -g`
 
 ## Quickstart
 
-  * [Download this starter compass project and unzip it](https://github.com/zurb/foundation-compass-template/archive/master.zip)
-  * Run `bower install` to install the latest version of Foundation
-  
-Then when you're working on your project, just run the following command:
-
-```bash
-bundle exec compass watch
-```
-
-## Upgrading
-
-If you'd like to upgrade to a newer version of Foundation down the road just run:
-
-```bash
-bower update
-```
->>>>>>> ui-master
+  * Clone repo
+  * Run `npm install`
+  * Run `gulp`
+  * Go to http://localhost:8080/webpack-dev-server/?example=components/App 
+ 
+Project should reload when you change files. If any problems occur simply rerun `gulp`.
