@@ -20,5 +20,8 @@
     "webpack": "~1.8.5",
     "webpack-dev-server": "~1.8.0",
     "query-string": "~1.0.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.3"
   }
 }
