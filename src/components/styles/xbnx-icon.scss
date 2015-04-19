@@ -1,0 +1,55 @@
+.xbnx-icon {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  &.icon-dashboard {
+    background-image: url(/images/xbnx-icons/dashboard.svg);
+  }
+
+  &.icon-dapp-library {
+    background-image: url(/images/xbnx-icons/dapp-library.svg);
+  }
+
+  &.icon-my-dapps {
+    background-image: url(/images/xbnx-icons/my-dapps.svg);
+  }
+
+  &.icon-my-data {
+    background-image: url(/images/xbnx-icons/my-data.svg);
+  }
+
+  &.icon-services {
+    background-image: url(/images/xbnx-icons/services.svg);
+  }
+
+  &.icon-utilities {
+    background-image: url(/images/xbnx-icons/utilities.svg);
+  }
+}
+
+.xbnx-icon-highlight {
+  &.icon-dashboard {
+    background-image: url(/images/xbnx-icons/dashboard-hl.svg);
+  }
+
+  &.icon-dapp-library {
+    background-image: url(/images/xbnx-icons/dapp-library-hl.svg);
+  }
+
+  &.icon-my-dapps {
+    background-image: url(/images/xbnx-icons/my-dapps-hl.svg);
+  }
+
+  &.icon-my-data {
+    background-image: url(/images/xbnx-icons/my-data-hl.svg);
+  }
+
+  &.icon-services {
+    background-image: url(/images/xbnx-icons/services-hl.svg);
+  }
+
+  &.icon-utilities {
+    background-image: url(/images/xbnx-icons/utilities-hl.svg);
+  }  
+}

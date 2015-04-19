@@ -1,0 +1,10 @@
+@import '../component';
+
+.bitn-app {
+  display: flex;
+  flex-grow: 1;
+
+  > .bitn-user-navigation {
+    flex-grow: 1;
+  }
+}

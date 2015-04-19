@@ -1,5 +1,5 @@
-/bower_components/*
-/.sass-cache/*
-*.DS_Store
-#/stylesheets/*
+.DS_Store
+build/
+cache/
+node_modules
 npm-debug.log
