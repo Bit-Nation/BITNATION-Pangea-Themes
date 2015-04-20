@@ -274,18 +274,30 @@ var jQuery = require('jquery');
             return deferred.promise();
         };
 
+        /**
+         * Return the HZ daemon's URI
+         */
         hzClient.getBaseUri = function () {
             return 'nhz';
         };
 
+        /**
+         * Return the Horizon host
+         */
         hzClient.getHzHost = function () {
             return 'http://localhost:7776';
         };
 
+        /**
+         * Return a new instance of the HTTP client
+         */
         hzClient.getHttpClient = function () {
             return Bitnation.http.Client(this.getHzHost());
         };
 
+        /**
+         * Get an account ID from a user's secret phrase
+         */
         hzClient.getAccountId = function (secretPhrase) {
             var deferred = $.Deferred();
 
@@ -309,10 +321,16 @@ var jQuery = require('jquery');
             return deferred.promise();
         };
 
+        /**
+         * Issue a getBlockchainStatus request
+         */
         hzClient.getBlockchainStatus = function () {
             return this.sendRequest('getBlockchainStatus', {});
         };
 
+        /**
+         * Return a full Horizon Account by its Reed Solomon format address
+         */
         hzClient.getAccount = function (accountRS) {
             var deferred = $.Deferred();
 
@@ -320,7 +338,7 @@ var jQuery = require('jquery');
                 account: accountRS
             })
             .done(function (account) {
-                deferred.resolve(HorizonAccount(account));
+                deferred.resolve(Account(account));
             })
             .fail(function (err) {
                 deferred.reject(err);
@@ -329,6 +347,9 @@ var jQuery = require('jquery');
             return deferred.promise();
         };
 
+        /**
+         * Return the correct HTTP method for the given request type
+         */
         hzClient.getMethod = function (requestType) {
             switch(requestType) {
                 case 'getAccountId':
