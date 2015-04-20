@@ -1,5 +1,9 @@
 @import 'bourbon';
-@import 'variables';
+@import 'styles/xbnx-icon';
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
 html, body {
   height: 100%;

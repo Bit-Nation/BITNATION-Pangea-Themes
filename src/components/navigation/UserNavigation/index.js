@@ -17,7 +17,8 @@ var UserNavigation = React.createClass({
           <UserSettingsDropdown />
         </nav>
         
-        <UserCover />
+        {this.props.cover &&
+          <UserCover {...this.props.cover} />}
       </div>
     );
   }

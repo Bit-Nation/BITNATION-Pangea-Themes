@@ -1,49 +1,84 @@
 @import '../../component';
 
+$minimize-transition: 150ms ease-in-out;
+$width: rem-calc(220);
+$item-height: rem-calc(40);
+$base-padding: 1rem;
+$icon-size: 40%;
+
+$logo-transition: 50ms linear 100ms;
+$logo-size: 65%;
+$logo-image: '/images/logo.svg';
+
+$background-color: bitn-color(charade);
+$highlight-color: bitn-color(baltic);
+$text-color: bitn-color(waterloo);
+
+// hover
+$hover-background-color: bitn-color(shark);
+$hover-text-color: white;
+
+// minimized
+$minimized-width: rem-calc(64);
+$minimized-logo-size: 60%;
+$minimized-logo-image: '/images/logo-sm.svg';
+$minimized-padding: ($minimized-width - $item-height) / 2;
+
 .bitn-site-navigation {
-  background-color: $sidebarMid;
   padding: 0;
-  width: $sideBarWidth;
-  @include transition(width 150ms ease-in-out);
+  width: $width;
+  background-color: $background-color;
+  @include transition(width $minimize-transition);
 
   > .logo {
-    background: $sidebarDark url('/images/logo.svg') no-repeat center center;
-    background-size: 70%;
-    height: $logoBoxHeight;
+    background: $highlight-color url($logo-image) no-repeat center;
+    background-size: $logo-size;
+    height: $width;
 
-    @include transition(all 150ms ease-in-out);
+    @include transition(
+      height $minimize-transition,
+      background-image $logo-transition,
+      background-size $logo-transition);
   }
 
   // menus
   .bitn-menu {
-    padding: 1.5rem 0;
+    padding: ($base-padding * 1.5) 0;
 
     > ul > li {
-      margin: 0.75rem 0;
+      margin: ($base-padding * 0.75) 0;
+      @include transition(margin $minimize-transition);
 
       > a {
-        padding: 0 1rem;
+        padding: 0 $base-padding;
         font-size: 90%;
         font-weight: 300;
-        color: $sidebarText;
-        line-height: $sidebarItemHeight;
-        font-size: $sidebarFontSize;
+        color: $text-color;
+        line-height: $item-height;
         text-transform: capitalize;
+        @include transition(padding $minimize-transition);
 
         > span {
           float: left;
-          margin: 0 1rem;
+          margin: 0 $base-padding;
         }
 
         > i {
           float: right;
-          background-size: 40%;
-          height: $sidebarItemHeight;
-          width: $sidebarItemHeight;
-          line-height: $sidebarItemHeight;
+          height: $item-height;
+          width: $item-height;
+          line-height: $item-height;
+          background-size: $icon-size;
         }
       }
 
+      &.selected > .bitn-menu {
+        height: auto;
+        padding: ($base-padding * 1.5) 0;
+        margin: ($base-padding * 0.5) 0;
+        opacity: 1;
+      }
+      
       &:first-child {
         margin-top: 0;
       }
@@ -56,70 +91,90 @@
   
   // top menu
   > .bitn-menu {
+    float: right;
+    width: $width;
+    @include transition(padding $minimize-transition);
+
     > ul > li {
       > a {
         > i {
-          background-color: $dnavy2;
+          background-color: $highlight-color;
+        }
+
+        > span {
+          @include transition(opacity $minimize-transition);
         }
 
         &:hover {
-          background-color: $dnavy2;
-          color: $sidebarHoverText;
+          background-color: $hover-background-color;
+          color: $hover-text-color;
 
           > i {
-            background-color: $sidebarIconHoverColor;
+            background-color: $highlight-color;
           }
         }
 
         &:focus {
-          background-color: $dnavy1;
+          background-color: $highlight-color;
         }
       }
     }
   }
 
-  // child menus
+  // child menu
   > .bitn-menu .bitn-menu {
-    margin: 0.5rem 0;
-    background-color: $dnavy1;
+    background-color: $hover-background-color;
+
+    @include transition(
+      height $minimize-transition,
+      margin $minimize-transition,
+      padding $minimize-transition,
+      opacity $minimize-transition);
+
+    > ul > li > a {
+      padding: 0 ($base-padding * 1.1);
+
+      &:hover, &:focus {
+        background-color: $highlight-color;
+      }
+    }
+  }
+
+  // hide child menus
+  > .bitn-menu .bitn-menu,
+  &.minimized > .bitn-menu .bitn-menu {
+    display: block;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
   }
 
   &.minimized {
-    width: $headerBarHeight;
+    width: $minimized-width;
 
     > .logo {
-      background-image: url(/images/logo-sm.svg);
-      background-size: 40%;
-      height: $headerBarHeight;
-    }
-
-    // menus
-    .bitn-menu, > .bitn-menu {
-      > ul > li {
-        > a {
-          // hide text
-          > span {
-            display: none;
-          }
-        }
-        
-        // hide sub trees
-        > .bitn-menu {
-          display: none;
-        }
-      }
+      background-image: url($minimized-logo-image);
+      background-size: $minimized-logo-size;
+      height: $minimized-width;
     }
 
     // top menu
     > .bitn-menu {
-      padding: 0.655rem;
+      padding: 0;
 
       > ul > li {
+        margin: $minimized-padding 0;
+
         > a {
-          padding: 0;
+          padding: 0 $minimized-padding;
 
           &, a:hover, a:focus {
             background-color: transparent;
+          }
+
+          > span {
+            opacity: 0;
           }
         }
       }

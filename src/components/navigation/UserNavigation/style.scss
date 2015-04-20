@@ -26,6 +26,6 @@
   }
 
   > .bitn-user-cover {
-    @include flex-grow(1);
+    @include flex(1);
   }
 }

@@ -1,7 +1,9 @@
 // imports
 @import 'bourbon';
+
+// helpers
 @import 'styles/rem';
-@import 'styles/xbnx-icon';
 
 // variables
-@import 'variables';
+@import 'styles/colors';
+@import 'styles/old';

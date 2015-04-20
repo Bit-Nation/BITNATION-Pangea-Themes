@@ -35,9 +35,10 @@ var App = React.createClass({
 
     return (
       <div className='bitn-app'>
-        <SiteNavigation {...this.props.siteNavigation} minimized={this.state.expanded} />
+        <SiteNavigation {...this.props.siteNavigation}
+          minimized={this.state.expanded} onMenuSelect={this.minimize} />
         <div>
-          <UserNavigation onAction={this.onAction} />
+          <UserNavigation onAction={this.onAction} cover={{ height: 300 }} />
           <main>
             <NotaryForm />
           </main>
@@ -53,6 +54,12 @@ var App = React.createClass({
   onAction: function (type) {
     if (type == 'siteNavigation')
       this.setState({ expanded: !this.state.expanded });
+  },
+  expand: function () {
+    this.setState({ expanded: true });
+  },
+  minimize: function () {
+    this.setState({ expanded: false });    
   }
 });
 

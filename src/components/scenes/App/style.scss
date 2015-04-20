@@ -15,11 +15,11 @@
     @include flex-direction(column);
 
     > .bitn-user-navigation {
-      @include flex-grow(1);
+      @include flex-shrink(0);
     }
 
     > main {
-      @include flex-grow(2);
+      @include flex-grow(1);
       padding: 2rem;
       background: #eee;
       color: #666;

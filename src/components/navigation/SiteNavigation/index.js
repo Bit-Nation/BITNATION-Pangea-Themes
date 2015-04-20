@@ -17,7 +17,11 @@ var SiteNavigation = React.createClass({
       <nav className={className}>
         <div className='logo' />
 
-        <Menu items={this.props.menuItems} />
+        <Menu
+          items={this.props.menuItems}
+          selected={this.props.minimized ? false : null}
+          onClick={this.props.onMenuClick}
+          onSelect={this.props.onMenuSelect} />
       </nav>
     );
   }

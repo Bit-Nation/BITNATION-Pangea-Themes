@@ -37,13 +37,23 @@ var Menu = React.createClass({
       selected: this.props.selected
     };
   },
+  componentWillReceiveProps: function (props) {
+    if (props.selected === this.props.selected ||
+        props.selected == null) return;
+    this.setState({ selected: props.selected });
+  },
   onClick: function (index) {
-    this.setState({
-      selected: this.state.selected === index ? null : index
-    });
+    var current = this.state.selected === index;
+
+    this.setState({ selected: current ? null : index });
 
     var item = this.props.items[index];
     if (item.onClick) item.onClick(item.value);
+    if (this.props.onClick) this.props.onClick(item.value);
+
+    if (current) return;
+    if (item.onSelect) item.onSelect(item.value);
+    if (this.props.onSelect) this.props.onSelect(item.value);
   }
 });
 
@@ -61,7 +71,9 @@ var MenuItem = React.createClass({
         'has-children': this.props.items
       })}>
         <a className='pure-menu-link' href={this.props.href || '#'}
-          onClick={this.onClick} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
+          onClick={this.onClick}
+          onMouseOver={this.onMouseOver}
+          onMouseOut={this.onMouseOut}>
           
           {this.props.content &&
             <span>{this.props.content}</span>}
@@ -74,7 +86,7 @@ var MenuItem = React.createClass({
     );
   },
   onClick: function (event) {
-    if (this.props.items) event.preventDefault();
+    if (this.props.items || this.props.href == null) event.preventDefault();
     if (this.props.onClick) this.props.onClick(this.props.value);
   }
 });

@@ -7,7 +7,7 @@ var classSet = React.addons.classSet;
 var UserCover = React.createClass({
   render: function () {
     return (
-      <div className='bitn-user-cover'>
+      <div className='bitn-user-cover' style={{ height: this.props.height }}>
         <div>
           <span className='date'>
             march 31, 2015
