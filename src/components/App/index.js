@@ -14,46 +14,47 @@ var App = React.createClass({
   render: function () {
     var actions = [
       {
-        icon: 'fa fa-bars',
+        icon: 'bars',
         onClick: this.toggleSiteNavigation
       },
       {
-        icon: 'fa fa-search',
+        icon: 'search',
         href: '#search'
       },
       {
-        icon: 'fa fa-envelope',
+        icon: 'envelope',
         onClick: this.toggleSiteNavigation
       },
       {
-        icon: 'fa fa-cog',
+        icon: 'cog',
         href: '#search'
       },
       {
-        icon: 'fa fa-sign-out',
+        icon: 'sign-out',
         href: '#search'
       }
     ];
 
     return (
       <div className='bitn-app'>
-        <SiteNavigation {...this.props.siteNavigation} minimized={this.state.minimized} />
-        <div id="balls" style={{ width: '100%' }}>
-          <UserNavigation actions={actions} />
-          <div style={{padding: '1rem'}}>
+        <SiteNavigation {...this.props.siteNavigation} minimized={this.state.expanded} />
+        <div>
+          <UserNavigation onAction={this.onAction} />
+          <main>
             <NotaryForm />
-          </div>
+          </main>
         </div>
       </div>
     );
   },
   getInitialState: function () {
     return {
-      minimized: null
+      expanded: false
     };
   },
-  toggleSiteNavigation: function (name) {
-    this.setState({ minimized: !this.state.minimized });
+  onAction: function (type) {
+    if (type == 'siteNavigation')
+      this.setState({ expanded: !this.state.expanded });
   }
 });
 

@@ -1,20 +1,31 @@
 @import '../component';
 
 .bitn-user-navigation {
-  height: $headerBarHeight;
-  background-color: $mgrey;
+  @include display(flex);
+  position: relative;
+  min-height: $headerBarHeight;
 
-  > .actions {
-    padding: 0 0.5rem;
+  > nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: $headerBarHeight;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
 
-    > ul > li > a {
-      color: $mgrey2;
-      padding: 0 1rem;
-      line-height: $headerBarHeight;
-
-      &:hover {
-        color: $lgrey;
+    .bitn-user-settings-dropdown {
+      float: right;
+      margin: 0 0.5rem;
+      
+      > .toggle {
+        height: $headerBarHeight;
+        line-height: $headerBarHeight - 0.1;
       }
     }
+  }
+
+  > .bitn-user-cover {
+    @include flex-grow(1);
   }
 }

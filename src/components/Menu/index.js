@@ -4,22 +4,23 @@ require('./style.scss');
 var React = require('react/addons');
 var classSet = React.addons.classSet;
 
+var hoverMixin = require('../mixins/hover');
+var Icon = require('../Icon');
+
 var Menu = React.createClass({
   render: function () {
     var items = [];
     for (var i in this.props.items) {
       items.push(
-        <MenuItem key={i} value={i}
-          active={this.state.active === i} onSelect={this.onSelect}
-          {...this.props.items[i]} />
+        <MenuItem key={i} {...this.props.items[i]}
+          value={i} selected={this.state.selected === i} onClick={this.onClick} />
       );
     }
 
     var className = classSet({
       'bitn-menu': true,
       'pure-menu': true,
-      'pure-menu-horizontal': this.props.horizontal,
-      'minimized': this.props.minimized
+      'pure-menu-horizontal': this.props.horizontal
     });
     if (this.props.className) className += ' ' + this.props.className;
 
@@ -33,32 +34,40 @@ var Menu = React.createClass({
   },
   getInitialState: function () {
     return {
-      active: this.props.active
+      selected: this.props.selected
     };
   },
-  onSelect: function (index) {
+  onClick: function (index) {
     this.setState({
-      active: this.state.active === index ? null : index
+      selected: this.state.selected === index ? null : index
     });
+
+    var item = this.props.items[index];
+    if (item.onClick) item.onClick(item.value);
   }
 });
 
 var MenuItem = React.createClass({
+  mixins: [ hoverMixin ],
   render: function () {
+    var icon;
+    if (typeof this.props.icon == 'string') icon = { type: this.props.icon };
+    else if (this.props.icon) icon = this.props.icon;
+
     return (
       <li className={classSet({
         'pure-menu-item': true,
-        'active': this.props.active
+        'selected': this.props.selected,
+        'has-children': this.props.items
       })}>
-        <a className='pure-menu-link' href={this.props.href || '#'} onClick={this.onClick}>
+        <a className='pure-menu-link' href={this.props.href || '#'}
+          onClick={this.onClick} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
           
-          {this.props.text &&
-            <span className='text'>{this.props.text}</span>
-          }
+          {this.props.content &&
+            <span>{this.props.content}</span>}
 
-          {this.props.icon &&
-            <i className={this.props.icon} />
-          }
+          {icon &&
+            <Icon highlight={this.state.hover} {...icon} />}
         </a>
         {this.props.items && <Menu items={this.props.items} />}
       </li>
@@ -66,8 +75,7 @@ var MenuItem = React.createClass({
   },
   onClick: function (event) {
     if (this.props.items) event.preventDefault();
-    if (this.props.onClick) this.props.onClick();
-    if (this.props.onSelect) this.props.onSelect(this.props.value);
+    if (this.props.onClick) this.props.onClick(this.props.value);
   }
 });
 

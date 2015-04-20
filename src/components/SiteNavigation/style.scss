@@ -1,7 +1,6 @@
 @import '../component';
 
 .bitn-site-navigation {
-  flex-shrink: 0;
   background-color: $sidebarMid;
   padding: 0;
   width: $sideBarWidth;
@@ -31,22 +30,17 @@
         font-size: $sidebarFontSize;
         text-transform: capitalize;
 
-        > .text {
+        > span {
           float: left;
           margin: 0 1rem;
         }
 
         > i {
-          @extend .xbnx-icon;
           float: right;
           background-size: 40%;
           height: $sidebarItemHeight;
           width: $sidebarItemHeight;
           line-height: $sidebarItemHeight;
-        }
-
-        &:hover > i {
-          @extend .xbnx-icon-highlight;
         }
       }
 
@@ -82,20 +76,6 @@
         }
       }
     }
-
-    &.minimized {
-      padding: 0.655rem;
-
-      > ul > li {
-        > a {
-          padding: 0;
-
-          &, a:hover, a:focus {
-            background-color: transparent;
-          }
-        }
-      }
-    }
   }
 
   // child menus
@@ -111,6 +91,38 @@
       background-image: url(/images/logo-sm.svg);
       background-size: 40%;
       height: $headerBarHeight;
+    }
+
+    // menus
+    .bitn-menu, > .bitn-menu {
+      > ul > li {
+        > a {
+          // hide text
+          > span {
+            display: none;
+          }
+        }
+        
+        // hide sub trees
+        > .bitn-menu {
+          display: none;
+        }
+      }
+    }
+
+    // top menu
+    > .bitn-menu {
+      padding: 0.655rem;
+
+      > ul > li {
+        > a {
+          padding: 0;
+
+          &, a:hover, a:focus {
+            background-color: transparent;
+          }
+        }
+      }
     }
   }
 }
