@@ -69,6 +69,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
           width: $item-height;
           line-height: $item-height;
           background-size: $icon-size;
+          @include transition(margin $minimize-transition);
         }
       }
 
@@ -99,10 +100,6 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
       > a {
         > i {
           background-color: $highlight-color;
-        }
-
-        > span {
-          @include transition(opacity $minimize-transition);
         }
 
         &:hover {
@@ -167,14 +164,14 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
         margin: $minimized-padding 0;
 
         > a {
-          padding: 0 $minimized-padding;
+          padding: 0;
 
           &, a:hover, a:focus {
             background-color: transparent;
           }
 
-          > span {
-            opacity: 0;
+          > i {
+            margin: 0 $minimized-padding;
           }
         }
       }
