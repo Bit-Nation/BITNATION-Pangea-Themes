@@ -8,6 +8,8 @@ var jQuery = require('jquery');
      */
     var _decimals = 8;
 
+    var _testnet = false;
+
     /**
      * Mostly from HZ/NXT NRS
      */
@@ -285,7 +287,11 @@ var jQuery = require('jquery');
          * Return the Horizon host
          */
         hzClient.getHzHost = function () {
-            return 'http://localhost:7776';
+            var proto = 'http';
+            var host = 'localhost';
+            var port = (_testnet === true) ? '7776' : '6976' ;
+
+            return proto + '://' + host + ':' + port;
         };
 
         /**
