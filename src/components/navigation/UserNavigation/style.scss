@@ -1,0 +1,31 @@
+@import '../../component';
+
+.bitn-user-navigation {
+  @include display(flex);
+  position: relative;
+  min-height: $headerBarHeight;
+
+  > nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: $headerBarHeight;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+
+    .bitn-user-settings-dropdown {
+      float: right;
+      margin: 0 0.5rem;
+      
+      > .toggle {
+        height: $headerBarHeight;
+        line-height: $headerBarHeight - 0.1;
+      }
+    }
+  }
+
+  > .bitn-user-cover {
+    @include flex-grow(1);
+  }
+}
