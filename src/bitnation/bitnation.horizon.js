@@ -4,6 +4,11 @@ var jQuery = require('jquery');
 (function (Bitnation, $) {
 
     /**
+     * HZ quantities are at 8DP precision
+     */
+    var _decimals = 8;
+
+    /**
      * Mostly from HZ/NXT NRS
      */
     var _PassPhraseGenerator = function () {
@@ -116,11 +121,6 @@ var jQuery = require('jquery');
      */
     var Account = function (accountAttrs) {
         var hzAccount = {};
-
-        /**
-         * HZ quantities are at 8DP precision
-         */
-        var _decimals = 8;
 
         /**
          * Convert a raw value to a human readable quantity of HZ
@@ -348,20 +348,45 @@ var jQuery = require('jquery');
         };
 
         /**
+         * Read the message in a transaction
+         */
+        hzClient.readMessage = function (transactionId, secretPhrase) {
+            return this.sendRequest('readMessage', {
+                transaction: transactionId,
+                secretPhrase: secretPhrase
+            });
+        }
+
+        /**
+         * Send a message
+         */
+        hzClient.sendMessage = function (recipient, content, secretPhrase, deadline) {
+            var defaultDeadline = 60;
+
+            return this.sendRequest('sendMessage', {
+                recipient: recipient,
+                message: content,
+                secretPhrase: secretPhrase,
+                deadline: deadline || defaultDeadline,
+                feeNQT: 1 * Math.pow(10, _decimals)
+            });
+        };
+
+        /**
          * Return the correct HTTP method for the given request type
          */
         hzClient.getMethod = function (requestType) {
-            switch(requestType) {
-                case 'getAccountId':
-                    return 'POST';
-                    break;
-                default:
-                    return 'GET';
-                    break;
-            };
+
+            var postRequests = [
+                'getAccountId', 'sendMessage', 'readMessage'
+            ];
+
+            return (postRequests.indexOf(requestType) > -1) ? 'POST' : 'GET';
+
         };
 
         return hzClient;
+
     }
 
     Bitnation.horizon = {
