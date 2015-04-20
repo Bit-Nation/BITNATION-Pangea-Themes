@@ -38,7 +38,8 @@ var App = React.createClass({
         <SiteNavigation {...this.props.siteNavigation}
           minimized={this.state.expanded} onMenuSelect={this.minimize} />
         <div>
-          <UserNavigation onAction={this.onAction} cover={{ height: 300 }} />
+          <UserNavigation onAction={this.onAction}
+          cover={this.props.cover && { height: 300 }} />
           <main>
             <NotaryForm />
           </main>

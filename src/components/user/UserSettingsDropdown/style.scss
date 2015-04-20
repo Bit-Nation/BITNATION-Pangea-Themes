@@ -5,22 +5,26 @@
 
   > .toggle {
     height: 100%;
+    padding: 0 1rem;
 
     > * {
       vertical-align: middle;
     }
 
     > span {
-      margin: 0.25rem 0.5rem;
+      margin-right: 1rem;
     }
   }
 
   .bitn-menu {
     display: none;
-    background: #666;
+    width: 100%;
+    background: #333;
+    text-align: left;
 
     > ul > li > a {
-      color: #fff;
+      color: #ccc;
+      padding: 0.5rem 1rem;
     }
   }
 }

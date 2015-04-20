@@ -11,7 +11,10 @@ var UserCover = require('../../user/UserCover');
 var UserNavigation = React.createClass({
   render: function () {
     return (
-      <div className='bitn-user-navigation'>
+      <div className={classSet({
+        'bitn-user-navigation': true,
+        'cover': this.props.cover
+      })}>
         <nav>
           <UserShortcuts onClick={this.props.onAction} />
           <UserSettingsDropdown />

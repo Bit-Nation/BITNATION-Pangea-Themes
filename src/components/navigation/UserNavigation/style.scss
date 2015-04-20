@@ -1,31 +1,73 @@
 @import '../../component';
 
+$bar-height: $bitn-navigation-panel-size;
+$base-padding: 1rem;
+
+$background-color: bitn-color(curious);
+$shortcut-color: bitn-color(mercury);
+$shortcut-hover-color: bitn-color(dove);
+
+$cover-height: $bitn-user-cover-height;
+$cover-background-color: rgba(0, 0, 0, 0.8);
+$cover-shortcut-color: bitn-color(dove);
+$cover-shortcut-hover-color: bitn-color(mercury);
+
 .bitn-user-navigation {
   @include display(flex);
   position: relative;
-  min-height: $headerBarHeight;
+  min-height: $bar-height;
 
   > nav {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
-    height: $headerBarHeight;
-    background-color: rgba(0, 0, 0, 0.8);
+    height: $bar-height;
+    background-color: $background-color;
     color: white;
+
+    .bitn-user-shortcuts {
+      padding: 0 ($base-padding * 0.5);
+
+      a {
+        padding: 0 $base-padding;
+        line-height: $bar-height;
+        color: $shortcut-color;
+
+        &:hover {
+          color: $shortcut-hover-color;
+        }
+      }
+    }
 
     .bitn-user-settings-dropdown {
       float: right;
-      margin: 0 0.5rem;
+      margin: 0 $base-padding;
       
       > .toggle {
-        height: $headerBarHeight;
-        line-height: $headerBarHeight - 0.1;
+        height: $bar-height;
+        line-height: $bar-height * 0.95;
       }
     }
   }
 
   > .bitn-user-cover {
     @include flex(1);
+  }
+
+  &.cover {
+    height: $cover-height;
+
+    > nav {
+      background-color: $cover-background-color;
+
+      .bitn-user-shortcuts a {
+        color: $cover-shortcut-color;
+
+        &:hover {
+          color: $cover-shortcut-hover-color;
+        }
+      }
+    }
   }
 }

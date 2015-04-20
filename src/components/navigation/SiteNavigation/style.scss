@@ -1,9 +1,10 @@
 @import '../../component';
 
 $minimize-transition: 150ms ease-in-out;
-$width: rem-calc(220);
-$item-height: rem-calc(40);
+$width: $bitn-site-navigation-width;
+$item-height: $bitn-site-navigation-item-height;
 $base-padding: 1rem;
+$font-size: $bitn-site-navigation-font-size;
 $icon-size: 40%;
 
 $logo-transition: 50ms linear 100ms;
@@ -19,7 +20,7 @@ $hover-background-color: bitn-color(shark);
 $hover-text-color: white;
 
 // minimized
-$minimized-width: rem-calc(64);
+$minimized-width: $bitn-navigation-panel-size;
 $minimized-logo-size: 60%;
 $minimized-logo-image: '/images/logo-sm.svg';
 $minimized-padding: ($minimized-width - $item-height) / 2;
@@ -51,7 +52,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
 
       > a {
         padding: 0 $base-padding;
-        font-size: 90%;
+        font-size: $font-size;
         font-weight: 300;
         color: $text-color;
         line-height: $item-height;
