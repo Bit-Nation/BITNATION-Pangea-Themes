@@ -4,6 +4,7 @@ require('./style.scss');
 var React = require('react');
 var component = require('../../component');
 
+var TextInput = require('../../controls/TextInput');
 var FileUpload = require('../../controls/FileUpload');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
