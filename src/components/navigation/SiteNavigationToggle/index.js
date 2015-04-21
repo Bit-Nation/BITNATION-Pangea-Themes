@@ -1,6 +1,10 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
+// NOT USEFUL FOR ANYTHING YET
+// some something magic later
+// - olfox
+
 var React = require('react/addons');
 var component = require('../../component');
 
@@ -10,8 +14,9 @@ module.exports = component('SiteNavigationToggle', {
   mixins: [ hoverMixin ],
   render: function () {
     var url = this.props.url;
+    var hover = this.state.hover;
     var content = this.props.paths.map(function (id) {
-      return '<use width="40" class="' + id + '" xlink:href="' + url + '#' + id + '" />';
+      return '<use class="' + id + '" xlink:href="' + url + '#' + id + '" />';
     }).join('');
 
     var className = this.className();

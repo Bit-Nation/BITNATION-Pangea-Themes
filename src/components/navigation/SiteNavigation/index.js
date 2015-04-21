@@ -5,7 +5,6 @@ var React = require('react');
 var component = require('../../component');
 
 var Menu = require('../../controls/Menu');
-var SiteNavigationToggle = require('../../navigation/SiteNavigationToggle');
 
 module.exports = component('SiteNavigation', {
   render: function () {
@@ -15,7 +14,6 @@ module.exports = component('SiteNavigation', {
     return (
       <nav className={className}>
         <div className='logo' />
-        <SiteNavigationToggle />
 
         <Menu
           items={this.props.menuItems}

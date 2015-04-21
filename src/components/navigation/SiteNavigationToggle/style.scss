@@ -28,8 +28,8 @@ $minimized-logo-image: '/images/logo-sm.svg';
     }
 
     &:hover {
-      .outer-circle, .chain {
-        @include transform(rotate(90deg));
+      .inner-circle, .chain {
+        @include transform(rotate(90deg) scale(2));
         fill: red;
       }
     }
