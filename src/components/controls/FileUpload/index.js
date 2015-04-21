@@ -58,8 +58,6 @@ module.exports = component('FileUpload', {
     var files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
     files = [].slice.call(files, 0);
 
-    window.p = files;
-
     this.setState({
       active: false,
       files: files
