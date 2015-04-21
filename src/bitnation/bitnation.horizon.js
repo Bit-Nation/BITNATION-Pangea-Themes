@@ -1,4 +1,5 @@
 var Bitnation = require('./bitnation.core.js');
+require('./bitnation.http.js');
 var jQuery = require('jquery');
 
 (function (Bitnation, $) {

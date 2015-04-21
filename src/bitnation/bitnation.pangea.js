@@ -49,8 +49,11 @@ var jQuery = require('jquery');
             return deferred.promise();
         };
 
-        uiService.getNotaryTx = function (txId, secretPhrase) {
-            return _notaryService.retrieveNotary(txId);
+        /**
+         * Verify a notary transaction
+         */
+        uiService.verifyNotary = function (txId, secretPhrase) {
+            return _notaryService.retrieveNotary(txId, secretPhrase);
         };
 
         /**

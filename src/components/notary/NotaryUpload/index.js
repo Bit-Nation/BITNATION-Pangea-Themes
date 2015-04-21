@@ -6,7 +6,7 @@ var component = require('../../component');
 
 var FileUpload = require('../../controls/FileUpload');
 
-var Bitnation = require('../../../bitnation/bitnation.core');
+var Bitnation = require('../../../bitnation/bitnation.pangea');
 
 module.exports = component('NotaryUpload', {
   getInitialState: function () {
@@ -34,47 +34,96 @@ module.exports = component('NotaryUpload', {
             </label>
           </div>
 
-          <div className='signature'>
-            <legend>Sign in with private key (optional)</legend>
+          <div className='uri'>
+            <legend>A URI at which to locate the file (optional)</legend>
 
-            <input type='text' value={this.state.signature}
-              onChange={this.onSignature} />
+            <input type='text' value={this.state.uri}
+              onChange={this.onUri} />
+          </div>
+
+          <div className='secret'>
+            <legend>Your private key (required)</legend>
+
+            <input type='password' value={this.state.secret}
+              onChange={this.onSecretPhrase} />
           </div>
         </div>
 
         <FileUpload onChange={this.onFile}>
           Upload file
         </FileUpload>
+
+        <div className='fields'>
+
+          <div className='verifyNotary'>
+            <legend>Verify a notary transaction hash.</legend>
+
+            <input type='text' value={this.state.notaryTxId}
+              onChange={this.onVerifyNotary} />
+
+            <button type='button' onClick={this.verifyNotary}>Verify</button>
+          </div>
+
+        </div>
       </div>
     );
   },
   onPrivacy: function () {
     this.setState({ public: !this.state.public });
   },
-  onSignature: function (event) {
-    this.setState({ signature: event.target.value });
+  onSecretPhrase: function (event) {
+    this.setState({ secret: event.target.value });
+  },
+  onVerifyNotary: function (event) {
+    this.setState({ notaryTxId: event.target.value });
   },
   onFile: function (files) {
-    this.setState({ file: files[0] });
-    this.submit();
+    // this.setState({ file: files[0] });
+    this.issueNotary(files[0]);
   },
-  submit: function () {
-    /*
-      this.state.file,
-      this.state.public,
-      this.state.signature
+  onUri: function (event) {
+    this.setState({ uri: event.target.value });
+  },
+  issueNotary: function (file) {
 
-      do your magic
-    */
+    // @todo: Encrypted (private) notaries
 
-    var fileHasher = new Bitnation.encryption.FileHasher(this.state.file);
+    var ui = new Bitnation.pangea.UI();
 
-    fileHasher.getHash()
-      .done(function (hash) {
-        alert(hash);
+    ui.notarizeDocument(file, this.state.secret, this.state.uri)
+      .done(function (result) {
+
+        console.log(result);
+        alert('Success: Transaction id is ' + result.txId);
+
       })
       .fail(function (err) {
+
+        alert('An error occurred. Check the logs.');
         console.error(err);
+
       });
+
+    this.setState({ secret: '' });
+
+  },
+  verifyNotary: function () {
+    
+    var ui = new Bitnation.pangea.UI();
+
+    ui.verifyNotary(this.state.notaryTxId)
+      .done(function (result) {
+
+        alert('Success. The notary hash is: ' + result.notary.hash);
+        console.log(result);
+
+      })
+      .fail(function (err) {
+
+        alert('An error occurred. Check the logs.');
+        console.error(err);
+
+      });
+
   }
 });

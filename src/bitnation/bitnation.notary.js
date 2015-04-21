@@ -32,8 +32,9 @@ var jQuery = require('jquery');
 
         /**
          * Retrieve and parse a notary hash record
+         * @todo: Private / encrypted
          */
-        notaryService.retrieveNotary = function (txId) {
+        notaryService.retrieveNotary = function (txId, secretPhrase) {
             var deferred = $.Deferred();
 
             _hzClient.readMessage(txId)
