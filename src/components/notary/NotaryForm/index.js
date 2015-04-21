@@ -2,27 +2,25 @@
 require('./style.scss');
 var React = require('react');
 
-var $ = require('jquery');
 var Bitnation = require('../../../bitnation/bitnation.core');
 
-var Form = React.createClass({
-
+var NotaryForm = React.createClass({
   render: function() {
     return (
-      <div className="notary-form">
+      <div className='bitn-notary-form'>
         <h1>Document Notary</h1>
-        <form id="hasher-form" method="POST" role="form">
-          <legend>Notarise a file</legend>
-
-          <input type="file" id="hasher" onChange={this.notarizeDocument} />
-
+        <form method='post' role='form'>
+          <legend>Notarize a file</legend>
+          <input type='file' onChange={this.onChange} />
         </form>
       </div>
     );
   },
-  notarizeDocument: function (e) {
-    var file = e.target.files[0];
-
+  onChange: function (event) {
+    var file = event.target.files[0];
+    this.notarize(file);
+  },
+  notarize: function (file) {
     var fileHasher = new Bitnation.encryption.FileHasher(file);
 
     fileHasher.getHash()
@@ -33,7 +31,6 @@ var Form = React.createClass({
       console.error(err);
     });
   }
-
 });
 
-module.exports = Form;
+module.exports = NotaryForm;

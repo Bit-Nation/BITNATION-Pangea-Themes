@@ -6,5 +6,5 @@ var Menu = require('.');
 var items = require('./exampleItems');
 
 module.exports = function (params) {
-  return <Menu items={items} minimized={params.minimized} />;
+  return <Menu items={items} />;
 };

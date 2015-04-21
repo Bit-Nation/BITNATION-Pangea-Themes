@@ -1,0 +1,36 @@
+@import '../../component';
+
+.bitn-user-settings-dropdown {
+  display: inline-block;
+
+  > .toggle {
+    height: 100%;
+    padding: 0 1rem;
+
+    > * {
+      vertical-align: middle;
+    }
+
+    > span {
+      margin-right: 1rem;
+    }
+  }
+
+  .bitn-menu {
+    display: none;
+    width: 100%;
+    background: #333;
+    text-align: left;
+
+    > ul > li > a {
+      color: #ccc;
+      padding: 0.5rem 1rem;
+    }
+  }
+}
+
+.bitn-user-settings-dropdown.active {
+  .bitn-menu {
+    display: block;
+  }
+}

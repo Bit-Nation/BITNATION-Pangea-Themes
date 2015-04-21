@@ -1,4 +1,4 @@
-@import '../component';
+@import '../../component';
 
 .bitn-menu {
   > ul > li {
@@ -18,25 +18,10 @@
       display: none;
     }
 
-    &.active {    
+    &.selected {
       // show sub trees
       > .bitn-menu {
         display: block;
-      }
-    }
-  }
-
-  &.minimized {
-    > ul > li {
-      > a {
-        > .text {
-          display: none;
-        }
-      }
-      
-      // hide sub trees
-      > .bitn-menu {
-        display: none;
       }
     }
   }

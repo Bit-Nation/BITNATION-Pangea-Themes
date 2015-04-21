@@ -26,6 +26,6 @@ The easiest way to get started with Foundation + Compass.
   * Clone repo
   * Run `npm install`
   * Run `gulp`
-  * Go to http://localhost:8080/webpack-dev-server/?example=components/App 
+  * Go to http://localhost:8080/webpack-dev-server/?example=App 
  
 Project should reload when you change files. If any problems occur simply rerun `gulp`.

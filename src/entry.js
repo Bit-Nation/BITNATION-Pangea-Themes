@@ -2,10 +2,10 @@
 require('react/addons');
 
 // examples (used for development)
-require('./components/App/example');
-require('./components/Menu/example');
-require('./components/SiteNavigation/example');
-require('./components/UserNavigation/example');
+require('./components/scenes/App/example');
+require('./components/controls/Menu/example');
+require('./components/navigation/SiteNavigation/example');
+require('./components/navigation/UserNavigation/example');
 
 // setup
 require('./components/app.scss');

@@ -1,12 +1,17 @@
-@import 'variables';
+@import 'bourbon';
+@import 'styles/xbnx-icon';
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
 html, body {
   height: 100%;
-  font-family: Roboto ,"Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
 
 #app-container {
-  display: flex;
+  @include display(flex);
   min-height: 100%;
 }
