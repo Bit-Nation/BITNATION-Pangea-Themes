@@ -6,7 +6,7 @@ var component = require('../../component');
 
 var SiteNavigation = require('../../navigation/SiteNavigation');
 var UserNavigation = require('../../navigation/UserNavigation');
-var NotaryForm = require('../../notary/NotaryForm');
+var NotaryUpload = require('../../notary/NotaryUpload');
 
 module.exports = component('App', {
   render: function () {
@@ -41,7 +41,7 @@ module.exports = component('App', {
           <UserNavigation onAction={this.onAction}
           cover={this.props.cover && { height: 300 }} />
           <main>
-            <NotaryForm />
+            <NotaryUpload />
           </main>
         </div>
       </div>

@@ -1,0 +1,15 @@
+@import '../../component';
+
+.#{class-name(FileInfo)} {
+  display: table;
+  width: 100%;
+
+  > span {
+    display: table-cell;
+
+    // shows .human-size on default
+    &.size {
+      display: none;
+    }
+  }
+}

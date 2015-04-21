@@ -1,0 +1,14 @@
+@import '../../component';
+
+.#{class-name(FileUpload)} {
+  display: inline-block;
+  position: relative;
+
+  > input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
