@@ -1,14 +1,14 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
-var React = require('react/addons');
-var classSet = React.addons.classSet;
+var React = require('react');
+var component = require('../../component');
 
-var hoverMixin = require('../../mixins/hover');
+var hoverMixin = require('../../mixins/hoverMixin');
 var UserAvatar = require('../../user/UserAvatar');
 var Menu = require('../../controls/Menu');
 
-var UserSettingsDropdown = React.createClass({
+module.exports = component('UserSettingsDropdown', {
   mixins: [ hoverMixin ],
   render: function () {
     var items = [
@@ -24,10 +24,8 @@ var UserSettingsDropdown = React.createClass({
       }
     ];
 
-    var className = classSet({
-      'bitn-user-settings-dropdown': true,
-      'active': this.state.hover
-    });
+    var className = this.className();
+    if (this.state.hover) className += ' active';
 
     return (
       <div className={className}
@@ -43,5 +41,3 @@ var UserSettingsDropdown = React.createClass({
     );
   }
 });
-
-module.exports = UserSettingsDropdown;

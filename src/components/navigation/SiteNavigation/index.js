@@ -1,17 +1,15 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
-var React = require('react/addons');
-var classSet = React.addons.classSet;
+var React = require('react');
+var component = require('../../component');
 
 var Menu = require('../../controls/Menu');
 
-var SiteNavigation = React.createClass({
+module.exports = component('SiteNavigation', {
   render: function () {
-    var className = classSet({
-      'bitn-site-navigation': true,
-      'minimized': this.props.minimized
-    });
+    var className = this.className();
+    if (this.props.minimized) className += ' minimized';
 
     return (
       <nav className={className}>
@@ -26,5 +24,3 @@ var SiteNavigation = React.createClass({
     );
   }
 });
-
-module.exports = SiteNavigation;

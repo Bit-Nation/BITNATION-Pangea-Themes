@@ -1,10 +1,10 @@
 @import '../../component';
 
-.bitn-app {
+.#{class-name(App)} {
   @include display(flex);
   @include flex-grow(1);
 
-  > .bitn-site-navigation {
+  > .#{class-name(SiteNavigation)} {
     @include flex-shrink(0);
   }
 
@@ -14,7 +14,7 @@
     @include display(flex);
     @include flex-direction(column);
 
-    > .bitn-user-navigation {
+    > .#{class-name(UserNavigation)} {
       @include flex-shrink(0);
     }
 

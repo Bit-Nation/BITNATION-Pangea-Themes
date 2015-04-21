@@ -12,7 +12,7 @@ $cover-background-color: rgba(0, 0, 0, 0.8);
 $cover-shortcut-color: bitn-color(dove);
 $cover-shortcut-hover-color: bitn-color(mercury);
 
-.bitn-user-navigation {
+.#{class-name(UserNavigation)} {
   @include display(flex);
   position: relative;
   min-height: $bar-height;
@@ -26,7 +26,7 @@ $cover-shortcut-hover-color: bitn-color(mercury);
     background-color: $background-color;
     color: white;
 
-    .bitn-user-shortcuts {
+    .#{class-name(UserShortcuts)} {
       padding: 0 ($base-padding * 0.5);
 
       a {
@@ -40,7 +40,7 @@ $cover-shortcut-hover-color: bitn-color(mercury);
       }
     }
 
-    .bitn-user-settings-dropdown {
+    .#{class-name(UserSettingsDropdown)} {
       float: right;
       margin: 0 $base-padding;
       
@@ -51,23 +51,23 @@ $cover-shortcut-hover-color: bitn-color(mercury);
     }
   }
 
-  > .bitn-user-cover {
-    @include flex(1);
-  }
-
   &.cover {
     height: $cover-height;
 
     > nav {
       background-color: $cover-background-color;
 
-      .bitn-user-shortcuts a {
+      .#{class-name(UserShortcuts)} a {
         color: $cover-shortcut-color;
 
         &:hover {
           color: $cover-shortcut-hover-color;
         }
       }
+    }
+
+    > .#{class-name(UserCover)} {
+      @include flex(1);
     }
   }
 }

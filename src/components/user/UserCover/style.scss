@@ -1,6 +1,6 @@
 @import '../../component';
 
-.bitn-user-cover {
+.#{class-name(UserCover)} {
   @include display(flex);
   padding: 3rem;
   background: url(/images/cover-img.jpg) no-repeat center;

@@ -1,6 +1,6 @@
 @import '../../component';
 
-.bitn-menu {
+.#{class-name(Menu)} {
   > ul > li {
     > a {
       margin: 0;
@@ -14,13 +14,13 @@
     }
 
     // hide sub trees
-    > .bitn-menu {
+    > .#{class-name(Menu)} {
       display: none;
     }
 
     &.selected {
       // show sub trees
-      > .bitn-menu {
+      > .#{class-name(Menu)} {
         display: block;
       }
     }

@@ -1,12 +1,12 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
-var React = require('react/addons');
-var classSet = React.addons.classSet;
+var React = require('react');
+var component = require('../../component');
 
 var Menu = require('../../controls/Menu');
 
-var UserShortcuts = React.createClass({
+module.exports = component('UserShortcuts', {
   render: function () {
     var items = [
       {
@@ -37,9 +37,7 @@ var UserShortcuts = React.createClass({
     ];
 
     return (
-      <Menu className='bitn-user-shortcuts' horizontal={true} items={items} />
+      <Menu className={this.className()} horizontal={true} items={items} />
     );
   },
 });
-
-module.exports = UserShortcuts;

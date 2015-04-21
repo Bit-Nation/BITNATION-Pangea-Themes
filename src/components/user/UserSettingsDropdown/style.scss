@@ -1,6 +1,6 @@
 @import '../../component';
 
-.bitn-user-settings-dropdown {
+.#{class-name(UserSettingsDropdown)} {
   display: inline-block;
 
   > .toggle {
@@ -16,7 +16,7 @@
     }
   }
 
-  .bitn-menu {
+  .#{class-name(Menu)} {
     display: none;
     width: 100%;
     background: #333;
@@ -27,10 +27,10 @@
       padding: 0.5rem 1rem;
     }
   }
-}
-
-.bitn-user-settings-dropdown.active {
-  .bitn-menu {
-    display: block;
+  
+  &.active {
+    .#{class-name(Menu)} {
+      display: block;
+    }
   }
 }
