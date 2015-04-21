@@ -13,7 +13,7 @@ var render = function (component) {
 var params = queryString.parse(window.location.search);
 if (params.example) {
   window.addEventListener('load', function () {
-    var handler = require('./components/' + params.example + '/example');
+    var handler = require('./components/scenes/' + params.example + '/example');
     if (handler.length < 2) render(handler(params));
     else handler(params, render);
   });
