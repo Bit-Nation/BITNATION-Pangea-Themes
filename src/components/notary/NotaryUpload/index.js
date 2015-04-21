@@ -4,6 +4,7 @@ require('./style.scss');
 var React = require('react');
 var component = require('../../component');
 
+var TextInput = require('../../controls/TextInput');
 var FileUpload = require('../../controls/FileUpload');
 
 var Bitnation = require('../../../bitnation/bitnation.core');
@@ -36,9 +37,7 @@ module.exports = component('NotaryUpload', {
 
           <div className='signature'>
             <legend>Sign in with private key (optional)</legend>
-
-            <input type='text' value={this.state.signature}
-              onChange={this.onSignature} />
+            <TextInput value={this.state.signature} onChange={this.onSignature} />
           </div>
         </div>
 
@@ -51,8 +50,8 @@ module.exports = component('NotaryUpload', {
   onPrivacy: function () {
     this.setState({ public: !this.state.public });
   },
-  onSignature: function (event) {
-    this.setState({ signature: event.target.value });
+  onSignature: function (value) {
+    this.setState({ signature: value });
   },
   onFile: function (files) {
     this.setState({ file: files[0] });

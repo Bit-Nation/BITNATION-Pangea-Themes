@@ -8,6 +8,16 @@ var hoverMixin = require('../../mixins/hoverMixin');
 var Icon = require('../Icon');
 
 var Menu = module.exports = component('Menu', {
+  propTypes: {
+    className: React.PropTypes.string,
+    horizontal: React.PropTypes.bool,
+    items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired
+  },
+  getInitialState: function () {
+    return {
+      selected: this.props.selected
+    };
+  },
   render: function () {
     var items = [];
     for (var i in this.props.items) {
@@ -23,16 +33,13 @@ var Menu = module.exports = component('Menu', {
 
     return (
       <nav className={className}>
+        {this.props.children}
+
         <ul className='pure-menu-list'>
           {items}
         </ul>
       </nav>
     );
-  },
-  getInitialState: function () {
-    return {
-      selected: this.props.selected
-    };
   },
   componentWillReceiveProps: function (props) {
     if (props.selected === this.props.selected ||
