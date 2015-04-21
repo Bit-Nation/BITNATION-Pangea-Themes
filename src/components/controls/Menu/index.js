@@ -1,13 +1,13 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
-var React = require('react/addons');
-var classSet = React.addons.classSet;
+var React = require('react');
+var component = require('../../component');
 
-var hoverMixin = require('../../mixins/hover');
+var hoverMixin = require('../../mixins/hoverMixin');
 var Icon = require('../Icon');
 
-var Menu = React.createClass({
+var Menu = module.exports = component('Menu', {
   render: function () {
     var items = [];
     for (var i in this.props.items) {
@@ -17,11 +17,8 @@ var Menu = React.createClass({
       );
     }
 
-    var className = classSet({
-      'bitn-menu': true,
-      'pure-menu': true,
-      'pure-menu-horizontal': this.props.horizontal
-    });
+    var className = this.className() + ' pure-menu';
+    if (this.props.horizontal) className += ' pure-menu-horizontal';
     if (this.props.className) className += ' ' + this.props.className;
 
     return (
@@ -57,19 +54,19 @@ var Menu = React.createClass({
   }
 });
 
-var MenuItem = React.createClass({
+var MenuItem = component('MenuItem', {
   mixins: [ hoverMixin ],
   render: function () {
     var icon;
     if (typeof this.props.icon == 'string') icon = { type: this.props.icon };
     else if (this.props.icon) icon = this.props.icon;
+    
+    var className = 'pure-menu-item';
+    if (this.props.selected) className += ' selected';
+    if (this.props.items) className += ' has-children';
 
     return (
-      <li className={classSet({
-        'pure-menu-item': true,
-        'selected': this.props.selected,
-        'has-children': this.props.items
-      })}>
+      <li className={className}>
         <a className='pure-menu-link' href={this.props.href || '#'}
           onClick={this.onClick}
           onMouseOver={this.onMouseOver}
@@ -90,5 +87,3 @@ var MenuItem = React.createClass({
     if (this.props.onClick) this.props.onClick(this.props.value);
   }
 });
-
-module.exports = Menu;

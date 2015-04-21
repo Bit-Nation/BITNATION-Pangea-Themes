@@ -1,20 +1,20 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
-var React = require('react/addons');
-var classSet = React.addons.classSet;
+var React = require('react');
+var component = require('../../component');
 
 var UserShortcuts = require('../../navigation/UserShortcuts');
 var UserSettingsDropdown = require('../../user/UserSettingsDropdown');
 var UserCover = require('../../user/UserCover');
 
-var UserNavigation = React.createClass({
+module.exports = component('UserNavigation', {
   render: function () {
+    var className = this.className();
+    if (this.props.cover) className += ' cover';
+
     return (
-      <div className={classSet({
-        'bitn-user-navigation': true,
-        'cover': this.props.cover
-      })}>
+      <div className={className}>
         <nav>
           <UserShortcuts onClick={this.props.onAction} />
           <UserSettingsDropdown />
@@ -26,5 +26,3 @@ var UserNavigation = React.createClass({
     );
   }
 });
-
-module.exports = UserNavigation;

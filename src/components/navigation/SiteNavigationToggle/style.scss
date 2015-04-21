@@ -1,0 +1,37 @@
+@import '../../component';
+
+$logo-size: 65%;
+$logo-image: '/images/logo.svg';
+
+$minimized-logo-size: 60%;
+$minimized-logo-image: '/images/logo-sm.svg';
+
+
+.#{class-name(SiteNavigationToggle)} {
+  display: inline-block;
+  width: auto;
+
+  .logo {
+
+  }
+
+  &.minimized {
+
+
+  }
+
+  svg {
+    * {
+      fill: white;
+      @include transform-origin(50% 50%);
+      @include transition(all 150ms ease-in-out);
+    }
+
+    &:hover {
+      .outer-circle, .chain {
+        @include transform(rotate(90deg));
+        fill: red;
+      }
+    }
+  }
+}

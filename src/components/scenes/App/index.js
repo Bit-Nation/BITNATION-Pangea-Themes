@@ -1,14 +1,14 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
-var React = require('react/addons');
-var classSet = React.addons.classSet;
+var React = require('react');
+var component = require('../../component');
 
 var SiteNavigation = require('../../navigation/SiteNavigation');
 var UserNavigation = require('../../navigation/UserNavigation');
 var NotaryForm = require('../../notary/NotaryForm');
 
-var App = React.createClass({
+module.exports = component('App', {
   render: function () {
     var actions = [
       {
@@ -34,7 +34,7 @@ var App = React.createClass({
     ];
 
     return (
-      <div className='bitn-app'>
+      <div className={this.className()}>
         <SiteNavigation {...this.props.siteNavigation}
           minimized={this.state.expanded} onMenuSelect={this.minimize} />
         <div>
@@ -63,5 +63,3 @@ var App = React.createClass({
     this.setState({ expanded: false });    
   }
 });
-
-module.exports = App;

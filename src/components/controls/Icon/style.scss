@@ -1,9 +1,8 @@
 @import '../../component';
 
-.bitn-icon {
+.#{class-name(Icon)} {
 
-}
-
-.bitn-icon-highlight {
-  
+  &.highlight {
+    
+  }
 }

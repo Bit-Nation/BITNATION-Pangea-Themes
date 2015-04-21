@@ -25,7 +25,7 @@ $minimized-logo-size: 60%;
 $minimized-logo-image: '/images/logo-sm.svg';
 $minimized-padding: ($minimized-width - $item-height) / 2;
 
-.bitn-site-navigation {
+.#{class-name(SiteNavigation)} {
   padding: 0;
   width: $width;
   background-color: $background-color;
@@ -43,7 +43,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
   }
 
   // menus
-  .bitn-menu {
+  .#{class-name(Menu)} {
     padding: ($base-padding * 1.5) 0;
 
     > ul > li {
@@ -92,7 +92,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
   }
   
   // top menu
-  > .bitn-menu {
+  > .#{class-name(Menu)} {
     float: right;
     width: $width;
     @include transition(padding $minimize-transition);
@@ -120,7 +120,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
   }
 
   // child menu
-  > .bitn-menu .bitn-menu {
+  > .#{class-name(Menu)} .#{class-name(Menu)} {
     background-color: $hover-background-color;
 
     @include transition(
@@ -139,13 +139,14 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
   }
 
   // hide child menus
-  > .bitn-menu .bitn-menu,
-  &.minimized > .bitn-menu .bitn-menu {
-    display: block;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
+  &, &.minimized {
+    > .#{class-name(Menu)} .#{class-name(Menu)} {
+      display: block;
+      height: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+    }
   }
 
   &.minimized {
@@ -158,7 +159,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
     }
 
     // top menu
-    > .bitn-menu {
+    > .#{class-name(Menu)} {
       padding: 0;
 
       > ul > li {

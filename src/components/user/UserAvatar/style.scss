@@ -1,18 +1,18 @@
 @import '../../component';
 
-.bitn-user-avatar {
+.#{class-name(UserAvatar)} {
   display: inline-block;
   height: 24px;
 
   > img {
     height: 100%;
   }
-}
 
-.bitn-user-avatar.medium {  
-  height: 36px;
-}
+  &.medium {  
+    height: 36px;
+  }
 
-.bitn-user-avatar.large {  
-  height: 48px;
+  &.large {  
+    height: 48px;
+  }
 }

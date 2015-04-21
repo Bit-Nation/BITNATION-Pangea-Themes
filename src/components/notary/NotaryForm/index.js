@@ -1,10 +1,12 @@
 /** @jsx React.DOM */
 require('./style.scss');
+
 var React = require('react');
+var component = require('../../component');
 
 var Bitnation = require('../../../bitnation/bitnation.core');
 
-var NotaryForm = React.createClass({
+module.exports = component('NotaryForm', {
   render: function() {
     return (
       <div className='bitn-notary-form'>
@@ -32,5 +34,3 @@ var NotaryForm = React.createClass({
     });
   }
 });
-
-module.exports = NotaryForm;

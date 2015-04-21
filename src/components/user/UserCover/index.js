@@ -1,13 +1,13 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
-var React = require('react/addons');
-var classSet = React.addons.classSet;
+var React = require('react');
+var component = require('../../component');
 
-var UserCover = React.createClass({
+module.exports = component('UserCover', {
   render: function () {
     return (
-      <div className='bitn-user-cover' style={{ height: this.props.height }}>
+      <div className={this.className()} style={{ height: this.props.height }}>
         <div>
           <span className='date'>
             march 31, 2015
@@ -21,5 +21,3 @@ var UserCover = React.createClass({
     );
   },
 });
-
-module.exports = UserCover;

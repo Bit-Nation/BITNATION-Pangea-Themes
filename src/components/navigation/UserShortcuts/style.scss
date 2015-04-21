@@ -1,6 +1,6 @@
 @import '../../component';
 
-.bitn-user-shortcuts {
+.#{class-name(UserShortcuts)} {
   display: inline-block;
   width: auto;
 }
