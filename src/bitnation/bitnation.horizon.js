@@ -9,7 +9,24 @@ var jQuery = require('jquery');
      */
     var _decimals = 8;
 
-    var _testnet = false;
+    /**
+     * Set to true to use testnet rather than mainnet
+     */
+    var _testnet = true;
+
+    /**
+     * The ports used by the HZ daemon
+     */
+    var _ports = {
+        MAINNET: {
+            API: 7776,
+            P2P: 7774
+        },
+        TESTNET: {
+            API: 6976,
+            P2P: 6974
+        }
+    };
 
     /**
      * Mostly from HZ/NXT NRS
@@ -262,8 +279,9 @@ var jQuery = require('jquery');
 
             var checkError = _checkError;
 
-            httpClient.sendRequest(this.getMethod(requestType), this.getBaseUri(), params)
-            .done(function (result) {
+            httpClient.sendRequest(
+                this.getMethod(requestType), this.getBaseUri(), params
+            ).done(function (result) {
                 if (checkError(result)) {
                     deferred.reject(result);
                 } else {
@@ -290,7 +308,9 @@ var jQuery = require('jquery');
         hzClient.getHzHost = function () {
             var proto = 'http';
             var host = 'localhost';
-            var port = (_testnet === true) ? '7776' : '6976' ;
+            var port = (_testnet === true) ?
+                _ports.TESTNET.API :
+                _ports.MAINNET.API;
 
             return proto + '://' + host + ':' + port;
         };
