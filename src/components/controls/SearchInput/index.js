@@ -2,11 +2,11 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
-
+var bitnMixin = require('../../mixins/bitnMixin');
 var TextInput = require('../../controls/TextInput');
 
-module.exports = component('SearchInput', {
+var SearchInput = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
     value: React.PropTypes.any,
@@ -42,3 +42,5 @@ module.exports = component('SearchInput', {
     if (this.props.onChange) this.props.onChange(event.target.value);
   }
 });
+
+module.exports = SearchInput;

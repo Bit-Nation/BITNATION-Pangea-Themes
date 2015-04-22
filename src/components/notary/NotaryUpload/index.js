@@ -2,14 +2,14 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
-
+var bitnMixin = require('../../mixins/bitnMixin');
 var TextInput = require('../../controls/TextInput');
 var FileUpload = require('../../controls/FileUpload');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
-module.exports = component('NotaryUpload', {
+var NotaryUpload = React.createClass({
+  mixins: [ bitnMixin ],
   getInitialState: function () {
     return {
       public: false,
@@ -17,13 +17,17 @@ module.exports = component('NotaryUpload', {
   },
   render: function() {
     return (
-      <div className={this.className()}>
+      <FileUpload className={this.className()}
+        control='Select file'
+        footer='All filetypes allowed (Max filesize: 8MB)'
+        onChange={this.onFile}>
         <div className='fields'>
           <div className='privacy'>
             <legend>Please select</legend>
 
             <label>
               Private release
+
               <input type='radio' name='privacy' checked={!this.state.public}
                 onChange={this.onPrivacy}  />
             </label>
@@ -31,59 +35,39 @@ module.exports = component('NotaryUpload', {
             <label>
               Public release
               <input type='radio' name='privacy' checked={this.state.public}
-               onChange={this.onPrivacy} />
+                onChange={this.onPrivacy} />
             </label>
           </div>
 
           <div className='uri'>
             <legend>A URI at which to locate the file (optional)</legend>
 
-            <input type='text' value={this.state.uri}
-              onChange={this.onUri} />
+            <TextInput value={this.state.uri} onChange={this.onUri} />
           </div>
 
           <div className='secret'>
             <legend>Your private key (required)</legend>
 
-            <input type='password' value={this.state.secret}
-              onChange={this.onSecretPhrase} />
+            <TextInput password value={this.state.secret} onChange={this.onSecret} />
           </div>
         </div>
 
-        <FileUpload onChange={this.onFile}>
-          Upload file
-        </FileUpload>
-
-        <div className='fields'>
-
-          <div className='verifyNotary'>
-            <legend>Verify a notary transaction hash.</legend>
-
-            <input type='text' value={this.state.notaryTxId}
-              onChange={this.onVerifyNotary} />
-
-            <button type='button' onClick={this.verifyNotary}>Verify</button>
-          </div>
-
-        </div>
-      </div>
+        <h3>Drag & drop your documents</h3>
+      </FileUpload>
     );
   },
   onPrivacy: function () {
     this.setState({ public: !this.state.public });
   },
-  onSecretPhrase: function (event) {
-    this.setState({ secret: event.target.value });
+  onUri: function (value) {
+    this.setState({ uri: value });
   },
-  onVerifyNotary: function (event) {
-    this.setState({ notaryTxId: event.target.value });
+  onSecret: function (value) {
+    this.setState({ secret: value });
   },
   onFile: function (files) {
     // this.setState({ file: files[0] });
     this.issueNotary(files[0]);
-  },
-  onUri: function (event) {
-    this.setState({ uri: event.target.value });
   },
   issueNotary: function (file) {
 
@@ -106,25 +90,7 @@ module.exports = component('NotaryUpload', {
       });
 
     this.setState({ secret: '' });
-
-  },
-  verifyNotary: function () {
-    
-    var ui = new Bitnation.pangea.UI();
-
-    ui.verifyNotary(this.state.notaryTxId)
-      .done(function (result) {
-
-        alert('Success. The notary hash is: ' + result.notary.hash);
-        console.log(result);
-
-      })
-      .fail(function (err) {
-
-        alert('An error occurred. Check the logs.');
-        console.error(err);
-
-      });
-
   }
 });
+
+module.exports = NotaryUpload;

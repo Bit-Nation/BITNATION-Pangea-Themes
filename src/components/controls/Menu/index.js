@@ -2,12 +2,12 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
-
+var bitnMixin = require('../../mixins/bitnMixin');
 var hoverMixin = require('../../mixins/hoverMixin');
 var Icon = require('../Icon');
 
-var Menu = module.exports = component('Menu', {
+var Menu = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
     horizontal: React.PropTypes.bool,
@@ -61,7 +61,9 @@ var Menu = module.exports = component('Menu', {
   }
 });
 
-var MenuItem = component('MenuItem', {
+module.exports = Menu;
+
+var MenuItem = React.createClass({
   mixins: [ hoverMixin ],
   render: function () {
     var icon;

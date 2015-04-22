@@ -1,23 +1,23 @@
 @import '../../component';
 
 .#{class-name(NotaryUpload)} {
-  > .fields {
-    @include display(flex);
+  padding: 1rem;
+  text-align: center;
 
-    > div {
-      @include flex(1);
-      background: #ccc;
-      padding: 1rem;
-      margin: 0.5rem;
+  > header {
+    > .fields {
+      @include display(flex);
+
+      > div {
+        @include flex(1);
+        background: #F3F3F3;
+        padding: 1rem;
+        margin: 0.5rem;
+      }
     }
   }
 
-  > .#{class-name(FileUpload)} {
-    background: blue;
-    padding: 1rem;
-
-    &.active {
-      background: green;
-    }
+  &.active {
+    background: green;
   }
 }

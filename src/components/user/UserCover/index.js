@@ -2,9 +2,10 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
+var bitnMixin = require('../../mixins/bitnMixin');
 
-module.exports = component('UserCover', {
+var UserCover = React.createClass({
+  mixins: [ bitnMixin ],
   render: function () {
     return (
       <div className={this.className()} style={{ height: this.props.height }}>
@@ -21,3 +22,5 @@ module.exports = component('UserCover', {
     );
   },
 });
+
+module.exports = UserCover;

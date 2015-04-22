@@ -2,9 +2,10 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
+var bitnMixin = require('../../mixins/bitnMixin');
 
-module.exports = component('UserAvatar', {
+var UserAvatar = React.createClass({
+  mixins: [ bitnMixin ],
   render: function () {
     var className = this.className();
     if (this.props.size == 'medium') className += ' medium';
@@ -17,3 +18,5 @@ module.exports = component('UserAvatar', {
     );
   },
 });
+
+module.exports = UserAvatar;

@@ -1,0 +1,27 @@
+@import '../../component';
+
+.#{class-name(NotaryPage)} {
+
+  > .row {
+    @include display(flex);
+    margin: 1rem 0;
+
+    > * {
+      @include flex(1);
+      margin: 0 1rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .bitn-notary-upload {
+    @include flex(3);
+    background: #fff;
+  }
+}

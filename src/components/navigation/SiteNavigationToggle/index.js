@@ -5,13 +5,12 @@ require('./style.scss');
 // some something magic later
 // - olfox
 
-var React = require('react/addons');
-var component = require('../../component');
-
+var React = require('react');
+var bitnMixin = require('../../mixins/bitnMixin');
 var hoverMixin = require('../../mixins/hoverMixin');
 
-module.exports = component('SiteNavigationToggle', {
-  mixins: [ hoverMixin ],
+var SiteNavigationToggle = React.createClass({
+  mixins: [ bitnMixin, hoverMixin ],
   render: function () {
     var url = this.props.url;
     var hover = this.state.hover;
@@ -38,3 +37,5 @@ module.exports = component('SiteNavigationToggle', {
     };
   }
 });
+
+module.exports = SiteNavigationToggle;

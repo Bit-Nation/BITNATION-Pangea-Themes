@@ -2,11 +2,10 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
+var bitnMixin = require('../../mixins/bitnMixin');
 
-var _ = require ('lodash');
-
-module.exports = component('Table', {
+var Table = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
     head: React.PropTypes.arrayOf(React.PropTypes.string),
@@ -42,6 +41,8 @@ module.exports = component('Table', {
     );
   }
 });
+
+module.exports = Table;
 
 function toColumn (content) {
   return <td>{content}</td>;

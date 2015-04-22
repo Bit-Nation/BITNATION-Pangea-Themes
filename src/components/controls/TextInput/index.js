@@ -2,38 +2,37 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
+var bitnMixin = require('../../mixins/bitnMixin');
 
-var _ = require('lodash');
-
-module.exports = component('TextInput', {
+var TextInput = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
+    type: React.PropTypes.string,
+    email: React.PropTypes.bool,
+    password: React.PropTypes.bool,
     value: React.PropTypes.any,
-    onChange: React.PropTypes.func,
-    onValue: React.PropTypes.func
-  },
-  getInitialState: function () {
-    return {
-      value: this.props.value
-    };
-  },
-  componentWillReceiveProps: function (props) {
-    this.setState({ value: props.value });
+    onChange: React.PropTypes.func
   },
   render: function () {
+    var type = 'text';
+    if (this.props.type) type = this.props.type;
+    if (this.props.email) type = 'email';
+    if (this.props.password) type = 'password';
+
     var className = this.className();
     if (this.props.className) className += ' ' + this.props.className;
 
     return (
-      <input type='text' {...this.props}
+      <input {...this.props}
+        type={type}
         className={className}
-        value={this.state.value}
-        onChange={this.onChange} />
+        onChange={this.props.onChange && this.onChange} />
     );
   },
   onChange: function (event) {
-    this.setState({ value: event.target.value });
-    if (this.props.onChange) this.props.onChange(event.target.value);
+    this.props.onChange(event.target.value);
   }
 });
+
+module.exports = TextInput;

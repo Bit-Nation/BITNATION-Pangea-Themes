@@ -2,11 +2,12 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
+var bitnMixin = require('../../mixins/bitnMixin');
 
 var filesize = require('filesize');
 
-module.exports = component('FileInfo', {
+var FileInfo = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
     name: React.PropTypes.string,
@@ -63,3 +64,5 @@ module.exports = component('FileInfo', {
     );
   }
 });
+
+module.exports = FileInfo;

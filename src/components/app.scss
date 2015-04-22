@@ -11,6 +11,14 @@ html, body {
   font-size: 16px;
 }
 
+h1, h2 {
+  font-weight: 400;
+}
+
+h3 {
+  font-weight: 500;
+}
+
 #app-container {
   @include display(flex);
   min-height: 100%;

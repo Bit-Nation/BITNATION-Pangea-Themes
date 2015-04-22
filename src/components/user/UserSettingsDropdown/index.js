@@ -2,14 +2,13 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
-
+var bitnMixin = require('../../mixins/bitnMixin');
 var hoverMixin = require('../../mixins/hoverMixin');
 var UserAvatar = require('../../user/UserAvatar');
 var Menu = require('../../controls/Menu');
 
-module.exports = component('UserSettingsDropdown', {
-  mixins: [ hoverMixin ],
+var UserSettingsDropdown = React.createClass({
+  mixins: [ bitnMixin, hoverMixin ],
   render: function () {
     var items = [
       {
@@ -41,3 +40,5 @@ module.exports = component('UserSettingsDropdown', {
     );
   }
 });
+
+module.exports = UserSettingsDropdown;

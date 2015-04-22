@@ -2,9 +2,10 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
+var bitnMixin = require('../../mixins/bitnMixin');
 
-module.exports = component('Icon', {
+var Icon = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
     set: React.PropTypes.string,
@@ -34,3 +35,5 @@ module.exports = component('Icon', {
     );
   },
 });
+
+module.exports = Icon;

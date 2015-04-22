@@ -2,13 +2,14 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
+var bitnMixin = require('../../mixins/bitnMixin');
 
 var SiteNavigation = require('../../navigation/SiteNavigation');
 var UserNavigation = require('../../navigation/UserNavigation');
-var NotaryUpload = require('../../notary/NotaryUpload');
+var NotaryPage = require('../../notary/NotaryPage');
 
-module.exports = component('App', {
+var App = React.createClass({
+  mixins: [ bitnMixin ],
   render: function () {
     var actions = [
       {
@@ -41,7 +42,7 @@ module.exports = component('App', {
           <UserNavigation onAction={this.onAction}
           cover={this.props.cover && { height: 300 }} />
           <main>
-            <NotaryUpload />
+            <NotaryPage />
           </main>
         </div>
       </div>
@@ -63,3 +64,5 @@ module.exports = component('App', {
     this.setState({ expanded: false });    
   }
 });
+
+module.exports = App;
