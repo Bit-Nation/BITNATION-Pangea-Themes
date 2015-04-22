@@ -5,7 +5,7 @@ var React = require('react');
 var bitnMixin = require('../../mixins/bitnMixin');
 
 var Table = require('../../controls/Table');
-var SearchInput = require('../../controls/SearchInput');
+var Search = require('../../controls/Search');
 
 var NotaryUpload = require('../../notary/NotaryUpload');
 var NotaryTxVerifier = require('../../notary/NotaryTxVerifier');
@@ -42,7 +42,7 @@ var NotaryPage = React.createClass({
           <div>
             <h3>Search for public documents</h3>
 
-            <SearchInput />
+            <Search />
 
             <Table head={['Document digest', 'Timestamp']}
               body={[
@@ -53,7 +53,7 @@ var NotaryPage = React.createClass({
           <div>
             <h3>Template library</h3>
 
-            <SearchInput />
+            <Search />
 
             <Table head={['Document digest', 'Timestamp']}
               body={[

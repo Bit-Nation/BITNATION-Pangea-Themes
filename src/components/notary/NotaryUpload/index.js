@@ -3,13 +3,18 @@ require('./style.scss');
 
 var React = require('react');
 var bitnMixin = require('../../mixins/bitnMixin');
-var TextInput = require('../../controls/TextInput');
+var Input = require('../../controls/Input');
 var FileUpload = require('../../controls/FileUpload');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
 var NotaryUpload = React.createClass({
   mixins: [ bitnMixin ],
+  propTypes: {
+    public: React.PropTypes.bool,
+    uri: React.PropTypes.string,
+    secret: React.PropTypes.string
+  },
   getInitialState: function () {
     return {
       public: false,
@@ -42,13 +47,13 @@ var NotaryUpload = React.createClass({
           <div className='uri'>
             <legend>A URI at which to locate the file (optional)</legend>
 
-            <TextInput value={this.state.uri} onChange={this.onUri} />
+            <Input value={this.state.uri} onChange={this.onUri} />
           </div>
 
           <div className='secret'>
             <legend>Your private key (required)</legend>
 
-            <TextInput password value={this.state.secret} onChange={this.onSecret} />
+            <Input password value={this.state.secret} onChange={this.props.onSecret} />
           </div>
         </div>
 

@@ -3,7 +3,7 @@ require('./style.scss');
 
 var React = require('react');
 var bitnMixin = require('../../mixins/bitnMixin');
-var TextInput = require('../../controls/TextInput');
+var Input = require('../../controls/Input');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
@@ -34,7 +34,7 @@ var NotaryTxVerifier = React.createClass({
           {this.state.verified === false && 'Invalid'}
         </div>
 
-        <TextInput value={this.state.value}
+        <Input value={this.state.value}
           onChange={this.onChange} />
 
         <button type='submit'>Verify</button>

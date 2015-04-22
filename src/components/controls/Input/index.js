@@ -4,7 +4,7 @@ require('./style.scss');
 var React = require('react');
 var bitnMixin = require('../../mixins/bitnMixin');
 
-var TextInput = React.createClass({
+var Input = React.createClass({
   mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
@@ -35,4 +35,4 @@ var TextInput = React.createClass({
   }
 });
 
-module.exports = TextInput;
+module.exports = Input;
