@@ -6,9 +6,6 @@
 
   > .#{class-name(SiteNavigation)} {
     @include flex-shrink(0);
-
-    @include display(flex);
-    @include flex-direction(column);
   }
 
   > div {
