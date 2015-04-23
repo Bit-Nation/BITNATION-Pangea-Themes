@@ -34,11 +34,7 @@
 .#{class-name(NotaryFileInput)}.#{class-name(FileInput)} {
   .#{ref-name(FileInput, trigger)} {
     display: inline-block;
-    margin: 1.5rem 0;
-    padding: 0.5rem 2rem;
-    background-color: #AED67A;
-    color: white;
-    font-size: 125%;
+    margin: 1.5rem 2rem;
   }
 
   &.#{state-name(FileInput, dragOver)} {

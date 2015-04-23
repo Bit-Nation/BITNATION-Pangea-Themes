@@ -20,13 +20,10 @@ var Input = React.createClass({
     if (this.props.email) type = 'email';
     if (this.props.password) type = 'password';
 
-    var className = this.className();
-    if (this.props.className) className += ' ' + this.props.className;
-
     return (
       <input {...this.props}
         type={type}
-        className={className}
+        className={this.classNameWithProp()}
         onChange={this.props.onChange && this.onChange} />
     );
   },

@@ -3,6 +3,7 @@ require('./style.scss');
 
 var React = require('react');
 var bitnMixin = require('../../mixins/bitnMixin');
+var Button = require('../../controls/Button');
 var Input = require('../../controls/Input');
 var Radio = require('../../controls/Radio');
 var FileInput = require('../../controls/FileInput');
@@ -19,7 +20,7 @@ var NotaryFileInput = React.createClass({
   render: function () {
     return (
       <FileInput className={this.className()}
-        trigger='Select file'
+        trigger={<Button file large auto>Select file</Button>}
         footer='All filetypes allowed (Max filesize: 8MB)'
         onChange={this.props.onFiles}>
 

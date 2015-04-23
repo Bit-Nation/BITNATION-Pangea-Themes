@@ -11,7 +11,7 @@ var PageRow = React.createClass({
   },
   render: function () {
     return (
-      <div className={this.className()}>
+      <div className={this.classNameWithProp()}>
         {this.props.children}
       </div>
     );

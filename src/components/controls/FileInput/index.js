@@ -20,8 +20,7 @@ var FileInput = React.createClass({
     };
   },
   render: function () {
-    var className = this.className();
-    if (this.props.className) className += ' ' + this.props.className;
+    var className = this.classNameWithProp();
     if (this.props.disabled) className += ' ' + this.stateName('disabled');
     if (this.state.dragOver) className += ' ' + this.stateName('dragOver');
 

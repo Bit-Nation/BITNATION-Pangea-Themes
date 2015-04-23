@@ -34,9 +34,9 @@ var Menu = React.createClass({
       );
     }
 
-    var className = this.className() + ' pure-menu';
+    var className = this.classNameWithProp();
+    className += ' pure-menu';
     if (this.props.horizontal) className += ' pure-menu-horizontal';
-    if (this.props.className) className += ' ' + this.props.className;
 
     return (
       <nav className={className}>

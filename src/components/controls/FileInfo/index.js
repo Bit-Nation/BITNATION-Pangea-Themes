@@ -31,8 +31,7 @@ var FileInfo = React.createClass({
     if (typeof lastModified == 'number') date = new Date(lastModified);
 
     // set class
-    var className = this.className();
-    if (this.props.className) className += ' ' + this.props.className;
+    var className = this.classNameWithProp();
     if (typeClassName) className += ' ' + typeClassName;
 
     if (this.props.name) className += ' ' + this.stateName('hasName');

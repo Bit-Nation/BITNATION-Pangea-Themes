@@ -8,14 +8,16 @@ var Section = React.createClass({
   mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
+    titleTag: React.PropTypes.string,
     flex: React.PropTypes.number,
     title: React.PropTypes.string,
     header: React.PropTypes.any,
     footer: React.PropTypes.any
   },
   render: function () {
-    var className = this.className();
-    if (this.props.className) className += ' ' + this.props.className;
+    var Title = this.props.titleTag || 'h2';
+
+    var className = this.classNameWithProp();
     if (this.props.flex) {
       className += ' ' + this.stateName('flex');
       className += ' ' + this.stateName('flex-' + this.props.flex);
@@ -29,7 +31,7 @@ var Section = React.createClass({
         {(this.props.title || this.props.header) &&
           <header>
             {this.props.title &&
-              <h2>{this.props.title}</h2>}
+              <Title>{this.props.title}</Title>}
 
             {this.props.header}
           </header>}

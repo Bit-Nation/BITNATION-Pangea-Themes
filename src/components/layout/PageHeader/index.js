@@ -11,7 +11,7 @@ var PageHeader = React.createClass({
   },
   render: function () {
     return (
-      <header className={this.className()}>
+      <header className={this.classNameWithProp()}>
         {this.props.title &&
           <h1>{this.props.title}</h1>}
 

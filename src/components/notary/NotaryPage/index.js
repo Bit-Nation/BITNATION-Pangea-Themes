@@ -10,7 +10,8 @@ var NotaryTxVerifier = require('../../notary/NotaryTxVerifier');
 
 var PageHeader = require('../../layout/PageHeader');
 var PageRow = require('../../layout/PageRow');
-var Section = require('../../layout/Section');
+var PageSection = require('../../layout/PageSection');
+var Results = require('../../layout/Results');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
@@ -23,56 +24,62 @@ var NotaryPage = React.createClass({
 
         <div>
           <PageRow>
-            <Section flex={3}>
+            <PageSection flex={3}>
               <NotaryFileInput
                 public={this.state.public} uri={this.state.uri}
                 secret={this.state.secret}
                 onPublic={this.onPublic} onUri={this.onUri} 
                 onSecret={this.onSecret} onFiles={this.onFiles} />
-            </Section>
+            </PageSection>
 
-            <Section flex={1} title='Get started'>
+            <PageSection flex={1} title='Get started'>
               <NotaryTxVerifier />
-            </Section>
+            </PageSection>
           </PageRow>
 
           <PageRow>
-            <Section flex={3} title='Your latest registered documents'>
-              <Table head={['Document digest', 'Timestamp']}
-                body={[
-                  ['34444GDE6M912323', '232F047E6M932'],
-                  ['F04GDE6M9', '23F04GDE6M9232']
-                ]} />
-            </Section>
+            <PageSection flex={3}>
+              <Results title='Your latest registered documents'>
+                <Table head={['Document digest', 'Timestamp']}
+                  body={[
+                    ['34444GDE6M912323', '232F047E6M932'],
+                    ['F04GDE6M9', '23F04GDE6M9232']
+                  ]} />
+              </Results>
+            </PageSection>
 
-            <Section flex={1}>
+            <PageSection flex={1}>
               <img src='/images/logo.png' style={{
                 width: '100%',
                 WebkitFilter: 'invert(0.7)'
               }} />
-            </Section>
+            </PageSection>
           </PageRow>
 
           <PageRow>
-            <Section flex={1} title='Search for public documents'>
+            <PageSection flex={1} title='Search for public documents'>
               <Search />
 
-              <Table head={['Document digest', 'Timestamp']}
-                body={[
-                  ['34444GDE6M912323', '232F047E6M932'],
-                  ['F04GDE6M9', '23F04GDE6M9232']
-                ]} />
-            </Section>
+              <Results title='Search results'>
+                <Table head={['Document digest', 'Timestamp']}
+                  body={[
+                    ['34444GDE6M912323', '232F047E6M932'],
+                    ['F04GDE6M9', '23F04GDE6M9232']
+                  ]} />
+              </Results>
+            </PageSection>
 
-            <Section flex={1} title='Template library'>
+            <PageSection flex={1} title='Template library'>
               <Search />
 
-              <Table head={['Document digest', 'Timestamp']}
-                body={[
-                  ['34444GDE6M912323', '232F047E6M932'],
-                  ['F04GDE6M9', '23F04GDE6M9232']
-                ]} />
-            </Section>
+              <Results title='Search results'>
+                <Table head={['Document digest', 'Timestamp']}
+                  body={[
+                    ['34444GDE6M912323', '232F047E6M932'],
+                    ['F04GDE6M9', '23F04GDE6M9232']
+                  ]} />
+              </Results>
+            </PageSection>
           </PageRow>
         </div>
       </div>

@@ -13,7 +13,7 @@ var Table = React.createClass({
     body: React.PropTypes.arrayOf(React.PropTypes.array)
   },
   render: function () {
-    var className = this.className();
+    var className = this.classNameWithProp();
     className += ' pure-table';
     if (this.props.striped) className += ' pure-table-striped';
     if (this.props.className) className += ' ' + this.props.className;

@@ -12,12 +12,9 @@ var Radio = React.createClass({
     onChange: React.PropTypes.func
   },
   render: function () {
-    var className = this.className();
-    if (this.props.className) className += ' ' + this.props.className;
-
     return (
       <input {...this.props} value={null}
-        type='radio' className={className}
+        type='radio' className={this.classNameWithProp()}
         onChange={this.props.onChange && this.onChange} />
     );
   },

@@ -23,6 +23,11 @@ module.exports = function (prefix) {
     className: function () {
       return this.constructor.className.apply(this.constructor, arguments);
     },
+    classNameWithProp: function () {
+      var className = this.className();
+      if (this.props.className) className += ' ' + this.props.className;
+      return className;
+    },
     stateName: function () {
       return this.constructor.stateName.apply(this.constructor, arguments);
     },

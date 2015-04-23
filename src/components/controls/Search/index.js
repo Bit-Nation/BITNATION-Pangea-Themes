@@ -26,11 +26,8 @@ var Search = React.createClass({
     var button = this.props.button;
     if (button == null) button = <Icon type='search' />;
 
-    var className = this.className();
-    if (this.props.className) className += ' ' + this.props.className;
-
     return (
-      <form className={className} onSubmit={this.onSubmit}>
+      <form className={this.classNameWithProp()} onSubmit={this.onSubmit}>
         <div>
           <Input value={this.state.value} onChange={this.onChange} />
         </div>
