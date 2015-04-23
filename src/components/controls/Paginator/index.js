@@ -56,7 +56,7 @@ var Paginator = React.createClass({
     var className = this.className();
     className += ' pure-menu';
     className += ' pure-menu-horizontal';
-    className += ' length-' + pages.length;
+    className += ' ' + this.stateName('length-' + pages.length);
 
     return (
       <ul className={className}>

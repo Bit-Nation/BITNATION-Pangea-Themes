@@ -16,10 +16,13 @@ var Section = React.createClass({
   render: function () {
     var className = this.className();
     if (this.props.className) className += ' ' + this.props.className;
-    if (this.props.flex) className += ' flex flex-' + this.props.flex;
-    if (this.props.header) className += ' has-header';
-    if (this.props.children) className += ' has-body';
-    if (this.props.footer) className += ' has-footer';
+    if (this.props.flex) {
+      className += ' ' + this.stateName('flex');
+      className += ' ' + this.stateName('flex-' + this.props.flex);
+    }
+    if (this.props.header) className += ' ' + this.stateName('header');
+    if (this.props.children) className += ' ' + this.stateName('body');
+    if (this.props.footer) className += ' ' + this.stateName('footer');
 
     return (
       <section className={className}>

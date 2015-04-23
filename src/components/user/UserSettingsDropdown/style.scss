@@ -3,19 +3,6 @@
 .#{class-name(UserSettingsDropdown)} {
   display: inline-block;
 
-  > .toggle {
-    height: 100%;
-    padding: 0 1rem;
-
-    > * {
-      vertical-align: middle;
-    }
-
-    > span {
-      margin-right: 1rem;
-    }
-  }
-
   .#{class-name(Menu)} {
     display: none;
     width: 100%;
@@ -27,10 +14,23 @@
       padding: 0.5rem 1rem;
     }
   }
-  
-  &.active {
-    .#{class-name(Menu)} {
-      display: block;
-    }
+}
+
+.#{ref-name(UserSettingsDropdown, toggle)} {
+  height: 100%;
+  padding: 0 1rem;
+
+  > * {
+    vertical-align: middle;
+  }
+
+  > span {
+    margin-right: 1rem;
+  }
+}
+
+.#{state-name(UserSettingsDropdown, active)} {
+  .#{class-name(Menu)} {
+    display: block;
   }
 }

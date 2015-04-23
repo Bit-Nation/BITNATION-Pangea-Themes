@@ -30,19 +30,21 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
   width: $width;
   background-color: $background-color;
   @include transition(width $minimize-transition);
+}
 
-  > .logo {
-    background: $highlight-color url($logo-image) no-repeat center;
-    background-size: $logo-size;
-    height: $width;
+.#{ref-name(SiteNavigation, logo)} {
+  background: $highlight-color url($logo-image) no-repeat center;
+  background-size: $logo-size;
+  height: $width;
 
-    @include transition(
-      height $minimize-transition,
-      background-image $logo-transition,
-      background-size $logo-transition);
-  }
+  @include transition(
+    height $minimize-transition,
+    background-image $logo-transition,
+    background-size $logo-transition);
+}
 
-  // menus
+// menus
+.#{class-name(SiteNavigation)} {
   .#{class-name(Menu)} {
     padding: ($base-padding * 1.5) 0;
 
@@ -74,7 +76,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
         }
       }
 
-      &.selected > .bitn-menu {
+      &.#{state-name(Menu, selected)} > .#{class-name(Menu)} {
         height: auto;
         padding: ($base-padding * 1.5) 0;
         margin: ($base-padding * 0.5) 0;
@@ -137,44 +139,44 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
       }
     }
   }
+}
 
-  // hide child menus
-  &, &.minimized {
-    > .#{class-name(Menu)} .#{class-name(Menu)} {
-      display: block;
-      height: 0;
-      margin: 0;
-      padding: 0;
-      opacity: 0;
-    }
+// hide child menus
+.#{class-name(SiteNavigation)}, .#{state-name(SiteNavigation, minimized)} {
+  > .#{class-name(Menu)} .#{class-name(Menu)} {
+    display: block;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+.#{state-name(SiteNavigation, minimized)} {
+  width: $minimized-width;
+
+  .#{ref-name(SiteNavigation, logo)} {
+    background-image: url($minimized-logo-image);
+    background-size: $minimized-logo-size;
+    height: $minimized-width;
   }
 
-  &.minimized {
-    width: $minimized-width;
+  // top menu
+  > .#{class-name(Menu)} {
+    padding: $minimized-padding 0;
 
-    > .logo {
-      background-image: url($minimized-logo-image);
-      background-size: $minimized-logo-size;
-      height: $minimized-width;
-    }
+    > ul > li {
+      margin: $minimized-padding 0;
 
-    // top menu
-    > .#{class-name(Menu)} {
-      padding: 0;
+      > a {
+        padding: 0;
 
-      > ul > li {
-        margin: $minimized-padding 0;
+        &, &:hover, &:focus {
+          background-color: transparent;
+        }
 
-        > a {
-          padding: 0;
-
-          &, a:hover, a:focus {
-            background-color: transparent;
-          }
-
-          > i {
-            margin: 0 $minimized-padding;
-          }
+        > i {
+          margin: 0 $minimized-padding;
         }
       }
     }

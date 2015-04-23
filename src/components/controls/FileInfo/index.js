@@ -11,9 +11,9 @@ var FileInfo = React.createClass({
   propTypes: {
     className: React.PropTypes.string,
     name: React.PropTypes.string,
+    type: React.PropTypes.string,
     size: React.PropTypes.number,
     sizeOptions: React.PropTypes.object,
-    type: React.PropTypes.string,
     lastModified: React.PropTypes.number,
     lastModifiedDate: React.PropTypes.instanceOf(Date),
     relativePath: React.PropTypes.string
@@ -35,29 +35,42 @@ var FileInfo = React.createClass({
     if (this.props.className) className += ' ' + this.props.className;
     if (typeClassName) className += ' ' + typeClassName;
 
-    if (this.props.name) className += ' has-name';
-    if (this.props.size) className += ' has-size';
-    if (this.props.type) className += ' has-type';
-    if (lastModified) className += ' has-last-modified';
-    if (this.props.relativePath) className += ' has-relative-path';
+    if (this.props.name) className += ' ' + this.stateName('hasName');
+    if (this.props.type) className += ' ' + this.stateName('hasType');
+    if (this.props.size) className += ' ' + this.stateName('hasSize');
+    if (lastModified) className += ' ' + this.stateName('hasLastModified');
+    if (this.props.relativePath) className += ' ' + this.stateName('hasRelativePath');
 
     return (
       <div className={className}>
         {this.props.name &&
-          <span className='name'>{this.props.name}</span>}
-
-        {humanSize && [
-          <span className='human-size'>{humanSize}</span>,
-          <span className='size'>{this.props.size}</span>]}
+          <span className={this.refName('name')}>
+            {this.props.name}
+          </span>}
 
         {this.props.type &&
-          <span className='type'>{this.props.type}</span>}
+          <span className={this.refName('type')}>
+            {this.props.type}
+          </span>}
+
+        {humanSize && [
+          <span className={this.refName('humanSize')}>
+            {humanSize}
+          </span>,
+
+          <span className={this.refName('size')}>
+            {this.props.size}
+          </span>]}
 
         {lastModified &&
-          <span className='last-modified'>{lastModified}</span>}
+          <span className={this.refName('lastModified')}>
+            {lastModified}
+          </span>}
 
         {this.props.relativePath &&
-          <span className='relative-path'>{this.props.relativePath}</span>}
+          <span className={this.refName('relativePath')}>
+            {this.props.relativePath}
+          </span>}
 
         {this.props.children}
       </div>

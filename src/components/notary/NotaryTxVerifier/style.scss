@@ -2,7 +2,16 @@
 
 .#{class-name(NotaryTxVerifier)} {
 
-  &.verifying {
-    
-  }
+}
+
+.#{state-name(NotaryTxVerifier, verifying)} {
+
+}
+
+.#{state-name(NotaryTxVerifier, valid)} {
+
+}
+
+.#{state-name(NotaryTxVerifier, invalid)} {
+
 }

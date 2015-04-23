@@ -19,15 +19,15 @@ var NotaryFileInput = React.createClass({
   render: function () {
     return (
       <FileInput className={this.className()}
-        control='Select file'
+        trigger='Select file'
         footer='All filetypes allowed (Max filesize: 8MB)'
         onChange={this.props.onFiles}>
 
-        <div className='fields'>
-          <div className='public'>
+        <div className={this.refName('fields')}>
+          <div className={this.refName('public')}>
             <legend>Please select</legend>
 
-            <label className='off'>
+            <label>
               Private release
 
               <Radio name={this.formId('public')}
@@ -35,7 +35,7 @@ var NotaryFileInput = React.createClass({
                 onChange={this.props.onPublic} />
             </label>
 
-            <label className='on'>
+            <label>
               Public release
 
               <Radio name={this.formId('public')}
@@ -44,14 +44,14 @@ var NotaryFileInput = React.createClass({
             </label>
           </div>
 
-          <div className='uri'>
+          <div className={this.refName('uri')}>
             <legend>A URI at which to locate the file (optional)</legend>
 
             <Input value={this.props.uri}
               onChange={this.props.onUri} />
           </div>
 
-          <div className='secret'>
+          <div className={this.refName('secret')}>
             <legend>Your private key (required)</legend>
 
             <Input password value={this.props.secret}

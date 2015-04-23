@@ -24,13 +24,13 @@ var UserSettingsDropdown = React.createClass({
     ];
 
     var className = this.className();
-    if (this.state.hover) className += ' active';
+    if (this.state.hover) className += ' ' + this.stateName('active');
 
     return (
       <div className={className}
         onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
         
-        <div className='toggle'>
+        <div className={this.refName('toggle')}>
           <span>Olfox Jensen</span>
           <UserAvatar size='medium' />
         </div>

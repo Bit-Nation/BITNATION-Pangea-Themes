@@ -3,21 +3,21 @@
 .#{class-name(NotaryFileInput)} {
   padding: 1rem;
   text-align: center;
+}
 
-  > header {
-    > .fields {
-      @include display(flex);
+.#{ref-name(NotaryFileInput, fields)} {
+  @include display(flex);
 
-      > div {
-        @include flex(1);
-        background: #F3F3F3;
-        padding: 1rem;
-        margin: 0.5rem;
-      }
-    }
+  > div {
+    @include flex(1);
+    background: #F3F3F3;
+    padding: 1rem;
+    margin: 0.5rem;
   }
+}
 
-  &.drag-over {
+.#{class-name(NotaryFileInput)}.#{class-name(FileInput)} {
+  &.#{state-name(FileInput, dragOver)} {
     background: green;
   }
 }

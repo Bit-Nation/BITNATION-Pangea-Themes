@@ -10,12 +10,14 @@ var UserCover = React.createClass({
     return (
       <div className={this.className()} style={{ height: this.props.height }}>
         <div>
-          <span className='date'>
+          <span className={this.refName('date')}>
             march 31, 2015
           </span>
-          <div className='about'>
+          <div className={this.refName('about')}>
             <h2>Welcome to your <b>Bitnation</b></h2>
-            <span className='text'>{'The world\'s first doge centered form of governance. Heil Shiba!'}</span>
+            <span className={this.refName('text')}>
+              Your humble servant in this wretched world
+            </span>
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ var Icon = React.createClass({
   render: function () {
     var className = this.className();
     if (this.props.className) className += ' ' + this.props.className;
-    if (this.props.highlight) className += ' highlight';
+    if (this.props.highlight) className += ' ' + this.stateName('highlight');
 
     var set = this.props.set !== undefined ? this.props.set : 'fa';
     if (set == 'fa') {

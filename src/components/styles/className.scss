@@ -18,3 +18,11 @@
 @function class-name($text) {
   @return #{'bitn-'}#{hyphenate($text)}
 }
+
+@function state-name($class, $text) {
+  @return #{class-name($class)}#{'--state-'}#{hyphenate($text)}
+}
+
+@function ref-name($class, $text) {
+  @return #{class-name($class)}#{'--ref-'}#{hyphenate($text)}
+}

@@ -8,8 +8,8 @@ var UserAvatar = React.createClass({
   mixins: [ bitnMixin ],
   render: function () {
     var className = this.className();
-    if (this.props.size == 'medium') className += ' medium';
-    if (this.props.size == 'large') className += ' large';
+    if (this.props.size == 'medium') className += ' ' + this.stateName('medium');
+    if (this.props.size == 'large') className += ' ' + this.stateName('large');
 
     return (
       <div className={className}>

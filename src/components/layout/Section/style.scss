@@ -12,26 +12,26 @@
   > footer {
     padding: 0.25em;
   }
+}
 
-  &.has-header {
-    
-  }
+.#{state-name(Section, header)} {
+  
+}
 
-  &.has-body {
-    
-  }
+.#{state-name(Section, body)} {
+  
+}
 
-  &.has-footer {
-    
-  }
+.#{state-name(Section, footer)} {
+  
+}
 
-  &.flex {
-    margin: 1rem;
-  }
+.#{state-name(Section, flex)} {
+  margin: 0.25rem;
+}
 
-  @for $i from 0 to 10 {
-    &.flex-#{$i} {
-      @include flex($i);
-    }
+@for $i from 0 to 10 {
+  &.#{state-name(Section, flex)}-#{$i} {
+    @include flex($i);
   }
 }

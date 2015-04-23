@@ -8,7 +8,7 @@ var FileInput = React.createClass({
   mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
-    control: React.PropTypes.string,
+    trigger: React.PropTypes.string,
     footer: React.PropTypes.any,
     multiple: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
@@ -22,36 +22,40 @@ var FileInput = React.createClass({
   render: function () {
     var className = this.className();
     if (this.props.className) className += ' ' + this.props.className;
-    if (this.props.disabled) className += ' disabled';
-    if (this.state.dragOver) className += ' drag-over';
+    if (this.props.disabled) className += ' ' + this.stateName('disabled');
+    if (this.state.dragOver) className += ' ' + this.stateName('dragOver');
 
     return (
       <div className={className}
-        onClick={!this.props.control && this.onClick}
+        onClick={!this.props.trigger && this.onClick}
         onDragLeave={this.onDragLeave}
         onDragOver={this.onDragOver}
         onDrop={this.onChange}>
 
-        <input type='file' ref='input'
+        <input type='file' {...this.classRef('input')}
           multiple={this.props.multiple}
           disabled={this.props.disabled}
           onChange={this.onChange} />
 
         {this.props.children &&
-          <header>{this.props.children}</header>}
+          <div className={this.refName('body')}>
+            {this.props.children}
+          </div>}
 
-        {this.props.control &&
-          <div className='control' onClick={this.onClick}>
-            {this.props.control}
+        {this.props.trigger &&
+          <div className={this.refName('trigger')} onClick={this.onClick}>
+            {this.props.trigger}
           </div>}
 
         {this.props.footer &&
-          <footer>{this.props.footer}</footer>}
+          <footer className={this.refName('footer')}>
+            {this.props.footer}
+          </footer>}
       </div>
     );
   },
   onClick: function () {
-    this.refs.input.getDOMNode().click();
+    this.classRefs.input.getDOMNode().click();
   },
   onDragLeave: function () {
     this.setState({ dragOver: false });

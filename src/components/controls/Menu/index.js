@@ -1,6 +1,8 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
+// this is fat and should be split up
+
 var React = require('react');
 var bitnMixin = require('../../mixins/bitnMixin');
 var hoverMixin = require('../../mixins/hoverMixin');
@@ -17,6 +19,11 @@ var Menu = React.createClass({
     return {
       selected: this.props.selected
     };
+  },
+  componentWillReceiveProps: function (props) {
+    if (props.selected === this.props.selected ||
+        props.selected == null) return;
+    this.setState({ selected: props.selected });
   },
   render: function () {
     var items = [];
@@ -40,11 +47,6 @@ var Menu = React.createClass({
         </ul>
       </nav>
     );
-  },
-  componentWillReceiveProps: function (props) {
-    if (props.selected === this.props.selected ||
-        props.selected == null) return;
-    this.setState({ selected: props.selected });
   },
   onClick: function (index) {
     var current = this.state.selected === index;
@@ -71,8 +73,8 @@ var MenuItem = React.createClass({
     else if (this.props.icon) icon = this.props.icon;
     
     var className = 'pure-menu-item';
-    if (this.props.selected) className += ' selected';
-    if (this.props.items) className += ' has-children';
+    if (this.props.selected) className += ' ' + Menu.stateName('selected');
+    if (this.props.items) className += ' ' + Menu.stateName('hasChildren');
 
     return (
       <li className={className}>
@@ -87,7 +89,10 @@ var MenuItem = React.createClass({
           {icon &&
             <Icon highlight={this.state.hover} {...icon} />}
         </a>
-        {this.props.items && <Menu items={this.props.items} />}
+
+        {this.props.items &&
+          <Menu items={this.props.items}
+            selected={this.props.selected ? null : false}/>}
       </li>
     );
   },

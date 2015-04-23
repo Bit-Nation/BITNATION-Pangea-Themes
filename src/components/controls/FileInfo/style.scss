@@ -6,10 +6,27 @@
 
   > span {
     display: table-cell;
-
-    // shows .human-size on default
-    &.size {
-      display: none;
-    }
   }
 }
+
+// refs
+
+.#{ref-name(FileInfo, name)} {}
+.#{ref-name(FileInfo, type)} {}
+.#{ref-name(FileInfo, humanSize)} {}
+
+// default to only humanSize
+.#{ref-name(FileInfo, size)} {
+  display: none;
+}
+
+.#{ref-name(FileInfo, lastModified)} {}
+.#{ref-name(FileInfo, relativePath)} {}
+
+// states
+
+.#{state-name(FileInfo, hasName)} {}
+.#{state-name(FileInfo, hasType)} {}
+.#{state-name(FileInfo, hasSize)} {}
+.#{state-name(FileInfo, hasLastModified)} {}
+.#{state-name(FileInfo, hasRelativePath)} {}

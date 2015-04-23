@@ -9,11 +9,11 @@ var SiteNavigation = React.createClass({
   mixins: [ bitnMixin ],
   render: function () {
     var className = this.className();
-    if (this.props.minimized) className += ' minimized';
+    if (this.props.minimized) className += ' ' + this.stateName('minimized');
 
     return (
       <nav className={className}>
-        <div className='logo' />
+        <div className={this.refName('logo')} />
 
         <Menu
           items={this.props.menuItems}

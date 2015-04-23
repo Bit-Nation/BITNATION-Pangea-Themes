@@ -17,19 +17,17 @@ var NotaryTxVerifier = React.createClass({
     };
   },
   render: function() {
-    var statusClassName = 'status';
-    if (this.state.verified === true) statusClassName += ' valid';
-    if (this.state.verified === false) statusClassName += ' invalid';
-
     var className = this.className();
-    if (this.state.verifying) className += ' verifying';
+    if (this.state.verifying) className += ' ' + this.stateName('verifying');
+    if (this.state.verified === true) className += ' ' + this.stateName('valid');
+    if (this.state.verified === false) className += ' ' + this.stateName('invalid');
 
     return (
       <form className={className}
         onSubmit={this.onSubmit}>
         <legend>Verify a notary transaction hash.</legend>
 
-        <div className={statusClassName}>
+        <div className={this.refName('status')}>
           {this.state.verified === true && 'Valid'}
           {this.state.verified === false && 'Invalid'}
         </div>

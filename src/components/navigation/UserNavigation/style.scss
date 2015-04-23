@@ -43,31 +43,31 @@ $cover-shortcut-hover-color: bitn-color(mercury);
     .#{class-name(UserSettingsDropdown)} {
       float: right;
       margin: 0 $base-padding;
-      
-      > .toggle {
-        height: $bar-height;
-        line-height: $bar-height * 0.95;
+    }
+
+    .#{ref-name(UserSettingsDropdown, toggle)} {
+      height: $bar-height;
+      line-height: $bar-height * 0.95;
+    }
+  }
+}
+
+.#{state-name(UserNavigation, cover)} {
+  height: $cover-height;
+
+  > nav {
+    background-color: $cover-background-color;
+
+    .#{class-name(UserShortcuts)} a {
+      color: $cover-shortcut-color;
+
+      &:hover {
+        color: $cover-shortcut-hover-color;
       }
     }
   }
 
-  &.cover {
-    height: $cover-height;
-
-    > nav {
-      background-color: $cover-background-color;
-
-      .#{class-name(UserShortcuts)} a {
-        color: $cover-shortcut-color;
-
-        &:hover {
-          color: $cover-shortcut-hover-color;
-        }
-      }
-    }
-
-    > .#{class-name(UserCover)} {
-      @include flex(1);
-    }
+  > .#{class-name(UserCover)} {
+    @include flex(1);
   }
 }

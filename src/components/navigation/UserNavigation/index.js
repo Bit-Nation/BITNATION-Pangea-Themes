@@ -11,7 +11,7 @@ var UserNavigation = React.createClass({
   mixins: [ bitnMixin ],
   render: function () {
     var className = this.className();
-    if (this.props.cover) className += ' cover';
+    if (this.props.cover) className += ' ' + this.stateName('cover');
 
     return (
       <div className={className}>
