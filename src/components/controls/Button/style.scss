@@ -1,13 +1,26 @@
 @import '../../component';
 
 .#{class-name(Button)} {
-  padding: 0.5rem 1rem;
   max-width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  background-color: #333;
+  color: #eee;
+
+  &:hover, &:focus {
+    background-image: none;
+    background-color: #67ABF7;
+    color: #fff;
+  }
 }
 
-.#{state-name(Button, auto)} {
-  width: 100%;
-  height: 100%;
+.#{state-name(Button, file)} {
+  background-color: #AED67A;
+  color: white;
+
+  &:hover, &:focus {
+    background-color: darken(#AED67A, 20%);
+  }
 }
 
 .#{state-name(Button, small)} {
@@ -16,11 +29,19 @@
 }
 
 .#{state-name(Button, large)} {
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 3rem;
   font-size: 120%;
 }
 
-.#{state-name(Button, file)} {
-  background-color: #AED67A;
-  color: white;
+.#{state-name(Button, auto)} {
+  width: 100%;
+  height: 100%;
+}
+
+.#{state-name(Button, autoWidth)} {
+  width: 100%;
+}
+
+.#{state-name(Button, autoHeight)} {
+  height: 100%;
 }

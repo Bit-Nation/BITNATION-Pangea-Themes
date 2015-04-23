@@ -8,7 +8,10 @@
 }
 
 .#{class-name(PageRow)}:first-child {
-  
+
+  &:last-child {
+    border-bottom: 0;    
+  }
 }
 
 .#{class-name(PageRow)}:nth-child(2) {

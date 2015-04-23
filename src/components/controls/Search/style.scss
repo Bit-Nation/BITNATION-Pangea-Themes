@@ -26,6 +26,7 @@
     height: 100%;
     line-height: rem-calc(40) * 0.9;
     padding: 0 1rem;
+    border: 0;
   }
 
   > button {
@@ -34,5 +35,11 @@
     height: 100%;
     background: transparent;
     border: 0;
+  }
+}
+
+.#{state-name(Search, focus)} {
+  &, & > div {
+    border-color: #67ABF7;
   }
 }

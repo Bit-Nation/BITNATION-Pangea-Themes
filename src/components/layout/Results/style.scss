@@ -1,6 +1,6 @@
 @import '../../component';
 
-.#{class-name(Results)} {
+.#{class-name(Results)}.#{class-name(Section)} {
   padding: 1rem;
   background: white;
   border: 1px solid #bbb;

@@ -3,11 +3,12 @@ require('./style.scss');
 
 var React = require('react');
 var bitnMixin = require('../../mixins/bitnMixin');
+var focusMixin = require('../../mixins/focusMixin');
 var Input = require('../../controls/Input');
 var Icon = require('../../controls/Icon');
 
 var Search = React.createClass({
-  mixins: [ bitnMixin ],
+  mixins: [ bitnMixin, focusMixin ],
   propTypes: {
     className: React.PropTypes.string,
     value: React.PropTypes.any,
@@ -26,10 +27,14 @@ var Search = React.createClass({
     var button = this.props.button;
     if (button == null) button = <Icon type='search' />;
 
+    var className = this.classNameWithProp();
+    if (this.state.focus) className += ' ' + this.stateName('focus');
+
     return (
-      <form className={this.classNameWithProp()} onSubmit={this.onSubmit}>
+      <form className={className} onSubmit={this.onSubmit}>
         <div>
-          <Input value={this.state.value} onChange={this.onChange} />
+          <Input value={this.state.value} onChange={this.onChange}
+            onFocus={this.onFocus} onBlur={this.onBlur} />
         </div>
 
         {this.props.button !== false &&

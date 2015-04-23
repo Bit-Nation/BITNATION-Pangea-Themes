@@ -13,7 +13,12 @@ var propTypes = {
 };
 
 // states are binary attributes that can sometimes be combined
-var states = ['auto', 'small', 'large', 'file'];
+var states = [
+  'file',
+  'small', 'large',
+  'auto', 'autoWidth', 'autoHeight'
+];
+
 for (var i in states) propTypes[states[i]] = React.PropTypes.bool;
 
 var Button = React.createClass({

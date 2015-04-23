@@ -4,10 +4,12 @@ module.exports = {
       focus: false
     }
   },
-  onFocus: function () {
+  onFocus: function (event) {
     this.setState({ focus: true });
+    if (this.props.onFocus) this.props.onFocus(event);
   },
-  onBlur: function () {
+  onBlur: function (event) {
     this.setState({ focus: false });
+    if (this.props.onBlur) this.props.onBlur(event);
   }
 };

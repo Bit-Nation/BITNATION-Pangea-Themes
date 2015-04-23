@@ -8,8 +8,17 @@ var SiteNavigation = require('../../navigation/SiteNavigation');
 var UserNavigation = require('../../navigation/UserNavigation');
 var NotaryPage = require('../../notary/NotaryPage');
 
+var PageRow = require('../../layout/PageRow');
+var controlSectionExample = require('../../layout/ControlSection/example');
+
 var App = React.createClass({
   mixins: [ bitnMixin ],
+  getInitialState: function () {
+    return {
+      expanded: false,
+      page: this.props.page || 'notary'
+    };
+  },
   render: function () {
     var actions = [
       {
@@ -44,15 +53,14 @@ var App = React.createClass({
             cover={this.props.cover && { height: 300 }} />
           <main>
             {this.state.page == 'notary' && <NotaryPage />}
+            {this.state.page == 'mail' &&
+              <PageRow>
+                {controlSectionExample()}
+              </PageRow>}
           </main>
         </div>
       </div>
     );
-  },
-  getInitialState: function () {
-    return {
-      expanded: false
-    };
   },
   onAction: function (type) {
     if (type == 'siteNavigation')
