@@ -37,12 +37,13 @@ var App = React.createClass({
     return (
       <div className={this.className()}>
         <SiteNavigation {...this.props.siteNavigation}
-          minimized={this.state.expanded} onMenuSelect={this.minimize} />
+          minimized={this.state.expanded}
+          onMenuSelect={this.onMenuSelect} />
         <div>
           <UserNavigation onAction={this.onAction}
-          cover={this.props.cover && { height: 300 }} />
+            cover={this.props.cover && { height: 300 }} />
           <main>
-            <NotaryPage />
+            {this.state.page == 'notary' && <NotaryPage />}
           </main>
         </div>
       </div>
@@ -60,8 +61,8 @@ var App = React.createClass({
   expand: function () {
     this.setState({ expanded: true });
   },
-  minimize: function () {
-    this.setState({ expanded: false });    
+  onMenuSelect: function (value) {
+    this.setState({ page: value });    
   }
 });
 

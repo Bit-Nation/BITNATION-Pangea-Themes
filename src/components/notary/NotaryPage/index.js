@@ -31,7 +31,7 @@ var NotaryPage = React.createClass({
                 onSecret={this.onSecret} onFiles={this.onFiles} />
             </Section>
 
-            <Section flex={1}>
+            <Section flex={1} title='Get started'>
               <NotaryTxVerifier />
             </Section>
           </PageRow>
@@ -46,7 +46,10 @@ var NotaryPage = React.createClass({
             </Section>
 
             <Section flex={1}>
-              Woohoos
+              <img src='/images/logo.png' style={{
+                width: '100%',
+                WebkitFilter: 'invert(0.7)'
+              }} />
             </Section>
           </PageRow>
 

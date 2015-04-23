@@ -1,5 +1,5 @@
 module.exports = [
-  { content: 'Dashboard', icon: { set: 'xbnx', type: 'dashboard' }, href: 'test' },
+  { content: 'Notary', value: 'notary', icon: { set: 'xbnx', type: 'dashboard' } },
   { content: 'DApp Library', icon: { set: 'xbnx', type: 'dapp-library' }, href: 'test' },
   { content: 'My DApps', icon: { set: 'xbnx', type: 'my-dapps' }, href: 'yo' },
   { content: 'Utilities', icon: { set: 'xbnx', type: 'utilities' }, href: 'yo', items: [
