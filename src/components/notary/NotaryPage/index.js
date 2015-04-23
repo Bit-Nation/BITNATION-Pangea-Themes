@@ -3,27 +3,40 @@ require('./style.scss');
 
 var React = require('react');
 var bitnMixin = require('../../mixins/bitnMixin');
-
-var Table = require('../../controls/Table');
 var Search = require('../../controls/Search');
-
-var NotaryUpload = require('../../notary/NotaryUpload');
+var Table = require('../../controls/Table');
+var NotaryFileInput = require('../../notary/NotaryFileInput');
 var NotaryTxVerifier = require('../../notary/NotaryTxVerifier');
+
+var PageHeader = require('../../layout/PageHeader');
+var PageRow = require('../../layout/PageRow');
+var Section = require('../../layout/Section');
+
+var Bitnation = require('../../../bitnation/bitnation.pangea');
 
 var NotaryPage = React.createClass({
   mixins: [ bitnMixin ],
   render: function() {
     return (
       <div className={this.className()}>
-        <h2>Public notary</h2>
+        <PageHeader title='Public notary' />
 
-        <div className='row'>
-          <NotaryUpload />
-          <NotaryTxVerifier />
-        </div>
+        <PageRow>
+          <Section flex={3}>
+            <NotaryFileInput
+              public={this.state.public} uri={this.state.uri}
+              secret={this.state.secret}
+              onPublic={this.onPublic} onUri={this.onUri} 
+              onSecret={this.onSecret} onFiles={this.onFiles} />
+          </Section>
 
-        <div className='row'>
-          <div>
+          <Section flex={1}>
+            <NotaryTxVerifier />
+          </Section>
+        </PageRow>
+
+        <PageRow>
+          <Section flex={3}>
             <h3>Your latest registered documents:</h3>
 
             <Table head={['Document digest', 'Timestamp']}
@@ -31,15 +44,15 @@ var NotaryPage = React.createClass({
                 ['34444GDE6M912323', '232F047E6M932'],
                 ['F04GDE6M9', '23F04GDE6M9232']
               ]} />
-          </div>
+          </Section>
 
-          <div>
+          <Section flex={1}>
             Woohoos
-          </div>
-        </div>
+          </Section>
+        </PageRow>
 
-        <div className='row'>
-          <div>
+        <PageRow>
+          <Section flex={1}>
             <h3>Search for public documents</h3>
 
             <Search />
@@ -49,8 +62,9 @@ var NotaryPage = React.createClass({
                 ['34444GDE6M912323', '232F047E6M932'],
                 ['F04GDE6M9', '23F04GDE6M9232']
               ]} />
-          </div>
-          <div>
+          </Section>
+
+          <Section flex={1}>
             <h3>Template library</h3>
 
             <Search />
@@ -60,10 +74,44 @@ var NotaryPage = React.createClass({
                 ['34444GDE6M912323', '232F047E6M932'],
                 ['F04GDE6M9', '23F04GDE6M9232']
               ]} />
-          </div>
-        </div>
+          </Section>
+        </PageRow>
       </div>
     );
+  },
+  onPublic: function (value) {
+    this.setState({ public: value });
+  },
+  onUri: function (value) {
+    this.setState({ uri: value });
+  },
+  onSecret: function (value) {
+    this.setState({ secret: value });
+  },
+  onFiles: function (files) {
+    this.issueNotary(files[0]);
+  },
+  issueNotary: function (file) {
+
+    // @todo: Encrypted (private) notaries
+
+    var ui = new Bitnation.pangea.UI();
+
+    ui.notarizeDocument(file, this.state.secret, this.state.uri)
+      .done(function (result) {
+
+        console.log(result);
+        alert('Success: Transaction id is ' + result.txId);
+
+      })
+      .fail(function (err) {
+
+        alert('An error occurred. Check the logs.');
+        console.error(err);
+
+      });
+
+    this.setState({ secret: '' });
   }
 });
 

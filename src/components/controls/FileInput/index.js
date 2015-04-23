@@ -14,11 +14,16 @@ var FileInput = React.createClass({
     disabled: React.PropTypes.bool,
     onChange: React.PropTypes.func
   },
+  getInitialState: function() {
+    return {
+      dragOver: false
+    };
+  },
   render: function () {
     var className = this.className();
     if (this.props.className) className += ' ' + this.props.className;
     if (this.props.disabled) className += ' disabled';
-    if (this.state.dragHover) className += ' drag-hover';
+    if (this.state.dragOver) className += ' drag-over';
 
     return (
       <div className={className}
@@ -45,21 +50,16 @@ var FileInput = React.createClass({
       </div>
     );
   },
-  getInitialState: function() {
-    return {
-      dragHover: false
-    };
-  },
   onClick: function () {
     this.refs.input.getDOMNode().click();
   },
   onDragLeave: function () {
-    this.setState({ active: false });
+    this.setState({ dragOver: false });
   },
   onDragOver: function (event) {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'copy';
-    this.setState({ active: true });
+    this.setState({ dragOver: true });
   },
   onChange: function (event) {
     event.preventDefault();
@@ -68,7 +68,7 @@ var FileInput = React.createClass({
     files = [].slice.call(files, 0);
     if (this.props.onChange) this.props.onChange(files);
 
-    this.setState({ active: false });
+    this.setState({ dragOver: false });
   }
 });
 

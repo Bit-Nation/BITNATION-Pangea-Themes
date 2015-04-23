@@ -1,6 +1,6 @@
 @import '../../component';
 
-.#{class-name(NotaryUpload)} {
+.#{class-name(NotaryFileInput)} {
   padding: 1rem;
   text-align: center;
 
@@ -17,7 +17,7 @@
     }
   }
 
-  &.active {
+  &.drag-over {
     background: green;
   }
 }

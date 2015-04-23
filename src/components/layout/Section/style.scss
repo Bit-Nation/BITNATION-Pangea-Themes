@@ -1,0 +1,37 @@
+@import '../../component';
+
+.#{class-name(Section)} {
+  > header {
+    padding: 0.25rem;
+  }
+
+  > div {
+    padding: 0.5rem;
+  }
+
+  > footer {
+    padding: 0.25em;
+  }
+
+  &.has-header {
+    
+  }
+
+  &.has-body {
+    
+  }
+
+  &.has-footer {
+    
+  }
+
+  &.flex {
+    margin: 1rem;
+  }
+
+  @for $i from 0 to 10 {
+    &.flex-#{$i} {
+      @include flex($i);
+    }
+  }
+}

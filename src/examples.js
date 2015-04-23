@@ -7,6 +7,6 @@ require('./components/controls/Icon/example');
 require('./components/controls/Table/example');
 require('./components/controls/Paginator/example');
 require('./components/controls/FileInfo/example');
-require('./components/controls/FileUpload/example');
+require('./components/controls/FileInput/example');
 require('./components/navigation/SiteNavigation/example');
 require('./components/navigation/UserNavigation/example');
