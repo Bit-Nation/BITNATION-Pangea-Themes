@@ -13,10 +13,34 @@
     background: #F3F3F3;
     padding: 1rem;
     margin: 0.5rem;
+
+    legend {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0;
+      color: #aaa;
+    }
+
+    label {
+      margin: 0 0.25rem;
+    }
+
+    .#{class-name(Radio)} {
+      margin-left: 0.25rem;
+    }
   }
 }
 
 .#{class-name(NotaryFileInput)}.#{class-name(FileInput)} {
+  .#{ref-name(FileInput, trigger)} {
+    display: inline-block;
+    margin: 1.5rem 0;
+    padding: 0.5rem 2rem;
+    background-color: #AED67A;
+    color: white;
+    font-size: 125%;
+  }
+
   &.#{state-name(FileInput, dragOver)} {
     background: green;
   }

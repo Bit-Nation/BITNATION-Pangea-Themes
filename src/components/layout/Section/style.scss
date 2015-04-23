@@ -2,15 +2,15 @@
 
 .#{class-name(Section)} {
   > header {
-    padding: 0.25rem;
+    padding: 0.5rem 0.25rem;
   }
 
   > div {
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
   }
 
   > footer {
-    padding: 0.25em;
+    padding: 0.5rem 0.25em;
   }
 }
 

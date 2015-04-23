@@ -3,5 +3,18 @@
 .#{class-name(PageRow)} {
   @include display(flex);
   width: 100%;
-  border-bottom: 1px solid #aaa;
+  padding: 0 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.#{class-name(PageRow)}:first-child {
+  
+}
+
+.#{class-name(PageRow)}:nth-child(2) {
+  background-color: #F3F3F3;
+}
+
+.#{class-name(PageRow)}:nth-child(3) {
+  background-color: #FFF;
 }

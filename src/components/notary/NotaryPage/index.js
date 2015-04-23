@@ -21,61 +21,57 @@ var NotaryPage = React.createClass({
       <div className={this.className()}>
         <PageHeader title='Public notary' />
 
-        <PageRow>
-          <Section flex={3}>
-            <NotaryFileInput
-              public={this.state.public} uri={this.state.uri}
-              secret={this.state.secret}
-              onPublic={this.onPublic} onUri={this.onUri} 
-              onSecret={this.onSecret} onFiles={this.onFiles} />
-          </Section>
+        <div>
+          <PageRow>
+            <Section flex={3}>
+              <NotaryFileInput
+                public={this.state.public} uri={this.state.uri}
+                secret={this.state.secret}
+                onPublic={this.onPublic} onUri={this.onUri} 
+                onSecret={this.onSecret} onFiles={this.onFiles} />
+            </Section>
 
-          <Section flex={1}>
-            <NotaryTxVerifier />
-          </Section>
-        </PageRow>
+            <Section flex={1}>
+              <NotaryTxVerifier />
+            </Section>
+          </PageRow>
 
-        <PageRow>
-          <Section flex={3}>
-            <h3>Your latest registered documents:</h3>
+          <PageRow>
+            <Section flex={3} title='Your latest registered documents'>
+              <Table head={['Document digest', 'Timestamp']}
+                body={[
+                  ['34444GDE6M912323', '232F047E6M932'],
+                  ['F04GDE6M9', '23F04GDE6M9232']
+                ]} />
+            </Section>
 
-            <Table head={['Document digest', 'Timestamp']}
-              body={[
-                ['34444GDE6M912323', '232F047E6M932'],
-                ['F04GDE6M9', '23F04GDE6M9232']
-              ]} />
-          </Section>
+            <Section flex={1}>
+              Woohoos
+            </Section>
+          </PageRow>
 
-          <Section flex={1}>
-            Woohoos
-          </Section>
-        </PageRow>
+          <PageRow>
+            <Section flex={1} title='Search for public documents'>
+              <Search />
 
-        <PageRow>
-          <Section flex={1}>
-            <h3>Search for public documents</h3>
+              <Table head={['Document digest', 'Timestamp']}
+                body={[
+                  ['34444GDE6M912323', '232F047E6M932'],
+                  ['F04GDE6M9', '23F04GDE6M9232']
+                ]} />
+            </Section>
 
-            <Search />
+            <Section flex={1} title='Template library'>
+              <Search />
 
-            <Table head={['Document digest', 'Timestamp']}
-              body={[
-                ['34444GDE6M912323', '232F047E6M932'],
-                ['F04GDE6M9', '23F04GDE6M9232']
-              ]} />
-          </Section>
-
-          <Section flex={1}>
-            <h3>Template library</h3>
-
-            <Search />
-
-            <Table head={['Document digest', 'Timestamp']}
-              body={[
-                ['34444GDE6M912323', '232F047E6M932'],
-                ['F04GDE6M9', '23F04GDE6M9232']
-              ]} />
-          </Section>
-        </PageRow>
+              <Table head={['Document digest', 'Timestamp']}
+                body={[
+                  ['34444GDE6M912323', '232F047E6M932'],
+                  ['F04GDE6M9', '23F04GDE6M9232']
+                ]} />
+            </Section>
+          </PageRow>
+        </div>
       </div>
     );
   },

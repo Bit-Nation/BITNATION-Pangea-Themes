@@ -1,5 +1,9 @@
 @import '../../component';
 
 .#{class-name(PageHeader)} {
-  padding: 1rem;
+  padding: 0.5rem 2rem;
+
+  > h1 {
+
+  }
 }

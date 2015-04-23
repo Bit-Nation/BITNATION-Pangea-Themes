@@ -2,4 +2,21 @@
 
 .#{class-name(Table)} {
   width: 100%;
+  border: 0;
+
+  thead {
+    background-color: transparent;
+  }
+
+  td, th {
+    padding: 0.75rem 1rem;
+    border-left: 0;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  th {
+    font-weight: normal;
+    font-size: 105%;
+    color: #666;
+  }
 }
