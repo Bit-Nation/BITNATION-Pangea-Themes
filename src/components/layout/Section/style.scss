@@ -1,12 +1,16 @@
 @import '../../component';
 
 .#{class-name(Section)} {
-  > header, > footer {
-    padding: 0.5rem 0.5rem;
+  > header {
+    margin-bottom: 0.25rem;
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+    }
   }
 
-  > div {
-    padding: 1rem 0.5rem;
+  > footer {
+    margin-top: 0.25rem;
   }
 }
 
@@ -23,7 +27,7 @@
 }
 
 .#{state-name(Section, flex)} {
-  margin: 0.25rem;
+
 }
 
 @for $i from 0 to 10 {

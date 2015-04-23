@@ -3,6 +3,7 @@
 .#{class-name(Button)} {
   max-width: 100%;
   padding: 0.5rem 1rem;
+  border: 1px solid transparent;
   border-radius: 0;
   background-color: #333;
   color: #eee;
@@ -11,6 +12,11 @@
     background-image: none;
     background-color: #67ABF7;
     color: #fff;
+  }
+
+  &:active {
+    box-shadow: none;
+    border-color: rgba(0,0,0,0.4);
   }
 }
 

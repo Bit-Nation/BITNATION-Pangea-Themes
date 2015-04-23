@@ -3,15 +3,22 @@
 .#{class-name(PageRow)} {
   @include display(flex);
   width: 100%;
-  padding: 0 2rem;
+  padding: 1.5rem 3rem;
   border-bottom: 1px solid #eee;
+
+  > .#{state-name(Section, flex)} {
+    margin-right: 2rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
-.#{class-name(PageRow)}:first-child {
+.#{class-name(PageRow)}:first-child {}
 
-  &:last-child {
-    border-bottom: 0;    
-  }
+.#{class-name(PageRow)}:last-child {
+  border-bottom: 0;    
 }
 
 .#{class-name(PageRow)}:nth-child(2) {

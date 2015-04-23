@@ -50,6 +50,7 @@ var NotaryPage = React.createClass({
 
             <PageSection flex={1}>
               <img src='/images/logo.png' style={{
+                display: 'block',
                 width: '100%',
                 WebkitFilter: 'invert(0.7)'
               }} />

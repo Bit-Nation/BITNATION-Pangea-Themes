@@ -1,7 +1,12 @@
 @import '../../component';
 
 .#{class-name(Results)}.#{class-name(Section)} {
-  padding: 1rem;
+  padding: 1.5rem;
   background: white;
-  border: 1px solid #bbb;
+  border: 1px solid #ccc;
+
+  > header {
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 0.5rem;
+  }
 }
