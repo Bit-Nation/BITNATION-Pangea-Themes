@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var FileUpload = require('.');
+var FileInput = require('.');
 
 module.exports = function (params) {
-  return <FileUpload />;
+  return <FileInput>Upload a file</FileInput>;
 };

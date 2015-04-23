@@ -1,8 +1,7 @@
 @import '../../component';
 
-.#{class-name(FileUpload)} {
+.#{class-name(FileInput)} {
   display: inline-block;
-  position: relative;
 
   > input {
     display: none;

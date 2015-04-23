@@ -4,12 +4,12 @@ require('./style.scss');
 var React = require('react');
 var bitnMixin = require('../../mixins/bitnMixin');
 
-var FileUpload = React.createClass({
+var FileInput = React.createClass({
   mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
-    footer: React.PropTypes.any,
     control: React.PropTypes.string,
+    footer: React.PropTypes.any,
     multiple: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
     onChange: React.PropTypes.func
@@ -17,11 +17,8 @@ var FileUpload = React.createClass({
   render: function () {
     var className = this.className();
     if (this.props.className) className += ' ' + this.props.className;
-    if (!this.props.control) className += ' hide-control';
-    if (this.state.active) className += ' active';
-
-    className += ' count-' + this.state.files.length;
-    className += ' ' + (this.state.files.length == 0 ? 'empty' : 'filled');
+    if (this.props.disabled) className += ' disabled';
+    if (this.state.dragHover) className += ' drag-hover';
 
     return (
       <div className={className}
@@ -50,8 +47,7 @@ var FileUpload = React.createClass({
   },
   getInitialState: function() {
     return {
-      active: false,
-      files: []
+      dragHover: false
     };
   },
   onClick: function () {
@@ -63,7 +59,6 @@ var FileUpload = React.createClass({
   onDragOver: function (event) {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'copy';
-
     this.setState({ active: true });
   },
   onChange: function (event) {
@@ -71,15 +66,10 @@ var FileUpload = React.createClass({
 
     var files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
     files = [].slice.call(files, 0);
+    if (this.props.onChange) this.props.onChange(files);
 
-    this.setState({
-      active: false,
-      files: files
-    });
-
-    if (!this.props.onChange) return;
-    this.props.onChange(files);
+    this.setState({ active: false });
   }
 });
 
-module.exports = FileUpload;
+module.exports = FileInput;
