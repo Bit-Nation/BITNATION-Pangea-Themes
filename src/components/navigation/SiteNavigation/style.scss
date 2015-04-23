@@ -123,6 +123,11 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
 
   // child menu
   > .#{class-name(Menu)} .#{class-name(Menu)} {
+    display: block;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
     background-color: $hover-background-color;
 
     @include transition(
@@ -138,17 +143,6 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
         background-color: $highlight-color;
       }
     }
-  }
-}
-
-// hide child menus
-.#{class-name(SiteNavigation)}, .#{state-name(SiteNavigation, minimized)} {
-  > .#{class-name(Menu)} .#{class-name(Menu)} {
-    display: block;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
   }
 }
 
@@ -178,6 +172,15 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
         > i {
           margin: 0 $minimized-padding;
         }
+      }
+
+      // hide selected child menus
+      &.#{state-name(Menu, selected)} .#{class-name(Menu)} {
+        display: block;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
       }
     }
   }

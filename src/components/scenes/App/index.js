@@ -58,11 +58,8 @@ var App = React.createClass({
     if (type == 'siteNavigation')
       this.setState({ expanded: !this.state.expanded });
   },
-  expand: function () {
-    this.setState({ expanded: true });
-  },
   onMenuSelect: function (value) {
-    this.setState({ page: value });    
+    this.setState({ page: value, expanded: false });    
   }
 });
 
