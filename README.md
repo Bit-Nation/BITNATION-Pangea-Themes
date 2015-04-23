@@ -11,7 +11,7 @@ Bitnation Pangea's UI is built using
 
   * [React](https://facebook.github.io/react/)
   * [Bourbon](http://bourbon.io/)
-  * [Zurb Foundation](http://foundation.zurb.com/)
+  * [Pure](http://purecss.io/)
 
 ## Foundation docs
 
@@ -26,6 +26,6 @@ The easiest way to get started with Foundation + Compass.
   * Clone repo
   * Run `npm install`
   * Run `gulp`
-  * Go to http://localhost:8080/webpack-dev-server/?example=scenes/App 
+  * Go to http://localhost:8080/webpack-dev-server/?example=scenes/App
  
 Project should reload when you change files. If any problems occur simply rerun `gulp`.

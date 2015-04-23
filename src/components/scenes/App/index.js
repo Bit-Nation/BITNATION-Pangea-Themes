@@ -6,10 +6,8 @@ var bitnMixin = require('../../mixins/bitnMixin');
 
 var SiteNavigation = require('../../navigation/SiteNavigation');
 var UserNavigation = require('../../navigation/UserNavigation');
-var NotaryPage = require('../../notary/NotaryPage');
-
-var PageRow = require('../../layout/PageRow');
-var controlSectionExample = require('../../layout/ControlSection/example');
+var NotaryPage = require('../../pages/NotaryPage');
+var MailPage = require('../../pages/MailPage');
 
 var App = React.createClass({
   mixins: [ bitnMixin ],
@@ -53,10 +51,7 @@ var App = React.createClass({
             cover={this.props.cover && { height: 300 }} />
           <main>
             {this.state.page == 'notary' && <NotaryPage />}
-            {this.state.page == 'mail' &&
-              <PageRow>
-                {controlSectionExample()}
-              </PageRow>}
+            {this.state.page == 'mail' && <MailPage />}
           </main>
         </div>
       </div>

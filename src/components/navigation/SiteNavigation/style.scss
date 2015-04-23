@@ -30,11 +30,13 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
   width: $width;
   background-color: $background-color;
   @include transition(width $minimize-transition);
+  @include clearfix;
 }
 
 .#{ref-name(SiteNavigation, logo)} {
   background: $highlight-color url($logo-image) no-repeat center;
   background-size: $logo-size;
+  width: 100%;
   height: $width;
 
   @include transition(
@@ -121,13 +123,14 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
     }
   }
 
-  // child menu
+  // child menus
   > .#{class-name(Menu)} .#{class-name(Menu)} {
     display: block;
     height: 0;
     margin: 0;
     padding: 0;
     opacity: 0;
+    overflow-y: hidden;
     background-color: $hover-background-color;
 
     @include transition(
