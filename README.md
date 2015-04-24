@@ -13,10 +13,6 @@ Bitnation Pangea's UI is built using
   * [Bourbon](http://bourbon.io/)
   * [Pure](http://purecss.io/)
 
-## Foundation docs
-
-The easiest way to get started with Foundation + Compass.
-
 ## Requirements
 
   * [Node.js](http://nodejs.org)
