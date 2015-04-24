@@ -8,8 +8,8 @@ $shortcut-color: bitn-color(mercury);
 $shortcut-hover-color: bitn-color(dove);
 
 $cover-height: $bitn-user-cover-height;
-$cover-background-color: rgba(0, 0, 0, 0.8);
-$cover-shortcut-color: bitn-color(dove);
+$cover-background-color: rgba(black, 0.65);
+$cover-shortcut-color: bitn-color(gray);
 $cover-shortcut-hover-color: bitn-color(mercury);
 
 .#{class-name(UserNavigation)} {
@@ -19,6 +19,7 @@ $cover-shortcut-hover-color: bitn-color(mercury);
 
   > nav {
     position: absolute;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;

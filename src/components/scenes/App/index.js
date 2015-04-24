@@ -47,8 +47,7 @@ var App = React.createClass({
           minimized={this.state.expanded}
           onMenuSelect={this.onMenuSelect} />
         <div>
-          <UserNavigation onAction={this.onAction}
-            cover={this.props.cover && { height: 300 }} />
+          <UserNavigation onAction={this.onAction} cover={this.props.cover} />
           <main>
             {this.state.page == 'notary' && <NotaryPage />}
             {this.state.page == 'mail' && <MailPage />}

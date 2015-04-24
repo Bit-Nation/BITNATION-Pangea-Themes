@@ -1,37 +1,86 @@
 @import '../../component';
 
+$color: #f2f2f2;
+$shadow-height: 20%;
+
+$about-heading-color: white;
+// must be absolute
+$about-heading-font-size: rem-calc(44);
+$about-heading-line-height: rem-calc(50);
+
+// this should approximate the distance from the about headings
+// line start to character baseline
+$text-baseline:
+  ($about-heading-line-height + ($about-heading-font-size * 0.8)) / 2;
+
+$text-font-size: 105%;
+$text-letter-spacing: 0.03rem;
+
 .#{class-name(UserCover)} {
   @include display(flex);
-  padding: 3rem;
+  position: relative;
+  padding: 2.5rem 3.5rem;
   background: url(/images/cover-img.jpg) no-repeat center;
   background-size: cover;
-  color: white;
+  color: $color;
 
   > div {
     @include flex(1);
     @include align-self(flex-end);
+
+    position: relative;
+    z-index: 1;
   }
+
+  &:after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: $shadow-height;
+    @include linear-gradient(transparent, rgba(black, 0.8));
+    content: ' ';
+  }  
 }
 
 .#{ref-name(UserCover, date)} {
-  background: blue;
-  margin: 2rem 0;
+  display: inline-block;
+  background: rgba(#1181AF, 0.8);
+  margin-bottom: 1rem;
   padding: 0.5rem;
 }
 
 .#{ref-name(UserCover, about)} {
-  margin-top: 1rem;
-  text-shadow: -1px 1px 6px rgba(0, 0, 0, 0.6);
+  position: relative;
+  text-shadow: 0 0 5px black;
 
   > h2 {
     display: inline-block;
-    margin: 0.25rem 0;
-    font-size: 200%;
+    margin: 0;
+    line-height: $about-heading-line-height;
+    font-size: $about-heading-font-size;
+    font-weight: 200;
+    color: $about-heading-color;
+
+    b, strong {
+      font-weight: 400;
+    }
   }
 }
 
 .#{ref-name(UserCover, text)} {
+  float: right;
+  font-size: $text-font-size;
+  letter-spacing: $text-letter-spacing;
+
+  > span {
+    vertical-align: bottom;
+  }
+
   &:before {
-    content: ' - ';
+    display: inline-block;
+    vertical-align: top;
+    height: $text-baseline;
+    content: ' ';
   }
 }
