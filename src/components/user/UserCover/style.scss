@@ -10,27 +10,28 @@
   > div {
     @include flex(1);
     @include align-self(flex-end);
+  }
+}
 
-    > .date {
-      background: blue;
-      margin: 2rem 0;
-      padding: 0.5rem;
-    }
+.#{ref-name(UserCover, date)} {
+  background: blue;
+  margin: 2rem 0;
+  padding: 0.5rem;
+}
 
-    > .about {
-      margin-top: 1rem;
-      text-shadow: -1px 1px 6px rgba(0, 0, 0, 0.6);
+.#{ref-name(UserCover, about)} {
+  margin-top: 1rem;
+  text-shadow: -1px 1px 6px rgba(0, 0, 0, 0.6);
 
-      > h2 {
-        display: inline-block;
-        margin: 0.25rem 0;
-      }
+  > h2 {
+    display: inline-block;
+    margin: 0.25rem 0;
+    font-size: 200%;
+  }
+}
 
-      > .text {
-        &:before {
-          content: ' - ';
-        }
-      }
-    }
+.#{ref-name(UserCover, text)} {
+  &:before {
+    content: ' - ';
   }
 }

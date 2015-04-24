@@ -2,11 +2,11 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
-
+var bitnMixin = require('../../mixins/bitnMixin');
 var Menu = require('../../controls/Menu');
 
-module.exports = component('UserShortcuts', {
+var UserShortcuts = React.createClass({
+  mixins: [ bitnMixin ],
   render: function () {
     var items = [
       {
@@ -41,3 +41,5 @@ module.exports = component('UserShortcuts', {
     );
   },
 });
+
+module.exports = UserShortcuts;

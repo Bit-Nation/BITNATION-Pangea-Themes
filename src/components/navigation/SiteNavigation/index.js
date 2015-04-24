@@ -2,18 +2,18 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
-
+var bitnMixin = require('../../mixins/bitnMixin');
 var Menu = require('../../controls/Menu');
 
-module.exports = component('SiteNavigation', {
+var SiteNavigation = React.createClass({
+  mixins: [ bitnMixin ],
   render: function () {
     var className = this.className();
-    if (this.props.minimized) className += ' minimized';
+    if (this.props.minimized) className += ' ' + this.stateName('minimized');
 
     return (
       <nav className={className}>
-        <div className='logo' />
+        <div className={this.refName('logo')} />
 
         <Menu
           items={this.props.menuItems}
@@ -24,3 +24,5 @@ module.exports = component('SiteNavigation', {
     );
   }
 });
+
+module.exports = SiteNavigation;

@@ -2,13 +2,21 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
+var bitnMixin = require('../../mixins/bitnMixin');
 
 var SiteNavigation = require('../../navigation/SiteNavigation');
 var UserNavigation = require('../../navigation/UserNavigation');
-var NotaryUpload = require('../../notary/NotaryUpload');
+var NotaryPage = require('../../pages/NotaryPage');
+var MailPage = require('../../pages/MailPage');
 
-module.exports = component('App', {
+var App = React.createClass({
+  mixins: [ bitnMixin ],
+  getInitialState: function () {
+    return {
+      expanded: false,
+      page: this.props.page || 'notary'
+    };
+  },
   render: function () {
     var actions = [
       {
@@ -36,30 +44,26 @@ module.exports = component('App', {
     return (
       <div className={this.className()}>
         <SiteNavigation {...this.props.siteNavigation}
-          minimized={this.state.expanded} onMenuSelect={this.minimize} />
+          minimized={this.state.expanded}
+          onMenuSelect={this.onMenuSelect} />
         <div>
           <UserNavigation onAction={this.onAction}
-          cover={this.props.cover && { height: 300 }} />
+            cover={this.props.cover && { height: 300 }} />
           <main>
-            <NotaryUpload />
+            {this.state.page == 'notary' && <NotaryPage />}
+            {this.state.page == 'mail' && <MailPage />}
           </main>
         </div>
       </div>
     );
   },
-  getInitialState: function () {
-    return {
-      expanded: false
-    };
-  },
   onAction: function (type) {
     if (type == 'siteNavigation')
       this.setState({ expanded: !this.state.expanded });
   },
-  expand: function () {
-    this.setState({ expanded: true });
-  },
-  minimize: function () {
-    this.setState({ expanded: false });    
+  onMenuSelect: function (value) {
+    this.setState({ page: value, expanded: false });    
   }
 });
+
+module.exports = App;

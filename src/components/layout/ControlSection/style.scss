@@ -1,0 +1,70 @@
+@import '../../component';
+
+$height: rem-calc(40);
+$base-padding: 1rem;
+
+$title-background-color: #F990C4;
+$title-color: white;
+$title-font-size: 100%;
+
+$icon-background-color: #e8e8e8;
+$icon-color: #999;
+
+$background-color: #fff;
+
+.#{class-name(ControlSection)}.#{class-name(Section)} {
+  margin: ($base-padding * 2) 0;
+
+  > header {
+    position: relative;
+    height: $height;
+    margin: 0;
+    padding: 0;
+
+    > h3 {
+      display: inline-block;
+      height: 100%;
+      margin: 0 $base-padding 0 0;
+      padding: 0 $base-padding;
+      line-height: $height;
+      font-size: $title-font-size;
+      background-color: $title-background-color;
+      color: $title-color;
+
+      > .#{class-name(Icon)}:last-child {
+        position: absolute;
+        width: $height;
+        height: 100%;
+        margin-left: $base-padding;
+        margin-right: -$base-padding;
+        line-height: $height;
+        background-color: $icon-background-color;
+        color: $icon-color;
+      }
+    }
+
+    @include clearfix;
+  }
+
+  > div {
+    background-color: $background-color;
+    padding: ($base-padding * 2);
+  }
+}
+
+.#{ref-name(ControlSection, controls)} {
+  float: right;
+  height: 100%;
+
+  > * {
+    margin-left: $base-padding;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.#{state-name(ControlSection, controls)} {
+
+}

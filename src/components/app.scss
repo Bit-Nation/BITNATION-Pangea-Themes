@@ -11,6 +11,29 @@ html, body {
   font-size: 16px;
 }
 
+h1 {
+  font-size: 225%;
+  font-weight: 300;
+  margin: 1.5rem 0;
+}
+
+h2 {
+  font-size: 175%;
+  font-weight: 300;
+  margin: 1.25rem 0;
+}
+
+h3 {
+  font-size: 150%;
+  font-weight: 400;
+  margin: 0.75rem 0;
+}
+
+h4 {
+  font-size: 125%;
+  margin: 0.5rem 0;
+}
+
 #app-container {
   @include display(flex);
   min-height: 100%;

@@ -1,18 +1,33 @@
 var _ = require('lodash');
 
-module.exports = function (prefix) {
+var ids = {};
+
+module.exports = function (prefix, raw) {
   if (!prefix) prefix = 'form-id';
+  else if (!raw) prefix = hyphenate(prefix);
+
+  if (!ids[prefix]) ids[prefix] = 0;
+
+  var parseName = function () {
+      var parts = [];
+      for (var i = 0; i < arguments.length; i++) {
+        parts.push(raw ? arguments[i] : hyphenate(arguments[i]));
+      }
+      return parts.join('-');
+  };
 
   return {
     getInitialState: function () {
       return {
-        formId: prefix + '-' + _.uniqueId()
+        formId: prefix + '-' + ids[prefix]++
       }
     },
-    formId: function (name) {
+    formId: function () {
+      var name = parseName.apply(null, arguments);
       return this.state.formId + '-' + name;
     },
-    formIds: function (name) {
+    formIds: function () {
+      var name = parseName.apply(null, arguments);
       return {
         name: name,
         id: this.formId(name)
@@ -20,3 +35,7 @@ module.exports = function (prefix) {
     }
   };
 };
+
+function hyphenate (name) {
+  return _.snakeCase(name).replace(/_/g, '-');
+}

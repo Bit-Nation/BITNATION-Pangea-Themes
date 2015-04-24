@@ -7,12 +7,12 @@
   > img {
     height: 100%;
   }
+}
 
-  &.medium {  
-    height: 36px;
-  }
+.#{state-name(UserAvatar, medium)} {
+  height: 36px;
+}
 
-  &.large {  
-    height: 48px;
-  }
+.#{state-name(UserAvatar, large)} {
+  height: 48px;
 }

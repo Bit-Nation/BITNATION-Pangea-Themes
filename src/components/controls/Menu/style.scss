@@ -18,11 +18,16 @@
       display: none;
     }
 
-    &.selected {
+    &.#{state-name(Menu, selected)} {
       // show sub trees
       > .#{class-name(Menu)} {
         display: block;
       }
     }
+
+    &.#{state-name(Menu, hasChildren)} {
+      
+    }
   }
 }
+

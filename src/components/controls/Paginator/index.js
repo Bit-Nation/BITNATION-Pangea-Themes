@@ -2,11 +2,10 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
+var bitnMixin = require('../../mixins/bitnMixin');
 
-var _ = require ('lodash');
-
-module.exports = component('Paginator', {
+var Paginator = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     page: React.PropTypes.number,
     min: React.PropTypes.number,
@@ -54,10 +53,10 @@ module.exports = component('Paginator', {
       );
     }
 
-    var className = this.className();
+    var className = this.classNameWithProp();
     className += ' pure-menu';
     className += ' pure-menu-horizontal';
-    className += ' length-' + pages.length;
+    className += ' ' + this.stateName('length-' + pages.length);
 
     return (
       <ul className={className}>

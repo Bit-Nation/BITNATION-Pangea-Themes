@@ -1,33 +1,19 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
-var React = require('react');
-var component = require('../../component');
+// this is fat and should be split up
 
+var React = require('react');
+var bitnMixin = require('../../mixins/bitnMixin');
 var hoverMixin = require('../../mixins/hoverMixin');
 var Icon = require('../Icon');
 
-var Menu = module.exports = component('Menu', {
-  render: function () {
-    var items = [];
-    for (var i in this.props.items) {
-      items.push(
-        <MenuItem key={i} {...this.props.items[i]}
-          value={i} selected={this.state.selected === i} onClick={this.onClick} />
-      );
-    }
-
-    var className = this.className() + ' pure-menu';
-    if (this.props.horizontal) className += ' pure-menu-horizontal';
-    if (this.props.className) className += ' ' + this.props.className;
-
-    return (
-      <nav className={className}>
-        <ul className='pure-menu-list'>
-          {items}
-        </ul>
-      </nav>
-    );
+var Menu = React.createClass({
+  mixins: [ bitnMixin ],
+  propTypes: {
+    className: React.PropTypes.string,
+    horizontal: React.PropTypes.bool,
+    items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired
   },
   getInitialState: function () {
     return {
@@ -38,6 +24,29 @@ var Menu = module.exports = component('Menu', {
     if (props.selected === this.props.selected ||
         props.selected == null) return;
     this.setState({ selected: props.selected });
+  },
+  render: function () {
+    var items = [];
+    for (var i in this.props.items) {
+      items.push(
+        <MenuItem key={i} {...this.props.items[i]}
+          value={i} selected={this.state.selected === i} onClick={this.onClick} />
+      );
+    }
+
+    var className = this.classNameWithProp();
+    className += ' pure-menu';
+    if (this.props.horizontal) className += ' pure-menu-horizontal';
+
+    return (
+      <nav className={className}>
+        {this.props.children}
+
+        <ul className='pure-menu-list'>
+          {items}
+        </ul>
+      </nav>
+    );
   },
   onClick: function (index) {
     var current = this.state.selected === index;
@@ -54,7 +63,9 @@ var Menu = module.exports = component('Menu', {
   }
 });
 
-var MenuItem = component('MenuItem', {
+module.exports = Menu;
+
+var MenuItem = React.createClass({
   mixins: [ hoverMixin ],
   render: function () {
     var icon;
@@ -62,8 +73,8 @@ var MenuItem = component('MenuItem', {
     else if (this.props.icon) icon = this.props.icon;
     
     var className = 'pure-menu-item';
-    if (this.props.selected) className += ' selected';
-    if (this.props.items) className += ' has-children';
+    if (this.props.selected) className += ' ' + Menu.stateName('selected');
+    if (this.props.items) className += ' ' + Menu.stateName('hasChildren');
 
     return (
       <li className={className}>
@@ -78,7 +89,10 @@ var MenuItem = component('MenuItem', {
           {icon &&
             <Icon highlight={this.state.hover} {...icon} />}
         </a>
-        {this.props.items && <Menu items={this.props.items} />}
+
+        {this.props.items &&
+          <Menu items={this.props.items}
+            selected={this.props.selected ? null : false}/>}
       </li>
     );
   },

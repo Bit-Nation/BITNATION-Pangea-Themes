@@ -1,0 +1,13 @@
+@import '../../component';
+
+.#{class-name(Input)} {
+  min-width: rem-calc(80);
+  max-width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid transparent;
+
+  &:focus {
+    outline: none;
+    border-color: #67ABF7;
+  }
+}

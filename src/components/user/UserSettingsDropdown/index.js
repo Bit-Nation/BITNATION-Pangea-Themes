@@ -2,14 +2,13 @@
 require('./style.scss');
 
 var React = require('react');
-var component = require('../../component');
-
+var bitnMixin = require('../../mixins/bitnMixin');
 var hoverMixin = require('../../mixins/hoverMixin');
 var UserAvatar = require('../../user/UserAvatar');
 var Menu = require('../../controls/Menu');
 
-module.exports = component('UserSettingsDropdown', {
-  mixins: [ hoverMixin ],
+var UserSettingsDropdown = React.createClass({
+  mixins: [ bitnMixin, hoverMixin ],
   render: function () {
     var items = [
       {
@@ -25,13 +24,13 @@ module.exports = component('UserSettingsDropdown', {
     ];
 
     var className = this.className();
-    if (this.state.hover) className += ' active';
+    if (this.state.hover) className += ' ' + this.stateName('active');
 
     return (
       <div className={className}
         onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
         
-        <div className='toggle'>
+        <div className={this.refName('toggle')}>
           <span>Olfox Jensen</span>
           <UserAvatar size='medium' />
         </div>
@@ -41,3 +40,5 @@ module.exports = component('UserSettingsDropdown', {
     );
   }
 });
+
+module.exports = UserSettingsDropdown;

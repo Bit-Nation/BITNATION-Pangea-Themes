@@ -1,0 +1,15 @@
+@import '../../component';
+
+.#{class-name(PageSection)}.#{class-name(Section)} {
+  > header {
+    margin-top: 1rem;
+  }
+
+  > header + div {
+    margin-bottom: 1rem;
+  }
+
+  > footer {
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../component';
+
+.#{class-name(FileInput)} {
+  display: inline-block;
+}
+
+.#{ref-name(FileInput, input)} {
+  display: none;
+}
+
+.#{ref-name(FileInput, body)} {
+
+}
+
+.#{ref-name(FileInput, trigger)} {
+
+}
+
+.#{ref-name(FileInput, footer)} {
+
+}
+
+.#{state-name(FileInput, dragOver)} {
+  color: white;
+}
