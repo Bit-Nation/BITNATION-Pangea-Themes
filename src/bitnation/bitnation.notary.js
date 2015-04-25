@@ -6,6 +6,20 @@ var jQuery = require('jquery');
 (function (Bitnation, $) {
 
     /**
+     * The notary feature will throw errors in the range
+     * -201 through -299.
+     */
+    var _errorRange = -200;
+
+    /**
+     * An error thrown when a notarized document fails to verify
+     */
+    var _ERR_INVALID_NOTARY = {
+        errorCode: _errorRange - 1,
+        errorDescription: 'This is not a valid notarized document.'
+    };
+
+    /**
      * Notary service class
      */
     var Service = function () {
@@ -31,28 +45,68 @@ var jQuery = require('jquery');
         }
 
         /**
+         * Verify a notary transaction and its message
+         */
+        notaryService.verifyNotary = function (txId, messageTx) {
+            var deferred = $.Deferred();
+
+            var invalidMessageErr = Bitnation.core.errors._ERR_INVALID_MESSAGE;
+
+            if (messageTx.message == undefined) {
+                return deferred.reject(invalidMessageErr);
+            }
+
+            var protoMsg = Bitnation.core.ProtocolMessage();
+            var message = protoMsg.fromString(messageTx.message);
+
+            if (message.bitnation === undefined) {
+                return deferred.reject(invalidMessageErr);
+            }
+
+            // Find the tx itself
+            _hzClient.getTransaction(txId)
+            .done(function (transaction) {
+                var sender = transaction.senderRS;
+                var recipient = transaction.recipientRS;
+
+                if (sender !== recipient) {
+                    return deferred.reject(_ERR_INVALID_NOTARY);
+                }
+
+                var response = {
+                    verifiedNotary: message,
+                    owner: sender
+                };
+
+                return deferred.resolve(response);
+
+            })
+            .fail(function (err) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise();
+        };
+
+        /**
          * Retrieve and parse a notary hash record
          * @todo: Private / encrypted
          */
         notaryService.retrieveNotary = function (txId, secretPhrase) {
             var deferred = $.Deferred();
 
+            var verifyNotary = this.verifyNotary;
+
             _hzClient.readMessage(txId)
-            .done(function (tx) {
+            .done(function (messageTx) {
 
-                var err = Bitnation.core.errors._ERR_INVALID_MESSAGE;
-
-                if (tx.message == undefined) {
-                    return deferred.reject(err);
-                }
-
-                var protoMsg = Bitnation.core.ProtocolMessage();
-
-                var message = protoMsg.fromString(tx.message);
-
-                return (message === false) ?
-                    deferred.reject(err) :
-                    deferred.resolve(message);
+                verifyNotary(txId, messageTx)
+                .done(function (result) {
+                    deferred.resolve(result);
+                })
+                .fail(function (err) {
+                    deferred.reject(err);
+                });
 
             })
             .fail(function (err) {

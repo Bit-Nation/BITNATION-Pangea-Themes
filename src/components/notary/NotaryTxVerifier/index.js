@@ -57,11 +57,17 @@ var NotaryTxVerifier = React.createClass({
       verified: result,
       verifying: false
     });
+
+    var hash = result.verifiedNotary.notary.hash;
+    var owner = result.owner;
+
+    alert('Notary by ' + owner + ' has hash ' + hash);
   },
   onError: function (error) {
     if (!this.state.verifying) return;
-    alert(error);
     this.setState({ verifying: false });
+    console.error(error);
+    alert('Failure with error "' + error.errorDescription + '"');
   },
   verify: function () {
     var ui = new Bitnation.pangea.UI();

@@ -375,6 +375,15 @@ var jQuery = require('jquery');
         };
 
         /**
+         * Retrieve a transaction record from the blockchain
+         */
+        hzClient.getTransaction = function (txId) {
+            return this.sendRequest('getTransaction', {
+                transaction: txId
+            });
+        }
+
+        /**
          * Read the message in a transaction
          */
         hzClient.readMessage = function (transactionId, secretPhrase) {

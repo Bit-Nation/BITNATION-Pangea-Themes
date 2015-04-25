@@ -1,6 +1,12 @@
 var Bitnation = (function (Bitnation) {
 
     /**
+     * The notary feature will throw errors in the range
+     * -101 through -199.
+     */
+    var _errorRange = -100;
+
+    /**
      * The current Bitnation Pangea version
      */
     var _BITNATION_VERSION = '0.0.1';
@@ -9,7 +15,7 @@ var Bitnation = (function (Bitnation) {
      * Returned when a message cannot be parsed
      */
     var _ERR_INVALID_MESSAGE = {
-        errorCode: -101,
+        errorCode: _errorRange - 1,
         errorDescription: 'This is not a valid Bitnation message.'
     };
 

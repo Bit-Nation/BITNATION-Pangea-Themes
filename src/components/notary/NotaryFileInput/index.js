@@ -2,6 +2,7 @@
 require('./style.scss');
 
 var React = require('react');
+
 var bitnMixin = require('../../mixins/bitnMixin');
 var Button = require('../../controls/Button');
 var Input = require('../../controls/Input');

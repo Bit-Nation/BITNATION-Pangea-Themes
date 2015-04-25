@@ -113,8 +113,8 @@ var NotaryPage = React.createClass({
       })
       .fail(function (err) {
 
-        alert('An error occurred. Check the logs.');
         console.error(err);
+        alert('An error occurred. Check the logs.');
 
       });
 
