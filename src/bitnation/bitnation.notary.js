@@ -50,17 +50,21 @@ var jQuery = require('jquery');
         notaryService.verifyNotary = function (txId, messageTx) {
             var deferred = $.Deferred();
 
-            var invalidMessageErr = Bitnation.core.errors._ERR_INVALID_MESSAGE;
+            var invalidMessageErr = Bitnation.core.errors.invalidMessage;
 
-            if (messageTx.message == undefined) {
-                return deferred.reject(invalidMessageErr);
+            if (messageTx.message == undefined &&
+                messageTx.decryptedMessage === undefined) {
+                deferred.reject(invalidMessageErr);
             }
 
             var protoMsg = Bitnation.core.ProtocolMessage();
-            var message = protoMsg.fromString(messageTx.message);
+
+            var message = (messageTx.message === undefined) ?
+                protoMsg.fromString(messageTx.decryptedMessage) :
+                protoMsg.fromString(messageTx.message);
 
             if (message.bitnation === undefined) {
-                return deferred.reject(invalidMessageErr);
+                deferred.reject(invalidMessageErr);
             }
 
             // Find the tx itself
@@ -97,7 +101,7 @@ var jQuery = require('jquery');
 
             var verifyNotary = this.verifyNotary;
 
-            _hzClient.readMessage(txId)
+            _hzClient.readMessage(txId, secretPhrase)
             .done(function (messageTx) {
 
                 verifyNotary(txId, messageTx)
@@ -127,7 +131,7 @@ var jQuery = require('jquery');
         /**
          * Notarize a document, saving its hash into the Horizon blockchain
          */
-        notaryService.notarizeDocument = function (file, secretPhrase, uri) {
+        notaryService.notarizeDocument = function (file, secretPhrase, uri, isPrivate) {
             var deferred = $.Deferred();
 
             // Hash the file
@@ -149,15 +153,19 @@ var jQuery = require('jquery');
 
                     // Save the data in the blockchain
                     _hzClient.sendMessage(
-                        message.accountRS, message.toString(), secretPhrase
-                    ).done(function (response) {
-                        var tx = response.transactionJSON;
+                        message.accountRS, message.toString(), secretPhrase, isPrivate
+                    ).done(function (result) {
+                        var tx = result.transactionJSON;
 
-                        deferred.resolve({
-                            message: tx.attachment.message,
+                        var response = {
                             blockHeight: tx.ecBlockHeight,
                             txId: tx.transaction
-                        });
+                        };
+
+                        response.message = (tx.attachment.encryptedMessage === undefined) ?
+                            tx.attachment.message : 'encrypted';
+
+                        deferred.resolve(response);
 
                     })
                     .fail(function (err) {

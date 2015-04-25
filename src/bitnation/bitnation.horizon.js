@@ -15,6 +15,18 @@ var jQuery = require('jquery');
     var _testnet = true;
 
     /**
+     * The max # of blocks before the tx will not
+     * be sent.
+     */
+    var _deadline = 1440;
+
+    /**
+     * The Horizon feature will throw errors in the range
+     * -301 through -399.
+     */
+    var _errorRange = -300;
+
+    /**
      * The ports used by the HZ daemon
      */
     var _ports = {
@@ -248,6 +260,20 @@ var jQuery = require('jquery');
     };
 
     /**
+     * HZ error definitions
+     */
+    var errors = {
+        messageDecryptionFailure: {
+            errorCode: _errorRange - 1,
+            errorDescription: 'Unable to decrypt message.'
+        },
+        passphraseMissingError: {
+            errorCode: _errorRange - 2,
+            errorDescription: 'You must supply a passphrase'
+        }
+    };
+
+    /**
      * Horizon Client
      */
     var Client = function () {
@@ -329,10 +355,7 @@ var jQuery = require('jquery');
             var deferred = $.Deferred();
 
             if (secretPhrase == "") {
-                deferred.reject({
-                    errorCode: -100,
-                    errorDescription: 'You must supply a passphrase'
-                });
+                deferred.reject(errors.passphraseMissingError);
             }
 
             this.sendRequest('getAccountId', {
@@ -381,31 +404,54 @@ var jQuery = require('jquery');
             return this.sendRequest('getTransaction', {
                 transaction: txId
             });
-        }
+        };
 
         /**
          * Read the message in a transaction
          */
         hzClient.readMessage = function (transactionId, secretPhrase) {
-            return this.sendRequest('readMessage', {
+            var deferred = $.Deferred();
+
+            this.sendRequest('readMessage', {
                 transaction: transactionId,
                 secretPhrase: secretPhrase
+            })
+            .done(function (result) {
+
+                if (result === {}) {
+                    return deferred.reject();
+                }
+
+                deferred.resolve(result);
+
+            })
+            .fail(function (err) {
+                deferred.reject(err);
             });
-        }
+
+            return deferred.promise();
+        };
 
         /**
          * Send a message
          */
-        hzClient.sendMessage = function (recipient, content, secretPhrase, deadline) {
-            var defaultDeadline = 60;
+        hzClient.sendMessage = function (recipient, content, secretPhrase, encrypt) {
 
-            return this.sendRequest('sendMessage', {
+            var params = {
                 recipient: recipient,
-                message: content,
                 secretPhrase: secretPhrase,
-                deadline: deadline || defaultDeadline,
+                deadline: _deadline,
                 feeNQT: 1 * Math.pow(10, _decimals)
-            });
+            };
+
+            if (encrypt === true) {
+                params.messageToEncrypt = content;
+            } else {
+                params.message = content;
+            }
+
+            return this.sendRequest('sendMessage', params);
+
         };
 
         /**
@@ -423,11 +469,12 @@ var jQuery = require('jquery');
 
         return hzClient;
 
-    }
+    };
 
     Bitnation.horizon = {
         Account: Account,
-        Client: Client
+        Client: Client,
+        errors: errors
     };
 
 })(Bitnation || {}, jQuery);

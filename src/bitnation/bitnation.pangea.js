@@ -59,8 +59,8 @@ var jQuery = require('jquery');
         /**
          * Perform the whole notarization process
          */
-        uiService.notarizeDocument = function (file, secretPhrase, uri) {
-            return _notaryService.notarizeDocument(file, secretPhrase, uri);
+        uiService.notarizeDocument = function (file, secretPhrase, uri, isPrivate) {
+            return _notaryService.notarizeDocument(file, secretPhrase, uri, isPrivate);
         };
 
         return uiService;

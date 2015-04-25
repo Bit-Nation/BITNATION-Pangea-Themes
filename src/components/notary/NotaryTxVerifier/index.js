@@ -13,6 +13,7 @@ var NotaryTxVerifier = React.createClass({
   getInitialState: function () {
     return {
       value: null,
+      secret: null,
       verified: null,
       verifying: false
     };
@@ -33,7 +34,12 @@ var NotaryTxVerifier = React.createClass({
           {this.state.verified === false && 'Invalid'}
         </div>
 
-        <Input value={this.state.value}
+        <label htmlFor="secret">Secret Phrase (if private):</label>
+        <Input type="password" name="secret" value={this.state.secret}
+          onChange={this.onSecretChange} />
+
+        <label htmlFor="txid">Transaction ID:</label>
+        <Input name="txid" value={this.state.value}
           onChange={this.onChange} />
 
         <Button submit>Verify</Button>
@@ -41,18 +47,34 @@ var NotaryTxVerifier = React.createClass({
     );
   },
   onChange: function (value) {
+
     this.setState({
       value: value,
       verified: null,
       verifying: false
     });
+
+  },
+  onSecretChange: function (secret) {
+
+    this.setState({
+      secret: secret,
+      verifying: false,
+      verified: null
+    });
+
   },
   onSubmit: function (event) {
+
     event.preventDefault();
+
     this.verify();
+
   },
   onSuccess: function (result) {
+
     if (!this.state.verifying) return;
+
     this.setState({
       verified: result,
       verifying: false
@@ -62,19 +84,28 @@ var NotaryTxVerifier = React.createClass({
     var owner = result.owner;
 
     alert('Notary by ' + owner + ' has hash ' + hash);
+
   },
   onError: function (error) {
     if (!this.state.verifying) return;
     this.setState({ verifying: false });
+
     console.error(error);
     alert('Failure with error "' + error.errorDescription + '"');
   },
   verify: function () {
+
     var ui = new Bitnation.pangea.UI();
-    ui.verifyNotary(this.state.value)
+
+    ui.verifyNotary(this.state.value, this.state.secret)
       .done(this.onSuccess)
       .fail(this.onError);
-    this.setState({ verifying: true });
+
+    this.setState({
+      verifying: true,
+      secret: null
+    });
+
   }
 });
 

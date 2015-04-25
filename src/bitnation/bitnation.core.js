@@ -37,8 +37,11 @@ var Bitnation = (function (Bitnation) {
          */
         message.fromString = function (data) {
             try {
-                if (data.substring(0, 12) !== '{"bitnation"') {
-                    throw _ERR_INVALID_MESSAGE
+                if (
+                    typeof data !== 'string' ||
+                    data.substring(0, 12) !== '{"bitnation"'
+                ) {
+                    return false;
                 }
 
                 return JSON.parse(data);
@@ -53,18 +56,18 @@ var Bitnation = (function (Bitnation) {
          */
         message.toString = function (argument) {
             return JSON.stringify(this.attributes);
-        }
-
-        // Skip the rest if accountRS isn't set
-        if (accountRS == undefined) {
-            return message;
-        }
+        };
 
         message.attributes = {
             bitnation: {
                 version: _BITNATION_VERSION
             }
         };
+
+        // Skip the rest if accountRS isn't set
+        if (accountRS == undefined) {
+            return message;
+        }
 
         message.attributes[func] = params;
 

@@ -100,12 +100,11 @@ var NotaryPage = React.createClass({
   },
   issueNotary: function (file) {
 
-    // @todo: Encrypted (private) notaries
-
     var ui = new Bitnation.pangea.UI();
 
-    ui.notarizeDocument(file, this.state.secret, this.state.uri)
-      .done(function (result) {
+    ui.notarizeDocument(
+      file, this.state.secret, this.state.uri, !this.state.public
+    ) .done(function (result) {
 
         console.log(result);
         alert('Success: Transaction id is ' + result.txId);
