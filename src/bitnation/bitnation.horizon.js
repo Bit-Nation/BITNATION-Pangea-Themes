@@ -40,6 +40,28 @@ var jQuery = require('jquery');
         }
     };
 
+    // Sat, 22 Mar 2014 22:22:21 UTC
+    var _genesisBlocks = {
+        TESTNET: {
+            timestamp: 1395526942000
+        },
+        MAINNET: {
+            timestamp: 1395526942000
+        }
+    };
+
+    var _transactionTypes = {
+        messaging: {
+            id: 1,
+            subTypes: {
+                arbitraryMessage: {
+                    id: 0,
+                    description: 'Arbitrary message'
+                }
+            }
+        }
+    };
+
     /**
      * Mostly from HZ/NXT NRS
      */
@@ -412,17 +434,28 @@ var jQuery = require('jquery');
         hzClient.readMessage = function (transactionId, secretPhrase) {
             var deferred = $.Deferred();
 
-            this.sendRequest('readMessage', {
-                transaction: transactionId,
-                secretPhrase: secretPhrase
-            })
-            .done(function (result) {
+            // @todo: Scope issues. Sure there's a better way to do this
+            var _client = this;
 
-                if (result === {}) {
-                    return deferred.reject();
-                }
+            this.getTransaction(transactionId)
+            .done(function (tx) {
 
-                deferred.resolve(result);
+                _client.sendRequest('readMessage', {
+                    transaction: transactionId,
+                    secretPhrase: secretPhrase
+                })
+                .done(function (result) {
+
+                    if (Object.getOwnPropertyNames(result).length === 0) {
+                        deferred.reject(errors.messageDecryptionFailure);
+                    } else {
+                        deferred.resolve(result);
+                    }
+
+                })
+                .fail(function (err) {
+                    deferred.reject(err);
+                });
 
             })
             .fail(function (err) {
@@ -435,7 +468,7 @@ var jQuery = require('jquery');
         /**
          * Send a message
          */
-        hzClient.sendMessage = function (recipient, content, secretPhrase, encrypt) {
+        hzClient.sendMessage = function (recipient, content, secretPhrase, encrypt, recipientPubkey) {
 
             var params = {
                 recipient: recipient,
@@ -443,6 +476,10 @@ var jQuery = require('jquery');
                 deadline: _deadline,
                 feeNQT: 1 * Math.pow(10, _decimals)
             };
+
+            if (recipientPubkey !== undefined) {
+                params.recipientPublicKey = recipientPubkey;
+            }
 
             if (encrypt === true) {
                 params.messageToEncrypt = content;
@@ -452,6 +489,34 @@ var jQuery = require('jquery');
 
             return this.sendRequest('sendMessage', params);
 
+        };
+
+        /**
+         * Get transactions for an account
+         */
+        hzClient.getAccountTransactions = function (accountRS, params) {
+            params.account = accountRS;
+            return this.sendRequest('getAccountTransactions', params);
+        };
+
+        /**
+         * List all messages for an account
+         */
+        hzClient.getMessages = function (accountRS) {
+            var deferred = $.Deferred();
+
+            this.getAccountTransactions(accountRS, {
+                type: _transactionTypes.messaging.id,
+                subtype: _transactionTypes.messaging.subTypes.arbitraryMessage.id
+            })
+            .done(function (txList) {
+                deferred.resolve(txList.transactions);
+            })
+            .fail(function (err) {
+                deferred.resolve(err);
+            });
+
+            return deferred.promise();
         };
 
         /**
@@ -465,6 +530,17 @@ var jQuery = require('jquery');
 
             return (postRequests.indexOf(requestType) > -1) ? 'POST' : 'GET';
 
+        };
+
+        /**
+         * Convert a HZ timestamp to a Date object
+         */
+        hzClient.timestampToDate = function (hzTimestamp) {
+            var genesisTs = (_testnet === true) ?
+                _genesisBlocks.TESTNET.timestamp :
+                _genesisBlocks.MAINNET.timestamp;
+
+            return new Date(genesisTs + (hzTimestamp * 1000));
         };
 
         return hzClient;
