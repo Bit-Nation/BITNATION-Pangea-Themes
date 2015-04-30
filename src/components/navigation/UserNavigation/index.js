@@ -2,21 +2,23 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('UserNavigation');
+var bitnMixins = require('../../mixins/bitnMixins');
 var UserShortcuts = require('../../navigation/UserShortcuts');
 var UserSettingsDropdown = require('../../user/UserSettingsDropdown');
 var UserCover = require('../../user/UserCover');
 
-var UserNavigation = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   render: function () {
-    var className = this.className();
-    if (this.props.cover) className += ' ' + this.stateName('cover');
-
     return (
-      <div className={className}>
+      <div className={nameHelper.join(
+        nameHelper.className,
+        nameHelper.state({ cover: this.props.cover })
+      )}>
         <nav>
-          <UserShortcuts onClick={this.props.onAction} />
+          <UserShortcuts onClick={this.props.onShortcut} />
           <UserSettingsDropdown />
         </nav>
         
@@ -26,5 +28,3 @@ var UserNavigation = React.createClass({
     );
   }
 });
-
-module.exports = UserNavigation;

@@ -1,9 +1,18 @@
 // libraries
 require('react/addons');
 
-// examples (used for development)
-require('./examples');
+// core
+require('./dispatcher');
+require('./data');
+require('./stores');
+require('./clients');
 
-// setup
-require('./components/app.scss');
-require('./renderer');
+// stores
+require('./stores/routing');
+require('./stores/notary');
+
+// clients
+require('./clients/router');
+
+// initialize app
+require('./app');

@@ -2,16 +2,21 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('PageHeader');
+var bitnMixins = require('../../mixins/bitnMixins');
 
-var PageHeader = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string
   },
   render: function () {
     return (
-      <header className={this.classNameWithProp()}>
+      <header className={nameHelper.join(
+        nameHelper.className,
+        this.props.className
+      )}>
         {this.props.title &&
           <h1>{this.props.title}</h1>}
 
@@ -20,5 +25,3 @@ var PageHeader = React.createClass({
     );
   }
 });
-
-module.exports = PageHeader;

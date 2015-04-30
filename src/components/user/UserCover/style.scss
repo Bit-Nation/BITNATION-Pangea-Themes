@@ -1,5 +1,6 @@
 @import '../../component';
 
+$url: '/images/cover-img.jpg';
 $color: #f2f2f2;
 $shadow-height: 20%;
 
@@ -20,7 +21,7 @@ $text-letter-spacing: 0.03rem;
   @include display(flex);
   position: relative;
   padding: 2.5rem 3.5rem;
-  background: url(/images/cover-img.jpg) no-repeat center;
+  background: url($url) no-repeat center;
   background-size: cover;
   color: $color;
 
@@ -59,12 +60,7 @@ $text-letter-spacing: 0.03rem;
     margin: 0;
     line-height: $about-heading-line-height;
     font-size: $about-heading-font-size;
-    font-weight: 200;
     color: $about-heading-color;
-
-    b, strong {
-      font-weight: 400;
-    }
   }
 }
 

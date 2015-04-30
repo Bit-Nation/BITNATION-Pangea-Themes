@@ -2,44 +2,42 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('UserShortcuts');
+var bitnMixins = require('../../mixins/bitnMixins');
 var Menu = require('../../controls/Menu');
 
-var UserShortcuts = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   render: function () {
     var items = [
       {
-        value: 'siteNavigation',
-        icon: 'bars',
-        onClick: this.props.onClick
+        key: 'siteNavigation',
+        icon: 'bars'
       },
       {
-        value: 'search',
-        icon: 'search',
-        onClick: this.props.onClick
+        key: 'search',
+        icon: 'search'
       },
       {
-        value: 'messages',
-        icon: 'envelope',
-        onClick: this.props.onClick
+        key: 'messages',
+        icon: 'envelope'
       },
       {
-        value: 'settings',
-        icon: 'cog',
-        onClick: this.props.onClick
+        key: 'settings',
+        icon: 'cog'
       },
       {
-        value: 'signOut',
-        icon: 'sign-out',
-        onClick: this.props.onClick
+        key: 'signOut',
+        icon: 'sign-out'
       }
     ];
 
     return (
-      <Menu className={this.className()} horizontal={true} items={items} />
+      <Menu className={nameHelper.className}
+        horizontal={true}
+        items={items}
+        onClick={this.props.onClick} />
     );
   },
 });
-
-module.exports = UserShortcuts;

@@ -2,10 +2,11 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('NotaryPage');
+var bitnMixins = require('../../mixins/bitnMixins');
 var Search = require('../../controls/Search');
 var Table = require('../../controls/Table');
-var NotaryFileInput = require('../../notary/NotaryFileInput');
+var NotaryUpload = require('../../notary/NotaryUpload');
 var NotaryTxVerifier = require('../../notary/NotaryTxVerifier');
 
 var PageHeader = require('../../layout/PageHeader');
@@ -13,23 +14,32 @@ var PageRow = require('../../layout/PageRow');
 var PageSection = require('../../layout/PageSection');
 var Results = require('../../layout/Results');
 
+var _ = require('lodash');
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
-var NotaryPage = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
+  propTypes: {
+    cursor: React.PropTypes.object.isRequired,
+    stores: React.PropTypes.object.isRequired,
+    dispatch: React.PropTypes.func.isRequired
+  },
   render: function() {
+    var cursor = this.props.cursor;
+    var stores = this.props.stores;
+    
     return (
-      <div className={this.className()}>
+      <div className={nameHelper.className}>
         <PageHeader title='Public notary' />
 
         <div>
           <PageRow>
             <PageSection flex={3}>
-              <NotaryFileInput
-                public={this.state.public} uri={this.state.uri}
-                secret={this.state.secret}
-                onPublic={this.onPublic} onUri={this.onUri} 
-                onSecret={this.onSecret} onFiles={this.onFiles} />
+              <NotaryUpload
+                cursor={cursor.cursor('upload')}
+                uploads={stores.get('notaryUploads')}
+                dispatch={this.props.dispatch} />
             </PageSection>
 
             <PageSection flex={1} title='Get started'>
@@ -86,25 +96,18 @@ var NotaryPage = React.createClass({
       </div>
     );
   },
-  onPublic: function (value) {
-    this.setState({ public: value });
-  },
-  onUri: function (value) {
-    this.setState({ uri: value });
-  },
-  onSecret: function (value) {
-    this.setState({ secret: value });
-  },
   onFiles: function (files) {
-    this.issueNotary(files[0]);
+    alert(Object.keys(files));
+    //this.issueNotary(files[0]);
   },
   issueNotary: function (file) {
 
+    var cursor = this.props.cursor;
     // @todo: Encrypted (private) notaries
 
     var ui = new Bitnation.pangea.UI();
 
-    ui.notarizeDocument(file, this.state.secret, this.state.uri)
+    ui.notarizeDocument(file, cursor.get('secret'), cursor.get('uri'))
       .done(function (result) {
 
         console.log(result);
@@ -121,5 +124,3 @@ var NotaryPage = React.createClass({
     this.setState({ secret: '' });
   }
 });
-
-module.exports = NotaryPage;

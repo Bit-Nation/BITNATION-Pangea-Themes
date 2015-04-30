@@ -50,7 +50,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
   .#{class-name(Menu)} {
     padding: ($base-padding * 1.5) 0;
 
-    > ul > li {
+    > ul > .#{class-name(MenuItem)} {
       margin: ($base-padding * 0.75) 0;
       @include transition(margin $minimize-transition);
 
@@ -78,7 +78,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
         }
       }
 
-      &.#{state-name(Menu, selected)} > .#{class-name(Menu)} {
+      &.#{state-name(MenuItem, selected)} > div > .#{class-name(Menu)} {
         height: auto;
         padding: ($base-padding * 1.5) 0;
         margin: ($base-padding * 0.5) 0;
@@ -101,7 +101,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
     width: $width;
     @include transition(padding $minimize-transition);
 
-    > ul > li {
+    > ul > .#{class-name(MenuItem)} {
       > a {
         > i {
           background-color: $highlight-color;
@@ -139,11 +139,13 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
       padding $minimize-transition,
       opacity $minimize-transition);
 
-    > ul > li > a {
-      padding: 0 ($base-padding * 1.1);
+    > ul > .#{class-name(MenuItem)} {
+      > a {
+        padding: 0 ($base-padding * 1.1);
 
-      &:hover, &:focus {
-        background-color: $highlight-color;
+        &:hover, &:focus {
+          background-color: $highlight-color;
+        }
       }
     }
   }
@@ -162,7 +164,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
   > .#{class-name(Menu)} {
     padding: $minimized-padding 0;
 
-    > ul > li {
+    > ul > .#{class-name(MenuItem)} {
       margin: $minimized-padding 0;
 
       > a {
@@ -178,7 +180,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
       }
 
       // hide selected child menus
-      &.#{state-name(Menu, selected)} .#{class-name(Menu)} {
+      &.#{state-name(MenuItem, selected)} .#{class-name(Menu)} {
         display: block;
         height: 0;
         margin: 0;

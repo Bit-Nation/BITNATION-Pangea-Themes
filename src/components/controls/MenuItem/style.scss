@@ -1,0 +1,21 @@
+@import '../../component';
+
+.#{class-name(MenuItem)} {
+  > a {
+    > span {
+
+    }
+
+    > .#{class-name(Icon)} {
+
+    }
+  }
+
+  > div {
+
+  }
+}
+
+.#{state-name(MenuItem, selected)} {}
+.#{state-name(MenuItem, hasChildren)} {}
+.#{state-name(MenuItem, linkHover)} {}

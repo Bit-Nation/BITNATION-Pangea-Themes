@@ -2,27 +2,35 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('SiteNavigation');
+var bitnMixins = require('../../mixins/bitnMixins');
 var Menu = require('../../controls/Menu');
 
-var SiteNavigation = React.createClass({
-  mixins: [ bitnMixin ],
+var _ = require('lodash');
+
+var items = require('./items');
+var actions = require('./actions');
+
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
+  propTypes: {
+    cursor: React.PropTypes.object.isRequired,
+    dispatch: React.PropTypes.func.isRequired
+  },
   render: function () {
-    var className = this.className();
-    if (this.props.minimized) className += ' ' + this.stateName('minimized');
-
+    var cursor = this.props.cursor;
     return (
-      <nav className={className}>
-        <div className={this.refName('logo')} />
+      <nav className={nameHelper.join(
+        nameHelper.className,
+        nameHelper.state({ minimized: cursor.get('minimized')})
+      )}>
+        <div className={nameHelper.ref('logo')} />
 
-        <Menu
-          items={this.props.menuItems}
-          selected={this.props.minimized ? false : null}
-          onClick={this.props.onMenuClick}
-          onSelect={this.props.onMenuSelect} />
+        <Menu {...cursor.cursor('menu').toJS()}
+          items={items}
+          onClick={_.partial(actions.select, cursor)} />
       </nav>
     );
   }
 });
-
-module.exports = SiteNavigation;

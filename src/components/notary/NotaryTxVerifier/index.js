@@ -2,14 +2,16 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('NotaryTxVerifier');
+var bitnMixins = require('../../mixins/bitnMixins');
 var Button = require('../../controls/Button');
 var Input = require('../../controls/Input');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
-var NotaryTxVerifier = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   getInitialState: function () {
     return {
       value: null,
@@ -18,17 +20,20 @@ var NotaryTxVerifier = React.createClass({
     };
   },
   render: function() {
-    var className = this.className();
-    if (this.state.verifying) className += ' ' + this.stateName('verifying');
-    if (this.state.verified === true) className += ' ' + this.stateName('valid');
-    if (this.state.verified === false) className += ' ' + this.stateName('invalid');
+    var className = nameHelper.join(
+      nameHelper.className,
+      nameHelper.state({
+        verifying: this.state.verifying,
+        valid: this.state.verified === true,
+        invalid: this.state.verified === false
+      }));
 
     return (
       <form className={className}
         onSubmit={this.onSubmit}>
         <legend>Verify a notary transaction hash.</legend>
 
-        <div className={this.refName('status')}>
+        <div className={nameHelper.ref('status')}>
           {this.state.verified === true && 'Valid'}
           {this.state.verified === false && 'Invalid'}
         </div>
@@ -71,5 +76,3 @@ var NotaryTxVerifier = React.createClass({
     this.setState({ verifying: true });
   }
 });
-
-module.exports = NotaryTxVerifier;

@@ -2,22 +2,25 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('ControlSection');
+var bitnMixins = require('../../mixins/bitnMixins');
 var Section = require('../../layout/Section');
 
-var ControlSection = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   render: function () {
-    var className = this.classNameWithProp();
-    var header = this.props.header;
-    if (this.props.controls) {
-      header = (
-        <div className={this.refName('controls')}>
-          {this.props.controls}
-        </div>
-      );
-      className += ' ' + this.stateName('controls');
-    }
+    var className = nameHelper.join(
+      nameHelper.className,
+      this.props.className,
+      nameHelper.state({ controls: this.props.controls })
+    );
+    
+    var header = this.props.controls ? (
+      <div className={nameHelper.ref('controls')}>
+        {this.props.controls}
+      </div>
+    ) : this.props.header;
 
     return <Section
       titleTag='h3'
@@ -26,5 +29,3 @@ var ControlSection = React.createClass({
       className={className} />;
   }
 });
-
-module.exports = ControlSection;

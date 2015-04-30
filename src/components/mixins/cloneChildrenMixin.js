@@ -1,3 +1,5 @@
+// this shouldnt be a mixin!
+
 var _ = require('lodash');
 var React = require('react/addons');
 var cloneWithProps = React.addons.cloneWithProps;

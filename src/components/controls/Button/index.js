@@ -2,7 +2,9 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('Button');
+var wrapImmutables = require('../../wrapImmutables');
+var bitnMixins = require('../../mixins/bitnMixins');
 
 var _ = require('lodash');
 
@@ -21,20 +23,24 @@ var states = [
 
 for (var i in states) propTypes[states[i]] = React.PropTypes.bool;
 
-var Button = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = wrapImmutables(React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   propTypes: propTypes,
   render: function () {
     var type = 'button';
     if (this.props.type) type = this.props.type;
     if (this.props.submit) type = 'submit';
 
-    var className = this.classNameWithProp();
-    className += ' pure-button';
+    var className = nameHelper.join(
+      nameHelper.className,
+      this.props.className,
+      'pure-button');
 
     // add state classes
     for (var i in states) {
-      if (this.props[states[i]]) className += ' ' + this.stateName(states[i]);      
+      if (this.props[states[i]])
+        className += ' ' + nameHelper.state(states[i]);      
     }
 
     return (
@@ -46,6 +52,4 @@ var Button = React.createClass({
       </button>
     );
   }
-});
-
-module.exports = Button;
+}));

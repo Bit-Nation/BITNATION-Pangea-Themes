@@ -14,51 +14,13 @@ $bitn-colors: (
   river: #444f57,
   orange: #f39c12,
   green: #92bd2f,
-  curious: #29aae1
+  curious: #29aae1,
 );
 
 @function bitn-color($key) {
   @return map-get($bitn-colors, $key)
 }
 
-//bitn-color(space) = #2d3841
-
-
-$white       : #FFFFFF;
-// $ghost       : #FAFAFA;
-// $snow        : #F9F9F9;
-// $vapor       : #F6F6F6;
-// $white-smoke : #F5F5F5;
-// $silver      : #EFEFEF;
-// $smoke       : #EEEEEE;
-// $gainsboro   : #DDDDDD;
-// $iron        : #CCCCCC;
-// $base        : #AAAAAA;
-// $aluminum    : #999999;
-// $jumbo       : #888888;
-// $monsoon     : #777777;
-// $steel       : #666666;
-// $charcoal    : #555555;
-// $tuatara     : #444444;
-$mgrey       : #3d3d3d;
-$mgrey2      : #666666;
-$lgrey       : #e5e5e5;
-$lgrey2      : #939393;
-$lgrey3      : #c5c5c5;
-$dnavy1      : #1B1D25;
-$dnavy2      : #22242d;
-$dnavy3      : #2d3841;
-$mnavy1      : #2C2F3B;
-$mnavy2      : #1B1D25;
-$lnavy1      : #7b8095;
-$lnavy2      : #444f57;
-$lblue1      : #7A8095;
-$lblue2      : #6796f7;
-$oil         : #333333;
-//$turquoise   : #00a89c;
-$turquoise   : #6fa8d0;
-$orange      : #f39c12;
-$offWhite    : #F5F5F5;
-$green       : #92bd2f;
-// $jet         : #222222;
-// $black       : #000000;
+// use like
+// bitn-color(space)
+// -> #2d3841

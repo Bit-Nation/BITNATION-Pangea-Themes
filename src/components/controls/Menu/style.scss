@@ -1,31 +1,37 @@
 @import '../../component';
 
 .#{class-name(Menu)} {
-  > ul > li {
-    > a {
-      margin: 0;
-      padding: 0;
+  > ul {
+    > .#{class-name(MenuItem)} {
+      > a {
+        margin: 0;
+        padding: 0;
 
-      &:hover, &:focus {
-        background-color: transparent;
+        &:hover, &:focus {
+          background-color: transparent;
+        }
+
+        @include clearfix;
       }
 
-      @include clearfix;
+      // hide sub trees
+      > .#{class-name(Menu)} {
+        display: none;
+      }
     }
 
-    // hide sub trees
-    > .#{class-name(Menu)} {
-      display: none;
-    }
-
-    &.#{state-name(Menu, selected)} {
+    > .#{state-name(MenuItem, selected)} {
       // show sub trees
       > .#{class-name(Menu)} {
         display: block;
       }
     }
 
-    &.#{state-name(Menu, hasChildren)} {
+    > .#{state-name(MenuItem, hasChildren)} {
+      
+    }
+
+    > .#{state-name(MenuItem, linkHover)} {
       
     }
   }

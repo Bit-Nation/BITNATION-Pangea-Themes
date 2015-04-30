@@ -2,7 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('MailPage');
+var bitnMixins = require('../../mixins/bitnMixins');
 var Icon = require('../../controls/Icon');
 var Button = require('../../controls/Button');
 var PageHeader = require('../../layout/PageHeader');
@@ -10,11 +11,12 @@ var PageRow = require('../../layout/PageRow');
 var PageSection = require('../../layout/PageSection');
 var ControlSection = require('../../layout/ControlSection');
 
-var MailPage = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   render: function() {
     return (
-      <div className={this.className()}>
+      <div className={nameHelper.className}>
         <div>
           <PageRow>
             <PageSection flex={3}>
@@ -32,11 +34,11 @@ var MailPage = React.createClass({
             <ControlSection flex={1}
               title={[
                 'Encrypted mail',
-                <Icon type='lock' />
+                <Icon key='icon' type='lock' />
               ]}
               controls={[
-                <Button autoHeight>Send message</Button>,
-                <Button autoHeight>Add contact</Button>
+                <Button key='sendMessage' autoHeight>Send message</Button>,
+                <Button key='addContact' autoHeight>Add contact</Button>
               ]}>
               You have not added any contacts.
             </ControlSection>
@@ -46,5 +48,3 @@ var MailPage = React.createClass({
     );
   }
 });
-
-module.exports = MailPage;

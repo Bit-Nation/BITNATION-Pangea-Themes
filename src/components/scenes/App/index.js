@@ -2,67 +2,70 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('App');
+var bitnMixins = require('../../mixins/bitnMixins');
 
 var SiteNavigation = require('../../navigation/SiteNavigation');
 var UserNavigation = require('../../navigation/UserNavigation');
 var NotaryPage = require('../../pages/NotaryPage');
 var MailPage = require('../../pages/MailPage');
 
-var App = React.createClass({
-  mixins: [ bitnMixin ],
-  getInitialState: function () {
-    return {
-      expanded: false,
-      page: this.props.page || 'notary'
-    };
+var siteNavigationActions = require('../../navigation/SiteNavigation/actions');
+
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
+  propTypes: {
+    cursor: React.PropTypes.object.isRequired,
+    stores: React.PropTypes.object.isRequired,
+    dispatch: React.PropTypes.func.isRequired
   },
   render: function () {
-    var actions = [
-      {
-        icon: 'bars',
-        onClick: this.toggleSiteNavigation
-      },
-      {
-        icon: 'search',
-        href: '#search'
-      },
-      {
-        icon: 'envelope',
-        onClick: this.toggleSiteNavigation
-      },
-      {
-        icon: 'cog',
-        href: '#search'
-      },
-      {
-        icon: 'sign-out',
-        href: '#search'
-      }
-    ];
+    var cursor = this.props.cursor;
+    var stores = this.props.stores;
+
+    var route = stores.getIn(['routing', 'route']);
+    var params = stores.getIn(['routing', 'params']);
+
+    var cover;
+    var page;
+    if (route) {
+      if (route[0] == 'notary') page = (
+        <NotaryPage
+          cursor={cursor.cursor('notaryPage')}
+          stores={stores}
+          dispatch={this.props.dispatch} />
+      )
+      else if (route[0] == 'mail') page = (
+        <MailPage
+          dispatch={this.props.dispatch} />
+      )
+      else if (route[0] == 'notFound') page = (
+        <h1>This page was never here. Stop bothering me!</h1>
+      );
+    }
+    
+    if (route && route[0] == 'notary') cover = {
+      title: ['Welcome to your ', <b>Bitnation</b>],
+      text: 'In the pursuit of serfdom'
+    };
 
     return (
-      <div className={this.className()}>
-        <SiteNavigation {...this.props.siteNavigation}
-          minimized={this.state.expanded}
-          onMenuSelect={this.onMenuSelect} />
+      <div className={nameHelper.className}>
+        <SiteNavigation
+          cursor={cursor.cursor('siteNavigation')}
+          dispatch={this.props.dispatch} />
         <div>
-          <UserNavigation onAction={this.onAction} cover={this.props.cover} />
+          <UserNavigation onShortcut={this.onShortcut} cover={cover} />
           <main>
-            {this.state.page == 'notary' && <NotaryPage />}
-            {this.state.page == 'mail' && <MailPage />}
+            {page}
           </main>
         </div>
       </div>
     );
   },
-  onAction: function (type) {
-    if (type == 'siteNavigation')
-      this.setState({ expanded: !this.state.expanded });
-  },
-  onMenuSelect: function (value) {
-    this.setState({ page: value, expanded: false });    
+  onShortcut: function (keys) {
+    if (keys[0] == 'siteNavigation')
+      siteNavigationActions.toggle(this.props.cursor.cursor('siteNavigation'));
   }
 });
-
-module.exports = App;

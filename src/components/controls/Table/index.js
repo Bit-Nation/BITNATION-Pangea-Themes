@@ -2,10 +2,13 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../nameHelper')('Table');
+var wrapImmutables = require('../../wrapImmutables');
+var bitnMixins = require('../../mixins/bitnMixins');
 
-var Table = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = wrapImmutables(React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string,
     head: React.PropTypes.arrayOf(React.PropTypes.string),
@@ -13,13 +16,13 @@ var Table = React.createClass({
     body: React.PropTypes.arrayOf(React.PropTypes.array)
   },
   render: function () {
-    var className = this.classNameWithProp();
-    className += ' pure-table';
-    if (this.props.striped) className += ' pure-table-striped';
-    if (this.props.className) className += ' ' + this.props.className;
-
     return (
-      <table className={className}>
+      <table className={nameHelper.join(
+        nameHelper.className,
+        this.props.className,
+        'pure-table',
+        this.props.striped && 'pure-table-striped'
+      )}>
 
         {this.props.head &&
           <thead>
@@ -40,18 +43,16 @@ var Table = React.createClass({
       </table>
     );
   }
-});
+}));
 
-module.exports = Table;
-
-function toColumn (content) {
-  return <td>{content}</td>;
+function toColumn (content, index) {
+  return <td key={index}>{content}</td>;
 }
 
-function toHeadColumn (content) {
-  return <th>{content}</th>;
+function toHeadColumn (content, index) {
+  return <th key={index}>{content}</th>;
 }
 
-function toRow (columns) {
-  return <tr>{columns.map(toColumn)}</tr>;
+function toRow (columns, index) {
+  return <tr key={index}>{columns.map(toColumn)}</tr>;
 }
