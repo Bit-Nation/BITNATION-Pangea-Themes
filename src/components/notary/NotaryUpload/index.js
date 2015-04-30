@@ -26,7 +26,7 @@ module.exports = React.createClass({
     var cursor = this.props.cursor;
     var active = cursor.cursor('active');
     var status;
-    var className = this.className();
+    var className = nameHelper.className;
 
     if (!active.isEmpty()) {
       if (active.get('error')) {
@@ -43,7 +43,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <FileInput className={nameHelper.className}
+      <FileInput className={className}
         trigger={<Button file large>Select file</Button>}
         footer='All filetypes allowed (Max filesize: 8MB)'
         onChange={this.onChange}>

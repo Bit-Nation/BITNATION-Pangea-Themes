@@ -39,7 +39,8 @@ module.exports = wrapImmutables(React.createClass({
         onDragOver={this.onDragOver}
         onDrop={this.onChange}>
 
-        <input type='file' {...this.classRef('input')}
+        <input type='file' ref='input'
+          className={nameHelper.ref('input')}
           multiple={this.props.multiple}
           disabled={this.props.disabled}
           onChange={this.onChange} />
@@ -62,7 +63,7 @@ module.exports = wrapImmutables(React.createClass({
     );
   },
   onClick: function () {
-    this.classRefs.input.getDOMNode().click();
+    this.refs.input.getDOMNode().click();
   },
   onDragLeave: function () {
     this.setState({ dragOver: false });
