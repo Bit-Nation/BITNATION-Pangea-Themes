@@ -2,27 +2,26 @@
 require('./components/styles/app.scss');
 
 var React = require('react');
+var controller = require('./controller');
 var App = require('./components/scenes/App');
-
-var dispatch = require('./dispatcher').dispatch;
-var data = require('./data');
-var stores = require('./stores');
-
+var appActions = require('./components/scenes/App/actions');
 var initializeMessage = require('./messages/initialize');
 
-dispatch(initializeMessage());
+controller.registerScene(appActions);
+controller.start();
+controller.dispatch(initializeMessage());
 
 window.addEventListener('load', function () {
   render();
-  data.on('next-animation-frame', render);
+  controller.data.on('next-animation-frame', render);
 });
 
 function render () {
   React.render(
     <App
-      cursor={data.cursor('scene')}
-      stores={stores.data()}
-      dispatch={dispatch} />,
+      cursor={controller.getSceneCursor()}
+      stores={controller.getStoreData()}
+      dispatch={controller.dispatch} />,
 
     document.getElementById('app-container')
   );

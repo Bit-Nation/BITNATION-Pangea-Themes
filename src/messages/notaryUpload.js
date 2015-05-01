@@ -1,4 +1,4 @@
-var message = require('../message');
+var message = require('../lib/message');
 
 var notaryUpload = module.exports = message('notaryUpload');
 

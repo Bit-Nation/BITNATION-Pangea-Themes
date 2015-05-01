@@ -1,9 +1,8 @@
 var _ = require('lodash');
 var page = require('page');
-var clients = require('../clients');
+var controller = require('../controller');
 var initializeMessage = require('../messages/initialize');
 var navigateMessage = require('../messages/navigate');
-var routingStore = require('../stores/routing');
 
 var notFound = '/not-found';
 var paths = ['/', notFound, '/notary', '/mail', '/mail/:id'];
@@ -16,19 +15,15 @@ var options = {
   dispatch: true
 };
 
-module.exports = clients.create(
-  function (message, waitFor, dispatch) {
-    console.log('router handler', message);
+controller.registerClient(function (message, dispatch) {
+  console.log('router handler', message);
 
-    if (message.type === initializeMessage) {
-      waitFor([ routingStore.dispatchToken ]);
-      return initialize(dispatch);
-    }
-    
-    if (message.type === navigateMessage)
-      return page(message.data);
-  }
-);
+  if (message.type === initializeMessage)
+    return initialize(dispatch);
+  
+  if (message.type === navigateMessage)
+    return page(message.data);
+});
 
 function initialize (dispatch) {
   paths.forEach(function (path, i) {

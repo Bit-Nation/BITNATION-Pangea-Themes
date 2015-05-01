@@ -1,4 +1,4 @@
-var message = require('../message');
+var message = require('../lib/message');
 
 var navigate = module.exports = message('navigate');
 
@@ -7,7 +7,7 @@ navigate.success = message(navigate, 'success',
     return {
       route: route,
       params: params
-    }
+    };
   }
 );
 navigate.fail = message(navigate, 'fail');

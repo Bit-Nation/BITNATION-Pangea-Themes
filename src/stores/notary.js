@@ -1,6 +1,6 @@
-var stores = require('../stores');
+var controller = require('../controller');
 
-module.exports = stores.create('notary',
+module.exports = controller.registerStore('notary',
   function (cursor, message, waitFor) {
   }
 );
