@@ -4,9 +4,9 @@ require('./style.scss');
 // this should, at this point, only be used through Menu
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('MenuItem');
-var bitnMixins = require('../../mixins/bitnMixins');
-var hoverMixin = require('../../mixins/hoverMixin');
+var nameHelper = require('../../lib/nameHelper')('MenuItem');
+var bitnMixins = require('../../lib/bitnMixins');
+var hoverMixin = require('../../lib/hoverMixin');
 var Icon = require('../Icon');
 var Link = require('../Link');
 

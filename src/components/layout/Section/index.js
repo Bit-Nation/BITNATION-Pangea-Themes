@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('Section');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('Section');
+var bitnMixins = require('../../lib/bitnMixins');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,

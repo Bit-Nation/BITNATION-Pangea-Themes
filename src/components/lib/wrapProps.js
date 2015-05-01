@@ -19,8 +19,10 @@
   wrapProps({
     score: function (prop) { return prop * 100; },
     messages: MessageStore.prototype
-    // prop will be an instance of MessageStore
   }, MessageComponent)
+
+  child.props.messages will be
+  new MessageStore(parent.props.messages)
 */
 
 var React = require('react');

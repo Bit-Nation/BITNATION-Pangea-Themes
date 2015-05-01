@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('ControlSection');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('ControlSection');
+var bitnMixins = require('../../lib/bitnMixins');
 var Section = require('../../layout/Section');
 
 module.exports = React.createClass({

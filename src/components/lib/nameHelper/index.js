@@ -1,4 +1,4 @@
-var NameHelper = require('../lib/NameHelper');
+var NameHelper = require('./NameHelper');
 
 module.exports = function (displayName) {
   return new NameHelper('bitn', displayName);

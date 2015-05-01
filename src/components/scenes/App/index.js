@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('App');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('App');
+var bitnMixins = require('../../lib/bitnMixins');
 
 var SiteNavigation = require('../../navigation/SiteNavigation');
 var UserNavigation = require('../../navigation/UserNavigation');

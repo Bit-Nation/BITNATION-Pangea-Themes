@@ -2,9 +2,9 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('Radio');
-var wrapImmutables = require('../../wrapImmutables');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('Radio');
+var wrapImmutables = require('../../lib/wrapImmutables');
+var bitnMixins = require('../../lib/bitnMixins');
 
 module.exports = wrapImmutables(React.createClass({
   displayName: nameHelper.displayName,

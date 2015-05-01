@@ -6,9 +6,9 @@ require('./style.scss');
 // - olfox
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('SiteNavigationToggle');
-var bitnMixins = require('../../mixins/bitnMixins');
-var hoverMixin = require('../../mixins/hoverMixin');
+var nameHelper = require('../../lib/nameHelper')('SiteNavigationToggle');
+var bitnMixins = require('../../lib/bitnMixins');
+var hoverMixin = require('../../lib/hoverMixin');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,

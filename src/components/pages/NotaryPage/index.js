@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('NotaryPage');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('NotaryPage');
+var bitnMixins = require('../../lib/bitnMixins');
 var Search = require('../../controls/Search');
 var Table = require('../../controls/Table');
 var NotaryUpload = require('../../notary/NotaryUpload');

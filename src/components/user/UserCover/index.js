@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('UserCover');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('UserCover');
+var bitnMixins = require('../../lib/bitnMixins');
 
 var fecha = require('fecha');
 

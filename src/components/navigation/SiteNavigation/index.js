@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('SiteNavigation');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('SiteNavigation');
+var bitnMixins = require('../../lib/bitnMixins');
 var Menu = require('../../controls/Menu');
 
 var _ = require('lodash');

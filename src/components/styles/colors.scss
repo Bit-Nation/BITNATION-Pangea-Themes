@@ -1,4 +1,6 @@
-@import 'rem';
+// use like
+// bitn-color(space)
+// -> #2d3841
 
 $bitn-colors: (
   mine: #3d3d3d,
@@ -20,7 +22,3 @@ $bitn-colors: (
 @function bitn-color($key) {
   @return map-get($bitn-colors, $key)
 }
-
-// use like
-// bitn-color(space)
-// -> #2d3841

@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-require('./components/app.scss');
+require('./components/styles/app.scss');
 
 var React = require('react');
 var App = require('./components/scenes/App');
@@ -23,7 +23,7 @@ function render () {
       cursor={data.cursor('scene')}
       stores={stores.data()}
       dispatch={dispatch} />,
-      
+
     document.getElementById('app-container')
   );
 };

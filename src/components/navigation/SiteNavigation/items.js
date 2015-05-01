@@ -30,7 +30,7 @@ module.exports = [
       },
       {
         link: 'Not Found',
-        href: '#!notFound',
+        href: '#!this-page-exists',
         icon: { set: 'xbnx', type: 'my-data' }
       }
     ]

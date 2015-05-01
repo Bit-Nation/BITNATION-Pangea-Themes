@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('NotaryTxVerifier');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('NotaryTxVerifier');
+var bitnMixins = require('../../lib/bitnMixins');
 var Button = require('../../controls/Button');
 var Input = require('../../controls/Input');
 

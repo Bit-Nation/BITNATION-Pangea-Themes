@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('MailPage');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('MailPage');
+var bitnMixins = require('../../lib/bitnMixins');
 var Icon = require('../../controls/Icon');
 var Button = require('../../controls/Button');
 var PageHeader = require('../../layout/PageHeader');

@@ -2,9 +2,9 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('UserSettingsDropdown');
-var bitnMixins = require('../../mixins/bitnMixins');
-var hoverMixin = require('../../mixins/hoverMixin');
+var nameHelper = require('../../lib/nameHelper')('UserSettingsDropdown');
+var bitnMixins = require('../../lib/bitnMixins');
+var hoverMixin = require('../../lib/hoverMixin');
 var UserAvatar = require('../../user/UserAvatar');
 var Menu = require('../../controls/Menu');
 

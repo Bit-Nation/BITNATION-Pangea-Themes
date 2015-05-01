@@ -2,9 +2,9 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('Menu');
-var wrapImmutables = require('../../wrapImmutables');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('Menu');
+var wrapImmutables = require('../../lib/wrapImmutables');
+var bitnMixins = require('../../lib/bitnMixins');
 var Icon = require('../Icon');
 var MenuItem = require('../MenuItem');
 

@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('UserNavigation');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('UserNavigation');
+var bitnMixins = require('../../lib/bitnMixins');
 var UserShortcuts = require('../../navigation/UserShortcuts');
 var UserSettingsDropdown = require('../../user/UserSettingsDropdown');
 var UserCover = require('../../user/UserCover');

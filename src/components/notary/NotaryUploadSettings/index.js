@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('NotaryUploadSettings');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('NotaryUploadSettings');
+var bitnMixins = require('../../lib/bitnMixins');
 var Input = require('../../controls/Input');
 var Radio = require('../../controls/Radio');
 

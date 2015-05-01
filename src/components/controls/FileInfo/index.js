@@ -2,9 +2,9 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('FileInfo');
-var wrapImmutables = require('../../wrapImmutables');
-var bitnMixins = require('../../mixins/bitnMixins');
+var nameHelper = require('../../lib/nameHelper')('FileInfo');
+var wrapImmutables = require('../../lib/wrapImmutables');
+var bitnMixins = require('../../lib/bitnMixins');
 
 var filesize = require('filesize');
 

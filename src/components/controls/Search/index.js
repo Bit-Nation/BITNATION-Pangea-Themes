@@ -2,10 +2,10 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../nameHelper')('Search');
-var wrapImmutables = require('../../wrapImmutables');
-var bitnMixins = require('../../mixins/bitnMixins');
-var focusMixin = require('../../mixins/focusMixin');
+var nameHelper = require('../../lib/nameHelper')('Search');
+var wrapImmutables = require('../../lib/wrapImmutables');
+var bitnMixins = require('../../lib/bitnMixins');
+var focusMixin = require('../../lib/focusMixin');
 var Input = require('../../controls/Input');
 var Icon = require('../../controls/Icon');
 
