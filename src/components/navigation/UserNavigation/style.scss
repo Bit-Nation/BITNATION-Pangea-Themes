@@ -27,7 +27,7 @@ $cover-shortcut-hover-color: bitn-color(mercury);
     background-color: $background-color;
     color: white;
 
-    .#{class-name(UserShortcuts)} {
+    .#{class-name(UserNavigationShortcuts)} {
       padding: 0 ($base-padding * 0.5);
 
       a {
@@ -59,7 +59,7 @@ $cover-shortcut-hover-color: bitn-color(mercury);
   > nav {
     background-color: $cover-background-color;
 
-    .#{class-name(UserShortcuts)} a {
+    .#{class-name(UserNavigationShortcuts)} a {
       color: $cover-shortcut-color;
 
       &:hover {

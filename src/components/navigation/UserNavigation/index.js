@@ -4,7 +4,7 @@ require('./style.scss');
 var React = require('react');
 var nameHelper = require('../../lib/nameHelper')('UserNavigation');
 var bitnMixins = require('../../lib/bitnMixins');
-var UserShortcuts = require('../../navigation/UserShortcuts');
+var UserNavigationShortcuts = require('../../navigation/UserNavigationShortcuts');
 var UserSettingsDropdown = require('../../user/UserSettingsDropdown');
 var UserCover = require('../../user/UserCover');
 
@@ -18,7 +18,7 @@ module.exports = React.createClass({
         nameHelper.state({ cover: this.props.cover })
       )}>
         <nav>
-          <UserShortcuts onClick={this.props.onShortcut} />
+          <UserNavigationShortcuts onClick={this.props.onShortcut} />
           <UserSettingsDropdown />
         </nav>
         

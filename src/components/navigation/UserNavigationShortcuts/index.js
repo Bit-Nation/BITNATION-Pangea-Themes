@@ -2,7 +2,7 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('UserShortcuts');
+var nameHelper = require('../../lib/nameHelper')('UserNavigationShortcuts');
 var bitnMixins = require('../../lib/bitnMixins');
 var Menu = require('../../controls/Menu');
 
