@@ -4,16 +4,16 @@ require('./components/styles/app.scss');
 var React = require('react');
 var controller = require('./controller');
 var App = require('./components/scenes/App');
-var appActions = require('./components/scenes/App/actions');
+var AppStore = require('./components/scenes/App/Store');
 var initializeMessage = require('./messages/initialize');
 
-controller.registerScene(appActions);
+controller.registerScene(AppStore);
 controller.start();
 controller.dispatch(initializeMessage());
 
-window.addEventListener('load', function () {
+controller.data.on('next-animation-frame', function () {
+  if (controller.dispatcher.isDispatching()) console.log('disp!');
   render();
-  controller.data.on('next-animation-frame', render);
 });
 
 function render () {

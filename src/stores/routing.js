@@ -1,6 +1,5 @@
-var Immutable = require('immutable');
-var navigateMessage = require('../messages/navigate');
 var controller = require('../controller');
+var navigateMessage = require('../messages/navigate');
 
 controller.registerStore('routing',
   function (cursor, message, waitFor) {
@@ -11,8 +10,8 @@ controller.registerStore('routing',
 
 function updateRoute (cursor, data) {
   return cursor.update(function (current) {
-    return (current || Immutable.Map())
+    return current
       .set('route', data.route)
       .set('params', data.params);
   });
-};
+}

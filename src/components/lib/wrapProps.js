@@ -3,55 +3,71 @@
 /*
 
   wrapProps for React components
+  
+  wraps props before passing them down to the Child component
+  options can be a set of propName : handler, a function or
+  an array containing sets and functions, which will be
+  processed in order.
 
-  takes a set of propName : handler and wraps a component
-  props that are not in the set are just passed down to
-  the child, props that are will first be mapped through
-  the respective handler.
+  if a set is passed is passed each prop is mapped through its
+  respective handler, the handler can either be a function,
+  string or array of strings. the function will be passed the
+  prop value and should return a value, or undefined. strings
+  will be used for new prop keys and the existing one deleted.
 
-  if an object is passed instead of a fn, it will be
-  assumed to be the prototype of a class and its
-  constructor will be called in its place
-  ie., new object.constructor(prop)
-  insetad of, object(prop)
+  if a function is passed it will be given all props and it
+  should return a new set of props.
   
   example use
-  wrapProps({
-    score: function (prop) { return prop * 100; },
-    messages: MessageStore.prototype
-  }, MessageComponent)
-
-  child.props.messages will be
-  new MessageStore(parent.props.messages)
+  wrapProps([
+    {
+      score: ['score', 'totalScore']
+    },
+    {
+      totalScore: function (score) { return score / 100; },
+      messages: MessageStore
+    }
+  ], MessageComponent)
 */
 
 var React = require('react');
 var immutableRenderMixin = require('react-immutable-render-mixin');
 
 module.exports = function wrapProps (options, Child) {
-  var handlers = {};
-  for (var key in options) {
-    // create constructor wrappers for any prototypes passed
-    if (typeof options[key] == 'object') {
-      var proto = options[key];
-      handlers[key] = function (prop) {
-        return new proto.constructor(prop); };
-    }
-    else handlers[key] = options[key];
-  }
+  if (!Array.isArray(options)) options = [ options ];
+  var map = _.partial(mapProps, options);
+  if (!Child) return map;
 
-  var Parent = React.createClass({
+  return React.createClass({
     mixins: [ immutableRenderMixin ],
     render: function () {
-      var wrapped = {};
-      for (var key in handlers) {
-        if (this.props[key] !== undefined)
-          wrapped[key] = handlers[key](this.props[key]);
-      }
-
-      return <Child {...this.props} {...wrapped} />;
+      return <Child {...this.props} {...map(this.props)} />;
     }
   });
-
-  return Parent;
 };
+
+function mapProps (maps, props) {
+  return maps.reduce(function (props, map) {
+    if (typeof map == 'function')
+      return _.clone(map(_.clone(props)));
+
+    var result = {};
+    for (var key in map) {
+      var current = props[key];
+      if (current === undefined) continue;
+      var propMap = map[key];
+      if (typeof propMap == 'function') result[key] = propMap(current);
+      else {
+        delete props[key];
+        if (typeof propMap == 'string') {
+          result[propMap] = current;
+        }
+        else if (Array.isArray(propMap)) {
+          for (var i in propMap) result[propMap[i]] = current;
+        }
+      }
+    }
+    
+    return result;
+  }, props);
+}

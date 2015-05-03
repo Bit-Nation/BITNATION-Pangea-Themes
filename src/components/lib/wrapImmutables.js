@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 /*
 
   wrapImmutables for simple React components
@@ -15,32 +13,27 @@
 
 */
 
-var React = require('react');
-var immutableRenderMixin = require('react-immutable-render-mixin');
+var wrapProps = require('./wrapProps');
 
 module.exports = function wrapImmutables (Child) {
-  var Parent = React.createClass({
-    mixins: [ immutableRenderMixin ],
-    render: function () {
-      var immutableProps = {};
-      for (var key in this.props) {
-        var prop = this.props[key];
-        if (!isImmutable(prop)) continue;
-        // add listener that updates the cursor if prop key is like onX
-        if (isCursor(prop) && /^on[A-Z]/.test(key)) {
-          immutableProps[key] = function (value) {
-            prop.update(function () { return value });
-          };
-        }
-        else immutableProps[key] = prop.valueOf();
-      }
-
-      return <Child {...this.props} {...immutableProps} />;
-    }
-  });
-
-  return Parent;
+  return wrapProps(mapImmutables, Child);
 };
+
+function mapImmutables (props) {
+  var result = {};
+  for (var key in props) {
+    var prop = props[key];
+    if (!isImmutable(prop)) result[key] = prop;
+    // add listener that updates the cursor if prop key is like onX
+    else if (isCursor(prop) && /^on[A-Z]/.test(key)) {
+      result[key] = function (value) {
+        prop.update(function () { return value });
+      };
+    }
+    else result[key] = prop.valueOf();
+  }
+  return result;
+}
 
 function isImmutable (potential) {
   return !!(potential && typeof potential.withMutations === 'function');

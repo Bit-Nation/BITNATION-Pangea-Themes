@@ -33,7 +33,9 @@ module.exports = React.createClass({
         
         <div className={nameHelper.ref('toggle')}>
           <span>Olfox Jensen</span>
-          <UserAvatar size='medium' />
+          <div>
+            <UserAvatar size='medium' />
+          </div>
         </div>
 
         <Menu items={items} onClick={this.props.onClick} />

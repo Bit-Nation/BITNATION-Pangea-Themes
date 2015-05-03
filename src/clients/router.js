@@ -15,24 +15,28 @@ var options = {
   dispatch: true
 };
 
-controller.registerClient(function (message, dispatch) {
+controller.registerClient(function (message) {
   console.log('router handler', message);
 
   if (message.type === initializeMessage)
-    return initialize(dispatch);
+    return initialize();
   
   if (message.type === navigateMessage)
     return page(message.data);
 });
 
-function initialize (dispatch) {
+function initialize () {
+  // add route handlers through page
   paths.forEach(function (path, i) {
     page(path, function (context) {
       // this stuff
       context.handled = true;
       context.save();
 
-      dispatch(navigateMessage.success(routes[i], _.clone(context.params)));
+      controller.dispatch(navigateMessage.success({
+        route: routes[i],
+        params: _.clone(context.params)
+      }));
     });
   });
 
@@ -42,7 +46,7 @@ function initialize (dispatch) {
     // will have to revisit routing later
     if (context.handled) return;
 
-    dispatch(navigateMessage.fail());
+    controller.dispatch(navigateMessage.fail());
     page.redirect(notFound);
   });
 

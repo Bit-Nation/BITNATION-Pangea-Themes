@@ -9,28 +9,16 @@ var Menu = require('../../controls/Menu');
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
   mixins: bitnMixins,
+  propTypes: {
+    onClick: React.PropTypes.func.isRequired
+  },
   render: function () {
     var items = [
-      {
-        key: 'siteNavigation',
-        icon: 'bars'
-      },
-      {
-        key: 'search',
-        icon: 'search'
-      },
-      {
-        key: 'messages',
-        icon: 'envelope'
-      },
-      {
-        key: 'settings',
-        icon: 'cog'
-      },
-      {
-        key: 'signOut',
-        icon: 'sign-out'
-      }
+      { key: 'menu', icon: 'bars' },
+      { key: 'search', icon: 'search' },
+      { key: 'messages', icon: 'envelope' },
+      { key: 'settings', icon: 'cog' },
+      { key: 'signOut', icon: 'sign-out' }
     ];
 
     return (
@@ -39,5 +27,5 @@ module.exports = React.createClass({
         items={items}
         onClick={this.props.onClick} />
     );
-  },
+  }
 });

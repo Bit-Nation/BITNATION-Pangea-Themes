@@ -7,10 +7,10 @@ var bitnMixins = require('../../lib/bitnMixins');
 
 var SiteNavigation = require('../../navigation/SiteNavigation');
 var UserNavigation = require('../../navigation/UserNavigation');
-var NotaryPage = require('../../pages/NotaryPage');
-var MailPage = require('../../pages/MailPage');
+var UserCover = require('../../user/UserCover');
+var Main = require('../../routing/Main');
 
-var siteNavigationActions = require('../../navigation/SiteNavigation/actions');
+var Store = require('./Store');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
@@ -24,48 +24,46 @@ module.exports = React.createClass({
     var cursor = this.props.cursor;
     var stores = this.props.stores;
 
-    var route = stores.getIn(['routing', 'route']);
-    var params = stores.getIn(['routing', 'params']);
-
-    var cover;
-    var page;
-    if (route) {
-      if (route[0] == 'notary') page = (
-        <NotaryPage
-          cursor={cursor.cursor('notaryPage')}
-          stores={stores}
-          dispatch={this.props.dispatch} />
-      )
-      else if (route[0] == 'mail') page = (
-        <MailPage
-          dispatch={this.props.dispatch} />
-      )
-      else if (route[0] == 'notFound') page = (
-        <h1>This page was never here. Stop bothering me!</h1>
-      );
+    var minimized = cursor.get('minimized');
+    var cover = stores.getIn(['layout', 'cover']);
+    var coverHeight = stores.getIn(['layout', 'coverHeight']);
+    var translucent;
+    if (cover) {
+      var scrollTop = stores.getIn(['window', 'scrollTop']);
+      var panelSize = stores.getIn(['layout', 'panelSize']);
+      translucent = scrollTop < coverHeight - (panelSize * 2);
     }
-    
-    if (route && route[0] == 'notary') cover = {
-      title: ['Welcome to your ', <b>Bitnation</b>],
-      text: 'In the pursuit of serfdom'
-    };
+
+    var className = nameHelper.join(
+      nameHelper.className,
+      nameHelper.state({
+        minimized: minimized,
+        cover: cover
+      }));
 
     return (
-      <div className={nameHelper.className}>
+      <div className={className}>
         <SiteNavigation
           cursor={cursor.cursor('siteNavigation')}
+          minimized={!minimized}
+          onToggle={_.partial(Store.toggle, cursor, !minimized)} />
+
+        <UserNavigation
+          cursor={cursor.cursor('userNavigation')}
+          minimized={minimized}
+          translucent={translucent}
+          onToggle={_.partial(Store.toggle, cursor, !minimized)}
           dispatch={this.props.dispatch} />
+
         <div>
-          <UserNavigation onShortcut={this.onShortcut} cover={cover} />
-          <main>
-            {page}
-          </main>
+          {cover &&
+            <UserCover
+              height={coverHeight}
+              currentUser={stores.get('currentUser')} />}
+
+          <Main cursor={cursor} stores={stores} />
         </div>
       </div>
     );
-  },
-  onShortcut: function (keys) {
-    if (keys[0] == 'siteNavigation')
-      siteNavigationActions.toggle(this.props.cursor.cursor('siteNavigation'));
   }
 });

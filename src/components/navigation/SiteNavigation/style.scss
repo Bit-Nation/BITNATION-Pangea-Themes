@@ -1,6 +1,7 @@
 @import '../../component';
 
-$minimize-transition: 150ms ease-in-out;
+$minimize-transition: $bitn-navigation-transition;
+
 $width: $bitn-site-navigation-width;
 $item-height: $bitn-site-navigation-item-height;
 $base-padding: 1rem;
@@ -26,8 +27,12 @@ $minimized-logo-image: '/images/logo-sm.svg';
 $minimized-padding: ($minimized-width - $item-height) / 2;
 
 .#{class-name(SiteNavigation)} {
+  @include display(flex);
+  @include flex-direction(column);
+  position: fixed;
   padding: 0;
   width: $width;
+  height: 100%;
   background-color: $background-color;
   @include transition(width $minimize-transition);
   @include clearfix;
@@ -97,27 +102,35 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
   
   // top menu
   > .#{class-name(Menu)} {
-    float: right;
-    width: $width;
+    @include flex(1);
+    position: relative;
+    overflow-y: auto;
     @include transition(padding $minimize-transition);
 
-    > ul > .#{class-name(MenuItem)} {
-      > a {
-        > i {
-          background-color: $highlight-color;
-        }
+    > ul {
+      position: absolute;
+      right: 0;
+      width: $width;
+      max-height: 100%;
 
-        &:hover {
-          background-color: $hover-background-color;
-          color: $hover-text-color;
-
+      > .#{class-name(MenuItem)} {
+        > a {
           > i {
             background-color: $highlight-color;
           }
-        }
 
-        &:focus {
-          background-color: $highlight-color;
+          &:hover {
+            background-color: $hover-background-color;
+            color: $hover-text-color;
+
+            > i {
+              background-color: $highlight-color;
+            }
+          }
+
+          &:focus {
+            background-color: $highlight-color;
+          }
         }
       }
     }
@@ -180,7 +193,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
       }
 
       // hide selected child menus
-      &.#{state-name(MenuItem, selected)} .#{class-name(Menu)} {
+      &.#{state-name(MenuItem, selected)} > div > .#{class-name(Menu)} {
         display: block;
         height: 0;
         margin: 0;

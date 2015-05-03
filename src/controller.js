@@ -13,7 +13,7 @@ var dispatcher = controller.dispatcher = new OnDispatcher();
 controller.dispatch = controller.dispatcher.dispatch;
 
 var stores = {};
-var sceneActions;
+var SceneStore;
 
 controller.registerStore = function (name, handler, Type) {
   if (stores[name])
@@ -29,15 +29,15 @@ controller.registerStore = function (name, handler, Type) {
 };
 
 controller.registerClient = function (handler) {
-  dispatcher.on(_.partial(handler, _, dispatcher.dispatch));
+  dispatcher.on(handler);
 };
 
-controller.registerScene = function (actions) {
-  sceneActions = actions;
+controller.registerScene = function (Store) {
+  SceneStore = Store;
 };
 
 controller.getStore = function (name) {
-  return new stores[name].Type(this.getStoreData());
+  return new stores[name].Type(this.getStoreData(name));
 };
 
 controller.getStoreData = function (name) {
@@ -59,10 +59,10 @@ controller.getSaveData = function () {
       data.stores[name] = stores[name].Type.getSaveData();
   }
 
-  if (sceneActions &&
-      sceneActions.getSaveData &&
-      data.cursor('scene').deref()) {
-    data.scene = sceneActions.getSaveData(data.cursor('scene'));
+  if (SceneStore &&
+      SceneStore.getSaveData &&
+      !data.cursor('scene').isEmpty()) {
+    data.scene = SceneStore.getSaveData(data.cursor('scene'));
   }
 
   return data;
@@ -79,7 +79,8 @@ controller.start = function (saveData) {
 function loadStores (saveData) {
   var states = {};
   for (var name in stores) {
-    states[name] = stores[name].Type.getInitialState();
+    var Type = stores[name].Type;
+    if (Type.getInitialState) states[name] = Type.getInitialState();
   }
 
   var value = Immutable.Map(states);
@@ -91,22 +92,22 @@ function loadStores (saveData) {
         saveData[name] == null) continue;
 
     value = value.update(name,
-      _.bind(Type.getLoadedState, Type, _, saveData[name]));
+      _.partial(Type.getLoadedState, _, saveData[name]));
   }
 
   return value;
 }
 
 function loadScene (saveData) {
-  if (!sceneActions) return;
+  if (!SceneStore) return;
 
   var value;
 
-  if (sceneActions.getInitialState)
-    value = sceneActions.getInitialState();
+  if (SceneStore.getInitialState)
+    value = SceneStore.getInitialState();
 
-  if (sceneActions.getSaveData && saveData)
-    value = sceneActions.getLoadedState(value, saveData);
+  if (SceneStore.getLoadedState && saveData)
+    value = SceneStore.getLoadedState(value, saveData);
 
   return value;
 }
@@ -120,6 +121,7 @@ function dispatchHandler (name, handler, message) {
 }
 
 function waitFor (storeNames) {
+  if (!Array.isArray(storeNames)) storeNames = [ storeNames ];
   dispatcher.waitFor(storeNames.map(function (name) {
     return stores[name].dispatchToken;
   }));
