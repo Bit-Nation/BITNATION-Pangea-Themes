@@ -15,6 +15,11 @@ module.exports = [
     icon: { set: 'xbnx', type: 'dapp-library' }
   },
   {
+    link: 'DApp Library',
+    href: '#!/dapps',
+    icon: { set: 'xbnx', type: 'dapp-library' }
+  },
+  {
     link: 'Test mail',
     href: '#!/mail/3',
     icon: { set: 'xbnx', type: 'my-dapps' }
