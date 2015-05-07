@@ -11,6 +11,7 @@ module.exports = wrapImmutables(React.createClass({
   mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string,
+    style: React.PropTypes.object,
     set: React.PropTypes.string,
     type: React.PropTypes.string,
     highlight: React.PropTypes.bool,
@@ -35,7 +36,7 @@ module.exports = wrapImmutables(React.createClass({
     }
 
     return (
-      <i className={className} />
+      <i className={className} style={this.props.style} />
     );
   }
 }));

@@ -3,7 +3,7 @@ var controller = require('../controller');
 var initializeMessage = require('../messages/initialize');
 var scrollMessage = require('../messages/scroll');
 
-controller.registerClient(function (message) {
+controller.on('message', function (message) {
   if (message.type === initializeMessage)
     return initialize();
 

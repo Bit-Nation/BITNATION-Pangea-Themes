@@ -53,28 +53,16 @@ var _ = require('lodash');
 var util = require('util');
 var Immutable = require('immutable');
 
-var Store = module.exports = function Store (data) {
-  this.data = data;
-};
+var Proto = function Store (data) {};
 
-var getInitialState = function () { return Immutable.Map() };
-
-Store.methods = { getInitialState: getInitialState };
-Store.updaters = {};
-Store.getInitialState = getInitialState;
-Store.prototype.getInitialState = getInitialState;
-
-Store.extend = function (options) {
-  var Parent = Store;
+Proto.extend = function (options) {
   var constructor = function Store (data) {
-    if (!(this instanceof Store))
-      return new Store(data);
-
-    Parent.call(this, data);
+    if (!(this instanceof Store)) return new Store(data);
+    this.data = data;
   };
 
   util.inherits(constructor, this);
-  var methods = _.extend(_.clone(this.methods), options || {});
+  var methods = _.extend(_.clone(this.methods || {}), options || {});
   var updaters = {};
 
   _.each(methods, function (fn, key) {
@@ -98,7 +86,7 @@ Store.extend = function (options) {
         for (var i = 0; i < arguments.length; i++)
           args[i] = arguments[i];
 
-        handler.apply(null, [ this.data ].concat(args));
+        return handler.apply(null, [ this.data ].concat(args));
       };
     }
   });
@@ -109,3 +97,21 @@ Store.extend = function (options) {
 
   return constructor;
 };
+
+module.exports = Proto.extend({
+  getInitialState: function () {
+    return Immutable.Map();
+  },
+  getSaveData: function (data) {
+    return data.toJS();
+  },
+  getLoadedState: function (data, saveData) {
+    return data.mergeDeep(saveData);
+  },
+  get: function (data, key) {
+    return data.get(key);
+  },
+  getIn: function (data, keys) {
+    return data.getIn(keys);
+  }
+})

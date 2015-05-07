@@ -32,6 +32,7 @@
 
 var React = require('react');
 var immutableRenderMixin = require('react-immutable-render-mixin');
+var Immutable = require('immutable');
 
 module.exports = function wrapProps (options, Child) {
   if (!Array.isArray(options)) options = [ options ];
@@ -40,34 +41,56 @@ module.exports = function wrapProps (options, Child) {
 
   return React.createClass({
     mixins: [ immutableRenderMixin ],
+    componentWillMount: function () {
+      this.mapResults = map(this.props);
+      this.mappedProps = _.last(this.mapResults);
+    },
+    componentWillReceiveProps: function (nextProps) {
+      this.mapResults = map(nextProps, this.mapResults);
+      this.mappedProps = _.last(this.mapResults);
+    },
     render: function () {
-      return <Child {...this.props} {...map(this.props)} />;
+      return <Child {...this.mappedProps} />;
     }
   });
 };
 
-function mapProps (maps, props) {
-  return maps.reduce(function (props, map) {
-    if (typeof map == 'function')
-      return _.clone(map(_.clone(props)));
+function mapProps (maps, props, oldResults) {
+  return maps.reduce(function (results, map, index) {
+    var result = _.clone(_.last(results));
 
-    var result = {};
-    for (var key in map) {
-      var current = props[key];
-      if (current === undefined) continue;
-      var propMap = map[key];
-      if (typeof propMap == 'function') result[key] = propMap(current);
-      else {
-        delete props[key];
-        if (typeof propMap == 'string') {
-          result[propMap] = current;
+    if (typeof map == 'function') {
+      if (!oldResults) result = map(result);
+      else result = map(result, oldResults[index], oldResults[index+1]);
+      result = _.clone(result);
+    }
+    else {
+      for (var key in map) {
+        var value = props[key];
+        if (value === undefined) continue;
+
+        var propMap = map[key];
+        if (typeof propMap == 'function') {
+          if (!oldResults) result[key] = propMap(value);
+          else {
+            var oldValue = oldResults[index][key];
+            var oldResult = oldResults[index + 1][key];
+            if (Immutable.is(value, oldValue)) result[key] = oldResult;
+            else result[key] = propMap(value, oldValue);
+          }
         }
-        else if (Array.isArray(propMap)) {
-          for (var i in propMap) result[propMap[i]] = current;
+        else {
+          delete props[key];
+          if (typeof propMap == 'string') {
+            result[propMap] = value;
+          }
+          else if (Array.isArray(propMap)) {
+            for (var i in propMap) result[propMap[i]] = value;
+          }
         }
       }
     }
-    
-    return result;
-  }, props);
+      
+    return results.concat([ result ]);
+  }, [ props ]);
 }

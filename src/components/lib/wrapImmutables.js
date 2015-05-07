@@ -19,11 +19,13 @@ module.exports = function wrapImmutables (Child) {
   return wrapProps(mapImmutables, Child);
 };
 
-function mapImmutables (props) {
+function mapImmutables (props, oldProps, oldResult) {
   var result = {};
   for (var key in props) {
     var prop = props[key];
     if (!isImmutable(prop)) result[key] = prop;
+    else if (oldProps && Immutable.is(prop, oldProps[key]))
+      result[key] = oldResult[key];
     // add listener that updates the cursor if prop key is like onX
     else if (isCursor(prop) && /^on[A-Z]/.test(key)) {
       result[key] = function (value) {

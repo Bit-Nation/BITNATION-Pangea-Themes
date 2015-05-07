@@ -11,8 +11,8 @@ module.exports = wrapImmutables(React.createClass({
   mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string,
-    head: React.PropTypes.arrayOf(React.PropTypes.string),
-    foot: React.PropTypes.arrayOf(React.PropTypes.string),
+    head: React.PropTypes.arrayOf(React.PropTypes.node),
+    foot: React.PropTypes.arrayOf(React.PropTypes.node),
     body: React.PropTypes.arrayOf(React.PropTypes.array)
   },
   render: function () {

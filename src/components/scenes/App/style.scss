@@ -18,15 +18,19 @@ $top: $bitn-navigation-panel-size;
     @include display(flex);
     @include flex-direction(column);
     position: relative;
-    margin-left: $left;
+    //margin-left: $left;
     margin-top: $top;
     @include transition(margin-left $minimize-transition);
+  }
+
+  .#{class-name(Main)} {
+    @include flex(1);
   }
 }
 
 .#{state-name(App, minimized)} {
   > div {
-    margin-left: $minimized-left;
+    //margin-left: $minimized-left;
   }
 }
 

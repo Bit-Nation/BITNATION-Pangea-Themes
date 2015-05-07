@@ -13,21 +13,23 @@
 
         @include clearfix;
       }
-
-      // hide sub trees
-      > .#{class-name(Menu)} {
-        display: none;
-      }
     }
 
     > .#{state-name(MenuItem, selected)} {
       // show sub trees
-      > .#{class-name(Menu)} {
+      > div > .#{class-name(Menu)} {
         display: block;
       }
     }
 
-    > .#{state-name(MenuItem, hasChildren)} {
+    > .#{state-name(MenuItem, deselected)} {
+      // hide sub trees
+      > div > .#{class-name(Menu)} {
+        display: none;
+      }
+    }
+
+    > .#{state-name(MenuItem, children)} {
       
     }
 

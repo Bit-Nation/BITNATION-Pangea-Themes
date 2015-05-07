@@ -13,29 +13,41 @@ var Menu = module.exports = wrapImmutables(React.createClass({
   mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string,
+    style: React.PropTypes.object,
+    listStyle: React.PropTypes.object,
+    itemStyle: React.PropTypes.object,
+    linkStyle: React.PropTypes.object,
+    iconStyle: React.PropTypes.object,
+    child: React.PropTypes.object,
     children: React.PropTypes.node,
     horizontal: React.PropTypes.bool,
     selected: React.PropTypes.arrayOf(React.PropTypes.number),
     items: React.PropTypes.array.isRequired
   },
   render: function () {
-    var selected = this.props.selected;
+    var props = this.props;
+    var selected = props.selected;
     var clickHandler = this.clickHandler;
+
     var items = this.props.items.map(function (item, i) {
       var key = item.key === undefined ? i : item.key;
       var isSelected = selected ? selected[0] === key : false;
       return (
         <MenuItem
           prevent={!!item.items}
+          style={props.itemStyle}
+          linkStyle={props.linkStyle}
+          iconStyle={props.iconStyle}
           {...item}
           key={key} selected={isSelected}
           onClick={clickHandler(key, item)}>
 
           {item.items &&
             <Menu
+              {...(props.child || props)}
               items={item.items}
               selected={isSelected ? selected.slice(1) : null}
-              onClick={clickHandler(key, item, true)} />}
+              onClick={clickHandler(key)} />}
         </MenuItem>
       );
     });
@@ -43,25 +55,44 @@ var Menu = module.exports = wrapImmutables(React.createClass({
     return (
       <nav className={nameHelper.join(
         nameHelper.className,
-        this.props.className,
+        props.className,
         'pure-menu',
         this.props.horizontal && 'pure-menu-horizontal'
-      )}>
+      )} style={props.style}>
 
-        {this.props.children}
+        {props.children}
 
-        <ul className='pure-menu-list'>
+        <ul className='pure-menu-list' style={props.listStyle}>
           {items}
         </ul>
       </nav>
     );
   },
-  clickHandler: function (key, item, parent) {
+  clickHandler: function (key, item) {
+    var current = this.props.selected;
     var onClick = this.props.onClick;
-    if (!onClick) return;
-    return function (keys, childItem) {
-      if (parent) onClick([ key ].concat(keys), childItem);
-      else onClick([ key ], item);
+    var onSelect = this.props.onSelect;
+    return function (clickedKeys, clickedItem) {
+      if (!item) {
+        clickedKeys = [ key ].concat(clickedKeys);
+      }
+      else {
+        clickedKeys = [ key ];
+        clickedItem = item;
+      }
+
+      if (onClick) onClick(clickedKeys, clickedItem);
+      if (!onSelect) return;
+
+      // select the parent if the keys are
+      // equal or directly descending to the currently selected item
+      // -- this closes stuff
+      var selected = clickedKeys;
+      if (current && current.length >= clickedKeys.length &&
+        _.isEqual(clickedKeys, current.slice(0, clickedKeys.length)))
+        selected = selected.length > 1 ? selected.slice(0, -1) : null;
+
+      onSelect(selected);
     };
   }
 }));

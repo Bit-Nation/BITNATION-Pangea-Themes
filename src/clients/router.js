@@ -3,10 +3,8 @@ var page = require('page');
 var controller = require('../controller');
 var initializeMessage = require('../messages/initialize');
 var navigateMessage = require('../messages/navigate');
-
-var notFound = '/not-found';
-var paths = ['/', notFound, '/notary', '/mail', '/mail/:id'];
-var routes = paths.map(toRoute);
+var signInMessage = require('../messages/signIn');
+var signOutMessage = require('../messages/signOut');
 
 var options = {
   click: false,
@@ -15,48 +13,49 @@ var options = {
   dispatch: true
 };
 
-controller.registerClient(function (message) {
-  console.log('router handler', message);
-
+controller.on('message', function (message) {
   if (message.type === initializeMessage)
     return initialize();
   
   if (message.type === navigateMessage)
     return page(message.data);
+
+  if (message.type === signInMessage.success)
+    return page('/');
+
+  if (message.type === signOutMessage.success)
+    return page('/sign-in');
 });
 
 function initialize () {
+  var routing = controller.getStore('routing');
+  var paths = routing.getPaths();
+
   // add route handlers through page
-  paths.forEach(function (path, i) {
-    page(path, function (context) {
-      // this stuff
-      context.handled = true;
-      context.save();
+  paths.forEach(function (options, path) {
+    if (options.get('hidden')) return;
+    var keys = options.get('keys').toJS();
+    var pagePath = '/' + path.replace(/\$/g, ':');
+    var handler = function (context) {
+      if (!options.get('public')) {
+        var user = controller.getStore('currentUser');
+        if (!user.data.get('signedIn'))
+          return page.redirect('/sign-in');
+      }
 
       controller.dispatch(navigateMessage.success({
-        route: routes[i],
+        keys: keys,
         params: _.clone(context.params)
       }));
-    });
+    };
+    // such a hack, wont play nice
+    page(pagePath, handler);
+    page('/' + pagePath, handler);
   });
 
   page('*', function (context) {
-    // and this is a weird trick to get /#!/ instead of /#!
-    // discovered it by accident lol
-    // will have to revisit routing later
-    if (context.handled) return;
-
-    controller.dispatch(navigateMessage.fail());
-    page.redirect(notFound);
+    controller.dispatch(navigateMessage.fail('notFound'));
   });
 
   page(options);
-}
-
-function toRoute (path) {
-  var route = path.split('/').filter(function (part) {
-    return part != '';
-  }).map(_.camelCase);
-
-  return route.length == 0 ? null : route;
 }

@@ -2,26 +2,20 @@
 
 $minimize-transition: $bitn-navigation-transition;
 
-$left: $bitn-navigation-panel-size;
-$minimized-left: $bitn-site-navigation-width;
-
-$panel-height: $bitn-navigation-panel-size;
 $base-padding: 1rem;
 
 $background-color: bitn-color(curious);
 $shortcut-color: bitn-color(mercury);
 $shortcut-hover-color: bitn-color(dove);
 
-$translucent-background-color: rgba(black, 0.65);
-$translucent-shortcut-color: bitn-color(gray);
-$translucent-shortcut-hover-color: bitn-color(mercury);
+$fade-background-color: rgba(black, 0.6);
+$fade-shortcut-color: bitn-color(mercury);
+$fade-shortcut-hover-color: bitn-color(dove);
 
 .#{class-name(UserNavigation)} {
   position: fixed;
   z-index: 9;
-  left: $left;
   right: 0;
-  height: $panel-height;
   color: white;
   @include transition(left $minimize-transition);
 
@@ -51,7 +45,7 @@ $translucent-shortcut-hover-color: bitn-color(mercury);
 }
 
 .#{ref-name(UserNavigation, opaqueLayer)},
-.#{ref-name(UserNavigation, translucentLayer)} {
+.#{ref-name(UserNavigation, fadeLayer)} {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -63,21 +57,31 @@ $translucent-shortcut-hover-color: bitn-color(mercury);
   opacity: 1;
 }
 
-.#{ref-name(UserNavigation, translucentLayer)} {
-  background-color: $translucent-background-color;
+.#{ref-name(UserNavigation, fadeLayer)} {
+  background-color: $fade-background-color;
   opacity: 0;
+
+  &:after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 15%;
+    @include linear-gradient(transparent, rgba(black, 0.25));
+    content: ' ';
+  }
 }
 
 .#{state-name(UserNavigation, minimized)} {
-  left: $minimized-left;
+
 }
 
-.#{state-name(UserNavigation, translucent)} {
+.#{state-name(UserNavigation, fade)} {
   .#{class-name(UserNavigationShortcuts)}.#{class-name(Menu)} a {
-    color: $translucent-shortcut-color;
+    color: $fade-shortcut-color;
 
     &:hover {
-      color: $translucent-shortcut-hover-color;
+      color: $fade-shortcut-hover-color;
     }
   }
 }

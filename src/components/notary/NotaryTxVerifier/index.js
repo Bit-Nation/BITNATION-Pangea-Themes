@@ -7,72 +7,57 @@ var bitnMixins = require('../../lib/bitnMixins');
 var Button = require('../../controls/Button');
 var Input = require('../../controls/Input');
 
-var Bitnation = require('../../../bitnation/bitnation.pangea');
+var verifyTxMessage = require('../../../messages/notary/verifyTx');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
   mixins: bitnMixins,
-  getInitialState: function () {
-    return {
-      value: null,
-      verified: null,
-      verifying: false
-    };
+  propTypes: {
+    cursor: React.PropTypes.object.isRequired,
+    verified: React.PropTypes.object.isRequired,
+    dispatch: React.PropTypes.func.isRequired
   },
   render: function() {
+    var cursor = this.props.cursor;
+    var verified = this.props.verified;
+
+    var verifying = false;
+    var valid;
+    if (cursor.get('submitted') &&
+        cursor.get('submitted') === cursor.get('value')) {
+      var result = verified.get(cursor.get('submitted'));
+      if (!result) verifying = true;
+      else valid = result.get('valid');
+    }
+
     var className = nameHelper.join(
       nameHelper.className,
       nameHelper.state({
-        verifying: this.state.verifying,
-        valid: this.state.verified === true,
-        invalid: this.state.verified === false
+        verifying: verifying,
+        valid: valid === true,
+        invalid: valid === false
       }));
 
     return (
-      <form className={className}
-        onSubmit={this.onSubmit}>
+      <form className={className} onSubmit={this.onSubmit}>
         <legend>Verify a notary transaction hash.</legend>
 
         <div className={nameHelper.ref('status')}>
-          {this.state.verified === true && 'Valid'}
-          {this.state.verified === false && 'Invalid'}
+          {valid === true && 'Valid'}
+          {valid === false && 'Invalid'}
         </div>
 
-        <Input value={this.state.value}
-          onChange={this.onChange} />
+        <Input value={cursor.cursor('value')}
+          onChange={cursor.cursor('value')} />
 
         <Button submit>Verify</Button>
       </form>
     );
   },
-  onChange: function (value) {
-    this.setState({
-      value: value,
-      verified: null,
-      verifying: false
-    });
-  },
   onSubmit: function (event) {
     event.preventDefault();
-    this.verify();
-  },
-  onSuccess: function (result) {
-    if (!this.state.verifying) return;
-    this.setState({
-      verified: result,
-      verifying: false
-    });
-  },
-  onError: function (error) {
-    if (!this.state.verifying) return;
-    alert(error);
-    this.setState({ verifying: false });
-  },
-  verify: function () {
-    var ui = new Bitnation.pangea.UI();
-    ui.verifyNotary(this.state.value)
-      .done(this.onSuccess)
-      .fail(this.onError);
-    this.setState({ verifying: true });
+    var cursor = this.props.cursor;
+    cursor.set('submitted', cursor.get('value'));
+    this.props.dispatch(verifyTxMessage(cursor.get('value')));
   }
 });

@@ -15,6 +15,9 @@ module.exports = React.createClass({
   mixins: bitnMixins.concat(hoverMixin),
   propTypes: {
     className: React.PropTypes.string,
+    style: React.PropTypes.object,
+    linkStyle: React.PropTypes.object,
+    iconStyle: React.PropTypes.object,
     children: React.PropTypes.node,
     selected: React.PropTypes.bool,
     href: React.PropTypes.string,
@@ -36,15 +39,17 @@ module.exports = React.createClass({
       this.props.className,
       nameHelper.state({
         selected: this.props.selected,
-        hasChildren: this.props.children,
+        deselected: !this.props.selected,
+        children: this.props.children,
         linkHover: this.state.hover
       }),
       'pure-menu-item');
     
     return (
-      <li className={className}>
+      <li className={className} style={this.props.style}>
         {(this.props.link || this.props.href || icon) &&
-          <Link className='pure-menu-link' href={this.props.href || '#'}
+          <Link className='pure-menu-link' style={this.props.linkStyle}
+            href={this.props.href || '#'}
             onClick={this.onClick}
             onMouseOver={this.onMouseOver}
             onMouseOut={this.onMouseOut}>
@@ -53,7 +58,10 @@ module.exports = React.createClass({
               <span>{this.props.link}</span>}
 
             {icon &&
-              <Icon highlight={this.state.hover} {...icon} />}
+              <Icon
+                style={this.props.iconStyle}
+                highlight={this.state.hover}
+                {...icon} />}
           </Link>}
 
         {this.props.children &&

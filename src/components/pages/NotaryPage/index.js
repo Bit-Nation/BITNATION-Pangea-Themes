@@ -15,20 +15,20 @@ var PageSection = require('../../layout/PageSection');
 var Results = require('../../layout/Results');
 
 var _ = require('lodash');
-var Bitnation = require('../../../bitnation/bitnation.pangea');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
   mixins: bitnMixins,
   propTypes: {
     cursor: React.PropTypes.object.isRequired,
-    stores: React.PropTypes.object.isRequired,
+    notary: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired
   },
   render: function() {
     var cursor = this.props.cursor;
-    var stores = this.props.stores;
-    
+    var notary = this.props.notary;
+    var dispatch = this.props.dispatch;
+
     return (
       <div className={nameHelper.className}>
         <PageHeader title='Public notary' />
@@ -38,12 +38,15 @@ module.exports = React.createClass({
             <PageSection flex={3}>
               <NotaryUpload
                 cursor={cursor.cursor('upload')}
-                uploads={stores.get('notaryUploads')}
-                dispatch={this.props.dispatch} />
+                uploads={notary.get('uploads')}
+                dispatch={dispatch} />
             </PageSection>
 
             <PageSection flex={1} title='Get started'>
-              <NotaryTxVerifier />
+              <NotaryTxVerifier
+                cursor={cursor.cursor('txVerifier')}
+                verified={notary.getIn(['tx', 'verified'])}
+                dispatch={dispatch} />
             </PageSection>
           </PageRow>
 
@@ -95,32 +98,5 @@ module.exports = React.createClass({
         </div>
       </div>
     );
-  },
-  onFiles: function (files) {
-    alert(Object.keys(files));
-    //this.issueNotary(files[0]);
-  },
-  issueNotary: function (file) {
-
-    var cursor = this.props.cursor;
-    // @todo: Encrypted (private) notaries
-
-    var ui = new Bitnation.pangea.UI();
-
-    ui.notarizeDocument(file, cursor.get('secret'), cursor.get('uri'))
-      .done(function (result) {
-
-        console.log(result);
-        alert('Success: Transaction id is ' + result.txId);
-
-      })
-      .fail(function (err) {
-
-        alert('An error occurred. Check the logs.');
-        console.error(err);
-
-      });
-
-    this.setState({ secret: '' });
   }
 });

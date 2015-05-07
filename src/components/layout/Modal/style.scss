@@ -1,0 +1,23 @@
+@import '../../component';
+
+.#{class-name(Modal)} {
+  @include display(flex);
+  @include align-items(center);
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(black, 0.25);
+
+  > .#{class-name(Section)} {
+    @include flex(1);
+    margin: -10% auto 0 auto;
+    max-width: rem-calc(600);
+    max-height: rem-calc(400);
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 1rem 10rem rgba(black, 0.5);
+  }
+}

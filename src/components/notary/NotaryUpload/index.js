@@ -10,8 +10,7 @@ var Radio = require('../../controls/Radio');
 var FileInput = require('../../controls/FileInput');
 var NotaryUploadSettings = require('../../notary/NotaryUploadSettings');
 
-var notaryUploadMessage = require('../../../messages/notaryUpload');
-var actions = require('./actions');
+var uploadMessage = require('../../../messages/notary/upload');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
@@ -19,36 +18,21 @@ module.exports = React.createClass({
   propTypes: {
     children: React.PropTypes.node,
     cursor: React.PropTypes.object.isRequired,
-    //notaryUploads: React.PropTypes.object.isRequired,
+    notary: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired
   },
   render: function () {
     var cursor = this.props.cursor;
-    var active = cursor.cursor('active');
     var status;
     var className = nameHelper.className;
-
-    if (!active.isEmpty()) {
-      if (active.get('error')) {
-        status = 'Error!';
-        className += ' ' + nameHelper.state('error');
-      }
-      else if (active.get('done')) {
-        status = 'Done.';
-        className += ' ' + nameHelper.state('done');
-      }
-      else {
-        status = 'Loading...';
-      }
-    }
 
     return (
       <FileInput className={className}
         trigger={<Button file large>Select file</Button>}
         footer='All filetypes allowed (Max filesize: 8MB)'
-        onChange={this.onChange}>
+        onChange={cursor.cursor('file')}>
 
-        <NotaryUploadSettings cursor={cursor.cursor('settings')}>
+        <NotaryUploadSettings cursor={cursor}>
           {this.props.children}
         </NotaryUploadSettings>
 
@@ -60,14 +44,13 @@ module.exports = React.createClass({
   },
   onChange: function (files) {
     var cursor = this.props.cursor;
-    var options = { file: files[0] };
-    _.extend(options, cursor.cursor('settings').toJS());
-    var message = notaryUploadMessage(options);
-    
-    if (cursor.get('message'))
-      this.props.dispatch(notaryUploadMessage.cancel());
-    
-    cursor.set('message', message);
-    this.props.dispatch(message);
+    cursor = cursor.set('file', files[0]);
+    var options = {
+      file: cursor.get('file'),
+      public: cursor.get('public'),
+      uri: cursor.get('uri'),
+      secret: cursor.get('secret')
+    };
+    this.props.dispatch(uploadMessage(options));
   }
 });
