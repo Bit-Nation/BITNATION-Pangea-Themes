@@ -59,9 +59,52 @@ var jQuery = require('jquery');
         /**
          * Perform the whole notarization process
          */
-        uiService.notarizeDocument = function (file, secretPhrase, uri) {
-            return _notaryService.notarizeDocument(file, secretPhrase, uri);
+        uiService.notarizeDocument = function (file, secretPhrase, uri, isPrivate) {
+            return _notaryService.notarizeDocument(file, secretPhrase, uri, isPrivate);
         };
+
+        /**
+         * Get a list of messages for an account on the HZ blockchain.
+         */
+        uiService.getMail = function (account) {
+            var deferred = $.Deferred();
+
+            _hzClient.getMessages(account)
+            .done(function (msgList) {
+                var parsedMessages = [];
+
+                msgList.forEach(function (item) {
+                    item.date = _hzClient.timestampToDate(item.blockTimestamp);
+                });
+
+                deferred.resolve(msgList);
+
+            })
+            .fail(function (err) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise();
+        }
+
+        /**
+         * Read a single message from the HZ blockchain.
+         */
+        uiService.readMessage = function (txId, secretPhrase) {
+            return _hzClient.readMessage(txId, secretPhrase);
+        };
+
+        /**
+         * Send a message via the HZ blockchain.
+         */
+        uiService.sendMessage = function (recipient, message, secretPhrase, encrypted) {
+            return _hzClient.sendMessage(recipient, message, secretPhrase, encrypted);
+        };
+
+        /**
+         * Expose Horizon errors
+         */
+        uiService.hzErrors = Bitnation.horizon.errors;
 
         return uiService;
 

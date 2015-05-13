@@ -9,7 +9,58 @@ var jQuery = require('jquery');
      */
     var _decimals = 8;
 
-    var _testnet = false;
+    /**
+     * Set to true to use testnet rather than mainnet
+     */
+    var _testnet = true;
+
+    /**
+     * The max # of blocks before the tx will not
+     * be sent.
+     */
+    var _deadline = 1440;
+
+    /**
+     * The Horizon feature will throw errors in the range
+     * -301 through -399.
+     */
+    var _errorRange = -300;
+
+    /**
+     * The ports used by the HZ daemon
+     */
+    var _ports = {
+        MAINNET: {
+            API: 7776,
+            P2P: 7774
+        },
+        TESTNET: {
+            API: 6976,
+            P2P: 6974
+        }
+    };
+
+    // Sat, 22 Mar 2014 22:22:21 UTC
+    var _genesisBlocks = {
+        TESTNET: {
+            timestamp: 1395526942000
+        },
+        MAINNET: {
+            timestamp: 1395526942000
+        }
+    };
+
+    var _transactionTypes = {
+        messaging: {
+            id: 1,
+            subTypes: {
+                arbitraryMessage: {
+                    id: 0,
+                    description: 'Arbitrary message'
+                }
+            }
+        }
+    };
 
     /**
      * Mostly from HZ/NXT NRS
@@ -231,6 +282,20 @@ var jQuery = require('jquery');
     };
 
     /**
+     * HZ error definitions
+     */
+    var errors = {
+        messageDecryptionFailure: {
+            errorCode: _errorRange - 1,
+            errorDescription: 'Unable to decrypt message.'
+        },
+        passphraseMissingError: {
+            errorCode: _errorRange - 2,
+            errorDescription: 'You must supply a passphrase'
+        }
+    };
+
+    /**
      * Horizon Client
      */
     var Client = function () {
@@ -262,8 +327,9 @@ var jQuery = require('jquery');
 
             var checkError = _checkError;
 
-            httpClient.sendRequest(this.getMethod(requestType), this.getBaseUri(), params)
-            .done(function (result) {
+            httpClient.sendRequest(
+                this.getMethod(requestType), this.getBaseUri(), params
+            ).done(function (result) {
                 if (checkError(result)) {
                     deferred.reject(result);
                 } else {
@@ -290,7 +356,9 @@ var jQuery = require('jquery');
         hzClient.getHzHost = function () {
             var proto = 'http';
             var host = 'localhost';
-            var port = (_testnet === true) ? '7776' : '6976' ;
+            var port = (_testnet === true) ?
+                _ports.TESTNET.API :
+                _ports.MAINNET.API;
 
             return proto + '://' + host + ':' + port;
         };
@@ -309,10 +377,7 @@ var jQuery = require('jquery');
             var deferred = $.Deferred();
 
             if (secretPhrase == "") {
-                deferred.reject({
-                    errorCode: -100,
-                    errorDescription: 'You must supply a passphrase'
-                });
+                deferred.reject(errors.passphraseMissingError);
             }
 
             this.sendRequest('getAccountId', {
@@ -355,28 +420,103 @@ var jQuery = require('jquery');
         };
 
         /**
+         * Retrieve a transaction record from the blockchain
+         */
+        hzClient.getTransaction = function (txId) {
+            return this.sendRequest('getTransaction', {
+                transaction: txId
+            });
+        };
+
+        /**
          * Read the message in a transaction
          */
         hzClient.readMessage = function (transactionId, secretPhrase) {
-            return this.sendRequest('readMessage', {
-                transaction: transactionId,
-                secretPhrase: secretPhrase
+            var deferred = $.Deferred();
+
+            // @todo: Scope issues. Sure there's a better way to do this
+            var _client = this;
+
+            this.getTransaction(transactionId)
+            .done(function (tx) {
+
+                _client.sendRequest('readMessage', {
+                    transaction: transactionId,
+                    secretPhrase: secretPhrase
+                })
+                .done(function (result) {
+
+                    if (Object.getOwnPropertyNames(result).length === 0) {
+                        deferred.reject(errors.messageDecryptionFailure);
+                    } else {
+                        deferred.resolve(result);
+                    }
+
+                })
+                .fail(function (err) {
+                    deferred.reject(err);
+                });
+
+            })
+            .fail(function (err) {
+                deferred.reject(err);
             });
-        }
+
+            return deferred.promise();
+        };
 
         /**
          * Send a message
          */
-        hzClient.sendMessage = function (recipient, content, secretPhrase, deadline) {
-            var defaultDeadline = 60;
+        hzClient.sendMessage = function (recipient, content, secretPhrase, encrypt, recipientPubkey) {
 
-            return this.sendRequest('sendMessage', {
+            var params = {
                 recipient: recipient,
-                message: content,
                 secretPhrase: secretPhrase,
-                deadline: deadline || defaultDeadline,
+                deadline: _deadline,
                 feeNQT: 1 * Math.pow(10, _decimals)
+            };
+
+            if (recipientPubkey !== undefined) {
+                params.recipientPublicKey = recipientPubkey;
+            }
+
+            if (encrypt === true) {
+                params.messageToEncrypt = content;
+            } else {
+                params.message = content;
+            }
+
+            return this.sendRequest('sendMessage', params);
+
+        };
+
+        /**
+         * Get transactions for an account
+         */
+        hzClient.getAccountTransactions = function (accountRS, params) {
+            params.account = accountRS;
+            return this.sendRequest('getAccountTransactions', params);
+        };
+
+        /**
+         * List all messages for an account
+         */
+        hzClient.getMessages = function (accountRS) {
+            var deferred = $.Deferred();
+
+            this.getAccountTransactions(accountRS, {
+                type: _transactionTypes.messaging.id,
+                subtype: _transactionTypes.messaging.subTypes.arbitraryMessage.id
+            })
+            .done(function (txList) {
+                deferred.resolve(txList.transactions);
+            })
+            .fail(function (err) {
+                deferred.resolve(err);
             });
+
+            return deferred.promise();
         };
 
         /**
@@ -392,13 +532,25 @@ var jQuery = require('jquery');
 
         };
 
+        /**
+         * Convert a HZ timestamp to a Date object
+         */
+        hzClient.timestampToDate = function (hzTimestamp) {
+            var genesisTs = (_testnet === true) ?
+                _genesisBlocks.TESTNET.timestamp :
+                _genesisBlocks.MAINNET.timestamp;
+
+            return new Date(genesisTs + (hzTimestamp * 1000));
+        };
+
         return hzClient;
 
-    }
+    };
 
     Bitnation.horizon = {
         Account: Account,
-        Client: Client
+        Client: Client,
+        errors: errors
     };
 
 })(Bitnation || {}, jQuery);

@@ -22,9 +22,9 @@ controller.addStore('notary', function (data, message, waitFor) {
 });
 
 function updateVerifiedTx (data, response) {
-  return data.setIn(['tx', 'verified', response.hash],
+  return data.setIn(['tx', 'verified', response.txId],
     Immutable.Map({
-      valid: response.valid,
+      result: response.result,
       date: response.date
     })
   );

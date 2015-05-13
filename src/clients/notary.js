@@ -11,7 +11,7 @@ controller.on('message', function (message) {
     return upload(message.data.file, message.data.secret, message.data.uri);
 
   if (message.type === verifyTxMessage)
-    return verifyTx(message.data);
+    return verifyTx(message.data.txId, message.data.secret);
 });
 
 function upload (file, secret, uri) {
@@ -34,10 +34,20 @@ function upload (file, secret, uri) {
     });
 }
 
-function verifyTx (hash) {
-  controller.dispatch(verifyTxMessage.success({
-    hash: hash,
-    valid: true,
-    date: new Date()
-  }));
+function verifyTx (txId, secret) {
+  ui.verifyNotary(txId, secret)
+    .done(function (result) {
+      controller.dispatch(verifyTxMessage.success({
+        txId: txId,
+        result: result,
+        date: new Date()
+      }));
+    })
+    .fail(function (error) {
+      controller.dispatch(verifyTxMessage.fail({
+        txId: txId,
+        error: error,
+        date: new Date()
+      }));
+    });
 }

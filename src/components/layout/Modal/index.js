@@ -14,7 +14,8 @@ module.exports = React.createClass({
   renderLayer: function () {
     var className = nameHelper.join(
       nameHelper.className,
-      this.props.className);
+      this.props.className,
+      nameHelper.state({ open: this.props.open }));
 
     return (
       <div className={className}>

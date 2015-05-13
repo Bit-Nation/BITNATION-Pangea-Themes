@@ -24,7 +24,7 @@ module.exports = React.createClass({
     var verifying = false;
     var valid;
     if (cursor.get('submitted') &&
-        cursor.get('submitted') === cursor.get('value')) {
+        cursor.get('submitted') === cursor.get('txId')) {
       var result = verified.get(cursor.get('submitted'));
       if (!result) verifying = true;
       else valid = result.get('valid');
@@ -47,8 +47,21 @@ module.exports = React.createClass({
           {valid === false && 'Invalid'}
         </div>
 
-        <Input value={cursor.cursor('value')}
-          onChange={cursor.cursor('value')} />
+        <label htmlFor={this.formId('secret')}>
+          Secret Phrase (if private):
+        </label>
+
+        <Input id={this.formId('txId')}
+          value={cursor.cursor('secret')}
+          onChange={cursor.cursor('secret')} />
+
+        <label htmlFor={this.formId('txId')}>
+          Transaction ID:
+        </label>
+
+        <Input id={this.formId('txId')}
+          value={cursor.cursor('txId')}
+          onChange={cursor.cursor('txId')} />
 
         <Button submit>Verify</Button>
       </form>
@@ -57,7 +70,10 @@ module.exports = React.createClass({
   onSubmit: function (event) {
     event.preventDefault();
     var cursor = this.props.cursor;
-    cursor.set('submitted', cursor.get('value'));
-    this.props.dispatch(verifyTxMessage(cursor.get('value')));
+    cursor.set('submitted', cursor.get('txId'));
+    this.props.dispatch(verifyTxMessage({
+      txId: cursor.get('txId'),
+      secret: cursor.get('secret')
+    }));
   }
 });

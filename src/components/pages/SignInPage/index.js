@@ -20,7 +20,7 @@ module.exports = React.createClass({
 
     return (
       <div className={nameHelper.className}>
-        <Modal>
+        <Modal open={true}>
           <SignIn cursor={cursor.cursor('form')} dispatch={dispatch} />
         </Modal>
       </div>

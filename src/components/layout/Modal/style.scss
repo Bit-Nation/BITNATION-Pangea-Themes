@@ -1,7 +1,7 @@
 @import '../../component';
 
 .#{class-name(Modal)} {
-  @include display(flex);
+  display: none;
   @include align-items(center);
   position: fixed;
   z-index: 10;
@@ -16,8 +16,13 @@
     margin: -10% auto 0 auto;
     max-width: rem-calc(600);
     max-height: rem-calc(400);
+    overflow-y: auto;
     background: white;
     padding: 1rem;
     box-shadow: 0 1rem 10rem rgba(black, 0.5);
   }
+}
+
+.#{state-name(Modal, open)} {
+  @include display(flex);
 }
