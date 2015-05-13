@@ -2,10 +2,13 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../lib/nameHelper')('Textarea');
+var wrapImmutables = require('../../lib/wrapImmutables');
+var bitnMixins = require('../../lib/bitnMixins');
 
-var Textarea = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = wrapImmutables(React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string,
     cols: React.PropTypes.number,
@@ -20,13 +23,13 @@ var Textarea = React.createClass({
   render: function () {
     return (
       <textarea {...this.props}
-        className={this.classNameWithProp()}
+        className={nameHelper.join(
+          nameHelper.className,
+          this.props.className)}
         onChange={this.props.onChange && this.onChange} />
     );
   },
   onChange: function (event) {
     this.props.onChange(event.target.value);
   }
-});
-
-module.exports = Textarea;
+}));

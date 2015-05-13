@@ -2,29 +2,35 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../lib/nameHelper')('Section');
+var bitnMixins = require('../../lib/bitnMixins');
 
-var Section = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string,
     titleTag: React.PropTypes.string,
     flex: React.PropTypes.number,
-    title: React.PropTypes.string,
-    header: React.PropTypes.any,
-    footer: React.PropTypes.any
+    title: React.PropTypes.node,
+    header: React.PropTypes.node,
+    footer: React.PropTypes.node
   },
   render: function () {
     var Title = this.props.titleTag || 'h2';
 
-    var className = this.classNameWithProp();
-    if (this.props.flex) {
-      className += ' ' + this.stateName('flex');
-      className += ' ' + this.stateName('flex-' + this.props.flex);
-    }
-    if (this.props.header) className += ' ' + this.stateName('header');
-    if (this.props.children) className += ' ' + this.stateName('body');
-    if (this.props.footer) className += ' ' + this.stateName('footer');
+    var className = nameHelper.join(
+      nameHelper.className,
+      this.props.className,
+      nameHelper.state({
+        flex: this.props.flex,
+        header: this.props.header,
+        body: this.props.children,
+        footer: this.props.footer
+      }),
+      this.props.flex &&
+        nameHelper.state('flex-' + this.props.flex)
+    );
 
     return (
       <section className={className}>
@@ -49,5 +55,3 @@ var Section = React.createClass({
     );
   }
 });
-
-module.exports = Section;

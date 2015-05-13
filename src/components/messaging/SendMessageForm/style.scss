@@ -3,12 +3,12 @@
 .#{class-name(SendMessageForm)} {
   .#{class-name(Input)} {
     margin: 0.25rem;
-    border: 1px solid $oil;
+    border: 1px solid bitn-color(oil);
   }
 }
 
 .#{ref-name(SendMessageForm, fields)} {
-    .#{class-name(Radio)} {
-      margin-left: 0.25rem;
-    }
+  .#{class-name(Radio)} {
+    margin-left: 0.25rem;
+  }
 }

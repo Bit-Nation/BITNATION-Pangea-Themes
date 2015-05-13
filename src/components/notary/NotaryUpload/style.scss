@@ -1,0 +1,18 @@
+@import '../../component';
+
+.#{class-name(NotaryUpload)} {
+  background: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.#{class-name(NotaryUpload)}.#{class-name(FileInput)} {
+  .#{ref-name(FileInput, trigger)} {
+    display: inline-block;
+    margin: 1.5rem 2rem;
+  }
+
+  &.#{state-name(FileInput, dragOver)} {
+    background: green;
+  }
+}

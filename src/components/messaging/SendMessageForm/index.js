@@ -2,8 +2,8 @@
 require('./style.scss');
 
 var React = require('react');
-
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../lib/nameHelper')('SendMessageForm');
+var bitnMixins = require('../../lib/bitnMixins');
 var Button = require('../../controls/Button');
 var Input = require('../../controls/Input');
 var Textarea = require('../../controls/Textarea');
@@ -12,8 +12,9 @@ var FileInput = require('../../controls/FileInput');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
-var SendMessageForm = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   propTypes: {
     encrypted: React.PropTypes.bool,
     recipient: React.PropTypes.string,
@@ -22,12 +23,12 @@ var SendMessageForm = React.createClass({
   },
   render: function () {
     return (
-      <div className={this.className()}>
+      <div className={nameHelper.className}>
 
         <h1>Send a Message</h1>
 
-        <div className={this.refName('fields')}>
-          <div className={this.refName('encrypted')}>
+        <div className={nameHelper.ref('fields')}>
+          <div className={nameHelper.ref('encrypted')}>
             <legend>Please select</legend>
 
             <label>
@@ -47,34 +48,34 @@ var SendMessageForm = React.createClass({
             </label>
           </div>
 
-          <div className={this.refName('recipientPubkey')}>
+          <div className={nameHelper.ref('recipientPubkey')}>
             <legend>Recipient public key (usually optional)</legend>
 
             <Input value={this.props.recipientPubkey}
               onChange={this.props.onRecipientPubkey} />
           </div>
 
-          <div className={this.refName('recipientRS')}>
+          <div className={nameHelper.ref('recipientRS')}>
             <legend>Recipient</legend>
 
             <Input value={this.props.recipientRS}
               onChange={this.props.onRecipientRS} />
           </div>
 
-          <div className={this.refName('content')}>
+          <div className={nameHelper.ref('content')}>
             <legend>Content</legend>
 
             <Textarea value={this.props.content}
               onChange={this.props.onContent} />
           </div>
 
-          <div className={this.refName('secret')}>
+          <div className={nameHelper.ref('secret')}>
             <legend>Secret phrase</legend>
 
             <Input password value={this.props.secret}
               onChange={this.props.onSecret} />
           </div>
-          <div className={this.refName('submit')}>
+          <div className={nameHelper.ref('submit')}>
             <Button onClick={this.props.onSend}>Send message</Button>
           </div>
         </div>
@@ -82,5 +83,3 @@ var SendMessageForm = React.createClass({
     );
   }
 });
-
-module.exports = SendMessageForm;

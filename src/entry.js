@@ -1,9 +1,21 @@
 // libraries
 require('react/addons');
+window.Immutable = require('immutable');
 
-// examples (used for development)
-require('./examples');
+// stores
+require('./stores/currentUser');
+require('./stores/notary');
+require('./stores/routing');
+require('./stores/window');
+require('./stores/layoutSizes');
+require('./stores/siteNavigation');
+require('./stores/userNavigation');
 
-// setup
-require('./components/app.scss');
-require('./renderer');
+// clients
+require('./clients/users');
+require('./clients/notary');
+require('./clients/router');
+require('./clients/window');
+
+// initialize app
+require('./app');

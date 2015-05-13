@@ -2,43 +2,44 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
-var hoverMixin = require('../../mixins/hoverMixin');
+var nameHelper = require('../../lib/nameHelper')('UserSettingsDropdown');
+var bitnMixins = require('../../lib/bitnMixins');
+var hoverMixin = require('../../lib/hoverMixin');
 var UserAvatar = require('../../user/UserAvatar');
 var Menu = require('../../controls/Menu');
 
-var UserSettingsDropdown = React.createClass({
-  mixins: [ bitnMixin, hoverMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins.concat(hoverMixin),
   render: function () {
     var items = [
       {
-        value: 'settings',
-        content: 'Settings',
-        onClick: this.props.onClick
+        key: 'settings',
+        link: 'Settings'
       },
       {
-        value: 'test',
-        content: 'Test',
-        onClick: this.props.onClick
+        key: 'test',
+        link: 'Test'
       }
     ];
 
-    var className = this.className();
-    if (this.state.hover) className += ' ' + this.stateName('active');
+    var className = nameHelper.join(
+      nameHelper.className,
+      nameHelper.state({ active: this.state.hover }));
 
     return (
       <div className={className}
         onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
         
-        <div className={this.refName('toggle')}>
+        <div className={nameHelper.ref('toggle')}>
           <span>Olfox Jensen</span>
-          <UserAvatar size='medium' />
+          <div>
+            <UserAvatar size='medium' />
+          </div>
         </div>
 
-        <Menu items={items} />
+        <Menu items={items} onClick={this.props.onClick} />
       </div>
     );
   }
 });
-
-module.exports = UserSettingsDropdown;

@@ -2,14 +2,18 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../lib/nameHelper')('FileInput');
+var wrapImmutables = require('../../lib/wrapImmutables');
+var bitnMixins = require('../../lib/bitnMixins');
 
-var FileInput = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = wrapImmutables(React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string,
-    trigger: React.PropTypes.string,
-    footer: React.PropTypes.any,
+    children: React.PropTypes.node,
+    trigger: React.PropTypes.node,
+    footer: React.PropTypes.node,
     multiple: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
     onChange: React.PropTypes.func
@@ -20,9 +24,13 @@ var FileInput = React.createClass({
     };
   },
   render: function () {
-    var className = this.classNameWithProp();
-    if (this.props.disabled) className += ' ' + this.stateName('disabled');
-    if (this.state.dragOver) className += ' ' + this.stateName('dragOver');
+    var className = nameHelper.join(
+      nameHelper.className,
+      this.props.className,
+      nameHelper.state({
+        disabled: this.props.disabled,
+        dragOver: this.state.dragOver
+      }));
 
     return (
       <div className={className}
@@ -31,30 +39,31 @@ var FileInput = React.createClass({
         onDragOver={this.onDragOver}
         onDrop={this.onChange}>
 
-        <input type='file' {...this.classRef('input')}
+        <input type='file' ref='input'
+          className={nameHelper.ref('input')}
           multiple={this.props.multiple}
           disabled={this.props.disabled}
           onChange={this.onChange} />
 
         {this.props.children &&
-          <div className={this.refName('body')}>
+          <div className={nameHelper.ref('body')}>
             {this.props.children}
           </div>}
 
         {this.props.trigger &&
-          <div className={this.refName('trigger')} onClick={this.onClick}>
+          <div className={nameHelper.ref('trigger')} onClick={this.onClick}>
             {this.props.trigger}
           </div>}
 
         {this.props.footer &&
-          <footer className={this.refName('footer')}>
+          <footer className={nameHelper.ref('footer')}>
             {this.props.footer}
           </footer>}
       </div>
     );
   },
   onClick: function () {
-    this.classRefs.input.getDOMNode().click();
+    this.refs.input.getDOMNode().click();
   },
   onDragLeave: function () {
     this.setState({ dragOver: false });
@@ -73,6 +82,4 @@ var FileInput = React.createClass({
 
     this.setState({ dragOver: false });
   }
-});
-
-module.exports = FileInput;
+}));

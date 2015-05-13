@@ -2,12 +2,15 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../lib/nameHelper')('FileInfo');
+var wrapImmutables = require('../../lib/wrapImmutables');
+var bitnMixins = require('../../lib/bitnMixins');
 
 var filesize = require('filesize');
 
-var FileInfo = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = wrapImmutables(React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string,
     name: React.PropTypes.string,
@@ -30,44 +33,46 @@ var FileInfo = React.createClass({
     var lastModified = this.props.lastModifiedDate || this.props.lastModified;
     if (typeof lastModified == 'number') date = new Date(lastModified);
 
-    // set class
-    var className = this.classNameWithProp();
-    if (typeClassName) className += ' ' + typeClassName;
-
-    if (this.props.name) className += ' ' + this.stateName('hasName');
-    if (this.props.type) className += ' ' + this.stateName('hasType');
-    if (this.props.size) className += ' ' + this.stateName('hasSize');
-    if (lastModified) className += ' ' + this.stateName('hasLastModified');
-    if (this.props.relativePath) className += ' ' + this.stateName('hasRelativePath');
+    var className = nameHelper.join(
+      nameHelper.className,
+      this.props.className,
+      typeClassName,
+      nameHelper.state({
+        name: this.props.name,
+        type: this.props.type,
+        size: this.props.size,
+        lastModified: lastModified,
+        relativePath: this.props.relativePath
+      }));
 
     return (
       <div className={className}>
         {this.props.name &&
-          <span className={this.refName('name')}>
+          <span className={nameHelper.ref('name')}>
             {this.props.name}
           </span>}
 
         {this.props.type &&
-          <span className={this.refName('type')}>
+          <span className={nameHelper.ref('type')}>
             {this.props.type}
           </span>}
 
         {humanSize && [
-          <span className={this.refName('humanSize')}>
+          <span className={nameHelper.ref('humanSize')}>
             {humanSize}
           </span>,
 
-          <span className={this.refName('size')}>
+          <span className={nameHelper.ref('size')}>
             {this.props.size}
           </span>]}
 
         {lastModified &&
-          <span className={this.refName('lastModified')}>
+          <span className={nameHelper.ref('lastModified')}>
             {lastModified}
           </span>}
 
         {this.props.relativePath &&
-          <span className={this.refName('relativePath')}>
+          <span className={nameHelper.ref('relativePath')}>
             {this.props.relativePath}
           </span>}
 
@@ -75,6 +80,4 @@ var FileInfo = React.createClass({
       </div>
     );
   }
-});
-
-module.exports = FileInfo;
+}));

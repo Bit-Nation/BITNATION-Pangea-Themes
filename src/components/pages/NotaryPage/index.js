@@ -2,10 +2,11 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../lib/nameHelper')('NotaryPage');
+var bitnMixins = require('../../lib/bitnMixins');
 var Search = require('../../controls/Search');
 var Table = require('../../controls/Table');
-var NotaryFileInput = require('../../notary/NotaryFileInput');
+var NotaryUpload = require('../../notary/NotaryUpload');
 var NotaryTxVerifier = require('../../notary/NotaryTxVerifier');
 
 var PageHeader = require('../../layout/PageHeader');
@@ -13,27 +14,39 @@ var PageRow = require('../../layout/PageRow');
 var PageSection = require('../../layout/PageSection');
 var Results = require('../../layout/Results');
 
-var Bitnation = require('../../../bitnation/bitnation.pangea');
+var _ = require('lodash');
 
-var NotaryPage = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
+  propTypes: {
+    cursor: React.PropTypes.object.isRequired,
+    notary: React.PropTypes.object.isRequired,
+    dispatch: React.PropTypes.func.isRequired
+  },
   render: function() {
+    var cursor = this.props.cursor;
+    var notary = this.props.notary;
+    var dispatch = this.props.dispatch;
+
     return (
-      <div className={this.className()}>
+      <div className={nameHelper.className}>
         <PageHeader title='Public notary' />
 
         <div>
           <PageRow>
             <PageSection flex={3}>
-              <NotaryFileInput
-                public={this.state.public} uri={this.state.uri}
-                secret={this.state.secret}
-                onPublic={this.onPublic} onUri={this.onUri} 
-                onSecret={this.onSecret} onFiles={this.onFiles} />
+              <NotaryUpload
+                cursor={cursor.cursor('upload')}
+                uploads={notary.get('uploads')}
+                dispatch={dispatch} />
             </PageSection>
 
             <PageSection flex={1} title='Get started'>
-              <NotaryTxVerifier />
+              <NotaryTxVerifier
+                cursor={cursor.cursor('txVerifier')}
+                verified={notary.getIn(['tx', 'verified'])}
+                dispatch={dispatch} />
             </PageSection>
           </PageRow>
 
@@ -85,40 +98,5 @@ var NotaryPage = React.createClass({
         </div>
       </div>
     );
-  },
-  onPublic: function (value) {
-    this.setState({ public: value });
-  },
-  onUri: function (value) {
-    this.setState({ uri: value });
-  },
-  onSecret: function (value) {
-    this.setState({ secret: value });
-  },
-  onFiles: function (files) {
-    this.issueNotary(files[0]);
-  },
-  issueNotary: function (file) {
-
-    var ui = new Bitnation.pangea.UI();
-
-    ui.notarizeDocument(
-      file, this.state.secret, this.state.uri, !this.state.public
-    ) .done(function (result) {
-
-        console.log(result);
-        alert('Success: Transaction id is ' + result.txId);
-
-      })
-      .fail(function (err) {
-
-        console.error(err);
-        alert('An error occurred. Check the logs.');
-
-      });
-
-    this.setState({ secret: '' });
   }
 });
-
-module.exports = NotaryPage;

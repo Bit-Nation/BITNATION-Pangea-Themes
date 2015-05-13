@@ -2,111 +2,78 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../lib/nameHelper')('NotaryTxVerifier');
+var bitnMixins = require('../../lib/bitnMixins');
 var Button = require('../../controls/Button');
 var Input = require('../../controls/Input');
 
-var Bitnation = require('../../../bitnation/bitnation.pangea');
+var verifyTxMessage = require('../../../messages/notary/verifyTx');
 
-var NotaryTxVerifier = React.createClass({
-  mixins: [ bitnMixin ],
-  getInitialState: function () {
-    return {
-      value: null,
-      secret: null,
-      verified: null,
-      verifying: false
-    };
+module.exports = React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
+  propTypes: {
+    cursor: React.PropTypes.object.isRequired,
+    verified: React.PropTypes.object.isRequired,
+    dispatch: React.PropTypes.func.isRequired
   },
   render: function() {
-    var className = this.className();
-    if (this.state.verifying) className += ' ' + this.stateName('verifying');
-    if (this.state.verified === true) className += ' ' + this.stateName('valid');
-    if (this.state.verified === false) className += ' ' + this.stateName('invalid');
+    var cursor = this.props.cursor;
+    var verified = this.props.verified;
+
+    var verifying = false;
+    var valid;
+    if (cursor.get('submitted') &&
+        cursor.get('submitted') === cursor.get('txId')) {
+      var result = verified.get(cursor.get('submitted'));
+      if (!result) verifying = true;
+      else valid = result.get('valid');
+    }
+
+    var className = nameHelper.join(
+      nameHelper.className,
+      nameHelper.state({
+        verifying: verifying,
+        valid: valid === true,
+        invalid: valid === false
+      }));
 
     return (
-      <form className={className}
-        onSubmit={this.onSubmit}>
+      <form className={className} onSubmit={this.onSubmit}>
         <legend>Verify a notary transaction hash.</legend>
 
-        <div className={this.refName('status')}>
-          {this.state.verified === true && 'Valid'}
-          {this.state.verified === false && 'Invalid'}
+        <div className={nameHelper.ref('status')}>
+          {valid === true && 'Valid'}
+          {valid === false && 'Invalid'}
         </div>
 
-        <label htmlFor="secret">Secret Phrase (if private):</label>
-        <Input type="password" name="secret" value={this.state.secret}
-          onChange={this.onSecretChange} />
+        <label htmlFor={this.formId('secret')}>
+          Secret Phrase (if private):
+        </label>
 
-        <label htmlFor="txid">Transaction ID:</label>
-        <Input name="txid" value={this.state.value}
-          onChange={this.onChange} />
+        <Input id={this.formId('txId')}
+          value={cursor.cursor('secret')}
+          onChange={cursor.cursor('secret')} />
+
+        <label htmlFor={this.formId('txId')}>
+          Transaction ID:
+        </label>
+
+        <Input id={this.formId('txId')}
+          value={cursor.cursor('txId')}
+          onChange={cursor.cursor('txId')} />
 
         <Button submit>Verify</Button>
       </form>
     );
   },
-  onChange: function (value) {
-
-    this.setState({
-      value: value,
-      verified: null,
-      verifying: false
-    });
-
-  },
-  onSecretChange: function (secret) {
-
-    this.setState({
-      secret: secret,
-      verifying: false,
-      verified: null
-    });
-
-  },
   onSubmit: function (event) {
-
     event.preventDefault();
-
-    this.verify();
-
-  },
-  onSuccess: function (result) {
-
-    if (!this.state.verifying) return;
-
-    this.setState({
-      verified: result,
-      verifying: false
-    });
-
-    var hash = result.verifiedNotary.notary.hash;
-    var owner = result.owner;
-
-    alert('Notary by ' + owner + ' has hash ' + hash);
-
-  },
-  onError: function (error) {
-    if (!this.state.verifying) return;
-    this.setState({ verifying: false });
-
-    console.error(error);
-    alert('Failure with error "' + error.errorDescription + '"');
-  },
-  verify: function () {
-
-    var ui = new Bitnation.pangea.UI();
-
-    ui.verifyNotary(this.state.value, this.state.secret)
-      .done(this.onSuccess)
-      .fail(this.onError);
-
-    this.setState({
-      verifying: true,
-      secret: null
-    });
-
+    var cursor = this.props.cursor;
+    cursor.set('submitted', cursor.get('txId'));
+    this.props.dispatch(verifyTxMessage({
+      txId: cursor.get('txId'),
+      secret: cursor.get('secret')
+    }));
   }
 });
-
-module.exports = NotaryTxVerifier;

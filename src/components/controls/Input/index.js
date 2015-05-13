@@ -2,10 +2,13 @@
 require('./style.scss');
 
 var React = require('react');
-var bitnMixin = require('../../mixins/bitnMixin');
+var nameHelper = require('../../lib/nameHelper')('Input');
+var wrapImmutables = require('../../lib/wrapImmutables');
+var bitnMixins = require('../../lib/bitnMixins');
 
-var Input = React.createClass({
-  mixins: [ bitnMixin ],
+module.exports = wrapImmutables(React.createClass({
+  displayName: nameHelper.displayName,
+  mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string,
     type: React.PropTypes.string,
@@ -23,13 +26,14 @@ var Input = React.createClass({
     return (
       <input {...this.props}
         type={type}
-        className={this.classNameWithProp()}
+        className={nameHelper.join(
+          nameHelper.className,
+          this.props.className
+        )}
         onChange={this.props.onChange && this.onChange} />
     );
   },
   onChange: function (event) {
     this.props.onChange(event.target.value);
   }
-});
-
-module.exports = Input;
+}));

@@ -21,7 +21,7 @@ Bitnation Pangea's UI is built using
 
   * Clone repo
   * Run `npm install`
-  * Run `gulp`
-  * Go to http://localhost:8080/webpack-dev-server/?example=scenes/App
+  * Run `./gulp` or 'gulp' (win)
+  * Go to http://localhost:8080/
  
-Project should reload when you change files. If any problems occur simply rerun `gulp`.
+Project should reload when you save files. If any problems occur simply rerun `gulp`.
