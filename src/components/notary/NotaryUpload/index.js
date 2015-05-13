@@ -30,7 +30,7 @@ module.exports = React.createClass({
       <FileInput className={className}
         trigger={<Button file large>Select file</Button>}
         footer='All filetypes allowed (Max filesize: 8MB)'
-        onChange={cursor.cursor('file')}>
+        onChange={this.onChange}>
 
         <NotaryUploadSettings cursor={cursor}>
           {this.props.children}

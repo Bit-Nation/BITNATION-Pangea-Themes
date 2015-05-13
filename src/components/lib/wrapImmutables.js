@@ -21,7 +21,8 @@ module.exports = function wrapImmutables (Child) {
 
 function mapImmutables (props, oldProps, oldResult) {
   var result = {};
-  for (var key in props) {
+  
+  Object.keys(props).forEach(function (key) {
     var prop = props[key];
     if (!isImmutable(prop)) result[key] = prop;
     else if (oldProps && Immutable.is(prop, oldProps[key]))
@@ -33,7 +34,8 @@ function mapImmutables (props, oldProps, oldResult) {
       };
     }
     else result[key] = prop.valueOf();
-  }
+  });
+
   return result;
 }
 

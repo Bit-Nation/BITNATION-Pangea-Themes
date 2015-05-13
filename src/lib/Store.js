@@ -6,7 +6,7 @@
   they are also accesible from instances, but
   the first arg is bound to the local data value
 
-  the data is indented to be an immutable js type
+  the data is intended to be an immutable js type
   and the responding to be done in a dispatcher handler
 
   methods in Store.updaters are wrapped in a call to
