@@ -1,41 +1,27 @@
 @import '../../component';
 
-$minimize-transition: $bitn-navigation-transition;
-
-$left: $bitn-navigation-panel-size;
-$minimized-left: $bitn-site-navigation-width;
-$top: $bitn-navigation-panel-size;
-
 .#{class-name(App)} {
-  background: #F5F1F0;
-  color: #30333A;
-  @include flex(1);
   @include display(flex);
-  @include flex-direction(column);
+  @include flex-grow(1);
+
+  > .#{class-name(SiteNavigation)} {
+    @include flex-shrink(0);
+  }
 
   > div {
-    @include flex(1);
+    @include flex-grow(1);
+
     @include display(flex);
     @include flex-direction(column);
-    position: relative;
-    //margin-left: $left;
-    margin-top: $top;
-    @include transition(margin-left $minimize-transition);
-  }
 
-  .#{class-name(Main)} {
-    @include flex(1);
-  }
-}
+    > .#{class-name(UserNavigation)} {
+      @include flex-shrink(0);
+    }
 
-.#{state-name(App, minimized)} {
-  > div {
-    //margin-left: $minimized-left;
-  }
-}
-
-.#{state-name(App, cover)} {
-  > div {
-    margin-top: 0;
+    > main {
+      @include flex-grow(1);
+      background: #F5F1F0;
+      color: #30333A;
+    }
   }
 }

@@ -2,19 +2,16 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('PageSection');
-var bitnMixins = require('../../lib/bitnMixins');
+var bitnMixin = require('../../mixins/bitnMixin');
 var Section = require('../../layout/Section');
 
-module.exports = React.createClass({
-  displayName: nameHelper.displayName,
-  mixins: bitnMixins,
+var PageSection = React.createClass({
+  mixins: [ bitnMixin ],
   render: function () {
     return <Section
       {...this.props}
-      className={nameHelper.join(
-        nameHelper.className,
-        this.props.className
-      )} />;
+      className={this.classNameWithProp()} />;
   }
 });
+
+module.exports = PageSection;

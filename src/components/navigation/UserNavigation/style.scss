@@ -1,87 +1,73 @@
 @import '../../component';
 
-$minimize-transition: $bitn-navigation-transition;
-
+$bar-height: $bitn-navigation-panel-size;
 $base-padding: 1rem;
 
 $background-color: bitn-color(curious);
 $shortcut-color: bitn-color(mercury);
 $shortcut-hover-color: bitn-color(dove);
 
-$fade-background-color: rgba(black, 0.6);
-$fade-shortcut-color: bitn-color(mercury);
-$fade-shortcut-hover-color: bitn-color(dove);
+$cover-height: $bitn-user-cover-height;
+$cover-background-color: rgba(0, 0, 0, 0.8);
+$cover-shortcut-color: bitn-color(dove);
+$cover-shortcut-hover-color: bitn-color(mercury);
 
 .#{class-name(UserNavigation)} {
-  position: fixed;
-  z-index: 9;
-  right: 0;
-  color: white;
-  @include transition(left $minimize-transition);
+  @include display(flex);
+  position: relative;
+  min-height: $bar-height;
 
-  .#{class-name(UserNavigationShortcuts)}.#{class-name(Menu)} {
-    position: relative;
-    z-index: 1;
-    height: 100%;
-    padding: 0 ($base-padding * 0.5);
+  > nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: $bar-height;
+    background-color: $background-color;
+    color: white;
 
-    a {
-      padding: 0 $base-padding;
-      color: $shortcut-color;
+    .#{class-name(UserShortcuts)} {
+      padding: 0 ($base-padding * 0.5);
+
+      a {
+        padding: 0 $base-padding;
+        line-height: $bar-height;
+        color: $shortcut-color;
+
+        &:hover {
+          color: $shortcut-hover-color;
+        }
+      }
+    }
+
+    .#{class-name(UserSettingsDropdown)} {
+      float: right;
+      margin: 0 $base-padding;
+    }
+
+    .#{ref-name(UserSettingsDropdown, toggle)} {
+      height: $bar-height;
+      line-height: $bar-height * 0.95;
+    }
+  }
+}
+
+.#{state-name(UserNavigation, cover)} {
+  height: $cover-height;
+
+  > nav {
+    background-color: $cover-background-color;
+
+    .#{class-name(UserShortcuts)} a {
+      color: $cover-shortcut-color;
 
       &:hover {
-        color: $shortcut-hover-color;
+        color: $cover-shortcut-hover-color;
       }
     }
   }
 
-  .#{class-name(UserSettingsDropdown)} {
-    position: relative;
-    z-index: 1;
-    float: right;
-    height: 100%;
-    margin: 0 $base-padding;
-  }
-}
-
-.#{ref-name(UserNavigation, opaqueLayer)},
-.#{ref-name(UserNavigation, fadeLayer)} {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  @include transition(opacity 250ms linear);
-}
-
-.#{ref-name(UserNavigation, opaqueLayer)} {
-  background-color: $background-color;
-  opacity: 1;
-}
-
-.#{ref-name(UserNavigation, fadeLayer)} {
-  background-color: $fade-background-color;
-  opacity: 0;
-
-  &:after {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 15%;
-    @include linear-gradient(transparent, rgba(black, 0.25));
-    content: ' ';
-  }
-}
-
-.#{state-name(UserNavigation, minimized)} {
-
-}
-
-.#{state-name(UserNavigation, fade)} {
-  .#{class-name(UserNavigationShortcuts)}.#{class-name(Menu)} a {
-    color: $fade-shortcut-color;
-
-    &:hover {
-      color: $fade-shortcut-hover-color;
-    }
+  > .#{class-name(UserCover)} {
+    @include flex(1);
   }
 }

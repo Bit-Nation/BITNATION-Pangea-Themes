@@ -2,13 +2,10 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('Paginator');
-var wrapImmutables = require('../../lib/wrapImmutables');
-var bitnMixins = require('../../lib/bitnMixins');
+var bitnMixin = require('../../mixins/bitnMixin');
 
-module.exports = wrapImmutables(React.createClass({
-  displayName: nameHelper.displayName,
-  mixins: bitnMixins,
+var Paginator = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     page: React.PropTypes.number,
     min: React.PropTypes.number,
@@ -44,10 +41,8 @@ module.exports = wrapImmutables(React.createClass({
 
       pages = [];
       for (var i = start; i <= end; i++) pages.push(
-        <li key={i} className={nameHelper.join(
-          nameHelper.ref('page-' + i),
-          'pure-menu-item'
-        )}>
+        <li key={i}
+          className={'page-' + i + ' pure-menu-item'}>
           <button type='button' className={this.buttonClassName(i)}
             onClick={this.onPage}
             disabled={this.props.page == i}
@@ -58,13 +53,13 @@ module.exports = wrapImmutables(React.createClass({
       );
     }
 
+    var className = this.classNameWithProp();
+    className += ' pure-menu';
+    className += ' pure-menu-horizontal';
+    className += ' ' + this.stateName('length-' + pages.length);
+
     return (
-      <ul className={nameHelper.join(
-        nameHelper.className,
-        this.props.className,
-        'pure-menu',
-        'pure-menu-horizontal'
-      )}>
+      <ul className={className}>
         <li className='previous pure-menu-item'>
           <button type='button' className='pure-button'
             onClick={this.onPrevious}
@@ -100,4 +95,4 @@ module.exports = wrapImmutables(React.createClass({
     if (page == this.props.page) className += ' pure-button-active';
     return className;
   }
-}));
+});

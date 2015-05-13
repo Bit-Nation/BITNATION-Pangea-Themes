@@ -6,13 +6,11 @@ require('./style.scss');
 // - olfox
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('SiteNavigationToggle');
-var bitnMixins = require('../../lib/bitnMixins');
-var hoverMixin = require('../../lib/hoverMixin');
+var bitnMixin = require('../../mixins/bitnMixin');
+var hoverMixin = require('../../mixins/hoverMixin');
 
-module.exports = React.createClass({
-  displayName: nameHelper.displayName,
-  mixins: bitnMixins.concat(hoverMixin),
+var SiteNavigationToggle = React.createClass({
+  mixins: [ bitnMixin, hoverMixin ],
   render: function () {
     var url = this.props.url;
     var hover = this.state.hover;
@@ -20,8 +18,11 @@ module.exports = React.createClass({
       return '<use class="' + id + '" xlink:href="' + url + '#' + id + '" />';
     }).join('');
 
+    var className = this.className();
+    if (this.props.className) className += ' ' + className;
+
     return (
-      <div className={4444}
+      <div className={className}
         onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
         <svg width='100%' height='100%' viewBox={this.props.viewBox}
           dangerouslySetInnerHTML={{ __html: content }} />
@@ -36,3 +37,5 @@ module.exports = React.createClass({
     };
   }
 });
+
+module.exports = SiteNavigationToggle;

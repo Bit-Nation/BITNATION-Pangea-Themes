@@ -2,26 +2,20 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('Icon');
-var wrapImmutables = require('../../lib/wrapImmutables');
-var bitnMixins = require('../../lib/bitnMixins');
+var bitnMixin = require('../../mixins/bitnMixin');
 
-module.exports = wrapImmutables(React.createClass({
-  displayName: nameHelper.displayName,
-  mixins: bitnMixins,
+var Icon = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
-    style: React.PropTypes.object,
     set: React.PropTypes.string,
     type: React.PropTypes.string,
     highlight: React.PropTypes.bool,
     large: React.PropTypes.bool
   },
   render: function () {
-    var className = nameHelper.join(
-      nameHelper.className,
-      this.props.className,
-      nameHelper.state({ highlight: this.props.highlight }));
+    var className = this.classNameWithProp();
+    if (this.props.highlight) className += ' ' + this.stateName('highlight');
 
     var set = this.props.set !== undefined ? this.props.set : 'fa';
     if (set == 'fa') {
@@ -36,7 +30,9 @@ module.exports = wrapImmutables(React.createClass({
     }
 
     return (
-      <i className={className} style={this.props.style} />
+      <i className={className} />
     );
-  }
-}));
+  },
+});
+
+module.exports = Icon;

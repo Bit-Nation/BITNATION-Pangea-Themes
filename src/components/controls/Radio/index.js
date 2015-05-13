@@ -2,13 +2,10 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('Radio');
-var wrapImmutables = require('../../lib/wrapImmutables');
-var bitnMixins = require('../../lib/bitnMixins');
+var bitnMixin = require('../../mixins/bitnMixin');
 
-module.exports = wrapImmutables(React.createClass({
-  displayName: nameHelper.displayName,
-  mixins: bitnMixins,
+var Radio = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
     value: React.PropTypes.any,
@@ -16,16 +13,14 @@ module.exports = wrapImmutables(React.createClass({
   },
   render: function () {
     return (
-      <input {...this.props}
-        type='radio' value={null}
-        onChange={this.props.onChange && this.onChange}
-        className={nameHelper.join(
-          nameHelper.className,
-          this.props.className
-        )} />
+      <input {...this.props} value={null}
+        type='radio' className={this.classNameWithProp()}
+        onChange={this.props.onChange && this.onChange} />
     );
   },
   onChange: function (event) {
     this.props.onChange(this.props.value);
   }
-}));
+});
+
+module.exports = Radio;

@@ -1,13 +1,9 @@
 @import 'rem';
 
-$bitn-navigation-panel-size: rem-calc(56);
-$bitn-navigation-transition-duration: 150ms;
-$bitn-navigation-transition-easing: ease-in-out;
-$bitn-navigation-transition:
-  $bitn-navigation-transition-duration $bitn-navigation-transition-easing;
+$bitn-navigation-panel-size: rem-calc(64);
 
 $bitn-site-navigation-width: rem-calc(220);
 $bitn-site-navigation-item-height: rem-calc(40);
 $bitn-site-navigation-font-size: 95%;
 
-$bitn-user-cover-height: rem-calc(340);
+$bitn-user-cover-height: rem-calc(300);

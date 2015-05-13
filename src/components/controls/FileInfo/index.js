@@ -2,15 +2,12 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('FileInfo');
-var wrapImmutables = require('../../lib/wrapImmutables');
-var bitnMixins = require('../../lib/bitnMixins');
+var bitnMixin = require('../../mixins/bitnMixin');
 
 var filesize = require('filesize');
 
-module.exports = wrapImmutables(React.createClass({
-  displayName: nameHelper.displayName,
-  mixins: bitnMixins,
+var FileInfo = React.createClass({
+  mixins: [ bitnMixin ],
   propTypes: {
     className: React.PropTypes.string,
     name: React.PropTypes.string,
@@ -33,46 +30,44 @@ module.exports = wrapImmutables(React.createClass({
     var lastModified = this.props.lastModifiedDate || this.props.lastModified;
     if (typeof lastModified == 'number') date = new Date(lastModified);
 
-    var className = nameHelper.join(
-      nameHelper.className,
-      this.props.className,
-      typeClassName,
-      nameHelper.state({
-        name: this.props.name,
-        type: this.props.type,
-        size: this.props.size,
-        lastModified: lastModified,
-        relativePath: this.props.relativePath
-      }));
+    // set class
+    var className = this.classNameWithProp();
+    if (typeClassName) className += ' ' + typeClassName;
+
+    if (this.props.name) className += ' ' + this.stateName('hasName');
+    if (this.props.type) className += ' ' + this.stateName('hasType');
+    if (this.props.size) className += ' ' + this.stateName('hasSize');
+    if (lastModified) className += ' ' + this.stateName('hasLastModified');
+    if (this.props.relativePath) className += ' ' + this.stateName('hasRelativePath');
 
     return (
       <div className={className}>
         {this.props.name &&
-          <span className={nameHelper.ref('name')}>
+          <span className={this.refName('name')}>
             {this.props.name}
           </span>}
 
         {this.props.type &&
-          <span className={nameHelper.ref('type')}>
+          <span className={this.refName('type')}>
             {this.props.type}
           </span>}
 
         {humanSize && [
-          <span className={nameHelper.ref('humanSize')}>
+          <span className={this.refName('humanSize')}>
             {humanSize}
           </span>,
 
-          <span className={nameHelper.ref('size')}>
+          <span className={this.refName('size')}>
             {this.props.size}
           </span>]}
 
         {lastModified &&
-          <span className={nameHelper.ref('lastModified')}>
+          <span className={this.refName('lastModified')}>
             {lastModified}
           </span>}
 
         {this.props.relativePath &&
-          <span className={nameHelper.ref('relativePath')}>
+          <span className={this.refName('relativePath')}>
             {this.props.relativePath}
           </span>}
 
@@ -80,4 +75,6 @@ module.exports = wrapImmutables(React.createClass({
       </div>
     );
   }
-}));
+});
+
+module.exports = FileInfo;

@@ -17,13 +17,11 @@
 }
 
 .#{ref-name(UserSettingsDropdown, toggle)} {
-  @include display(flex);
   height: 100%;
   padding: 0 1rem;
 
   > * {
-    @include display(flex);
-    @include align-items(center);
+    vertical-align: middle;
   }
 
   > span {

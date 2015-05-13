@@ -1,9 +1,9 @@
 @import '../../component';
 
-$minimize-transition: $bitn-navigation-transition;
-
+$minimize-transition: 150ms ease-in-out;
 $width: $bitn-site-navigation-width;
 $item-height: $bitn-site-navigation-item-height;
+$base-padding: 1rem;
 $font-size: $bitn-site-navigation-font-size;
 $icon-size: 40%;
 
@@ -26,15 +26,10 @@ $minimized-logo-image: '/images/logo-sm.svg';
 $minimized-padding: ($minimized-width - $item-height) / 2;
 
 .#{class-name(SiteNavigation)} {
-  @include display(flex);
-  @include flex-direction(column);
-  position: fixed;
   padding: 0;
-  height: 100%;
+  width: $width;
   background-color: $background-color;
-  @include transition(
-    width $minimize-transition,
-    left $minimize-transition);
+  @include transition(width $minimize-transition);
   @include clearfix;
 }
 
@@ -42,62 +37,71 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
   background: $highlight-color url($logo-image) no-repeat center;
   background-size: $logo-size;
   width: 100%;
-  padding-bottom: 100%;
+  height: $width;
+
+  @include transition(
+    height $minimize-transition,
+    background-image $logo-transition,
+    background-size $logo-transition);
 }
 
 // menus
 .#{class-name(SiteNavigation)} {
   .#{class-name(Menu)} {
-    > ul {
-      @include transition(padding $minimize-transition);
+    padding: ($base-padding * 1.5) 0;
 
-      > .#{class-name(MenuItem)} {
-        @include transition(margin $minimize-transition, min-height $minimize-transition);
+    > ul > li {
+      margin: ($base-padding * 0.75) 0;
+      @include transition(margin $minimize-transition);
 
-        > a {
-          font-size: $font-size;
-          font-weight: 300;
-          color: $text-color;
-          text-transform: capitalize;
-          @include transition(
-            padding $minimize-transition,
-            height $minimize-transition);
+      > a {
+        padding: 0 $base-padding;
+        font-size: $font-size;
+        font-weight: 300;
+        color: $text-color;
+        line-height: $item-height;
+        text-transform: capitalize;
+        @include transition(padding $minimize-transition);
 
-          > span {
-            float: left;
-            margin: 0 0.5rem;
-          }
-
-          > i {
-            float: right;
-            background-size: $icon-size;
-          }
-        }
-        
-        &:first-child {
-          margin-top: 0;
+        > span {
+          float: left;
+          margin: 0 $base-padding;
         }
 
-        &:last-child {
-          margin-bottom: 0;
+        > i {
+          float: right;
+          height: $item-height;
+          width: $item-height;
+          line-height: $item-height;
+          background-size: $icon-size;
+          @include transition(margin $minimize-transition);
         }
+      }
+
+      &.#{state-name(Menu, selected)} > .#{class-name(Menu)} {
+        height: auto;
+        padding: ($base-padding * 1.5) 0;
+        margin: ($base-padding * 0.5) 0;
+        opacity: 1;
+      }
+      
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
       }
     }
   }
-
+  
   // top menu
   > .#{class-name(Menu)} {
-    @include flex(1);
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
+    float: right;
+    width: $width;
+    @include transition(padding $minimize-transition);
 
-    @include transition(
-      top $minimize-transition,
-      width $minimize-transition);
-
-    > ul > .#{class-name(MenuItem)} {
+    > ul > li {
       > a {
         > i {
           background-color: $highlight-color;
@@ -117,79 +121,69 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
         }
       }
     }
+  }
 
-    // child menus
-    .#{class-name(Menu)} {
-      overflow-y: hidden;
-      background-color: $hover-background-color;
-      display: block;
+  // child menus
+  > .#{class-name(Menu)} .#{class-name(Menu)} {
+    display: block;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    overflow-y: hidden;
+    background-color: $hover-background-color;
 
-      @include transition(
-        margin $minimize-transition,
-        opacity $minimize-transition);
+    @include transition(
+      height $minimize-transition,
+      margin $minimize-transition,
+      padding $minimize-transition,
+      opacity $minimize-transition);
 
-      > ul > .#{class-name(MenuItem)} {
-        > a {
+    > ul > li > a {
+      padding: 0 ($base-padding * 1.1);
 
-          &:hover, &:focus {
-            background-color: $highlight-color;
-          }
-        }
-      }
-    }
-
-    .#{state-name(MenuItem, deselected)} > div > .#{class-name(Menu)} {
-      display: block;
-      margin: 0 !important;
-      opacity: 0;
-
-      > ul > .#{class-name(MenuItem)} {
-        margin: 0 !important;
-        min-height: 0 !important;
-
-        > a {
-          position: absolute;
-          width: 100%;
-        }
+      &:hover, &:focus {
+        background-color: $highlight-color;
       }
     }
   }
 }
 
 .#{state-name(SiteNavigation, minimized)} {
+  width: $minimized-width;
+
   .#{ref-name(SiteNavigation, logo)} {
     background-image: url($minimized-logo-image);
     background-size: $minimized-logo-size;
+    height: $minimized-width;
   }
 
   // top menu
-  > .#{class-name(Menu)} > ul {
-    max-width: none;
-    @include transition(max-width 0ms linear 150ms);
+  > .#{class-name(Menu)} {
+    padding: $minimized-padding 0;
 
-    > .#{class-name(MenuItem)} {
+    > ul > li {
+      margin: $minimized-padding 0;
+
       > a {
         padding: 0;
 
         &, &:hover, &:focus {
           background-color: transparent;
         }
+
+        > i {
+          margin: 0 $minimized-padding;
+        }
       }
 
       // hide selected child menus
-      &.#{state-name(MenuItem, selected)} > div > .#{class-name(Menu)} {
-        margin: 0 !important;
+      &.#{state-name(Menu, selected)} .#{class-name(Menu)} {
+        display: block;
+        height: 0;
+        margin: 0;
+        padding: 0;
         opacity: 0;
-
-        > ul > .#{class-name(MenuItem)} {
-          margin: 0 !important;
-          min-height: 0 !important;
-
-          > a {
-            position: absolute;
-            width: 100%;
-          }
-        }
       }
     }
   }

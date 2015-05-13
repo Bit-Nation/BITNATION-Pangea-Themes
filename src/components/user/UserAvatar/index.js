@@ -2,22 +2,21 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('UserAvatar');
-var bitnMixins = require('../../lib/bitnMixins');
+var bitnMixin = require('../../mixins/bitnMixin');
 
-module.exports = React.createClass({
-  displayName: nameHelper.displayName,
-  mixins: bitnMixins,
+var UserAvatar = React.createClass({
+  mixins: [ bitnMixin ],
   render: function () {
+    var className = this.className();
+    if (this.props.size == 'medium') className += ' ' + this.stateName('medium');
+    if (this.props.size == 'large') className += ' ' + this.stateName('large');
+
     return (
-      <div className={nameHelper.join(
-        nameHelper.className,
-        nameHelper.state({
-          medium: this.props.size == 'medium',
-          large: this.props.size == 'large'
-      }))}>
+      <div className={className}>
         <img src='/images/profiles/sj.png' />
       </div>
     );
   },
 });
+
+module.exports = UserAvatar;

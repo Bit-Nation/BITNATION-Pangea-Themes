@@ -2,24 +2,27 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('MailPage');
-var bitnMixins = require('../../lib/bitnMixins');
+var Modal = require('react-modal');
+
+var bitnMixin = require('../../mixins/bitnMixin');
 var Icon = require('../../controls/Icon');
 var Button = require('../../controls/Button');
 var PageRow = require('../../layout/PageRow');
 var PageSection = require('../../layout/PageSection');
 var ControlSection = require('../../layout/ControlSection');
 var Results = require('../../layout/Results');
-var Modal = require('../../layout/Modal');
 var Table = require('../../controls/Table');
 
 var SendMessageForm = require('../../messaging/SendMessageForm');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
-module.exports = React.createClass({
-  displayName: nameHelper.displayName,
-  mixins: bitnMixins,
+var appElement = document.getElementById('app-container');
+Modal.setAppElement(appElement);
+Modal.injectCSS();
+
+var MailPage = React.createClass({
+  mixins: [ bitnMixin ],
   getInitialState: function() {
     var myAccountRS = 'NHZ-KS9L-6SXL-LMRF-4E46T';
 
@@ -46,27 +49,31 @@ module.exports = React.createClass({
   },
   render: function() {
     return (
-      <div className={nameHelper.className}>
+      <div className={this.className()}>
         <Modal
-          open={this.state.messageModalOpen}
+          isOpen={this.state.messageModalOpen}
           onRequestClose={this.closeMessageModal}>
           <p>{this.state.currentMessage}</p>
         </Modal>
 
         <Modal
-          open={this.state.sendMessageModalOpen}
+          isOpen={this.state.sendMessageModalOpen}
           onRequestClose={this.closeSendMessageModal}>
-          <SendMessageForm
-            content={this.state.msgContent}
-            secret={this.state.msgSecret}
-            recipient={this.state.msgRecipient}
-            encrypted={this.state.msgEncrypted}
-            onRecipientRS={this.onMsgRecipient}
-            onRecipientPubkey={this.onMsgRecipientPubkey}
-            onContent={this.onMsgContent}
-            onSecret={this.onMsgSecret}
-            onSend={this.sendMessage}
-            onEncrypted={this.onMsgEncrypted} />
+          <PageSection>
+
+            <SendMessageForm
+              content={this.state.msgContent}
+              secret={this.state.msgSecret}
+              recipient={this.state.msgRecipient}
+              encrypted={this.state.msgEncrypted}
+              onRecipientRS={this.onMsgRecipient}
+              onRecipientPubkey={this.onMsgRecipientPubkey}
+              onContent={this.onMsgContent}
+              onSecret={this.onMsgSecret}
+              onSend={this.sendMessage}
+              onEncrypted={this.onMsgEncrypted} />
+
+          </PageSection>
         </Modal>
 
         <div>
@@ -86,11 +93,11 @@ module.exports = React.createClass({
             <ControlSection flex={1}
               title={[
                 'Encrypted mail',
-                <Icon key='icon' type='lock' />
+                <Icon type='lock' />
               ]}
               controls={[
-                <Button key='sendMessage' autoHeight onClick={this.openSendMessageModal}>Send message</Button>,
-                <Button key='addContact' autoHeight>Add contact</Button>
+                <Button autoHeight onClick={this.openSendMessageModal}>Send message</Button>,
+                <Button autoHeight>Add contact</Button>
               ]}>
               <label>
                 Passphrase (required to decrypt):
@@ -245,3 +252,5 @@ module.exports = React.createClass({
 
   }
 });
+
+module.exports = MailPage;

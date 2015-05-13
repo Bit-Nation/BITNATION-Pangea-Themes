@@ -2,16 +2,13 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('Search');
-var wrapImmutables = require('../../lib/wrapImmutables');
-var bitnMixins = require('../../lib/bitnMixins');
-var focusMixin = require('../../lib/focusMixin');
+var bitnMixin = require('../../mixins/bitnMixin');
+var focusMixin = require('../../mixins/focusMixin');
 var Input = require('../../controls/Input');
 var Icon = require('../../controls/Icon');
 
-module.exports = wrapImmutables(React.createClass({
-  displayName: nameHelper.displayName,
-  mixins: bitnMixins.concat(focusMixin),
+var Search = React.createClass({
+  mixins: [ bitnMixin, focusMixin ],
   propTypes: {
     className: React.PropTypes.string,
     value: React.PropTypes.any,
@@ -30,11 +27,9 @@ module.exports = wrapImmutables(React.createClass({
     var button = this.props.button;
     if (button == null) button = <Icon type='search' />;
 
-    var className = nameHelper.join(
-      nameHelper.className,
-      this.props.className,
-      nameHelper.state({ focus: this.state.focus }));
-    
+    var className = this.classNameWithProp();
+    if (this.state.focus) className += ' ' + this.stateName('focus');
+
     return (
       <form className={className} onSubmit={this.onSubmit}>
         <div>
@@ -55,4 +50,6 @@ module.exports = wrapImmutables(React.createClass({
     this.setState({ value: value });
     if (this.props.onChange) this.props.onChange(value);
   }
-}));
+});
+
+module.exports = Search;
