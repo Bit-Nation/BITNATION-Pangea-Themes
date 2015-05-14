@@ -52,7 +52,13 @@ module.exports = React.createClass({
           page = <DappsPage {...props} />;
           break;
         case 'notFound':
-          page = <h1>This page was never here. Stop bothering me!</h1>;
+          page = (
+            <div>
+              <h1>&ldquo;All that is gold does not glitter,</h1>
+              <h1>Not all those who wander are lost;&rdquo;</h1>
+              <h2>But I think you are... This page doesn&lsquo;t exist</h2>
+            </div>
+          );
           break;
       }
     }

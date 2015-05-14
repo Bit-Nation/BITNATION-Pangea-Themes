@@ -40,7 +40,16 @@ var localStorage = require('localStorage');
 
             return _unserialize(localStorage.getItem(key));
 
-        }
+        };
+
+        /**
+         * Delete some data
+         */
+        client.remove = function (key) {
+
+            return localStorage.removeItem(key);
+
+        };
 
         return client;
     };
