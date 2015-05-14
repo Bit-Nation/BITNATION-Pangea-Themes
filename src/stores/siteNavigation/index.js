@@ -17,9 +17,9 @@ function (data, message, waitFor) {
   if (message.type === initializeMessage)
     return data.mergeDeep(defaults);
 
-  if (message.type === clickMessage)
-    return SiteNavigationStore.select(data, message.data);
-
   if (message.type === minimizeMessage) 
     return SiteNavigationStore.minimize(data, message.data);
+
+  if (message.type === clickMessage)
+    return SiteNavigationStore.select(data, message.data);
 });

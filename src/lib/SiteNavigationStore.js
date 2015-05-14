@@ -1,9 +1,6 @@
 var MenuStore = require('./MenuStore');
 
 module.exports = MenuStore.extend({
-  getWidth: function (data) {
-    return data.get(data.get('minimized') ? 'minimizedWidth' : 'width');
-  }, 
   minimize: function (data, value) {
     if (value == null) value = !data.get('minimized');
     var result = data.set('minimized', value);
@@ -16,6 +13,7 @@ module.exports = MenuStore.extend({
   },
   select: function (data, keys) {
     var result = data.set('selected', keys);
+    // expand if minimized and selected item has children
     if (!result.get('minimized') ||
         !result.get('selected')) return result;
     var item = this.getItem(result, result.get('selected'));
