@@ -8,6 +8,7 @@ var UserNavigationShortcuts = require('../UserNavigationShortcuts');
 var UserSettingsDropdown = require('../../user/UserSettingsDropdown');
 
 var minimizeMessage = require('../../../messages/siteNavigation/minimize');
+var signoutMessage = require('../../../messages/signOut');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
@@ -60,7 +61,11 @@ module.exports = React.createClass({
     );
   },
   onClick: function (keys) {
-    if (keys[0] == 'menu') 
+    var action = keys[0];
+    if (action == 'menu') {
       this.props.dispatch(minimizeMessage());
+    } else if (action == 'signOut') {
+      this.props.dispatch(signoutMessage());
+    }
   }
 });

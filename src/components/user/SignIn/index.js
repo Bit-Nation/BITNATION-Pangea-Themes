@@ -21,17 +21,10 @@ module.exports = React.createClass({
     return (
       <form className={nameHelper.className} onSubmit={this.onSubmit}>
         <label>
-          Username
+          Secret Phrase
 
-          <Input value={cursor.cursor('username')}
-            onChange={cursor.cursor('username')} />
-        </label>
-
-        <label>
-          Password
-  
-          <Input password value={cursor.cursor('password')}
-            onChange={cursor.cursor('password')} />
+          <Input type={'password'} value={cursor.cursor('secret')}
+            onChange={cursor.cursor('secret')} />
         </label>
 
         <Button submit>Sign in</Button>
@@ -41,9 +34,12 @@ module.exports = React.createClass({
   onSubmit: function (event) {
     event.preventDefault();
 
+    var secret = this.props.cursor.get('secret');
+
+    this.props.cursor.set('secret', null);
+
     this.props.dispatch(signInMessage({
-      username: this.props.cursor.get('username'),
-      password: this.props.cursor.get('password')      
+      secret: secret
     }));
   }
 });
