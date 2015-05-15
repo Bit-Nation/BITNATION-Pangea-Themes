@@ -5,6 +5,7 @@ var React = require('react');
 var nameHelper = require('../../lib/nameHelper')('Main');
 var bitnMixins = require('../../lib/bitnMixins');
 
+var DashboardPage = require('../../pages/DashboardPage');
 var SignInPage = require('../../pages/SignInPage');
 var NotaryPage = require('../../pages/NotaryPage');
 var MailPage = require('../../pages/MailPage');
@@ -34,7 +35,7 @@ module.exports = React.createClass({
 
       switch (keys.get(0)) {
         case '$':
-          page = <h1>Start!?</h1>;
+          page = <DashboardPage {...props} />;
           break;
         case 'sign-in':
           page = <SignInPage {...props}
