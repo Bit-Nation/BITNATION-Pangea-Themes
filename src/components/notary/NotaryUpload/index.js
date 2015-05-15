@@ -23,22 +23,18 @@ module.exports = React.createClass({
   },
   render: function () {
     var cursor = this.props.cursor;
-    var status;
-    var className = nameHelper.className;
 
     return (
-      <FileInput className={className}
+      <FileInput className={nameHelper.className}
         trigger={<Button file large>Select file</Button>}
         footer='All filetypes allowed (Max filesize: 8MB)'
-        onChange={cursor.cursor('file')}>
+        onChange={this.onChange}>
 
         <NotaryUploadSettings cursor={cursor}>
           {this.props.children}
         </NotaryUploadSettings>
 
         <h3>Drag & drop your documents in the box</h3>
-
-        {status}
       </FileInput>
     );
   },

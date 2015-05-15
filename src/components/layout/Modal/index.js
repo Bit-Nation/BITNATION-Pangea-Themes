@@ -10,8 +10,14 @@ var Section = require('../../layout/Section');
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
   mixins: bitnMixins.concat(LayerMixin),
+  propTypes: {
+    open: React.PropTypes.bool,
+    onClose: React.PropTypes.func.isRequired
+  },
   render: function () { return null; },
   renderLayer: function () {
+    var sectionProps = _.omit(this.props, 'open', 'onClose');
+
     var className = nameHelper.join(
       nameHelper.className,
       this.props.className,
@@ -19,8 +25,13 @@ module.exports = React.createClass({
 
     return (
       <div className={className}>
-        <Section {...this.props} />
+        <div className={nameHelper.ref('background')} onClick={this.close} />
+
+        <Section {...sectionProps} />
       </div>
     );
+  },
+  close: function () {
+    this.props.onClose();
   }
 });

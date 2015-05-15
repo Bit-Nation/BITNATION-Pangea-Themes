@@ -2,9 +2,8 @@
 
   creates a unique message factory
 
-  add child messages to the factory with factory.message
+  if you give another message as first argument it will be the parent 
   the childs full typeName will be parent_child
-  factory.asyncMessages() adds success, fail, cancel
 
   example definition
   var disconnectMainframe =
