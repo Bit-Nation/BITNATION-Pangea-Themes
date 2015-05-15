@@ -65,6 +65,14 @@ var jQuery = require('jquery');
         };
 
         /**
+         * Create a new Horizon account
+         */
+        uiService.createHzAccount = function () {
+            var account = new Bitnation.horizon.Account();
+            return account.create();
+        };
+
+        /**
          * Return a HorizonAccount for the given accountRS
          */
         uiService.getHzAccount = function (accountRS) {
