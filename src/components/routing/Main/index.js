@@ -10,6 +10,7 @@ var SignInPage = require('../../pages/SignInPage');
 var NotaryPage = require('../../pages/NotaryPage');
 var MailPage = require('../../pages/MailPage');
 var DappsPage = require('../../pages/DappsPage');
+var NotFoundPage = require('../../pages/NotFoundPage');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
@@ -53,13 +54,7 @@ module.exports = React.createClass({
           page = <DappsPage {...props} />;
           break;
         case 'notFound':
-          page = (
-            <div>
-              <h1>&ldquo;All that is gold does not glitter,</h1>
-              <h1>Not all those who wander are lost;&rdquo;</h1>
-              <h2>But I think you are... This page doesn&lsquo;t exist</h2>
-            </div>
-          );
+          page = <NotFoundPage {...props} />;
           break;
       }
     }
