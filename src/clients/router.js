@@ -4,6 +4,7 @@ var controller = require('../controller');
 var initializeMessage = require('../messages/initialize');
 var navigateMessage = require('../messages/navigate');
 var signInMessage = require('../messages/signIn');
+var userStateUpdatedMessage = require('../messages/userStateUpdated');
 var signOutMessage = require('../messages/signOut');
 
 var options = {
@@ -19,12 +20,6 @@ controller.on('message', function (message) {
   
   if (message.type === navigateMessage)
     return page(message.data);
-
-  if (message.type === signInMessage.success)
-    return page('/');
-
-  if (message.type === signOutMessage.success)
-    return page('/sign-in');
 });
 
 function initialize () {

@@ -1,6 +1,7 @@
 var Bitnation = require('./bitnation.core');
 require('./bitnation.horizon');
 require('./bitnation.notary');
+require('./bitnation.storage');
 var jQuery = require('jquery');
 
 (function (Bitnation, $) {
@@ -12,6 +13,11 @@ var jQuery = require('jquery');
 
     var _notaryService = new Bitnation.notary.Service();
 
+    var _localStorageClient = new Bitnation.storage.LocalClient();
+    var _localStorageKeys = {
+        horizonAccount: 'hzAccount'
+    };
+
     /**
      * UI Service Class
      */
@@ -22,7 +28,48 @@ var jQuery = require('jquery');
          * Log a user in
          */
         uiService.login = function (secretPhrase) {
-            return _hzClient.getAccountId(secretPhrase);
+            var deferred = $.Deferred();
+
+            _hzClient.getAccountId(secretPhrase)
+            .then(function (result) {
+                _localStorageClient.set(_localStorageKeys.horizonAccount, result);
+                deferred.resolve(result);
+            })
+            .fail(function (err) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise();
+        };
+
+        /**
+         * Check if a user is logged in
+         */
+        uiService.isLoggedIn = function () {
+            return !!this.getCurrentUser();
+        };
+
+        /**
+         * If there is a user logged in, return it
+         */
+        uiService.getCurrentUser = function () {
+            var user = _localStorageClient.get(_localStorageKeys.horizonAccount);
+            return (!!user) ? user : false;
+        };
+
+        /**
+         * Log a user out
+         */
+        uiService.logout = function () {
+            return _localStorageClient.remove(_localStorageKeys.horizonAccount);
+        };
+
+        /**
+         * Create a new Horizon account
+         */
+        uiService.createHzAccount = function () {
+            var account = new Bitnation.horizon.Account();
+            return account.create();
         };
 
         /**

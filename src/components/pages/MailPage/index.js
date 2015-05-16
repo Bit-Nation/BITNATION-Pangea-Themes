@@ -17,17 +17,19 @@ var SendMessageForm = require('../../messaging/SendMessageForm');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
+var ui = new Bitnation.pangea.UI();
+
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
   mixins: bitnMixins,
   getInitialState: function() {
-    var myAccountRS = 'NHZ-KS9L-6SXL-LMRF-4E46T';
+    var user = ui.getCurrentUser();
 
     return {
       currentMessage: null,
       messageModalOpen: false,
       sendMessageModalOpen: false,
-      myAccountRS: myAccountRS,
+      myAccountRS: user.accountRS,
       msgSecret: null,
       msgContent: null,
       msgRecipient: null,
@@ -36,8 +38,6 @@ module.exports = React.createClass({
     };
   },
   componentWillMount: function() {
-
-    var ui = new Bitnation.pangea.UI();
 
     ui.getMail(this.state.myAccountRS)
       .done(this.onMessages)
@@ -48,14 +48,14 @@ module.exports = React.createClass({
     return (
       <div className={nameHelper.className}>
         <Modal
-          open={this.state.messageModalOpen}
-          onRequestClose={this.closeMessageModal}>
+          closed={!this.state.messageModalOpen}
+          onClose={this.closeMessageModal}>
           <p>{this.state.currentMessage}</p>
         </Modal>
 
-        <Modal
-          open={this.state.sendMessageModalOpen}
-          onRequestClose={this.closeSendMessageModal}>
+        <Modal title='Send a message'
+          closed={!this.state.sendMessageModalOpen}
+          onClose={this.closeSendMessageModal}>
           <SendMessageForm
             content={this.state.msgContent}
             secret={this.state.msgSecret}

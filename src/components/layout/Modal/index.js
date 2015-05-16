@@ -1,34 +1,47 @@
 /** @jsx React.DOM */
 require('./style.scss');
 
-var React = require('react');
+var React = window.React = require('react');
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var _ = require('lodash');
 var nameHelper = require('../../lib/nameHelper')('Modal');
 var bitnMixins = require('../../lib/bitnMixins');
 var LayerMixin = require('react-layer-mixin');
-var Section = require('../../layout/Section');
+var ModalSection = require('../../layout/ModalSection');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
   mixins: bitnMixins.concat(LayerMixin),
   propTypes: {
-    open: React.PropTypes.bool,
+    closed: React.PropTypes.bool,
+    closeable: React.PropTypes.bool,
     onClose: React.PropTypes.func.isRequired
   },
   render: function () { return null; },
   renderLayer: function () {
-    var sectionProps = _.omit(this.props, 'open', 'onClose');
+    var sectionProps = _.omit(this.props, 'closed', 'onClose');
+    if (this.props.closeable !== false)
+      sectionProps.onClose = this.props.onClose;
 
     var className = nameHelper.join(
       nameHelper.className,
       this.props.className,
-      nameHelper.state({ open: this.props.open }));
+      nameHelper.state({ closed: this.props.closed }));
 
     return (
-      <div className={className}>
-        <div className={nameHelper.ref('background')} onClick={this.close} />
+      <ReactCSSTransitionGroup
+        component='div'
+        className={className}
+        transitionName={nameHelper.state('display')}
+        transitionAppear={true}>
+        
+        {!this.props.closed && [
+          <div key='background'
+            className={nameHelper.ref('background')}
+            onClick={this.props.closeable !== false && this.close} />,
 
-        <Section {...sectionProps} />
-      </div>
+          <ModalSection key='section' {...sectionProps} />]}
+      </ReactCSSTransitionGroup>
     );
   },
   close: function () {

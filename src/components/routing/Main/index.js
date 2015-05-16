@@ -5,6 +5,7 @@ var React = require('react');
 var nameHelper = require('../../lib/nameHelper')('Main');
 var bitnMixins = require('../../lib/bitnMixins');
 
+var DashboardPage = require('../../pages/DashboardPage');
 var SignInPage = require('../../pages/SignInPage');
 var NotaryPage = require('../../pages/NotaryPage');
 var MailPage = require('../../pages/MailPage');
@@ -34,7 +35,7 @@ module.exports = React.createClass({
 
       switch (keys.get(0)) {
         case '$':
-          page = <h1>Start!?</h1>;
+          page = <DashboardPage {...props} />;
           break;
         case 'sign-in':
           page = <SignInPage {...props}
@@ -52,7 +53,13 @@ module.exports = React.createClass({
           page = <DappsPage {...props} />;
           break;
         case 'notFound':
-          page = <h1>This page was never here. Stop bothering me!</h1>;
+          page = (
+            <div>
+              <h1>&ldquo;All that is gold does not glitter,</h1>
+              <h1>Not all those who wander are lost;&rdquo;</h1>
+              <h2>But I think you are... This page doesn&lsquo;t exist</h2>
+            </div>
+          );
           break;
       }
     }

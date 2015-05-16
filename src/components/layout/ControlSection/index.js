@@ -2,6 +2,7 @@
 require('./style.scss');
 
 var React = require('react');
+var _ = require('lodash');
 var nameHelper = require('../../lib/nameHelper')('ControlSection');
 var bitnMixins = require('../../lib/bitnMixins');
 var Section = require('../../layout/Section');
@@ -22,10 +23,12 @@ module.exports = React.createClass({
       </div>
     ) : this.props.header;
 
+    var sectionProps = _.omit(this.props, 'controls');
+
     return <Section
       titleTag='h3'
-      {...this.props}
-      header={header}
-      className={className} />;
+      {...sectionProps}
+      className={className}
+      header={header} />;
   }
 });

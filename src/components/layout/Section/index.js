@@ -10,6 +10,7 @@ module.exports = React.createClass({
   mixins: bitnMixins,
   propTypes: {
     className: React.PropTypes.string,
+    children: React.PropTypes.node,
     titleTag: React.PropTypes.string,
     flex: React.PropTypes.number,
     title: React.PropTypes.node,

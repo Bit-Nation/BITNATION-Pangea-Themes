@@ -16,9 +16,9 @@ var propTypes = {
 
 // states are binary attributes that can sometimes be combined
 var states = [
-  'file',
   'small', 'large',
-  'auto', 'autoWidth', 'autoHeight'
+  'auto', 'autoWidth', 'autoHeight',
+  'file', 'subtle'
 ];
 
 for (var i in states) propTypes[states[i]] = React.PropTypes.bool;
