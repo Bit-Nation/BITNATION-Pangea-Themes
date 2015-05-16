@@ -19,7 +19,7 @@ module.exports = React.createClass({
     var className = nameHelper.join(
       nameHelper.className,
       this.props.className,
-      nameHelper.state({ closeable: this.props.onClose }));
+      nameHelper.state({ close: this.props.onClose }));
 
     var header = [];
     if (this.props.header) header.push(this.props.header);
