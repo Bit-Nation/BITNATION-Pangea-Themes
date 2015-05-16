@@ -5,39 +5,56 @@ module.exports = [
     icon: { set: 'xbnx', type: 'dashboard' }
   },
   {
-    link: 'Notary',
+    link: 'Public Notary',
     href: '#!/notary',
-    icon: { set: 'xbnx', type: 'my-data' }
-  },
-  {
-    link: 'Mail',
-    href: '#!/mail',
-    icon: { set: 'xbnx', type: 'dapp-library' }
+    icon: { set: 'fa', type: 'list' }
   },
   {
     link: 'DApp Library',
-    href: '#!/dapps',
+    href: '#!/dapps/library',
     icon: { set: 'xbnx', type: 'dapp-library' }
   },
   {
-    link: 'Test mail',
-    href: '#!/mail/3',
+    link: 'My DApps',
+    href: '#!/dapps',
     icon: { set: 'xbnx', type: 'my-dapps' }
   },
   {
-    link: 'Test menu',
-    icon: { set: 'xbnx', type: 'dashboard' },
+    link: 'My Data',
+    href: '#!/data',
+    icon: { set: 'xbnx', type: 'my-data' }
+  },
+  {
+    link: 'Services',
+    href: '#!/services',
+    icon: { set: 'xbnx', type: 'services' }
+  },
+  {
+    link: 'Utilities',
+    href: '#!/utilities',
+    icon: { set: 'xbnx', type: 'utilities' }
+  },
+  {
+    link: 'Profile',
+    icon: { set: 'fa', type: 'user' },
     items: [
       {
-        link: 'Google',
-        href: 'http://www.google.com',
-        icon: { set: 'xbnx', type: 'dapp-library' }
+        link: 'Encrypted Email',
+        href: '#!/mail'
       },
       {
-        link: 'Not Found',
-        href: '#!/this-page-exists',
-        icon: { set: 'xbnx', type: 'my-data' }
+        link: 'Wallet',
+        href: '#!/wallet'
+      },
+      {
+        link: 'Peers',
+        href: '#!/peers'
       }
     ]
+  },
+  {
+    link: 'My Nation',
+    href: '#!/nation',
+    icon: { set: 'fa', type: 'group' }
   }
 ];
