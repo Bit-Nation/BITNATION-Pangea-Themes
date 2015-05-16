@@ -1,3 +1,4 @@
+var Immutable = require('immutable');
 var controller = require('../../controller');
 var initializeMessage = require('../../messages/initialize');
 var navigateMessage = require('../../messages/navigate');
