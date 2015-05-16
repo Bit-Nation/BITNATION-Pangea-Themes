@@ -14,14 +14,11 @@ module.exports = React.createClass({
   mixins: bitnMixins.concat(LayerMixin),
   propTypes: {
     closed: React.PropTypes.bool,
-    closeable: React.PropTypes.bool,
-    onClose: React.PropTypes.func.isRequired
+    onClose: React.PropTypes.func
   },
   render: function () { return null; },
   renderLayer: function () {
-    var sectionProps = _.omit(this.props, 'closed', 'onClose');
-    if (this.props.closeable !== false)
-      sectionProps.onClose = this.props.onClose;
+    var sectionProps = _.omit(this.props, 'closed');
 
     var className = nameHelper.join(
       nameHelper.className,
@@ -34,11 +31,11 @@ module.exports = React.createClass({
         className={className}
         transitionName={nameHelper.state('display')}
         transitionAppear={true}>
-        
+
         {!this.props.closed && [
           <div key='background'
             className={nameHelper.ref('background')}
-            onClick={this.props.closeable !== false && this.close} />,
+            onClick={this.props.onClose && this.close} />,
 
           <ModalSection key='section' {...sectionProps} />]}
       </ReactCSSTransitionGroup>

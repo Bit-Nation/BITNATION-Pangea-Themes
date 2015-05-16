@@ -20,14 +20,12 @@ module.exports = React.createClass({
     var cursor = this.props.cursor;
     return (
       <form className={nameHelper.className} onSubmit={this.onSubmit}>
-        <label>
-          Secret Phrase
+        <Input type={'password'} placeholder="Secret Phrase" value={cursor.cursor('secret')}
+          onChange={cursor.cursor('secret')} />
 
-          <Input type={'password'} value={cursor.cursor('secret')}
-            onChange={cursor.cursor('secret')} />
-        </label>
-
-        <Button submit>Sign in</Button>
+        <div>
+          <Button style={{width: '100%', marginTop: '1rem'}} submit>Sign in</Button>
+        </div>
       </form>
     );
   },
