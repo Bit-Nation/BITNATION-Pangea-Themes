@@ -9,12 +9,12 @@
   top: 0;
   bottom: 0;
   width: 100%;
-  transition-property: width;
-  transition-delay: 250ms;
 }
 
 .#{state-name(Modal, closed)} {
   width: 0;
+  transition-property: width;
+  transition-delay: 250ms;
 }
 
 .#{class-name(Modal)} > .#{class-name(ModalSection)} {
@@ -22,7 +22,7 @@
   z-index: 1;
   margin: -10% auto 0 auto;
   max-width: rem-calc(600);
-  max-height: rem-calc(400);
+  //max-height: rem-calc(400);
   overflow-y: auto;
   box-shadow: 0 1rem 10rem rgba(black, 0.5);
 

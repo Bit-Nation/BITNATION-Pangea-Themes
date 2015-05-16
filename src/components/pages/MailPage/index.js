@@ -48,14 +48,14 @@ module.exports = React.createClass({
     return (
       <div className={nameHelper.className}>
         <Modal
-          open={this.state.messageModalOpen}
-          onRequestClose={this.closeMessageModal}>
+          closed={!this.state.messageModalOpen}
+          onClose={this.closeMessageModal}>
           <p>{this.state.currentMessage}</p>
         </Modal>
 
-        <Modal
-          open={this.state.sendMessageModalOpen}
-          onRequestClose={this.closeSendMessageModal}>
+        <Modal title='Send a message'
+          closed={!this.state.sendMessageModalOpen}
+          onClose={this.closeSendMessageModal}>
           <SendMessageForm
             content={this.state.msgContent}
             secret={this.state.msgSecret}
