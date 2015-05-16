@@ -1,6 +1,7 @@
 // libraries
 require('react/addons');
-window.Immutable = require('immutable');
+//window.Immutable = 
+require('immutable');
 
 // stores
 require('./stores/currentUser');

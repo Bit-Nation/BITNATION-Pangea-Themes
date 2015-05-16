@@ -19,10 +19,14 @@ function initialize (controller) {
     stores: {}
   });
 
+  /*
+  
   // ---- DANGEROUS DEV STUFF -----
   Object.defineProperty(window, 'cursor', {
     get: function () { return data.cursor() }
   });
+
+  */
 
   data.on('next-animation-frame',
     _.bind(controller.emit, controller, 'render'));
