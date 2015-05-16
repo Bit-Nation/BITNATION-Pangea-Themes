@@ -14,6 +14,7 @@
 */
 
 var wrapProps = require('./wrapProps');
+var Immutable = require('immutable');
 
 module.exports = function wrapImmutables (Child) {
   return wrapProps(mapImmutables, Child);
