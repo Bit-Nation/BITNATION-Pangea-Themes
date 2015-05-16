@@ -20,7 +20,10 @@ module.exports = React.createClass({
 
     return (
       <div className={nameHelper.className}>
-        <Modal open={true}>
+        <Modal title='Sign In'
+          closed={cursor.get('closed')}
+          onClose={_.bind(cursor.set, cursor, 'closed', !cursor.get('closed'))}>
+          
           <SignIn cursor={cursor.cursor('form')} dispatch={dispatch} />
         </Modal>
       </div>

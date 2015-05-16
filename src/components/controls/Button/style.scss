@@ -20,15 +20,6 @@
   }
 }
 
-.#{state-name(Button, file)} {
-  background-color: #AED67A;
-  color: white;
-
-  &:hover, &:focus {
-    background-color: darken(#AED67A, 20%);
-  }
-}
-
 .#{state-name(Button, small)} {
   padding: 0.25rem 0.5rem;
   font-size: 90%;
@@ -50,4 +41,21 @@
 
 .#{state-name(Button, autoHeight)} {
   height: 100%;
+}
+
+.#{state-name(Button, file)} {
+  background-color: #AED67A;
+  color: white;
+
+  &:hover, &:focus {
+    background-color: darken(#AED67A, 20%);
+  }
+}
+
+.#{state-name(Button, subtle)} {
+  background-color: transparent;
+
+  &:hover, &:focus {
+    background-color: rgba(black, 0.25);
+  }
 }

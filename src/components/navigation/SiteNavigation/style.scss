@@ -1,9 +1,10 @@
 @import '../../component';
 
+// I made most of the styling dynamic instead(ie from react),
+// this has some legacy stuff and can be optimized a lot/remade
+
 $minimize-transition: $bitn-navigation-transition;
 
-$width: $bitn-site-navigation-width;
-$item-height: $bitn-site-navigation-item-height;
 $font-size: $bitn-site-navigation-font-size;
 $icon-size: 40%;
 
@@ -20,10 +21,8 @@ $hover-background-color: bitn-color(shark);
 $hover-text-color: white;
 
 // minimized
-$minimized-width: $bitn-navigation-panel-size;
 $minimized-logo-size: 60%;
 $minimized-logo-image: '/images/logo-sm.svg';
-$minimized-padding: ($minimized-width - $item-height) / 2;
 
 .#{class-name(SiteNavigation)} {
   @include display(flex);
@@ -71,6 +70,7 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
           > i {
             float: right;
             background-size: $icon-size;
+            line-height: inherit;
           }
         }
         
@@ -143,13 +143,17 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
       margin: 0 !important;
       opacity: 0;
 
-      > ul > .#{class-name(MenuItem)} {
-        margin: 0 !important;
-        min-height: 0 !important;
+      > ul {
+        padding: 0 !important;
 
-        > a {
-          position: absolute;
-          width: 100%;
+        > .#{class-name(MenuItem)} {
+          margin: 0 !important;
+          min-height: 0 !important;
+
+          > a {
+            position: absolute;
+            width: 100%;
+          }
         }
       }
     }
@@ -181,13 +185,17 @@ $minimized-padding: ($minimized-width - $item-height) / 2;
         margin: 0 !important;
         opacity: 0;
 
-        > ul > .#{class-name(MenuItem)} {
-          margin: 0 !important;
-          min-height: 0 !important;
+        > ul {
+          padding: 0 !important;
 
-          > a {
-            position: absolute;
-            width: 100%;
+          > .#{class-name(MenuItem)} {
+            margin: 0 !important;
+            min-height: 0 !important;
+
+            > a {
+              position: absolute;
+              width: 100%;
+            }
           }
         }
       }
