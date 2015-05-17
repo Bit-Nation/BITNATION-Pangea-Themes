@@ -10,6 +10,7 @@ var SignInPage = require('../../pages/SignInPage');
 var NotaryPage = require('../../pages/NotaryPage');
 var MailPage = require('../../pages/MailPage');
 var DappsPage = require('../../pages/DappsPage');
+var ServicesPage = require('../../pages/ServicesPage');
 var NotFoundPage = require('../../pages/NotFoundPage');
 
 module.exports = React.createClass({
@@ -52,6 +53,9 @@ module.exports = React.createClass({
           break;
         case 'dapps':
           page = <DappsPage {...props} />;
+          break;
+        case 'services':
+          page = <ServicesPage {...props} />;
           break;
         case 'notFound':
           page = <NotFoundPage {...props} />;
