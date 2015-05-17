@@ -56,7 +56,7 @@ module.exports = React.createClass({
   },
   setBalance: function (balance) {
     this.setState({
-      hzBalance: isNaN(parseInt(balance)) ? 0 : balance
+      hzBalance: isNaN(parseFloat(balance)) ? 0 : balance
     });
   },
   getBalance: function () {
