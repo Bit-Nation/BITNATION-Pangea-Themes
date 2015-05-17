@@ -27,6 +27,7 @@ module.exports = React.createClass({
   getInitialState: function () {
     return {
       signUpClosed: true,
+      securityNoticeClosed: false,
       newAccountSecret: null
     };
   },
@@ -49,6 +50,12 @@ module.exports = React.createClass({
           <p>This is your new secret phrase. Make sure you have saved it securely before closing this window as a new one will be generated each time you click the Sign Up button.</p>
           <Input ref="newSecret" style={{width: '100%'}} value={this.state.newAccountSecret} onClick={this.selectSecret} />
           <Button style={{width: '100%', marginTop: '1rem'}} onClick={this.closeSignup}>Close</Button>
+        </Modal>
+        <Modal title='Important Security Information'
+          closed={this.state.securityNoticeClosed}>
+          <p style={{ fontSize: '150%', textAlign: 'center' }}>You should <b>under no circumstances use your existing Horizon mainnet passphrase on the Bitnation Alpha</b> client, as it will compromise your account’s security.</p>
+          <p style={{ fontSize: '150%', textAlign: 'center' }}><b>Repeat: Do NOT use your existing Horizon mainnet secret phrase on the Bitnation Alpha release.</b></p>
+          <Button style={{width: '100%', marginTop: '1rem'}} onClick={this.closeSecurityNotice}>I have read this and agree to all terms</Button>
         </Modal>
       </div>
     );
@@ -80,6 +87,11 @@ module.exports = React.createClass({
   closeSignup: function () {
     this.setState({
       signUpClosed: true
+    });
+  },
+  closeSecurityNotice: function () {
+    this.setState({
+      securityNoticeClosed: true
     });
   }
 });
