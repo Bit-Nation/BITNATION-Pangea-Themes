@@ -18,10 +18,5 @@ module.exports = [
     link: 'DApp Library',
     href: '#!/dapps',
     icon: { set: 'xbnx', type: 'dapp-library' }
-  },
-  {
-    link: 'Services',
-    href: '#!/services',
-    icon: { set: 'xbnx', type: 'services' }
   }
 ];
