@@ -15,16 +15,17 @@ module.exports = React.createClass({
     return (
       <div className={nameHelper.className}>
         <PageRow>
-          <PageSection title='DApps'>
+          <PageSection>
+            <h2><b>BITNATION</b> Pangea Alpha 0.1.0 <small style={{color: 'rgba(17, 129, 175, 0.8)'}}><b>Decentralized Application (DApp) Library</b></small></h2>
             <p>The Pangea DApp Library for Do-It-Yourself (DIY) Governance DApps and services provides a collaborative environment for both in-house Bitnation DApps, as well as 3rd Party DApps, to develop, buy, sell, share or trade your DIY Governance Apps. Stand by for the developer API and documentation coming shortly.</p>
           </PageSection>
         </PageRow>
         <PageSection>
-          <PageRow class='derp'>
+          <PageRow>
             <div style={{width: '33%'}}>
               <h3 style={{textAlign: 'center'}}>Legal Services</h3>
-              <p style={{textAlign: 'center'}}><a href="#!/notary">Bitnation Notary</a></p>
-              <p style={{textAlign: 'center'}}><a href="#!/mail">Bitnation Encrypt</a></p>
+              <p style={{textAlign: 'center'}}><a href="#!/notary"><b>BITANATION</b> Notary</a></p>
+              <p style={{textAlign: 'center'}}><a href="#!/mail"><b>BITNATION</b> Encrypt</a></p>
             </div>
 
             <div style={{width: '33%'}}>
@@ -34,12 +35,13 @@ module.exports = React.createClass({
 
             <div style={{width: '33%'}}>
               <h3 style={{textAlign: 'center'}}>Diplomacy Services</h3>
-              <p style={{textAlign: 'center'}}><a target="_blank" href="http://www.bitnation-blog.com/about/">Bitnation Ambassador Network</a></p>
+              <p style={{textAlign: 'center'}}><a target="_blank" href="http://www.bitnation-blog.com/about/"><b>BITNATION</b> Ambassador Network</a></p>
+              <p style={{textAlign: 'center'}}><a target="_blank" href="http://www.spacechain.org"><b>BITNATION</b> Space Agency (BSA)</a></p>
             </div>
           </PageRow>
         </PageSection>
         <PageSection flex={1}>
-          <h1 style={{textAlign: 'center'}}>Coming Soon</h1>
+          <h2 style={{textAlign: 'center'}}>Coming Soon</h2>
           <PageRow>
             <p style={{textAlign: 'center', width: '20%'}}><b>BitPassport</b><br />ID & Reputation system</p>
             <p style={{textAlign: 'center', width: '20%'}}><b>BitResolution</b><br />Dispute Resolution</p>
