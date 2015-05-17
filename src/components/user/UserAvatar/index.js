@@ -16,7 +16,7 @@ module.exports = React.createClass({
           medium: this.props.size == 'medium',
           large: this.props.size == 'large'
       }))}>
-        <img src='/images/profiles/sj.png' />
+        <img src='/images/profiles/anon.png' />
       </div>
     );
   },

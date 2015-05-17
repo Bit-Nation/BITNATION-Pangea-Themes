@@ -80,6 +80,23 @@ var jQuery = require('jquery');
         };
 
         /**
+         * Get a Horizon address from its secret phrase
+         */
+        uiService.getHzAddress = function (secretPhrase) {
+            var deferred = $.Deferred();
+
+            _hzClient.getAccountId(secretPhrase)
+            .done(function (account) {
+                deferred.resolve(account.accountRS);
+            })
+            .fail(function (err) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise();
+        };
+
+        /**
          * Return a Horizon account balance
          */
         uiService.getHzAccountBalance = function (accountRS) {
