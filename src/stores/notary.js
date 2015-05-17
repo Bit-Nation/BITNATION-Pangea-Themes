@@ -17,7 +17,8 @@ controller.addStore('notary', function (data, message, waitFor) {
   if (message.type === initializeMessage)
     return data.mergeDeep(defaults);
 
-  if (message.type === verifyTxMessage.success)
+  if (message.type === verifyTxMessage.success ||
+      message.type === verifyTxMessage.fail)
     return updateVerifiedTx(data, message.data);
 });
 
@@ -25,7 +26,8 @@ function updateVerifiedTx (data, response) {
   return data.setIn(['tx', 'verified', response.txId],
     Immutable.Map({
       result: response.result,
-      date: response.date
+      date: response.date,
+      valid: !response.error
     })
   );
 }

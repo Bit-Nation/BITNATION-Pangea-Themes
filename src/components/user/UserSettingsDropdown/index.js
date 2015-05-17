@@ -25,14 +25,14 @@ module.exports = React.createClass({
 
     var className = nameHelper.join(
       nameHelper.className,
-      nameHelper.state({ active: this.state.hover }));
+      nameHelper.state({ active: false && this.state.hover }));
 
     return (
       <div className={className}
         onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
         
         <div className={nameHelper.ref('toggle')}>
-          <span>Olfox Jensen</span>
+          <span>{this.props.currentUser.getIn(['hzAccount', 'accountRS'])}</span>
           <div>
             <UserAvatar size='medium' />
           </div>

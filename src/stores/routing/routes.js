@@ -24,6 +24,6 @@ module.exports = {
     }
   },
   dapps: {},
-
+  services: {},
   notFound: { hidden: true }
 };

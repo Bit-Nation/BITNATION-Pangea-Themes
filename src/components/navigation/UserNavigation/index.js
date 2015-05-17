@@ -55,7 +55,7 @@ module.exports = React.createClass({
           style={{ opacity: fade ? fade : null }} />
 
         {currentUser.get('signedIn') && [
-          <UserSettingsDropdown />,
+          <UserSettingsDropdown currentUser={currentUser} />,
           <UserNavigationShortcuts onClick={this.onClick} />]}
       </nav>
     );
