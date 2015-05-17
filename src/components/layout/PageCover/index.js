@@ -18,8 +18,8 @@ module.exports = React.createClass({
   },
   getDefaultProps: function () {
     return {
-      title: ['Welcome to your ', <b key='name'>Bitnation</b>],
-      children: 'In the pursuit of serfdom'
+      title: ['Welcome to ', <b key='name'>Pangea</b>],
+      children: 'Blockchains, Not Borders'
     };
   },
   componentWillMount: function () {
