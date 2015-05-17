@@ -72,7 +72,7 @@ module.exports = React.createClass({
         <div>
           <PageRow>
             <PageSection flex={3}>
-              <h1>{this.state.myAccountRS}&#8217;s messages</h1>
+              <h1>{this.state.myAccountRS}&#8217;s email</h1>
             </PageSection>
           </PageRow>
         </div>
