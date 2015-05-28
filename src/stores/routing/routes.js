@@ -23,6 +23,7 @@ module.exports = {
       }
     }
   },
+  basicincome_co: {},
   dapps: {},
   services: {},
   notFound: { hidden: true }

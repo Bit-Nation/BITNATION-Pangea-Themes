@@ -9,6 +9,7 @@ var DashboardPage = require('../../pages/DashboardPage');
 var SignInPage = require('../../pages/SignInPage');
 var NotaryPage = require('../../pages/NotaryPage');
 var MailPage = require('../../pages/MailPage');
+var Basicincome_coPage = require('../../pages/Basicincome_coPage');
 var DappsPage = require('../../pages/DappsPage');
 var ServicesPage = require('../../pages/ServicesPage');
 var NotFoundPage = require('../../pages/NotFoundPage');
@@ -50,6 +51,9 @@ module.exports = React.createClass({
           break;
         case 'mail':
           page = <MailPage {...props} />;
+          break;
+        case 'basicincome_co':
+          page = <Basicincome_coPage {...props} />;
           break;
         case 'dapps':
           page = <DappsPage {...props} />;
