@@ -30,7 +30,7 @@ module.exports = React.createClass({
 
     return {
       currentMessage: null,
-      messageModalOpen: false,
+      editCurrencyModalOpen: false,
       sendMessageModalOpen: false,
       myAccountRS: user.accountRS,
       selectPlatform: null,
@@ -43,7 +43,7 @@ module.exports = React.createClass({
   componentWillMount: function() {
 
     ui.getMail(this.state.myAccountRS)
-      .done(this.onMessages)
+      .done(this.onFetchCurrencies)
       .fail(this.onFail);
 
   },
@@ -51,12 +51,6 @@ module.exports = React.createClass({
     return (
       <div className={nameHelper.className}>
       
-      <Modal
-          closed={!this.state.messageModalOpen}
-          onClose={this.closeMessageModal}>
-          <p>{this.state.currentMessage}</p>
-        </Modal>
-
         <Modal title='Add currency'
           closed={!this.state.AddCurrencyModalOpen}
           onClose={this.closeAddCurrencyModal}>
@@ -65,7 +59,18 @@ module.exports = React.createClass({
             onSend={this.submitCurrency} />
         </Modal>
 
-      
+
+        // placeholder, modal to edit currency
+        // pseudo-code
+         <Modal
+          closed={!this.state.editCurrencyModalOpen}
+          onClose={this.closeEditCurrencyModal}>
+          <label/>//currency
+          <label/>//platform
+          <input/>//dividendRate
+          <button>Remove</button>
+          <button>Update</button>
+        </Modal>
       
 <div className="Splashscreen-Header"></div>
 
@@ -94,9 +99,9 @@ module.exports = React.createClass({
       </div>
     );
   },
-  closeMessageModal: function () {
+  closeEditCurrencyModal: function () {
     this.setState({
-      messageModalOpen: false,
+      editCurrencyModalOpen: false,
       currentMessage: null
     });
   },
@@ -135,38 +140,38 @@ module.exports = React.createClass({
       msgEncrypted: encrypted
     });
   },
-  onMessages: function (msgList) {
+  onFetchCurrencies: function (currencyList) {
 
-    var messages = [];
+    var currencies = [];
 
-    msgList.forEach(function (item) {
+    currencyList.forEach(function (item) {
 
-      var msgFrom = (item.senderRS == this.state.myAccountRS) ?
+      var currency = (item.currency == this.state.currency) ?
         this.state.myAccountRS + ' (you)' : this.state.myAccountRS;
 
-      var msg = [
-        item.date.toUTCString(), msgFrom
+      var line = [
+        item.date.toUTCString(), currency
       ];
 
-      msgElement = (item.attachment.message !== undefined) ?
+      dividendRate = (item.dividendRate !== undefined) ?
         <span onClick={this.readMessage.bind(null, item, false)}>{item.attachment.message.substr(0, 50)} &hellip;</span> :
         <span onClick={this.readMessage.bind(null, item, true)}>encrypted (click to decrypt) &hellip;</span>;
 
-      msg.push(msgElement);
+      line.push(dividendRate);
 
-      messages.push(msg);
+      currencies.push(line);
 
     }, this);
 
     this.setState({
-      messages: messages
+      currencies: currencies
     });
 
   },
-  displayMessage: function (message) {
+  editCurrency: function (message) {
     this.setState({
       currentMessage: message,
-      messageModalOpen: true
+      editCurrencyModalOpen: true
     });
   },
   readMessage: function (tx, isEncrypted) {
