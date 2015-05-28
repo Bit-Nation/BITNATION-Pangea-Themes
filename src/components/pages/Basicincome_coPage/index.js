@@ -106,7 +106,8 @@ module.exports = React.createClass({
               <div></div><br/>
               <Results>
                 <Table head={[<b>IOU</b>, <b>Dividend</b>, <b>Network</b>]}
-                  body={this.state.messages} />
+                // should fetch the stored currency/dividendRate/platform. again, delete this note.
+                  body={this.state.currencies} />
               </Results>
             </ControlSection>
           </PageRow>
