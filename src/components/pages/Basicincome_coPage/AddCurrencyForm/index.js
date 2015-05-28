@@ -23,7 +23,19 @@ module.exports = React.createClass({
     return (
       <div className={nameHelper.className}>
       
-
+      // this modal doesn't do everything it should do.
+      // user should select platform (Bitcoin, Ripple, etc.), then choose currency 
+      // (platforms can have multiple currencies, Ripple has an infnite number), then choose dividendRate.
+      // if a platform isn't 'installed', the user will get the option to install it
+      // the user has to fetch API data from the platform he wants to install
+      // for example, if he wants to add Stellar, he has to provide API urls for some stuff
+      // adding new platforms and new currencies should be easy, and crowdsourced.
+      // see this animation for an example: http://i.imgur.com/jJU9D0p.gif
+      
+      // for now, just add what can be added, and it'll figure itself out step by step
+      
+      // and delete this message because it doesn't work with Jquery
+      
         <div className={nameHelper.ref('platform')}>
           <legend>Choose platform</legend>
 
