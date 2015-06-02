@@ -1,4 +1,4 @@
-@import '../../component';
+@import '../../../component';
 
 .#{class-name(SendMessageForm)} {
   .#{class-name(Input)} {
@@ -6,7 +6,8 @@
     border: 1px solid bitn-color(oil);
   }
 
-  .#{class-name(Radio)} {
-    margin-left: 0.25rem;
-  }
 }
+
+.floatRight {
+  float:right;
+  }

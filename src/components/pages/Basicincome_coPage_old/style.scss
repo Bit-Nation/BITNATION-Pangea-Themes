@@ -1,0 +1,36 @@
+@import '../../component';
+
+    .Splashscreen-Header {
+        height:200px;
+        background-image: url(http://i.imgur.com/ctz4XuH.gif); 
+        background-size: cover; 
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .floatRight {
+      float:right;
+      }    
+
+.#{class-name(Basicincome_coPage)} {
+    .#{class-name(Table)} {
+        table-layout: fixed;
+        width: 100%;
+
+        th:nth-child(1) {
+            width: 15%;
+        }
+
+        th:nth-child(2) {
+            width: 25%;
+        }
+    }
+
+    .#{class-name(Modal)} {
+        background-color: white;
+        width: 75%;
+    }
+    
+
+
+}

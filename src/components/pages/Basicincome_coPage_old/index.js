@@ -1,8 +1,15 @@
+// remixed the mail-page to add my basicincome.co. needs to be re-worked. //Johan
+
+
+// the users should store their currency/dividendRate/platform data in some smart way, on the HZ blockchain ?
+
+
+
 /** @jsx React.DOM */
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('Basicincome_coPage');
+var nameHelper = require('../../lib/nameHelper')('Basicincome_coPage_old');
 var bitnMixins = require('../../lib/bitnMixins');
 var Icon = require('../../controls/Icon');
 var Button = require('../../controls/Button');
@@ -13,7 +20,7 @@ var Results = require('../../layout/Results');
 var Modal = require('../../layout/Modal');
 var Table = require('../../controls/Table');
 
-var SendMessageForm = require('../../messaging/SendMessageForm');
+var AddCurrencyForm = require('./AddCurrencyForm');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
@@ -37,6 +44,7 @@ module.exports = React.createClass({
       msgEncrypted: false
     };
   },
+  // fetch currency/dividendRate/network
   componentWillMount: function() {
 
     ui.getMail(this.state.myAccountRS)
@@ -47,16 +55,11 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className={nameHelper.className}>
-        <Modal
-          closed={!this.state.messageModalOpen}
-          onClose={this.closeMessageModal}>
-          <p>{this.state.currentMessage}</p>
-        </Modal>
-
-        <Modal title='Send a message'
+        <Modal title='Add currency'
           closed={!this.state.sendMessageModalOpen}
           onClose={this.closeSendMessageModal}>
-          <SendMessageForm
+          <AddCurrencyForm
+          onPlatform={this.onSelectPlatform}
             content={this.state.msgContent}
             secret={this.state.msgSecret}
             recipient={this.state.msgRecipient}
@@ -69,39 +72,63 @@ module.exports = React.createClass({
             onEncrypted={this.onMsgEncrypted} />
         </Modal>
 
-        <div>
-          <PageRow>
-            <PageSection flex={3}>
-              <h1>{this.state.myAccountRS}&#8217;s email</h1>
-            </PageSection>
-          </PageRow>
-        </div>
+
+         <Modal
+          closed={!this.state.editCurrencyModalOpen}
+          onClose={this.closeEditCurrencyModal}>
+          <label/>currency
+          <label/>platform
+          <input/>dividendRate
+          <button>Remove</button>
+          <button>Update</button>
+        </Modal>
+      
+<div className="Splashscreen-Header"></div>
+
 
         <div>
           <PageRow>
             <ControlSection flex={1}
               title={[
-                'Encrypted mail',
-                <Icon key='icon' type='lock' />
+                'Manage currencies',
+                <Icon key='icon' type='user' />
               ]}
               controls={[
-                <Button key='sendMessage' autoHeight onClick={this.openSendMessageModal}>Send message</Button>,
-                <Button key='addContact' autoHeight>Add contact</Button>
+                <Button key='addContact' onClick={this.viewGraph} autoHeight>Graph</Button>
               ]}>
-              <label>
-                Passphrase (required to decrypt):
-                <input ref="secret" type="password" />
-              </label>
-              <Results title='Your latest messages'>
-                <Table head={['Date', 'From', 'Message']}
-                  body={this.state.messages} />
+              <div id="graph">
+                <Button key='submitCurrency' autoHeight onClick={this.openSendMessageModal}>Add currency</Button>
+    
+              <div></div><br/>
+              
+
+              
+              <Results>
+                <Table head={[<b>IOU</b>, <b>Dividend</b>, <b>Network</b>]}
+                   body={[
+                    ['BTC', '2%', 'Bitcoin', <Button key='EditCurrency' className="floatRight" onClick={this.editCurrency}>Edit</Button>],
+                    ['EUR', '1%', 'Ripple', <Button key='EditCurrency' className="floatRight" onClick={this.editCurrency}>Edit</Button>],
+                    ['JPY', '0.5%', 'Ripple', <Button key='EditCurrency' className="floatRight" onClick={this.editCurrency}>Edit</Button>],
+                  ]}
+                  body={this.state.messages}/>
               </Results>
+              </div>
             </ControlSection>
           </PageRow>
         </div>
+
+      
       </div>
     );
   },
+  viewGraph: function () {
+    
+    React.render(
+        <div>GRAPH</div>,
+        document.getElementById("graph")
+    );
+
+},
   closeMessageModal: function () {
     this.setState({
       messageModalOpen: false,
@@ -146,13 +173,9 @@ module.exports = React.createClass({
   onMessages: function (msgList) {
 
     var messages = [];
+
     msgList.forEach(function (item) {
-    var Basicincome_co = require('./library.js');
-    var BCO = new Basicincome_co();
-    var c
-    var c = BCO.parseCurrencies(item);
-    console.log(c)
-    
+
       var msgFrom = (item.senderRS == this.state.myAccountRS) ?
         this.state.myAccountRS + ' (you)' : this.state.myAccountRS;
 
@@ -244,4 +267,5 @@ module.exports = React.createClass({
     }
 
   }
+
 });
