@@ -81,40 +81,46 @@ module.exports = React.createClass({
           <button>Remove</button>
           <button>Update</button>
         </Modal>
+        
+              <div className="Splashscreen-Header"></div>
 
-        <div>
-          <PageRow>
-            <PageSection flex={3}>
-              <h1>{this.state.myAccountRS}&#8217;s email</h1>
-            </PageSection>
-          </PageRow>
-        </div>
+        
 
         <div>
           <PageRow>
             <ControlSection flex={1}
               title={[
-                'Encrypted mail',
-                <Icon key='icon' type='lock' />
+                'Manage currencies',
+                <Icon key='icon' type='user' />
               ]}
               controls={[
-                <Button key='sendMessage' autoHeight onClick={this.openSendMessageModal}>Send message</Button>,
-                <Button key='addContact' autoHeight>Add contact</Button>
+                <Button key='addContact' onClick={this.viewGraph} autoHeight>Graph</Button>
               ]}>
-              <label>
-                Passphrase (required to decrypt):
-                <input ref="secret" type="password" />
-              </label>
+               <div id="graph">
+              
+              <Button key='sendMessage' autoHeight onClick={this.openSendMessageModal}>Add currency</Button>
+              <div></div><br/>
+
+              
               <Results>
                 <Table head={[<b>IOU</b>, <b>DividendRate</b>, <b>Network</b>]}
                   body={this.state.messages} />
               </Results>
+              </div>
             </ControlSection>
           </PageRow>
         </div>
       </div>
     );
   },
+  viewGraph: function () {
+    
+    React.render(
+        <div>GRAPH</div>,
+        document.getElementById("graph")
+    );
+
+},
   closeMessageModal: function () {
     this.setState({
       messageModalOpen: false,
@@ -176,7 +182,7 @@ module.exports = React.createClass({
                 
 
             var msg = [returnedItem[i].currency, Number(returnedItem[i].dividendRate)*100+"%", returnedItem[i].network]
-            msgElement = <Button key='EditCurrency' className="floatRight" id={"currencyListObject--"+(i)} onClick={this.editCurrencyListObject}>Edit</Button>
+            msgElement = <Button key={'edit-' + i} className='floatRight' onClick={this.editCurrencyListObject.bind(null, i)}>Edit</Button> 
             msg.push(msgElement)
             console.log(msg)
             messages.push(msg)
@@ -262,14 +268,10 @@ module.exports = React.createClass({
     }
 
   },
-  editCurrencyListObject: function (evt){
-  
-    var a = React.findDOMNode(evt.target)
-    a = a.id
-    //rip of anything that isn't a digit
-    a = a.match(/\d+$/)[0]
-    console.log(a)
-    console.log(this.state.messages[a])
+  editCurrencyListObject: function (i){
+  console.log(i)
+
+    console.log(this.state.messages[i])
 
      this.setState({
       editCurrencyModalOpen: true

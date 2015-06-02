@@ -2,7 +2,7 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('UpdateCurrencyListForm');
+var nameHelper = require('../../lib/nameHelper')('EditCurrencyListForm');
 var bitnMixins = require('../../lib/bitnMixins');
 var Button = require('../../controls/Button');
 var Input = require('../../controls/Input');
