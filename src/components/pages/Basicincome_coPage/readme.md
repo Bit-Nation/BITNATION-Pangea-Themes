@@ -1,54 +1,14 @@
-  onMessages: function (msgList) {
-    var messages = [];
-    var currencies = [];
-    currencies.push("HEEEEJ")
-         this.setState({
-      currencies: currencies
-    });
+### Basicincome.co
+v.0.0.1
 
 
-    msgList.forEach(function (item) {
-      var data = JSON.parse(item.attachment.message)
-      console.log(data)
-      if(item.SenderRS == this.state.myAccountRS && typeof(data.bitnation.dapp.id) !== 'undefined') {
-        console.log(data)
-        var msg = {
-          tx_id: item.transaction,
-          data: data.bitnation.dapp.data
-          
-        }
-        console.log(msg)
-        // check revisions
-         messages.forEach(function (item) {
-           console.log(item.data.revision)
-           if(item.data.revision === msg.tx_id) {}
-         })
-         
-         var p = <span onClick={this.readMessage.bind(null, item, false)}>{msg.data.substr(0, 50)} &hellip;</span>
-         
-         currencies = p
-         console.log(currencies)
-      }
-      
-      var msgFrom = (item.senderRS == this.state.myAccountRS) ?
-        this.state.myAccountRS + ' (you)' : this.state.myAccountRS;
+## Crowdsourced currency coverage
 
-      var msg = [
-        item.date.toUTCString(), msgFrom
-      ];
+this current client has pan-currency support, users will be able to add new currencies and financial platforms 
+(sketch http://i.imgur.com/jJU9D0p.gif), all they have to do is cut and paste some API links from the platforms. 
+so, i’m crowdsourcing currency coverage. 
 
-      msgElement = (item.attachment.message !== undefined) ?
-        <span onClick={this.readMessage.bind(null, item, false)}>{item.attachment.message.substr(0, 50)} &hellip;</span> :
-        <span onClick={this.readMessage.bind(null, item, true)}>encrypted (click to decrypt) &hellip;</span>;
 
-      msg.push(msgElement);
+## Bitnation protocol messages 
 
-      messages.push(msg);
-
-    }, this);
-
-    this.setState({
-      messages: messages
-    });
-
-  },
+Users store their currency/dividendRate/network values on the Horizon blockchain, through Bitnation protocol messages.
