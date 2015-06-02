@@ -34,7 +34,10 @@ module.exports = React.createClass({
       msgContent: null,
       msgRecipient: null,
       msgRecipientPubkey: null,
-      msgEncrypted: false
+      msgEncrypted: false,
+      lastUpdatedCurrencyTable: null,
+      editCurrencyModalOpen: false
+
     };
   },
   componentWillMount: function() {
@@ -68,6 +71,16 @@ module.exports = React.createClass({
             onSend={this.sendMessage}
             onEncrypted={this.onMsgEncrypted} />
         </Modal>
+        
+          <Modal
+          closed={!this.state.editCurrencyModalOpen}
+          onClose={this.closeEditCurrencyModal}>
+          <label/>currency
+          <label/>platform
+          <input/>dividendRate
+          <button>Remove</button>
+          <button>Update</button>
+        </Modal>
 
         <div>
           <PageRow>
@@ -92,8 +105,8 @@ module.exports = React.createClass({
                 Passphrase (required to decrypt):
                 <input ref="secret" type="password" />
               </label>
-              <Results title='Your latest messages'>
-                <Table head={['Date', 'From', 'Message']}
+              <Results>
+                <Table head={[<b>IOU</b>, <b>DividendRate</b>, <b>Network</b>]}
                   body={this.state.messages} />
               </Results>
             </ControlSection>
@@ -149,24 +162,29 @@ module.exports = React.createClass({
     msgList.forEach(function (item) {
     var Basicincome_co = require('./library.js');
     var BCO = new Basicincome_co();
-    var c
-    var c = BCO.parseCurrencies(item);
-    console.log(c)
+    var returnedItem = BCO.fetchCurrencyList(item, messages);
+    console.log(returnedItem)
     
-      var msgFrom = (item.senderRS == this.state.myAccountRS) ?
-        this.state.myAccountRS + ' (you)' : this.state.myAccountRS;
+    if(returnedItem !==undefined){
+            console.log(returnedItem)
+            lastUpdatedCurrencyTable = returnedItem[1]
+    returnedItem = returnedItem[0]
 
-      var msg = [
-        item.date.toUTCString(), msgFrom
-      ];
+    //BCO.revisionHistory(returnedItem.revision)
+    returnedItem = returnedItem.currencies
+          for(var i=0;i<returnedItem.length;i++){
+                
 
-      msgElement = (item.attachment.message !== undefined) ?
-        <span onClick={this.readMessage.bind(null, item, false)}>{item.attachment.message.substr(0, 50)} &hellip;</span> :
-        <span onClick={this.readMessage.bind(null, item, true)}>encrypted (click to decrypt) &hellip;</span>;
+            var msg = [returnedItem[i].currency, Number(returnedItem[i].dividendRate)*100+"%", returnedItem[i].network]
+            msgElement = <Button key='EditCurrency' className="floatRight" id={"currencyListObject--"+(i)} onClick={this.editCurrencyListObject}>Edit</Button>
+            msg.push(msgElement)
+            console.log(msg)
+            messages.push(msg)
+          }
+          
+    }
 
-      msg.push(msgElement);
 
-      messages.push(msg);
 
     }, this);
 
@@ -243,5 +261,26 @@ module.exports = React.createClass({
       alert('Error :-( ... Check the logs');
     }
 
+  },
+  editCurrencyListObject: function (evt){
+  
+    var a = React.findDOMNode(evt.target)
+    a = a.id
+    //rip of anything that isn't a digit
+    a = a.match(/\d+$/)[0]
+    console.log(a)
+    console.log(this.state.messages[a])
+
+     this.setState({
+      editCurrencyModalOpen: true
+    });
+    
+  },
+  closeEditCurrencyModal: function (){
+    
+    this.setState({
+      editCurrencyModalOpen: false
+    });
+    
   }
 });
