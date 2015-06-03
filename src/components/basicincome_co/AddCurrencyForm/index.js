@@ -2,15 +2,15 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../../lib/nameHelper')('AddCurrencyForm');
-var bitnMixins = require('../../../lib/bitnMixins');
-var Button = require('../../../controls/Button');
-var Input = require('../../../controls/Input');
-var Textarea = require('../../../controls/Textarea');
-var Radio = require('../../../controls/Radio');
-var FileInput = require('../../../controls/FileInput');
+var nameHelper = require('../../lib/nameHelper')('AddCurrencyForm');
+var bitnMixins = require('../../lib/bitnMixins');
+var Button = require('../../controls/Button');
+var Input = require('../../controls/Input');
+var Textarea = require('../../controls/Textarea');
+var Radio = require('../../controls/Radio');
+var FileInput = require('../../controls/FileInput');
 
-var Bitnation = require('../../../../bitnation/bitnation.pangea');
+var Bitnation = require('../../../bitnation/bitnation.pangea');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,

@@ -13,8 +13,8 @@ var Results = require('../../layout/Results');
 var Modal = require('../../layout/Modal');
 var Table = require('../../controls/Table');
 
-var AddCurrencyForm = require('./AddCurrencyForm');
-var EditCurrencyListForm = require('./EditCurrencyListForm');
+var AddCurrencyForm = require('../../basicincome_co/AddCurrencyForm');
+var EditCurrencyListForm = require('../../basicincome_co/EditCurrencyListForm');
 
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
