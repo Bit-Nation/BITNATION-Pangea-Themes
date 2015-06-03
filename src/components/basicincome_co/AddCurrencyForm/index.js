@@ -19,22 +19,54 @@ module.exports = React.createClass({
     network: React.PropTypes.string,
     currency: React.PropTypes.string,
     dividendRate: React.PropTypes.string,
-    Input: React.PropTypes.string,
 
   },
   render: function () {
+      
+var input;
 
+if (this.props.network===null) input = <div className={nameHelper.ref('network')}>
 
+                                        <legend>What financial Network ?</legend>
+
+                                        <Input value={this.props.network}/>
+                                        
+                                        <button onClick={this.props.onNetwork}>Next</button>
+                                        
+                                        </div>;
+                                        
+if (this.props.network !== null && this.props.currency ===null) input = <div className={nameHelper.ref('currency')}> 
+                                                                        
+                                                                        <legend>What Currency ?</legend>
+
+                                                                        <Input value={this.props.currency}/>
+                                                                        
+                                                                        <button onClick={this.props.onCurrency}>Next</button>
+                                                                        
+                                                                        </div>;
+                                                                        
+if (this.props.currency !== null && this.props.dividendRate ===null) input = <div className={nameHelper.ref('dividendRate')}> 
+                                                                        
+                                                                        <legend>What DividendRate ?</legend>
+
+                                                                        <Input value={this.props.dividendRate}/>
+                                                                        
+                                                                        <button onClick={this.props.onSend}>Next</button>
+                                                                        
+                                                                        </div>;
       return(
-          
-         
-       <div className={nameHelper.className}>
-        {this.props.Input}
-     </div>
-     
-
-       
+           
+            <div className={nameHelper.className}>
+            
+            {input}
+            
+            </div>
+ 
     );
+
+
+
+    
   }
     
   
