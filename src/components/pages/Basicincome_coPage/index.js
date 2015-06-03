@@ -13,7 +13,9 @@ var Results = require('../../layout/Results');
 var Modal = require('../../layout/Modal');
 var Table = require('../../controls/Table');
 
-var SendMessageForm = require('../../messaging/SendMessageForm');
+var AddCurrencyForm = require('./AddCurrencyForm');
+var EditCurrencyListForm = require('./EditCurrencyListForm');
+
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 
@@ -30,13 +32,17 @@ module.exports = React.createClass({
       messageModalOpen: false,
       sendMessageModalOpen: false,
       myAccountRS: user.accountRS,
+      msgNetwork: null,
       msgSecret: null,
       msgContent: null,
       msgRecipient: null,
       msgRecipientPubkey: null,
       msgEncrypted: false,
       lastUpdatedCurrencyTable: null,
-      editCurrencyModalOpen: false
+      editCurrencyModalOpen: false,
+      editCurrency: null,
+      editDividendRate: null,
+      editNetwork: null
 
     };
   },
@@ -56,10 +62,11 @@ module.exports = React.createClass({
           <p>{this.state.currentMessage}</p>
         </Modal>
 
-        <Modal title='Send a message'
+        <Modal title='Add Currency'
           closed={!this.state.sendMessageModalOpen}
           onClose={this.closeSendMessageModal}>
-          <SendMessageForm
+          <AddCurrencyForm
+            network={this.state.msgNetwork}
             content={this.state.msgContent}
             secret={this.state.msgSecret}
             recipient={this.state.msgRecipient}
@@ -68,18 +75,25 @@ module.exports = React.createClass({
             onRecipientPubkey={this.onMsgRecipientPubkey}
             onContent={this.onMsgContent}
             onSecret={this.onMsgSecret}
+            onNetwork={this.onMsgNetwork}
             onSend={this.sendMessage}
             onEncrypted={this.onMsgEncrypted} />
         </Modal>
         
-          <Modal
+          <Modal title='Edit Contract'
           closed={!this.state.editCurrencyModalOpen}
           onClose={this.closeEditCurrencyModal}>
-          <label/>currency
-          <label/>platform
-          <input/>dividendRate
-          <button>Remove</button>
-          <button>Update</button>
+          <EditCurrencyListForm
+            currency={this.state.editCurrency}
+            dividendRate={this.state.editDividendRate}
+            network={this.state.editNetwork}
+            onRecipientRS={this.onMsgRecipient}
+            onRecipientPubkey={this.onMsgRecipientPubkey}
+            onDividendRate={this.onEditDividendRate}
+            onSecret={this.onMsgSecret}
+            onSend={this.sendMessage}
+            onEncrypted={this.onMsgEncrypted} />
+          
         </Modal>
         
               <div className="Splashscreen-Header"></div>
@@ -145,6 +159,11 @@ module.exports = React.createClass({
   onMsgSecret: function (secret) {
     this.setState({
       msgSecret: secret
+    });
+  },
+  onMsgNetwork: function (network) {
+    this.setState({
+      msgNetwork: network
     });
   },
   onMsgRecipient: function (recipient) {
@@ -274,6 +293,9 @@ module.exports = React.createClass({
     console.log(this.state.messages[i])
 
      this.setState({
+       editDividendRate: this.state.messages[i][1],
+       editCurrency: this.state.messages[i][0],
+       editNetwork: this.state.messages[i][2],
       editCurrencyModalOpen: true
     });
     

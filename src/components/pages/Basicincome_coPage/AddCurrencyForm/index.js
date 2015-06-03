@@ -2,80 +2,67 @@
 require('./style.scss');
 
 var React = require('react');
-var nameHelper = require('../../lib/nameHelper')('UpdateCurrencyListForm');
-var bitnMixins = require('../../lib/bitnMixins');
-var Button = require('../../controls/Button');
-var Input = require('../../controls/Input');
-var Textarea = require('../../controls/Textarea');
-var Radio = require('../../controls/Radio');
-var FileInput = require('../../controls/FileInput');
+var nameHelper = require('../../../lib/nameHelper')('AddCurrencyForm');
+var bitnMixins = require('../../../lib/bitnMixins');
+var Button = require('../../../controls/Button');
+var Input = require('../../../controls/Input');
+var Textarea = require('../../../controls/Textarea');
+var Radio = require('../../../controls/Radio');
+var FileInput = require('../../../controls/FileInput');
 
-var Bitnation = require('../../../bitnation/bitnation.pangea');
+var Bitnation = require('../../../../bitnation/bitnation.pangea');
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
   mixins: bitnMixins,
   propTypes: {
-    encrypted: React.PropTypes.bool,
-    recipient: React.PropTypes.string,
-    content: React.PropTypes.string,
-    secret: React.PropTypes.string
+    network: React.PropTypes.string,
+    currency: React.PropTypes.string,
+    dividendRate: React.PropTypes.string,
+
   },
   render: function () {
-    return (
-      <div className={nameHelper.className}>
-        <div className={nameHelper.ref('encrypted')}>
-          <legend>Please select</legend>
+    console.log("bajs")
+    console.log("hej" +this.props.network)
+    if(this.props.network!=='undefined'){
+      return(
+       <div className={nameHelper.className}>
+       
+        <div className={nameHelper.ref('network')}>
+          <legend>What financial Network ?</legend>
 
-          <label>
-            Encrypted
-
-            <Radio name={this.formId('sendMessage')}
-              value={true} checked={this.props.encrypted}
-              onChange={this.props.onEncrypted} />
-          </label>
-
-          <label>
-            Plain text
-
-            <Radio name={this.formId('sendMessage')}
-              value={false} checked={!this.props.encrypted}
-              onChange={this.props.onEncrypted} />
-          </label>
+          <Input value={this.props.network}
+            onChange={this.props.onNetwork} />
         </div>
-
-        <div className={nameHelper.ref('recipientPubkey')}>
-          <legend>Recipient public key (usually optional)</legend>
-
-          <Input value={this.props.recipientPubkey}
-            onChange={this.props.onRecipientPubkey} />
-        </div>
-
-        <div className={nameHelper.ref('recipientRS')}>
-          <legend>Recipient</legend>
-
-          <Input value={this.props.recipientRS}
-            onChange={this.props.onRecipientRS} />
-        </div>
-
-        <div className={nameHelper.ref('content')}>
-          <legend>Content</legend>
-
-          <Textarea value={this.props.content}
-            onChange={this.props.onContent} />
-        </div>
-
-        <div className={nameHelper.ref('secret')}>
-          <legend>Secret phrase</legend>
-
-          <Input password value={this.props.secret}
-            onChange={this.props.onSecret} />
-        </div>
-
-        <div className={nameHelper.ref('submit')}>
-          <Button onClick={this.props.onSend}>Send message</Button>
+        
+        
+         <div className={nameHelper.ref('submit')}>
+          <Button onClick={this.render}>Next</Button>
         </div>
      </div>
+      );
+    }
+    else{
+    return (
+     
+<div className={nameHelper.className}>
+       
+        <div className={nameHelper.ref('currency')}>
+          <legend>What currency ?</legend>
+
+          <Input value={this.props.currency}
+            onChange={this.props.onRecipientRS} />
+        </div>
+        
+        
+         <div className={nameHelper.ref('submit')}>
+          <Button onClick={this.render}>Next</Button>
+        </div>
+     </div>
+
+       
     );
+  }
+    
   }
 });
