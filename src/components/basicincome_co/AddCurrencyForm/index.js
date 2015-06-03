@@ -19,50 +19,23 @@ module.exports = React.createClass({
     network: React.PropTypes.string,
     currency: React.PropTypes.string,
     dividendRate: React.PropTypes.string,
+    Input: React.PropTypes.string,
 
   },
   render: function () {
-    console.log("bajs")
-    console.log("hej" +this.props.network)
-    if(this.props.network!=='undefined'){
+
+
       return(
+          
+         
        <div className={nameHelper.className}>
-       
-        <div className={nameHelper.ref('network')}>
-          <legend>What financial Network ?</legend>
-
-          <Input value={this.props.network}
-            onChange={this.props.onNetwork} />
-        </div>
-        
-        
-         <div className={nameHelper.ref('submit')}>
-          <Button onClick={this.render}>Next</Button>
-        </div>
+        {this.props.Input}
      </div>
-      );
-    }
-    else{
-    return (
      
-<div className={nameHelper.className}>
-       
-        <div className={nameHelper.ref('currency')}>
-          <legend>What currency ?</legend>
-
-          <Input value={this.props.currency}
-            onChange={this.props.onRecipientRS} />
-        </div>
-        
-        
-         <div className={nameHelper.ref('submit')}>
-          <Button onClick={this.render}>Next</Button>
-        </div>
-     </div>
 
        
     );
   }
     
-  }
+  
 });

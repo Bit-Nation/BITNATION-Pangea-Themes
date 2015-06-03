@@ -12,6 +12,8 @@ var ControlSection = require('../../layout/ControlSection');
 var Results = require('../../layout/Results');
 var Modal = require('../../layout/Modal');
 var Table = require('../../controls/Table');
+var Input = require('../../controls/Input');
+
 
 var AddCurrencyForm = require('../../basicincome_co/AddCurrencyForm');
 var EditCurrencyListForm = require('../../basicincome_co/EditCurrencyListForm');
@@ -38,6 +40,7 @@ module.exports = React.createClass({
       msgRecipient: null,
       msgRecipientPubkey: null,
       msgEncrypted: false,
+      msgInput: null,
       lastUpdatedCurrencyTable: null,
       editCurrencyModalOpen: false,
       editCurrency: null,
@@ -67,6 +70,7 @@ module.exports = React.createClass({
           onClose={this.closeSendMessageModal}>
           <AddCurrencyForm
             network={this.state.msgNetwork}
+            Input={this.state.msgInput}
             content={this.state.msgContent}
             secret={this.state.msgSecret}
             recipient={this.state.msgRecipient}
@@ -112,7 +116,7 @@ module.exports = React.createClass({
               ]}>
                <div id="graph">
               
-              <Button key='sendMessage' autoHeight onClick={this.openSendMessageModal}>Add currency</Button>
+              <Button key='sendMessage' autoHeight onClick={this.openAddCurrencyModal}>Add currency</Button>
               <div></div><br/>
 
               
@@ -141,9 +145,17 @@ module.exports = React.createClass({
       currentMessage: null
     });
   },
-  openSendMessageModal: function () {
+  openAddCurrencyModal: function () {
+    var inputDiv = <div className={nameHelper.ref('network')}>
+
+ <legend>What financial Network ?</legend>
+
+          <Input value={this.props.network}/>
+            <button onClick={this.props.onNetwork}>Next</button>
+</div>;
     this.setState({
-      sendMessageModalOpen: true
+      sendMessageModalOpen: true,
+      msgInput: inputDiv
     });
   },
   closeSendMessageModal: function () {
