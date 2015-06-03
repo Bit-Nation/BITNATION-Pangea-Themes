@@ -11,6 +11,9 @@ var Radio = require('../../controls/Radio');
 var FileInput = require('../../controls/FileInput');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
+var Basicincome_coPlatforms = require('../../basicincome_co/Platforms/index.js');
+
+
 
 module.exports = React.createClass({
   displayName: nameHelper.displayName,
@@ -19,47 +22,61 @@ module.exports = React.createClass({
     network: React.PropTypes.string,
     currency: React.PropTypes.string,
     dividendRate: React.PropTypes.string,
+    platforms: React.PropTypes.array,
+    installedPlatform: React.PropTypes.bool,
+
 
   },
   render: function () {
-      
-var input;
+console.log(this.props.network+"haha")
+var LoadPlatforms = new Basicincome_coPlatforms()
 
-if (this.props.network===null) input = <div className={nameHelper.ref('network')}>
+var datalistElement = LoadPlatforms.datalistElement()
+      
+var ModalBody;
+
+ModalBody = <div className={nameHelper.ref('network')}>
 
                                         <legend>What financial Network ?</legend>
 
-                                        <Input value={this.props.network}/>
+                                        <Input list ="platforms" value={this.props.network} onChange={this.props.onNetwork}/>
+                                        {datalistElement}
                                         
-                                        <button onClick={this.props.onNetwork}>Next</button>
+                                        <Button onClick={this.props.onCheckPlatforms}>Next</Button>
                                         
                                         </div>;
-                                        
-if (this.props.network !== null && this.props.currency ===null) input = <div className={nameHelper.ref('currency')}> 
+
+if(this.props.installedPlatform === false) ModalBody = <div className={nameHelper.ref('currency')}> 
+                                                                        
+                                                                        <div>Basicincome.co has not yet installed this platform. Install it ?</div>
+                                                                        <Button>Yes</Button><Button>Cancel</Button>
+                                                                        </div>;  
+
+if (this.props.network !== null && this.props.currency ===null && this.props.installedPlatform === true) ModalBody = <div className={nameHelper.ref('currency')}> 
                                                                         
                                                                         <legend>What Currency ?</legend>
-
+                                                                        
                                                                         <Input value={this.props.currency}/>
                                                                         
-                                                                        <button onClick={this.props.onCurrency}>Next</button>
+                                                                        <Button onClick={this.props.onCurrency}>Next</Button>
                                                                         
-                                                                        </div>;
+                                                                        </div>;  
                                                                         
-if (this.props.currency !== null && this.props.dividendRate ===null) input = <div className={nameHelper.ref('dividendRate')}> 
+if (this.props.currency !== null && this.props.dividendRate ===null) ModalBody = <div className={nameHelper.ref('dividendRate')}> 
                                                                         
                                                                         <legend>What DividendRate ?</legend>
 
                                                                         <Input value={this.props.dividendRate}/>
                                                                         
-                                                                        <button onClick={this.props.onSend}>Next</button>
+                                                                        <Button onClick={this.props.onSend}>Next</Button>
                                                                         
                                                                         </div>;
       return(
            
             <div className={nameHelper.className}>
             
-            {input}
-            
+            {ModalBody}
+
             </div>
  
     );

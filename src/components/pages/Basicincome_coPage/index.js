@@ -18,6 +18,8 @@ var EditCurrencyListForm = require('../../basicincome_co/EditCurrencyListForm');
 
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
+var Basicincome_coPlatforms = require('../../basicincome_co/Platforms/index.js');
+
 
 var ui = new Bitnation.pangea.UI();
 
@@ -30,10 +32,12 @@ module.exports = React.createClass({
     return {
       currentMessage: null,
       messageModalOpen: false,
-      sendMessageModalOpen: false,
+      AddCurrencyModalOpen: false,
       myAccountRS: user.accountRS,
       msgNetwork: null,
       msgCurrency: null,
+      msgPlatforms: null,
+      msgInstalledPlatform: null,
       msgSecret: null,
       msgContent: null,
       msgRecipient: null,
@@ -64,11 +68,13 @@ module.exports = React.createClass({
         </Modal>
 
         <Modal title='Add Currency'
-          closed={!this.state.sendMessageModalOpen}
+          closed={!this.state.AddCurrencyModalOpen}
           onClose={this.closeSendMessageModal}>
           <AddCurrencyForm
             network={this.state.msgNetwork}
             currency={this.state.msgCurrency}
+            platforms={this.state.msgPlatforms}
+            installedPlatform={this.state.msgInstalledPlatform}
             content={this.state.msgContent}
             secret={this.state.msgSecret}
             recipient={this.state.msgRecipient}
@@ -78,6 +84,9 @@ module.exports = React.createClass({
             onContent={this.onMsgContent}
             onSecret={this.onMsgSecret}
             onNetwork={this.onMsgNetwork}
+            onCheckPlatforms={this.onMsgCheckPlatforms}
+            onCurrency={this.onMsgCurrency}
+
             onSend={this.sendMessage}
             onEncrypted={this.onMsgEncrypted} />
         </Modal>
@@ -114,7 +123,7 @@ module.exports = React.createClass({
               ]}>
                <div id="graph">
               
-              <Button key='sendMessage' autoHeight onClick={this.openSendMessageModal}>Add currency</Button>
+              <Button key='sendMessage' autoHeight onClick={this.openAddCurrencyModal}>Add currency</Button>
               <div></div><br/>
 
               
@@ -143,10 +152,17 @@ module.exports = React.createClass({
       currentMessage: null
     });
   },
-  openSendMessageModal: function () {
+  openAddCurrencyModal: function () {
+    
+    var LoadPlatforms = new Basicincome_coPlatforms()
+    var platformList = LoadPlatforms.platformList()
+
+    
     this.setState({
-      sendMessageModalOpen: true
+      msgPlatforms: platformList,
+      AddCurrencyModalOpen: true,
     });
+
   },
   closeSendMessageModal: function () {
     this.setState({
@@ -164,10 +180,33 @@ module.exports = React.createClass({
     });
   },
   onMsgNetwork: function (network) {
+
     this.setState({
       msgNetwork: network
+    })
+
+
+  },
+  onMsgCheckPlatforms: function(){  
+    
+   
+Array.prototype.contains = function(element){
+    return this.indexOf(element) > -1;
+};
+var installedPlatformCheck = this.state.msgPlatforms.contains(this.state.msgNetwork)
+if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
+     this.setState({
+      msgInstalledPlatform: installedPlatformCheck
+    })
+
+    
+},
+  onMsgCurrency: function (currency) {
+    this.setState({
+      msgCurrency: currency
     });
   },
+
   onMsgRecipient: function (recipient) {
     this.setState({
       msgRecipient: recipient

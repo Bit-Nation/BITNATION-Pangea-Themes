@@ -48,9 +48,7 @@ function onMessages(msgList){
     }
 }
 
-    Basicincome_co.prototype.updateCurrencyList = function (messages, lastUpdatedCurrencyTable) {
-        
-    }
+    Basicincome_co.prototype.updateCurrencyList = function (messages, lastUpdatedCurrencyTable) {}
 
 
     module.exports = Basicincome_co;
