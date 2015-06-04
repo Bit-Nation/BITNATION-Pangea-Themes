@@ -38,6 +38,7 @@ module.exports = React.createClass({
       msgCurrency: null,
       msgPlatforms: null,
       msgInstalledPlatform: null,
+      msgDoInstallPlatform: false,
       msgSecret: null,
       msgContent: null,
       msgRecipient: null,
@@ -75,6 +76,9 @@ module.exports = React.createClass({
             currency={this.state.msgCurrency}
             platforms={this.state.msgPlatforms}
             installedPlatform={this.state.msgInstalledPlatform}
+            doInstallPlatformStep={this.state.msgDoInstallPlatformStep}
+            APIurl={this.state.msgAPIurl}
+            subscribeCommand={this.state.msgSubscribeCommand}
             content={this.state.msgContent}
             secret={this.state.msgSecret}
             recipient={this.state.msgRecipient}
@@ -85,6 +89,11 @@ module.exports = React.createClass({
             onSecret={this.onMsgSecret}
             onNetwork={this.onMsgNetwork}
             onCheckPlatforms={this.onMsgCheckPlatforms}
+            onDoInstallPlatformStep={this.onMsgDoInstallPlatformStep}
+            onAPIurl={this.onMsgAPIurl}
+            onEnterAPIurl={this.onMsgEnterAPIurl}
+            onSubscribeCommand={this.onMsgSubscribeCommand}
+            onEnterSubscribeCommand={this.onMsgEnterSubscribeCommand}
             onCurrency={this.onMsgCurrency}
 
             onSend={this.sendMessage}
@@ -201,12 +210,39 @@ if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
 
     
 },
+  onMsgDoInstallPlatformStep: function(){
+     this.setState({
+      msgDoInstallPlatformStep: "set api url"
+    })
+
+  },
+  onMsgAPIurl: function(APIurl){
+    console.log(APIurl)
+    this.setState({
+      msgAPIurl: APIurl
+    })
+  },
+  onMsgEnterAPIurl: function(){
+    this.setState({
+      msgDoInstallPlatformStep: "upload subscribe command"
+    })
+console.log(this.state.msgDoInstallPlatformStep)
+  },
+  onMsgSubscribeCommand: function(){
+     this.setState({
+      msgDoInstallPlatformStep: "cannot install"
+    })
+  },
+  onMsgEnterSubscribeCommand: function(subscribeCommand){
+    this.setState({
+      msgSubscribeCommand: subscribeCommand
+    })
+  },
   onMsgCurrency: function (currency) {
     this.setState({
       msgCurrency: currency
     });
   },
-
   onMsgRecipient: function (recipient) {
     this.setState({
       msgRecipient: recipient
