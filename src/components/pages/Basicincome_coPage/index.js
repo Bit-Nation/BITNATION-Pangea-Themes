@@ -218,7 +218,6 @@ if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
 
   },
   onMsgAPIurl: function(APIurl){
-    console.log(APIurl)
     this.setState({
       msgAPIurl: APIurl
     })
@@ -266,10 +265,8 @@ if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
     
     var BCO = new Basicincome_co();
     var returnedItem = BCO.fetchCurrencyList(item, messages);
-    console.log(returnedItem)
-    
+
     if(returnedItem !==undefined){
-            console.log(returnedItem)
             lastUpdatedCurrencyTable = returnedItem[1]
     returnedItem = returnedItem[0]
 
@@ -350,7 +347,6 @@ if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
 
   },
   editCurrencyListObject: function (i){
-  console.log(i)
 
     console.log(this.state.messages[i])
 

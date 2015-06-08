@@ -36,7 +36,6 @@ module.exports = React.createClass({
 
   },
   render: function () {
-console.log(this.props.network+"haha")
 var LoadPlatforms = new Basicincome_coPlatforms()
 
 var datalistElement = LoadPlatforms.datalistElement()
@@ -44,8 +43,7 @@ var datalistElement = LoadPlatforms.datalistElement()
 var currencyDatalistElement = LoadPlatforms.currencyDatalistElement(this.props.network)
       
 var ModalBody;
-console.log(this.props.currency)
-console.log("this.props.dividendRateTime"+this.props.dividendRateTime)
+
 
 ModalBody = <div className={nameHelper.ref('network')}>
 

@@ -9,9 +9,6 @@ var Basicincome_co = function () {};
 
     Basicincome_co.prototype.fetchCurrencyList = function (item, messages) {
         var msg = item.attachment.message
-        console.log(item)
-        console.log(messages.length)
-        console.log(JSON.stringify(messages).indexOf("dividendRate"))
         if(msg.indexOf("Basicincome.co")>-1 && messages.length === 0){
         // preserve newlines, etc - use valid JSON
         msg = msg.replace(/\\n/g, "\\n")  
@@ -54,9 +51,8 @@ function onMessages(msgList){
         
         var message = '{"bitnation": {"version": "0.1.0", "dapp": {"id": "Basicincome.co", "data": { "currencies": [ '
         
-        +msgContent+ "],"+ '"revision": "14969840313036913838"}}}}'
+        +msgContent+ "],"+ '"revision": "revision_tx_id"}}}}'
         
-        console.log(message)
         return message
         
     }
