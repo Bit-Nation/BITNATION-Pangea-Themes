@@ -18,6 +18,27 @@ var Basicincome_co =  function(){}
         return datalist
     }
     
+    Basicincome_co.prototype.currencyDatalistElement = function(platform){
+        
+         var datalist = []
+         if(platform === "Bitcoin"){
+        datalistElement = <datalist name="currencies">
+               <option value="BTC"/>
+               </datalist>
+         }
+         if(platform === "Ripple"){
+             datalistElement = <datalist name="currencies">
+               <option value="EUR"/>
+               <option value="JPY"/>
+               <option value="USD"/>
+               </datalist>
+         }
+        datalist.push(datalistElement)
+        
+        
+        return datalist
+    }
+    
 
 
 

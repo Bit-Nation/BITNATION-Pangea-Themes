@@ -19,7 +19,7 @@ var EditCurrencyListForm = require('../../basicincome_co/EditCurrencyListForm');
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
 var Basicincome_coPlatforms = require('../../basicincome_co/Platforms/index.js');
-
+var Basicincome_co = require('./library.js');
 
 var ui = new Bitnation.pangea.UI();
 
@@ -37,6 +37,9 @@ module.exports = React.createClass({
       msgNetwork: null,
       msgCurrency: null,
       msgPlatforms: null,
+      msgDividendRate: null,
+      msgDividendRateTime: false,
+      msgSendMessageTime: false,
       msgInstalledPlatform: null,
       msgDoInstallPlatform: false,
       msgSecret: null,
@@ -70,11 +73,14 @@ module.exports = React.createClass({
 
         <Modal title='Add Currency'
           closed={!this.state.AddCurrencyModalOpen}
-          onClose={this.closeSendMessageModal}>
+          onClose={this.closeAddCurrencyModal}>
           <AddCurrencyForm
             network={this.state.msgNetwork}
             currency={this.state.msgCurrency}
+            dividendRate={this.state.msgDividendRate}
             platforms={this.state.msgPlatforms}
+            dividendRateTime={this.state.msgDividendRateTime}
+            sendMessageTime={this.state.msgSendMessageTime}
             installedPlatform={this.state.msgInstalledPlatform}
             doInstallPlatformStep={this.state.msgDoInstallPlatformStep}
             APIurl={this.state.msgAPIurl}
@@ -95,6 +101,11 @@ module.exports = React.createClass({
             onSubscribeCommand={this.onMsgSubscribeCommand}
             onEnterSubscribeCommand={this.onMsgEnterSubscribeCommand}
             onCurrency={this.onMsgCurrency}
+            onSetCurrency={this.onMsgSetCurrency}
+            onDividendRate={this.onMsgDividendRate}
+            onSetDividendRate={this.onMsgSetDividendRate}
+
+            closeModal={this.closeAddCurrencyModal}
 
             onSend={this.sendMessage}
             onEncrypted={this.onMsgEncrypted} />
@@ -118,7 +129,6 @@ module.exports = React.createClass({
         
               <div className="Splashscreen-Header"></div>
 
-        
 
         <div>
           <PageRow>
@@ -150,7 +160,8 @@ module.exports = React.createClass({
   viewGraph: function () {
     
     React.render(
-        <div>GRAPH</div>,
+      
+        <div>GRAPH: http://graph_dev.basicincome.co/#r46XJq7UJmoPno2cURDRs8bB9crRLJgpcY</div>,
         document.getElementById("graph")
     );
 
@@ -173,9 +184,9 @@ module.exports = React.createClass({
     });
 
   },
-  closeSendMessageModal: function () {
+  closeAddCurrencyModal: function () {
     this.setState({
-      sendMessageModalOpen: false
+      AddCurrencyModalOpen: false
     });
   },
   onMsgContent: function (content) {
@@ -226,7 +237,7 @@ if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
     this.setState({
       msgDoInstallPlatformStep: "upload subscribe command"
     })
-console.log(this.state.msgDoInstallPlatformStep)
+  console.log(this.state.msgDoInstallPlatformStep)
   },
   onMsgSubscribeCommand: function(){
      this.setState({
@@ -241,6 +252,21 @@ console.log(this.state.msgDoInstallPlatformStep)
   onMsgCurrency: function (currency) {
     this.setState({
       msgCurrency: currency
+    });
+  },
+  onMsgSetCurrency: function(){
+    this.setState({
+      msgDividendRateTime: true
+    });
+  },
+  onMsgDividendRate: function(dividendRate){
+     this.setState({
+      msgDividendRate: dividendRate
+    });
+  },
+  onMsgSetDividendRate: function(){
+     this.setState({
+      msgSendMessageTime: true
     });
   },
   onMsgRecipient: function (recipient) {
@@ -262,7 +288,7 @@ console.log(this.state.msgDoInstallPlatformStep)
 
     var messages = [];
     msgList.forEach(function (item) {
-    var Basicincome_co = require('./library.js');
+    
     var BCO = new Basicincome_co();
     var returnedItem = BCO.fetchCurrencyList(item, messages);
     console.log(returnedItem)
@@ -321,10 +347,14 @@ console.log(this.state.msgDoInstallPlatformStep)
     if (this.state.msgSecret === '') {
       return alert('You must set your passphrase to send a message');
     }
-
+    
+    msgContent = '{ "currency": "'+ this.state.msgCurrency+'", "dividendRate": "'+this.state.msgDividendRate+'", "network": "'+this.state.msgNetwork+'"}'
+   
+    var BCO = new Basicincome_co();
+    var messageContent = BCO.bitnationProtocolMessage(msgContent);
     ui.sendMessage(
-      this.state.msgRecipient,
-      this.state.msgContent,
+      this.state.myAccountRS,
+      messageContent,
       this.state.msgSecret,
       this.state.msgEncrypted,
       this.state.msgRecipientPubkey
@@ -342,7 +372,7 @@ console.log(this.state.msgDoInstallPlatformStep)
       msgContent: null,
       msgRecipient: null
     });
-    this.closeSendMessageModal();
+    this.closeAddCurrencyModal();
 
     console.log(result);
 

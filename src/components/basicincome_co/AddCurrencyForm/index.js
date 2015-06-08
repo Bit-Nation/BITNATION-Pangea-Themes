@@ -22,11 +22,15 @@ module.exports = React.createClass({
     network: React.PropTypes.string,
     currency: React.PropTypes.string,
     dividendRate: React.PropTypes.string,
+    dividendRateTime: React.PropTypes.bool,
+    sendMessageTime: React.PropTypes.bool,
     platforms: React.PropTypes.array,
     installedPlatform: React.PropTypes.bool,
     doInstallPlatformStep: React.PropTypes.string,
     APIurl: React.PropTypes.string,
     subscribeCommand: React.PropTypes.string,
+    secret: React.PropTypes.string,
+
 
   },
   render: function () {
@@ -35,7 +39,11 @@ var LoadPlatforms = new Basicincome_coPlatforms()
 
 var datalistElement = LoadPlatforms.datalistElement()
       
+var currencyDatalistElement = LoadPlatforms.currencyDatalistElement(this.props.network)
+      
 var ModalBody;
+console.log(this.props.currency)
+console.log("this.props.dividendRateTime"+this.props.dividendRateTime)
 
 ModalBody = <div className={nameHelper.ref('network')}>
 
@@ -51,7 +59,7 @@ ModalBody = <div className={nameHelper.ref('network')}>
 if(this.props.installedPlatform === false) ModalBody = <div className={nameHelper.ref('installedPlatformFalse')}> 
                                                                         
                                                                         <div style={{fontSize:17, margin:10}}>Basicincome.co has not yet installed this platform. Install it ?</div>
-                                                                        <Button onClick={this.props.onDoInstallPlatformStep}>Yes</Button><Button>Cancel</Button>
+                                                                        <Button onClick={this.props.onDoInstallPlatformStep}>Yes</Button><Button onClick={this.props.closeModal}>Cancel</Button>
                                                                         </div>;
                                                                         
 if(this.props.doInstallPlatformStep === "set api url") ModalBody = <div className={nameHelper.ref('set api url')}> 
@@ -59,7 +67,7 @@ if(this.props.doInstallPlatformStep === "set api url") ModalBody = <div classNam
                            
                                                                         <div style={{fontSize:17, margin:10}}>Installing API to: {this.props.network}</div>
                                                                         <Input value={this.props.APIurl} placeholder="API url, ex http://api.ripple.com" onChange={this.props.onAPIurl}/>
-                                                                        <Button onClick={this.props.onEnterAPIurl}>Next</Button><Button>Cancel</Button>
+                                                                        <Button onClick={this.props.onEnterAPIurl}>Next</Button><Button onClick={this.props.closeModal}>Cancel</Button>
                                                                         </div>;
                                                                         
 if(this.props.doInstallPlatformStep === "upload subscribe command") ModalBody = <div className={nameHelper.ref('upload subscribe command')}> 
@@ -67,35 +75,49 @@ if(this.props.doInstallPlatformStep === "upload subscribe command") ModalBody = 
                            
                                                                         <div style={{fontSize:17, margin:10}}>Installing API commands for: {this.props.APIurl}</div>
                                                                         <Textarea style={{margin:10, width:'50%',height:'200%'}} value={this.props.subscribeCommand} onChange={this.props.onMsgEnterSubscribe}/><br/>
-                                                                        <Button onClick={this.props.onSubscribeCommand}>Next</Button><Button>Cancel</Button>
+                                                                        <Button onClick={this.props.onSubscribeCommand}>Next</Button><Button onClick={this.props.closeModal}>Cancel</Button>
                                                                         </div>;
 
 if(this.props.doInstallPlatformStep === "cannot install") ModalBody = <div className={nameHelper.ref('cannot install')}> 
                                           
                            
-                                                                        <div style={{fontSize:27, margin:10}}>Basicincome.co could not install {this.props.network}. Someone from Bitnation will install it manually within 24 hours. Check back tomorrow ! #fail</div>
+                                                                        <div style={{fontSize:17, margin:10}}>Basicincome.co's <b>install new currencies</b> feature will be available Q4 2015.</div>
+                                                                        <Button onClick={this.props.closeModal}>Ok</Button>
                                                                         </div>;
 
 
-if (this.props.network !== null && this.props.currency ===null && this.props.installedPlatform === true) ModalBody = <div className={nameHelper.ref('currency')}> 
+if (this.props.network !== null && this.props.installedPlatform === true && this.props.dividendRateTime === false) ModalBody = <div className={nameHelper.ref('currency')}> 
                                                                         
                                                                         <legend>What Currency ?</legend>
-                                                                        
-                                                                        <Input value={this.props.currency}/>
-                                                                        
-                                                                        <Button onClick={this.props.onCurrency}>Next</Button>
+                                                                        <Input list ="currencies" value={this.props.currency} onChange={this.props.onCurrency}/>
+                                                                        {currencyDatalistElement}
+                                                                        <Button onClick={this.props.onSetCurrency}>Next</Button>
                                                                         
                                                                         </div>;  
                                                                         
-if (this.props.currency !== null && this.props.dividendRate ===null) ModalBody = <div className={nameHelper.ref('dividendRate')}> 
+if (this.props.currency !== null && this.props.dividendRateTime === true) ModalBody = <div className={nameHelper.ref('dividendRate')}> 
                                                                         
                                                                         <legend>What DividendRate ?</legend>
 
-                                                                        <Input value={this.props.dividendRate}/>
+                                                                        <Input maxlength="7" value={this.props.dividendRate} onChange={this.props.onDividendRate}/>
                                                                         
+                                                                        <Button onClick={this.props.onSetDividendRate}>Next</Button>
+                                                                        
+                                                                        </div>;
+                                                                        
+                                                                        
+if (this.props.dividendRate !== null && this.props.sendMessageTime === true) ModalBody = <div className={nameHelper.ref('sendMessage')}> 
+                                                                        
+                                                                        
+                                                                        <legend>Network: {this.props.network}</legend>
+                                                                        <legend>Currency: {this.props.currency}</legend>
+                                                                        <legend>DividendRate: {this.props.dividendRate}</legend>
+                                                                        <legend>Secret phrase</legend>
+                                                                        <Input value={this.props.secret} onChange={this.props.onSecret}/>
                                                                         <Button onClick={this.props.onSend}>Next</Button>
                                                                         
                                                                         </div>;
+                                                                        
       return(
            
             <div className={nameHelper.className}>

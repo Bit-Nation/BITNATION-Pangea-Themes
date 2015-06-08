@@ -50,5 +50,18 @@ function onMessages(msgList){
 
     Basicincome_co.prototype.updateCurrencyList = function (messages, lastUpdatedCurrencyTable) {}
 
+    Basicincome_co.prototype.bitnationProtocolMessage = function (msgContent) {
+        
+        var message = '{"bitnation": {"version": "0.1.0", "dapp": {"id": "Basicincome.co", "data": { "currencies": [ '
+        
+        +msgContent+ "],"+ '"revision": "14969840313036913838"}}}}'
+        
+        console.log(message)
+        return message
+        
+    }
+
 
     module.exports = Basicincome_co;
+    
+    

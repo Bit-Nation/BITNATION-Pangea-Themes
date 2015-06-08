@@ -4,9 +4,11 @@ v.0.0.1
 
 ## Crowdsourced currency coverage
 
-this current client has pan-currency support, users will be able to add new currencies and financial platforms 
+Basicincome.co will have pan-currency support, users will be able to add new currencies and financial platforms 
 (sketch http://i.imgur.com/jJU9D0p.gif), all they have to do is cut and paste some API links from the platforms. 
-so, i’m crowdsourcing currency coverage. 
+crowdsourced currency coverage. 
+
+The first release (june 26th) will only support HZ. Other currencies will be added as more platforms add third-party keys (http://forum.ethereum.org/discussion/2286/third-party-keys-let-wallets-create-additional-temporary-private-keys#latest)
 
 
 ## Bitnation protocol messages 
