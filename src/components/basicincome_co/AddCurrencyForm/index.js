@@ -22,13 +22,15 @@ module.exports = React.createClass({
     network: React.PropTypes.string,
     currency: React.PropTypes.string,
     dividendRate: React.PropTypes.string,
+    platforms: React.PropTypes.array,
+
     dividendRateTime: React.PropTypes.bool,
     sendMessageTime: React.PropTypes.bool,
-    platforms: React.PropTypes.array,
     installedPlatform: React.PropTypes.bool,
     doInstallPlatformStep: React.PropTypes.string,
     APIurl: React.PropTypes.string,
     subscribeCommand: React.PropTypes.string,
+    
     secret: React.PropTypes.string,
 
 
@@ -49,7 +51,7 @@ ModalBody = <div className={nameHelper.ref('network')}>
 
                                         <legend style={{fontSize:17, margin:10}}>What financial Network ?</legend>
 
-                                        <Input list ="platforms" value={this.props.network} onChange={this.props.onNetwork}/>
+                                        <Input list ="platforms" placeholder="eg. Bitcoin" value={this.props.network} onChange={this.props.onNetwork}/>
                                         {datalistElement}
                                         
                                         <Button onClick={this.props.onCheckPlatforms}>Next</Button>
@@ -89,7 +91,7 @@ if(this.props.doInstallPlatformStep === "cannot install") ModalBody = <div class
 if (this.props.network !== null && this.props.installedPlatform === true && this.props.dividendRateTime === false) ModalBody = <div className={nameHelper.ref('currency')}> 
                                                                         
                                                                         <legend>What Currency ?</legend>
-                                                                        <Input list ="currencies" value={this.props.currency} onChange={this.props.onCurrency}/>
+                                                                        <Input list ="currencies" placeholder="eg. BTC" value={this.props.currency} onChange={this.props.onCurrency}/>
                                                                         {currencyDatalistElement}
                                                                         <Button onClick={this.props.onSetCurrency}>Next</Button>
                                                                         
@@ -97,9 +99,9 @@ if (this.props.network !== null && this.props.installedPlatform === true && this
                                                                         
 if (this.props.currency !== null && this.props.dividendRateTime === true) ModalBody = <div className={nameHelper.ref('dividendRate')}> 
                                                                         
-                                                                        <legend>What DividendRate ?</legend>
+                                                                        <legend>What DividendRate ? </legend>
 
-                                                                        <Input maxlength="7" value={this.props.dividendRate} onChange={this.props.onDividendRate}/>
+                                                                        <Input placeholder="eg. 0.02" value={this.props.dividendRate} onChange={this.props.onDividendRate}/>
                                                                         
                                                                         <Button onClick={this.props.onSetDividendRate}>Next</Button>
                                                                         
@@ -111,7 +113,8 @@ if (this.props.dividendRate !== null && this.props.sendMessageTime === true) Mod
                                                                         
                                                                         <legend>Network: {this.props.network}</legend>
                                                                         <legend>Currency: {this.props.currency}</legend>
-                                                                        <legend>DividendRate: {this.props.dividendRate}</legend>
+                                                                        <legend>DividendRate: {this.props.dividendRate*100}%</legend>
+                                                                        <div></div>
                                                                         <legend>Secret phrase</legend>
                                                                         <Input value={this.props.secret} onChange={this.props.onSecret}/>
                                                                         <Button onClick={this.props.onSend}>Next</Button>

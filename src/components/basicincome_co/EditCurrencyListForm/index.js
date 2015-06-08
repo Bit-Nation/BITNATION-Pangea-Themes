@@ -44,7 +44,7 @@ module.exports = React.createClass({
         </div>
 
         <div className={nameHelper.ref('submit')}>
-          <Button onClick={this.props.onSend}>Update</Button>
+          <Button onClick={this.props.onUpdate}>Update</Button>
         </div>
      </div>
     );

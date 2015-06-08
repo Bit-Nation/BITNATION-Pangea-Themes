@@ -30,8 +30,6 @@ module.exports = React.createClass({
     var user = ui.getCurrentUser();
 
     return {
-      currentMessage: null,
-      messageModalOpen: false,
       AddCurrencyModalOpen: false,
       myAccountRS: user.accountRS,
       msgNetwork: null,
@@ -43,15 +41,12 @@ module.exports = React.createClass({
       msgInstalledPlatform: null,
       msgDoInstallPlatform: false,
       msgSecret: null,
-      msgContent: null,
-      msgRecipient: null,
-      msgRecipientPubkey: null,
-      msgEncrypted: false,
       lastUpdatedCurrencyTable: null,
       editCurrencyModalOpen: false,
       editCurrency: null,
       editDividendRate: null,
-      editNetwork: null
+      editNetwork: null,
+      show_graph: false,
 
     };
   },
@@ -63,13 +58,24 @@ module.exports = React.createClass({
 
   },
   render: function() {
+    var main_view =  <div id="graph">
+              
+              <Button key='sendMessage' autoHeight onClick={this.openAddCurrencyModal}>Add currency</Button>
+              <div></div><br/>
+
+              
+              <Results>
+                <Table head={[<b>IOU</b>, <b>DividendRate</b>, <b>Network</b>]}
+                  body={this.state.messages} />
+              </Results>
+              </div>
+              
+              
+    if(this.state.show_graph === true) main_view = <div>GRAPH: <a href="http://graph_dev.basicincome.co/">http://graph_dev.basicincome.co/</a></div>          
+    
     return (
       <div className={nameHelper.className}>
-        <Modal
-          closed={!this.state.messageModalOpen}
-          onClose={this.closeMessageModal}>
-          <p>{this.state.currentMessage}</p>
-        </Modal>
+       
 
         <Modal title='Add Currency'
           closed={!this.state.AddCurrencyModalOpen}
@@ -79,31 +85,31 @@ module.exports = React.createClass({
             currency={this.state.msgCurrency}
             dividendRate={this.state.msgDividendRate}
             platforms={this.state.msgPlatforms}
+            
             dividendRateTime={this.state.msgDividendRateTime}
             sendMessageTime={this.state.msgSendMessageTime}
             installedPlatform={this.state.msgInstalledPlatform}
             doInstallPlatformStep={this.state.msgDoInstallPlatformStep}
             APIurl={this.state.msgAPIurl}
             subscribeCommand={this.state.msgSubscribeCommand}
-            content={this.state.msgContent}
-            secret={this.state.msgSecret}
-            recipient={this.state.msgRecipient}
-            encrypted={this.state.msgEncrypted}
-            onRecipientRS={this.onMsgRecipient}
-            onRecipientPubkey={this.onMsgRecipientPubkey}
-            onContent={this.onMsgContent}
-            onSecret={this.onMsgSecret}
+            
+
             onNetwork={this.onMsgNetwork}
+            onCurrency={this.onMsgCurrency}
+            onDividendRate={this.onMsgDividendRate}
+            onSetCurrency={this.onMsgSetCurrency}
+            onSetDividendRate={this.onMsgSetDividendRate}
+
             onCheckPlatforms={this.onMsgCheckPlatforms}
             onDoInstallPlatformStep={this.onMsgDoInstallPlatformStep}
             onAPIurl={this.onMsgAPIurl}
             onEnterAPIurl={this.onMsgEnterAPIurl}
             onSubscribeCommand={this.onMsgSubscribeCommand}
             onEnterSubscribeCommand={this.onMsgEnterSubscribeCommand}
-            onCurrency={this.onMsgCurrency}
-            onSetCurrency={this.onMsgSetCurrency}
-            onDividendRate={this.onMsgDividendRate}
-            onSetDividendRate={this.onMsgSetDividendRate}
+
+
+            secret={this.state.msgSecret}
+            onSecret={this.onMsgSecret}
 
             closeModal={this.closeAddCurrencyModal}
 
@@ -118,12 +124,8 @@ module.exports = React.createClass({
             currency={this.state.editCurrency}
             dividendRate={this.state.editDividendRate}
             network={this.state.editNetwork}
-            onRecipientRS={this.onMsgRecipient}
-            onRecipientPubkey={this.onMsgRecipientPubkey}
-            onDividendRate={this.onEditDividendRate}
-            onSecret={this.onMsgSecret}
-            onSend={this.sendMessage}
-            onEncrypted={this.onMsgEncrypted} />
+            onUpdate={this.state.closeEditCurrencyModal}
+            onDividendRate={this.onEditDividendRate} />
           
         </Modal>
         
@@ -132,46 +134,39 @@ module.exports = React.createClass({
 
         <div>
           <PageRow>
-            <ControlSection flex={1}
+            <ControlSection flex={1} 
               title={[
                 'Manage currencies',
                 <Icon key='icon' type='user' />
               ]}
               controls={[
-                <Button key='addContact' onClick={this.viewGraph} autoHeight>Graph</Button>
+                <Button key='viewGraph' onClick={this.viewGraph} autoHeight>Graph</Button>
               ]}>
-               <div id="graph">
               
-              <Button key='sendMessage' autoHeight onClick={this.openAddCurrencyModal}>Add currency</Button>
-              <div></div><br/>
-
+              {main_view}
               
-              <Results>
-                <Table head={[<b>IOU</b>, <b>DividendRate</b>, <b>Network</b>]}
-                  body={this.state.messages} />
-              </Results>
-              </div>
             </ControlSection>
           </PageRow>
         </div>
       </div>
     );
   },
-  viewGraph: function () {
+  viewNormal: function () {
     
-    React.render(
-      
-        <div>GRAPH: http://graph_dev.basicincome.co/#r46XJq7UJmoPno2cURDRs8bB9crRLJgpcY</div>,
-        document.getElementById("graph")
-    );
+    this.setState({
+      show_graph: false
+    });
+   
 
 },
-  closeMessageModal: function () {
+  viewGraph: function () {
+    
     this.setState({
-      messageModalOpen: false,
-      currentMessage: null
+      show_graph: true
     });
-  },
+   
+
+},
   openAddCurrencyModal: function () {
     
     var LoadPlatforms = new Basicincome_coPlatforms()
@@ -187,11 +182,6 @@ module.exports = React.createClass({
   closeAddCurrencyModal: function () {
     this.setState({
       AddCurrencyModalOpen: false
-    });
-  },
-  onMsgContent: function (content) {
-    this.setState({
-      msgContent: content
     });
   },
   onMsgSecret: function (secret) {
@@ -269,21 +259,6 @@ if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
       msgSendMessageTime: true
     });
   },
-  onMsgRecipient: function (recipient) {
-    this.setState({
-      msgRecipient: recipient
-    });
-  },
-  onMsgRecipientPubkey: function (pubKey) {
-    this.setState({
-      msgRecipientPubkey: pubKey
-    });
-  },
-  onMsgEncrypted: function (encrypted) {
-    this.setState({
-      msgEncrypted: encrypted
-    });
-  },
   onMessages: function (msgList) {
 
     var messages = [];
@@ -320,26 +295,6 @@ if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
       messages: messages
     });
 
-  },
-  displayMessage: function (message) {
-    this.setState({
-      currentMessage: message,
-      messageModalOpen: true
-    });
-  },
-  readMessage: function (tx, isEncrypted) {
-    var ui = new Bitnation.pangea.UI();
-    var secret = React.findDOMNode(this.refs.secret).value;
-
-    if (isEncrypted !== false && secret === '') {
-      return alert('You must enter your passphrase to check encrypted mail.');
-    }
-
-    ui.readMessage(tx.transaction, secret)
-    .done(this.displayMessage)
-    .fail(this.onFail);
-
-    React.findDOMNode(this.refs.secret).value = '';
   },
   sendMessage: function () {
     var ui = new Bitnation.pangea.UI();
