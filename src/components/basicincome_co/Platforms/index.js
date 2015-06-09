@@ -22,15 +22,17 @@ var Basicincome_co =  function(){}
         
          var datalist = []
          if(platform === "Bitcoin"){
-        datalistElement = <datalist name="currencies">
+        datalistElement = <datalist id="currencies">
                <option value="BTC"/>
                </datalist>
          }
          if(platform === "Ripple"){
-             datalistElement = <datalist name="currencies">
-               <option value="EUR"/>
-               <option value="JPY"/>
+             datalistElement = <datalist id="currencies">
                <option value="USD"/>
+               <option value="EUR"/>
+               <option value="CNY"/>
+               <option value="JPY"/>
+               <option value="BTC"/>
                </datalist>
          }
         datalist.push(datalistElement)

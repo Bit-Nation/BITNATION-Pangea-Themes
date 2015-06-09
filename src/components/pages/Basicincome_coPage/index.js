@@ -18,8 +18,12 @@ var EditCurrencyListForm = require('../../basicincome_co/EditCurrencyListForm');
 
 
 var Bitnation = require('../../../bitnation/bitnation.pangea');
+var Bitnation = require('../../basicincome_co/bitnation.basicincome');
+
 var Basicincome_coPlatforms = require('../../basicincome_co/Platforms/index.js');
 var Basicincome_co = require('./library.js');
+
+
 
 var ui = new Bitnation.pangea.UI();
 
@@ -45,6 +49,7 @@ module.exports = React.createClass({
       editCurrencyModalOpen: false,
       editCurrency: null,
       editDividendRate: null,
+      EditCurrencyObjectNumber: null,
       editNetwork: null,
       show_graph: false,
 
@@ -71,8 +76,13 @@ module.exports = React.createClass({
               </div>
               
               
-    if(this.state.show_graph === true) main_view = <div>GRAPH: <a href="http://graph_dev.basicincome.co/">http://graph_dev.basicincome.co/</a></div>          
-    
+    if(this.state.show_graph === true) main_view = <div>
+                                                  <h1>GRAPH</h1>
+                                                  <div>Basicincome.co features visualizations of your safety net. A proof of concept is available on:</div>
+                                                   <div><a href="http://graph_dev.basicincome.co/">http://graph_dev.basicincome.co/</a></div> 
+                                                   <div>estimated integration with Bitnation Pangea DApp: Q4 2015.</div>
+                                                  </div>
+                                                    
     return (
       <div className={nameHelper.className}>
        
@@ -124,8 +134,14 @@ module.exports = React.createClass({
             currency={this.state.editCurrency}
             dividendRate={this.state.editDividendRate}
             network={this.state.editNetwork}
-            onUpdate={this.state.closeEditCurrencyModal}
-            onDividendRate={this.onEditDividendRate} />
+            CurrencyObjectNumber={this.state.EditCurrencyObjectNumber}
+            onUpdate={this.updateCurrencyList}
+            onRemove={this.onRemoveCurrencyObject}
+            onDividendRate={this.onEditDividendRate} 
+            secret={this.state.msgSecret}
+            onSecret={this.onMsgSecret}
+            
+            />
           
         </Modal>
         
@@ -188,6 +204,7 @@ module.exports = React.createClass({
     this.setState({
       msgSecret: secret
     });
+    console.log(this.state.msgSecret)
   },
   onMsgNetwork: function (network) {
 
@@ -204,7 +221,7 @@ Array.prototype.contains = function(element){
     return this.indexOf(element) > -1;
 };
 var installedPlatformCheck = this.state.msgPlatforms.contains(this.state.msgNetwork)
-if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
+if(installedPlatformCheck === true){}
      this.setState({
       msgInstalledPlatform: installedPlatformCheck
     })
@@ -303,7 +320,7 @@ if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
     msgContent = '{ "currency": "'+ this.state.msgCurrency+'", "dividendRate": "'+this.state.msgDividendRate+'", "network": "'+this.state.msgNetwork+'"}'
    
     var BCO = new Basicincome_co();
-    var messageContent = BCO.bitnationProtocolMessage(msgContent);
+    var messageContent = BCO.bitnationProtocolMessage(msgContent, this.state.messages);
     ui.sendMessage(
       this.state.myAccountRS,
       messageContent,
@@ -354,15 +371,66 @@ if(installedPlatformCheck === true){console.log(installedPlatformCheck)}
        editDividendRate: this.state.messages[i][1],
        editCurrency: this.state.messages[i][0],
        editNetwork: this.state.messages[i][2],
-      editCurrencyModalOpen: true
+       EditCurrencyObjectNumber: i,
+       editCurrencyModalOpen: true
     });
     
   },
   closeEditCurrencyModal: function (){
-    
     this.setState({
       editCurrencyModalOpen: false
     });
     
+  },
+  onRemoveCurrencyObject: function (){
+        var messages = this.state.messages
+        var msgElement = "" 
+
+    for(var i =0;i<messages.length;i++){
+      if(i!==this.state.EditCurrencyObjectNumber) {
+        msgElement = msgElement + '{ "currency": "'+ messages[i][0]+'", "dividendRate": "'+messages[i][1]+'", "network": "'+messages[i][2]+'"}'
+        if(i!==messages.length-1 && i!==messages.length)msgElement = msgElement + ","
+      }
+      
+    }
+    console.log(msgElement)
+    this.updateCurrencyList(msgElement)
+    this.closeEditCurrencyModal
+  },
+  onEditDividendRate: function(){},
+  updateCurrencyList: function (msgElement) {
+    var ui = new Bitnation.pangea.UI();
+
+    if (this.state.msgSecret === '') {
+      return alert('You must set your passphrase to send a message');
+    }
+    
+
+    var BCO = new Basicincome_co();
+    var messageContent = BCO.bitnationProtocolMessage(msgElement, 'undefined');
+    ui.sendMessage(
+      this.state.myAccountRS,
+      messageContent,
+      this.state.msgSecret,
+      this.state.msgEncrypted,
+      this.state.msgRecipientPubkey
+    )
+    .done(this.onSent)
+    .fail(this.onFail);
+
+    this.setState({
+      msgSecret: null
+    });
+
+  },
+  updateCurrencyList2: function(){
+    var _bigService = new Bitnation.basicincome.Service();
+console.log(this.state.msgSecret)
+
+var hello = _bigService.saveCurrencyObject(null, this.state.msgSecret)
+console.log(hello)
+
+this.closeEditCurrencyModal
   }
+
 });

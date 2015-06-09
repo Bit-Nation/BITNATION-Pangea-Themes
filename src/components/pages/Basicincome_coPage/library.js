@@ -47,11 +47,19 @@ function onMessages(msgList){
 
     Basicincome_co.prototype.updateCurrencyList = function (messages, lastUpdatedCurrencyTable) {}
 
-    Basicincome_co.prototype.bitnationProtocolMessage = function (msgContent) {
+    Basicincome_co.prototype.bitnationProtocolMessage = function (msgContent, messages) {
+        console.log(msgContent)
+        var msgElement = ""
+        if (messages!=='undefined')for(var i =0;i<messages.length;i++){
+            msgElement = msgElement + '{ "currency": "'+ messages[i][0]+'", "dividendRate": "'+messages[i][1]+'", "network": "'+messages[i][2]+'"},'
+   
+        }
+        console.log(msgElement)
+        var message = '{"bitnation": {"version": "0.1.0", "dapp": {"id": "Basicincome.co", "data": { "currencies": [ '+msgElement+msgContent+
         
-        var message = '{"bitnation": {"version": "0.1.0", "dapp": {"id": "Basicincome.co", "data": { "currencies": [ '
+         "],"+ '"revision": "revision_tx_id"}}}}'
         
-        +msgContent+ "],"+ '"revision": "revision_tx_id"}}}}'
+        console.log(message)
         
         return message
         

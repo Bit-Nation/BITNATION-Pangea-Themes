@@ -19,7 +19,9 @@ module.exports = React.createClass({
     currency: React.PropTypes.string,
     dividendRate: React.PropTypes.string,
     network: React.PropTypes.string,
-    secret: React.PropTypes.string
+    secret: React.PropTypes.string,
+    CurrencyObjectNumber: React.PropTypes.string
+
   },
   render: function () {
     return (
@@ -42,9 +44,12 @@ module.exports = React.createClass({
           <legend>{this.props.network}</legend>
 
         </div>
-
+        <div>
+         <legend>Secret phrase</legend>
+        <Input value={this.props.secret} onChange={this.props.onSecret}/>
+        </div>
         <div className={nameHelper.ref('submit')}>
-          <Button onClick={this.props.onUpdate}>Update</Button>
+          <Button onClick={this.props.onUpdate}>Update</Button><Button onClick={this.props.onRemove}>Delete</Button>
         </div>
      </div>
     );
