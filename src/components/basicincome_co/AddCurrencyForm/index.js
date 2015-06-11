@@ -31,6 +31,7 @@ module.exports = React.createClass({
     APIurl: React.PropTypes.string,
     subscribeCommand: React.PropTypes.string,
     
+    onPromptSign: React.PropTypes.bool,
     secret: React.PropTypes.string,
 
 
@@ -101,23 +102,43 @@ if (this.props.currency !== null && this.props.dividendRateTime === true) ModalB
 
                                                                         <Input placeholder="eg. 0.02" value={this.props.dividendRate} onChange={this.props.onDividendRate}/>
                                                                         
-                                                                        <Button onClick={this.props.onSetDividendRate}>Next</Button>
+                                                                        <Button onClick={this.props.doPromptSign}>Next</Button>
                                                                         
                                                                         </div>;
                                                                         
-                                                                        
+/* removed this code*/
+
+/*
 if (this.props.dividendRate !== null && this.props.sendMessageTime === true) ModalBody = <div className={nameHelper.ref('sendMessage')}> 
                                                                         
                                                                         
-                                                                        <legend>Network: {this.props.network}</legend>
-                                                                        <legend>Currency: {this.props.currency}</legend>
-                                                                        <legend>DividendRate: {this.props.dividendRate*100}%</legend>
+                                                                        
                                                                         <div></div>
-                                                                        <legend>Secret phrase</legend>
-                                                                        <Input value={this.props.secret} onChange={this.props.onSecret}/>
-                                                                        <Button onClick={this.props.onSend}>Next</Button>
+                                                                        
+                                                                        <Button onClick={this.props.doPromptSign}>Add</Button>
                                                                         
                                                                         </div>;
+*/                                                                        
+
+                                                                        
+if (this.props.onPromptSign === true) ModalBody = <div className={nameHelper.ref('prompt-sign')}>
+    
+                                                  <div>
+                                                  <legend>Enter your secret phrase to add: </legend>
+                                                  <br/>
+                                                  <legend>Network: {this.props.network}</legend>
+                                                  <legend>Currency: {this.props.currency}</legend>
+                                                  <legend>DividendRate: {this.props.dividendRate*100}%</legend>
+                                                  <br/>
+                                                  <Input value={this.props.secret} onChange={this.props.onSecret}/>
+                                                  </div>
+                                                  
+                                                  <div className={nameHelper.ref('submit')}>
+                                                  <Button onClick={this.props.onSend}>Sign</Button>
+                                                  </div>
+                                                  
+                                                  </div>          
+                                                                        
                                                                         
       return(
            

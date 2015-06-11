@@ -58,7 +58,59 @@ basicincomeService.saveCurrencyObject = function (msgContent, secretPhrase) {
                 return deferred;
 }
   
- 
+    var ProtocolMessage = function (accountRS, func, params) {
+        var message = {};
+
+        /**
+         * Set a function attribute
+         */
+        message.setFuncAttribute = function (key, value) {
+            this.attributes[func][key] = value;
+        };
+
+        /**
+         * Parse a message string
+         */
+        message.fromString = function (data) {
+            try {
+                if (
+                    typeof data !== 'string' ||
+                    data.substring(0, 12) !== '{"bitnation"'
+                ) {
+                    return false;
+                }
+
+                return JSON.parse(data);
+
+            } catch (err) {
+                throw err;
+            }
+        };
+
+        /**
+         * Convert to a string for saving in the HZ blockchain
+         */
+        message.toString = function (argument) {
+            return JSON.stringify(this.attributes);
+        };
+
+        message.attributes = {
+            bitnation: {
+                version: _BITNATION_VERSION
+            }
+        };
+
+        // Skip the rest if accountRS isn't set
+        if (accountRS == undefined) {
+            return message;
+        }
+
+        message.attributes[func] = params;
+
+        message.accountRS = accountRS;
+
+        return message;
+    };
      
              return basicincomeService;
 

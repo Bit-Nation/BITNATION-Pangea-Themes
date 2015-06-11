@@ -20,38 +20,76 @@ module.exports = React.createClass({
     dividendRate: React.PropTypes.string,
     network: React.PropTypes.string,
     secret: React.PropTypes.string,
+    onPromptSignUpdate: React.PropTypes.bool,
+    onPromptSignRemove: React.PropTypes.bool,
     CurrencyObjectNumber: React.PropTypes.string
 
   },
   render: function () {
+    
+    
+                    console.log(this.props.onPromptSign)
+
+    var ModalBody
+    ModalBody = <div className={nameHelper.ref('input-form')}>
+    
+                <div className={nameHelper.ref('currency')}>
+                <legend>{this.props.currency}</legend>
+                </div>
+
+                <div className={nameHelper.ref('dividendRate')}>
+                <legend></legend>
+                <Input placeholder={this.props.dividendRate}
+                onChange={this.props.onDividendRate} />
+                </div>
+
+                <div className={nameHelper.ref('network')}>
+                <legend>{this.props.network}</legend>
+                </div>
+                
+               
+                
+                <div className={nameHelper.ref('submit')}>
+                <Button onClick={this.props.doPromptSignUpdate}>Update</Button><Button onClick={this.props.doPromptSignRemove}>Delete</Button>
+                </div>
+                
+                </div>
+                
+    if(this.props.onPromptSignUpdate === true) ModalBody = <div className={nameHelper.ref('prompt-sign')}>
+    
+                                              <div>
+                                              <legend>Enter your secret phrase to update: {this.props.currency} to {this.props.dividendRate*100}%</legend>
+                                              <Input value={this.props.secret} onChange={this.props.onSecret}/>
+                                              </div>
+                                              
+                                              <div className={nameHelper.ref('submit')}>
+                                              <Button onClick={this.props.onUpdate}>Sign</Button>
+                                              </div>
+                                              
+                                              </div>
+                                              
+    if(this.props.onPromptSignRemove === true) ModalBody = <div className={nameHelper.ref('prompt-sign')}>
+    
+                                              <div>
+                                              <legend>Enter your secret phrase to remove: {this.props.currency}</legend>
+                                              <Input value={this.props.secret} onChange={this.props.onSecret}/>
+                                              </div>
+                                              
+                                              <div className={nameHelper.ref('submit')}>
+                                              <Button onClick={this.props.onRemove}>Sign</Button>
+                                              </div>
+                                              
+                                              </div>                
+        
     return (
+      
+      
       <div className={nameHelper.className}>
-     
+      
+      {ModalBody}
+      
+      </div>
 
-        <div className={nameHelper.ref('currency')}>
-          <legend>{this.props.currency}</legend>
-
-        </div>
-
-        <div className={nameHelper.ref('dividendRate')}>
-          <legend></legend>
-
-          <Input placeholder={this.props.dividendRate}
-            onChange={this.props.onDividendRate} />
-        </div>
-
-        <div className={nameHelper.ref('network')}>
-          <legend>{this.props.network}</legend>
-
-        </div>
-        <div>
-         <legend>Secret phrase</legend>
-        <Input value={this.props.secret} onChange={this.props.onSecret}/>
-        </div>
-        <div className={nameHelper.ref('submit')}>
-          <Button onClick={this.props.onUpdate}>Update</Button><Button onClick={this.props.onRemove}>Delete</Button>
-        </div>
-     </div>
     );
   }
 });

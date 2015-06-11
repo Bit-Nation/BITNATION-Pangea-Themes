@@ -44,14 +44,21 @@ module.exports = React.createClass({
       msgSendMessageTime: false,
       msgInstalledPlatform: null,
       msgDoInstallPlatform: false,
+      
+      onMsgPromptSign: false,
       msgSecret: null,
+      
       lastUpdatedCurrencyTable: null,
       editCurrencyModalOpen: false,
       editCurrency: null,
       editDividendRate: null,
       EditCurrencyObjectNumber: null,
+      onEditPromptSignUpdate: false,
+      onEditPromptSignRemove: false,
+      
       editNetwork: null,
       show_graph: false,
+      show_signDividends: false,
 
     };
   },
@@ -63,7 +70,8 @@ module.exports = React.createClass({
 
   },
   render: function() {
-    var main_view =  <div id="graph">
+    
+    var main_view =  <div>
               
               <Button key='sendMessage' autoHeight onClick={this.openAddCurrencyModal}>Add currency</Button>
               <div></div><br/>
@@ -73,7 +81,26 @@ module.exports = React.createClass({
                 <Table head={[<b>IOU</b>, <b>DividendRate</b>, <b>Network</b>]}
                   body={this.state.messages} />
               </Results>
+             
               </div>
+      
+      if(this.state.show_signDividends === true) main_view = <div>
+              
+              <div>Basicincome.co will automate the process of paying out your dividends using <a href="http://motherboard.vice.com/read/smart-contracts-sound-boring-but-theyre-more-disruptive-than-bitcoin">smart contracts</a>. 
+              Estimated to be integrated in <b>Q4</b> 2015.</div><br/>
+              
+              
+              <Results>
+                <Table head={['Address', 'Amount', 'Currency']}
+                  body={[
+                    ['1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v', '0.02', 'BTC', <Button key='sign' className='floatRight'>Sign</Button>],
+                    ['1J4yuJFqozxLWTvnExR4Xxe9W4B89kaukY', '0.1', 'BTC', <Button key='sign' className='floatRight'>Sign</Button>]
+                  ]} />
+              </Results>
+             
+              </div>
+    
+    
               
               
     if(this.state.show_graph === true) main_view = <div>
@@ -117,9 +144,10 @@ module.exports = React.createClass({
             onSubscribeCommand={this.onMsgSubscribeCommand}
             onEnterSubscribeCommand={this.onMsgEnterSubscribeCommand}
 
-
+            onPromptSign={this.state.onMsgPromptSign}
             secret={this.state.msgSecret}
             onSecret={this.onMsgSecret}
+            doPromptSign={this.doMsgPromptSign}
 
             closeModal={this.closeAddCurrencyModal}
 
@@ -137,7 +165,12 @@ module.exports = React.createClass({
             CurrencyObjectNumber={this.state.EditCurrencyObjectNumber}
             onUpdate={this.updateCurrencyList}
             onRemove={this.onRemoveCurrencyObject}
-            onDividendRate={this.onEditDividendRate} 
+            onDividendRate={this.onEditDividendRate}
+            
+            onPromptSignUpdate={this.state.onEditPromptSignUpdate}
+            onPromptSignRemove={this.state.onEditPromptSignRemove}
+            doPromptSignUpdate={this.doEditPromptSignUpdate}
+            doPromptSignRemove={this.doEditPromptSignRemove}
             secret={this.state.msgSecret}
             onSecret={this.onMsgSecret}
             
@@ -152,10 +185,12 @@ module.exports = React.createClass({
           <PageRow>
             <ControlSection flex={1} 
               title={[
-                'Manage currencies',
+                'Basicincome.co',
                 <Icon key='icon' type='user' />
               ]}
               controls={[
+                <Button key='Manage currencies' onClick={this.viewNormal} autoHeight>Manage currencies</Button>,
+                <Button key='Sign dividends' onClick={this.viewSignDividends} autoHeight>Sign dividends</Button>,
                 <Button key='viewGraph' onClick={this.viewGraph} autoHeight>Graph</Button>
               ]}>
               
@@ -170,7 +205,17 @@ module.exports = React.createClass({
   viewNormal: function () {
     
     this.setState({
-      show_graph: false
+      show_graph: false,
+      show_signDividends: false
+    });
+   
+
+},
+  viewSignDividends: function () {
+    
+    this.setState({
+      show_graph: false,
+      show_signDividends: true
     });
    
 
@@ -178,11 +223,13 @@ module.exports = React.createClass({
   viewGraph: function () {
     
     this.setState({
+      show_signDividends: false,
       show_graph: true
     });
    
 
 },
+
   openAddCurrencyModal: function () {
     
     var LoadPlatforms = new Basicincome_coPlatforms()
@@ -197,7 +244,19 @@ module.exports = React.createClass({
   },
   closeAddCurrencyModal: function () {
     this.setState({
-      AddCurrencyModalOpen: false
+      AddCurrencyModalOpen: false,
+      
+      msgNetwork: null,
+      msgCurrency: null,
+      msgPlatforms: null,
+      msgDividendRate: null,
+      msgDividendRateTime: false,
+      msgSendMessageTime: false,
+      msgInstalledPlatform: null,
+      msgDoInstallPlatform: false,
+      msgSecret: null,
+      doMsgPromptSign:false
+      
     });
   },
   onMsgSecret: function (secret) {
@@ -275,11 +334,16 @@ if(installedPlatformCheck === true){}
       msgSendMessageTime: true
     });
   },
+  doMsgPromptSign: function(){
+      this.setState({
+      onMsgPromptSign: true
+    });
+  },
   onMessages: function (msgList) {
 
-    var messages = [];
+    var messages = []
+    console.log("messages is: "+messages)
     msgList.forEach(function (item) {
-    
     var BCO = new Basicincome_co();
     var returnedItem = BCO.fetchCurrencyList(item, messages);
 
@@ -289,16 +353,24 @@ if(installedPlatformCheck === true){}
 
     //BCO.revisionHistory(returnedItem.revision)
     returnedItem = returnedItem.currencies
-          for(var i=0;i<returnedItem.length;i++){
-                
+          console.log(returnedItem)
+          for(var i=0;i<=returnedItem.length;i++){
+            console.log(returnedItem[i])
+            if(returnedItem[i] !== undefined){    
 
             var msg = [returnedItem[i].currency, Number(returnedItem[i].dividendRate)*100+"%", returnedItem[i].network]
             msgElement = <Button key={'edit-' + i} className='floatRight' onClick={this.editCurrencyListObject.bind(null, i)}>Edit</Button> 
             msg.push(msgElement)
-            console.log(msg)
             messages.push(msg)
+            }
+            else {
+              var msg = []
+              messages.push(msg)
+              console.log("no currencies added "+msg)
+
+            }
           }
-          
+
     }
 
 
@@ -346,7 +418,7 @@ if(installedPlatformCheck === true){}
     console.log(result);
 
     var txId = result.transaction;
-    alert('Success! Transaction ID: ' + txId);
+    console.log('Success! Transaction ID: ' + txId);
   },
   onFail: function (err) {
 
@@ -368,7 +440,7 @@ if(installedPlatformCheck === true){}
     console.log(this.state.messages[i])
 
      this.setState({
-       editDividendRate: this.state.messages[i][1],
+       editDividendRate: String(this.state.messages[i][1].slice(0, - 1))/100,
        editCurrency: this.state.messages[i][0],
        editNetwork: this.state.messages[i][2],
        EditCurrencyObjectNumber: i,
@@ -377,7 +449,17 @@ if(installedPlatformCheck === true){}
     
   },
   closeEditCurrencyModal: function (){
-    this.setState({
+    console.log("closing modal")
+     this.setState({
+      msgSecret: null,
+      editDividendRate: null,
+      editCurrency: null,
+      editNetwork: null,
+      
+      onEditPromptSignRemove: false,
+      onEditPromptSignUpdate: false,
+      EditCurrencyObjectNumber: null,
+      
       editCurrencyModalOpen: false
     });
     
@@ -388,18 +470,50 @@ if(installedPlatformCheck === true){}
 
     for(var i =0;i<messages.length;i++){
       if(i!==this.state.EditCurrencyObjectNumber) {
-        msgElement = msgElement + '{ "currency": "'+ messages[i][0]+'", "dividendRate": "'+messages[i][1]+'", "network": "'+messages[i][2]+'"}'
-        if(i!==messages.length-1 && i!==messages.length)msgElement = msgElement + ","
+        msgElement = msgElement + '{ "currency": "'+ messages[i][0]+'", "dividendRate": "'+String(messages[i][1].slice(0, - 1))/100+'", "network": "'+messages[i][2]+'"}'
+        if(i!==messages.length-2 && i!==messages.length-1 && i!==messages.length)msgElement = msgElement + ","
       }
       
     }
     console.log(msgElement)
-    this.updateCurrencyList(msgElement)
-    this.closeEditCurrencyModal
+    this.sendUpdateMessage(msgElement)
   },
-  onEditDividendRate: function(){},
-  updateCurrencyList: function (msgElement) {
-    var ui = new Bitnation.pangea.UI();
+  onEditDividendRate: function(dividendRate){
+     this.setState({
+      editDividendRate: dividendRate
+    });
+  },
+  doEditPromptSignUpdate: function(){
+     this.setState({
+      onEditPromptSignUpdate: true
+    });
+  },
+  doEditPromptSignRemove: function(){
+     this.setState({
+      onEditPromptSignRemove: true
+    });
+  },
+  updateCurrencyList: function () {
+        var messages = this.state.messages
+        var msgElement = ""
+
+    msgElement = msgElement + '{ "currency": "'+ messages[this.state.EditCurrencyObjectNumber][0]+'", "dividendRate": "'+this.state.editDividendRate+'", "network": "'+messages[this.state.EditCurrencyObjectNumber][2]+'"}'
+
+
+for(var i =0;i<messages.length;i++){
+      if(i!==this.state.EditCurrencyObjectNumber) {
+        msgElement = msgElement +"," +'{ "currency": "'+ messages[i][0]+'", "dividendRate": "'+String(messages[i][1].slice(0, - 1))/100+'", "network": "'+messages[i][2]+'"}'
+      }
+}
+      
+      
+
+    
+    
+    this.sendUpdateMessage(msgElement)
+  },
+  sendUpdateMessage: function(msgElement){
+     var ui = new Bitnation.pangea.UI();
 
     if (this.state.msgSecret === '') {
       return alert('You must set your passphrase to send a message');
@@ -417,20 +531,14 @@ if(installedPlatformCheck === true){}
     )
     .done(this.onSent)
     .fail(this.onFail);
-
-    this.setState({
-      msgSecret: null
-    });
-
-  },
-  updateCurrencyList2: function(){
-    var _bigService = new Bitnation.basicincome.Service();
-console.log(this.state.msgSecret)
-
-var hello = _bigService.saveCurrencyObject(null, this.state.msgSecret)
-console.log(hello)
-
-this.closeEditCurrencyModal
+    
+    this.closeEditCurrencyModal()
+   
+    
+    
+    
+    
   }
+
 
 });

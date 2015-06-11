@@ -49,9 +49,11 @@ function onMessages(msgList){
 
     Basicincome_co.prototype.bitnationProtocolMessage = function (msgContent, messages) {
         console.log(msgContent)
+        console.log(messages)
         var msgElement = ""
-        if (messages!=='undefined')for(var i =0;i<messages.length;i++){
-            msgElement = msgElement + '{ "currency": "'+ messages[i][0]+'", "dividendRate": "'+messages[i][1]+'", "network": "'+messages[i][2]+'"},'
+        console.log()
+        if (messages.indexOf('Currency')!==-1)for(var i =0;i<messages.length;i++){
+            msgElement = msgElement + '{ "currency": "'+ messages[i][0]+'", "dividendRate": "'+String(messages[i][1].slice(0, - 1))/100+'", "network": "'+messages[i][2]+'"},'
    
         }
         console.log(msgElement)
