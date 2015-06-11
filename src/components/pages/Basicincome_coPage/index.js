@@ -354,7 +354,7 @@ if(installedPlatformCheck === true){}
     //BCO.revisionHistory(returnedItem.revision)
     returnedItem = returnedItem.currencies
           console.log(returnedItem)
-          for(var i=0;i<=returnedItem.length;i++){
+          for(var i=0;i<returnedItem.length;i++){
             console.log(returnedItem[i])
             if(returnedItem[i] !== undefined){    
 
@@ -418,7 +418,11 @@ if(installedPlatformCheck === true){}
     console.log(result);
 
     var txId = result.transaction;
-    console.log('Success! Transaction ID: ' + txId);
+    
+    var inputSuccessRes = 'Success! Transaction ID: ' + txId + '\n' +
+                          'It will take some minutes for the blockchain to show your data.'
+                          
+    alert(inputSuccessRes)                      
   },
   onFail: function (err) {
 

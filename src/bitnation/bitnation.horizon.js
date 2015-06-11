@@ -355,7 +355,7 @@ var jQuery = require('jquery');
          */
         hzClient.getHzHost = function () {
             var proto = 'http';
-            var host = 'eu1.woll-e.net';
+            var host = 'localhost';
             var port = (_testnet === true) ?
                 _ports.TESTNET.API :
                 _ports.MAINNET.API;
