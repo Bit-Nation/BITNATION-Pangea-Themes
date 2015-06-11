@@ -1,0 +1,1 @@
+todo: develop bitnation protocol message-library, standardized data storage for dapps, updatable with revision checks

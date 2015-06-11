@@ -1,5 +1,23 @@
 @import '../../component';
 
+
+    .Splashscreen-Header {
+        height:220px;
+        background-image: url(http://i.imgur.com/ctz4XuH.gif); 
+        background-size: cover; 
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    
+.floatRight {
+      float:right;
+      }    
+      
+      .floatLeft {
+      float:left;
+      }    
+
+
 .#{class-name(MailPage)} {
     .#{class-name(Table)} {
         table-layout: fixed;
@@ -25,7 +43,3 @@
         margin-left: 0.312rem;
     }
 }
-
- .floatRight {
-      float:right;
-      }    
