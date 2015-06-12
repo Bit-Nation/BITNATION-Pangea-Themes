@@ -24,13 +24,13 @@ module.exports = React.createClass({
           <PageRow>
             <div style={{width: '33%'}}>
               <h3 style={{textAlign: 'center'}}>Legal Services</h3>
-              <p style={{textAlign: 'center'}}><a href="#!/notary"><b>BITANATION</b> Notary</a></p>
+              <p style={{textAlign: 'center'}}><a href="#!/notary"><b>BITNATION</b> Notary</a></p>
               <p style={{textAlign: 'center'}}><a href="#!/mail"><b>BITNATION</b> Encrypt</a></p>
             </div>
 
             <div style={{width: '33%'}}>
               <h3 style={{textAlign: 'center'}}>Insurance Services</h3>
-              <p style={{textAlign: 'center'}}><a target="_blank" href="http://www.basicincome.co/">BasicIncome.co</a></p>
+              <p style={{textAlign: 'center'}}><a target="_blank" href="http://www.basicincome.co/">Basic Income</a></p>
             </div>
 
             <div style={{width: '33%'}}>
