@@ -84,7 +84,8 @@ module.exports = React.createClass({
         width: currentWidth,
         left: hidden ? -currentWidth : 0
       }}>
-        <div className={nameHelper.ref('logo')} />
+        <div className={nameHelper.ref('logo')}
+          style={{height: currentWidth}} />
 
         <Menu {...styles} style={menuStyle} child={child}
           items={siteNavigation.get('items').toJS()}

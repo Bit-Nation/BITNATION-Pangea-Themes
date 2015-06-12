@@ -43,8 +43,8 @@ module.exports = React.createClass({
         <legend>Verify a notary transaction hash.</legend>
 
         <div className={nameHelper.ref('status')}>
-          {valid === true && 'Valid'}
-          {valid === false && 'Invalid'}
+          <h2 style={{color: (valid === true) ? '#0f0' : '#f00' }}>{valid === true && 'Valid'}
+          {valid === false && 'Invalid'}</h2>
         </div>
 
         <label htmlFor={this.formId('secret')}>

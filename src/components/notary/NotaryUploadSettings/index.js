@@ -25,7 +25,7 @@ module.exports = React.createClass({
             Private release
 
             <Radio name={this.formId('public')}
-              value={false} checked={!cursor.get('public')}
+              value={true} checked={cursor.get('public')}
               onChange={cursor.cursor('public')} />
           </label>
 
@@ -33,7 +33,7 @@ module.exports = React.createClass({
             Public release
 
             <Radio name={this.formId('public')}
-              value={true} checked={cursor.get('public')}
+              value={false} checked={!cursor.get('public')}
               onChange={cursor.cursor('public')} />
           </label>
         </div>
@@ -51,7 +51,7 @@ module.exports = React.createClass({
           <Input password value={cursor.cursor('secret')}
             onChange={cursor.cursor('secret')} />
         </div>
-        
+
         {this.props.children}
       </div>
     );

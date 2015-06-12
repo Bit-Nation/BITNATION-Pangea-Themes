@@ -43,7 +43,7 @@ module.exports = React.createClass({
     cursor = cursor.set('file', files[0]);
     var options = {
       file: cursor.get('file'),
-      public: cursor.get('public'),
+      public: !cursor.get('public'),
       uri: cursor.get('uri'),
       secret: cursor.get('secret')
     };
