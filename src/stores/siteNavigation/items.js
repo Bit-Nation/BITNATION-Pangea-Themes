@@ -5,7 +5,7 @@ module.exports = [
     icon: { set: 'xbnx', type: 'dashboard' }
   },
   {
-    link: 'Blockchain Notary',
+    link: 'Public Notary',
     href: '#!/notary',
     icon: { set: 'fa', type: 'list' }
   },

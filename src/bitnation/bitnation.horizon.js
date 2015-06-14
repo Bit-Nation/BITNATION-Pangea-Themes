@@ -255,7 +255,7 @@ var jQuery = require('jquery');
          */
         hzAccount.getBalance = function () {
             if (!this.isNew) {
-                return _convertAmountFromRaw(this.attributes.guaranteedBalanceNQT);
+                return _convertAmountFromRaw(this.attributes.balanceNQT);
             } else {
                 throw 'This account is brand new.';
             }

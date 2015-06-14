@@ -41,7 +41,7 @@ $minimized-logo-image: '/images/logo-sm.svg';
   background: $highlight-color url($logo-image) no-repeat center;
   background-size: $logo-size;
   width: 100%;
-  padding-bottom: 100%;
+  @include transition(height $minimize-transition);
 }
 
 // menus
@@ -73,7 +73,7 @@ $minimized-logo-image: '/images/logo-sm.svg';
             line-height: inherit;
           }
         }
-        
+
         &:first-child {
           margin-top: 0;
         }

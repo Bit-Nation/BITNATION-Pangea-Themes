@@ -55,6 +55,7 @@ module.exports = React.createClass({
           closed={this.state.securityNoticeClosed}>
           <p style={{ fontSize: '150%', textAlign: 'center' }}>You should <b>under no circumstances use your existing HZ mainnet passphrase on the Bitnation Alpha</b> client, as it will compromise your account’s security.</p>
           <p style={{ fontSize: '150%', textAlign: 'center' }}><b>Repeat: Do NOT use your existing HZ mainnet secret phrase on the Bitnation Alpha release.</b></p>
+          <p style={{ fontSize: '150%', textAlign: 'center' }}>Please also <a href="https://docs.google.com/document/d/1ur5j9C_EPiz2RIPsjQ1Z-jVvg-NFMOOOkt_trIutpZY/edit" target="_blank">read the FAQ</a> before continuing.</p>
           <Button style={{width: '100%', marginTop: '1rem'}} onClick={this.closeSecurityNotice}>I have read this and agree to all terms</Button>
         </Modal>
       </div>

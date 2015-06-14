@@ -31,7 +31,7 @@ module.exports = React.createClass({
 
     return (
       <div className={nameHelper.className}>
-        <PageHeader title='Public notary' />
+        <PageHeader title='Public Notary' />
 
         <div>
           <PageRow>
