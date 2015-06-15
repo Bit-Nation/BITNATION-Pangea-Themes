@@ -320,32 +320,6 @@ var jQuery = require('jquery');
         };
 
         /**
-         * Check if a given IP is on a private range
-         *
-         * From NRS
-         */
-        var _isPrivateIP = function(ip) {
-            if (!/^\d+\.\d+\.\d+\.\d+$/.test(ip)) {
-                return false;
-            }
-            var parts = ip.split('.');
-            if (parts[0] === '10' || parts[0] == '127' || (parts[0] === '172' && (parseInt(parts[1], 10) >= 16 && parseInt(parts[1], 10) <= 31)) || (parts[0] === '192' && parts[1] === '168')) {
-                return true;
-            }
-            return false;
-        };
-
-        /**
-         * Check if we're on a local (assumed safe) IP
-         *
-         * From NRS
-         */
-        var _isLocalHost = function () {
-            var hostName = window.location.hostname.toLowerCase();
-            return hostName == "localhost" || hostName == "127.0.0.1" || _isPrivateIP(hostName);
-        };
-
-        /**
          * Converter namespace
          *
          * Various byte / string conversion methods
@@ -1170,11 +1144,9 @@ var jQuery = require('jquery');
             // If we're not on localhost, take care not to send the
             // user's secret phrase.
             var _secretPhrase;
-            if (!_isLocalHost() && requestMethod == 'POST') {
-                if ('secretPhrase' in params) {
-                    _secretPhrase = params.secretPhrase;
-                    delete params.secretPhrase;
-                }
+            if (requestMethod == 'POST' && 'secretPhrase' in params) {
+                _secretPhrase = params.secretPhrase;
+                delete params.secretPhrase;
 
                 if (!('publicKey' in params)) {
                     // generate a public key then set it into the data
