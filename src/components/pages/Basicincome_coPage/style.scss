@@ -1,0 +1,106 @@
+@import '../../component';
+
+
+    .Splashscreen-Header {
+        height:220px;
+        background-image: url(http://i.imgur.com/KPq3Vnh.gif); 
+        background-size: cover; 
+        background-repeat: no-repeat;
+        background-position: center center;
+        position:relative;
+
+    }
+    
+    .Header-Logo {
+        font-size: 60px;
+        //font-weight: bold;
+        position: absolute;
+        bottom: 2px;
+        right: 40px;
+        
+        cursor: default;
+        color: #514949;
+        
+        -webkit-user-select: none; /* Chrome/Safari */        
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+ */
+        
+        /* Rules below not implemented in browsers yet */
+        -o-user-select: none;
+        user-select: none;
+    
+        
+        animation: fadein 5s;
+        -moz-animation: fadein 5s; /* Firefox */
+        -webkit-animation: fadein 5s; /* Safari and Chrome */
+        -o-animation: fadein 5s; /* Opera */
+    }
+    @keyframes fadein {
+        from {
+            opacity:0;
+        }
+        to {
+            opacity:1;
+        }
+    }
+    @-moz-keyframes fadein { /* Firefox */
+        from {
+            opacity:0;
+        }
+        to {
+            opacity:1;
+        }
+    }
+    @-webkit-keyframes fadein { /* Safari and Chrome */
+        from {
+            opacity:0;
+        }
+        to {
+            opacity:1;
+        }
+    }
+    @-o-keyframes fadein { /* Opera */
+        from {
+            opacity:0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+
+
+.floatRight {
+      float:right;
+      }    
+      
+      .floatLeft {
+      float:left;
+      }    
+
+
+.#{class-name(MailPage)} {
+    .#{class-name(Table)} {
+        table-layout: fixed;
+        width: 100%;
+
+        th:nth-child(1) {
+            width: 15%;
+        }
+
+        th:nth-child(2) {
+            width: 25%;
+        }
+    }
+
+    .#{class-name(Modal)} {
+        background-color: white;
+        width: 75%;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        margin-bottom: 1rem;
+        margin-left: 0.312rem;
+    }
+}

@@ -1,0 +1,14 @@
+@import '../../component';
+
+.#{class-name(AddCurrencyForm)} {
+  .#{class-name(Input)} {
+    margin: 0.25rem;
+    border: 1px solid bitn-color(oil);
+  }
+  
+  
+  .#{class-name(Button)} {
+    margin: 0.5rem;
+  }
+  
+}
