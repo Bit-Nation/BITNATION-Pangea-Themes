@@ -15,6 +15,11 @@ module.exports = [
     icon: { set: 'fa', type: 'envelope' }
   },
   {
+    link: 'Basicincome.co',
+    href: '#!/basicincome_co',
+    icon: { set: 'fa', type: 'user' }
+  },
+  {
     link: 'DApp Library',
     href: '#!/dapps',
     icon: { set: 'xbnx', type: 'dapp-library' }

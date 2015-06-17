@@ -23,6 +23,15 @@ module.exports = {
       }
     }
   },
+  basicincome_co: {
+    routes: {
+      $: {
+      },
+      $id: {
+        hej: 4
+      }
+    }
+  },  
   dapps: {},
   services: {},
   notFound: { hidden: true }
