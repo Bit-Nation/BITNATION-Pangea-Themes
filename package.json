@@ -3,25 +3,26 @@
   "version": "0.0.1",
   "description": "bitnation web client",
   "devDependencies": {
-    "extract-text-webpack-plugin": "~0.5.0",
     "css-loader": "~0.10.1",
     "debug": "^1.0.4",
+    "extract-text-webpack-plugin": "~0.5.0",
     "fs-extra": "~0.18.2",
     "gulp": "~3.8.11",
-    "react": "~0.13.1",
-    "style-loader": "~0.10.2",
-    "sass-loader": "~0.4.2",
     "json-loader": "~0.5.1",
     "jsx-loader": "~0.13.1",
     "node-bourbon": "4.2.1-beta1",
     "node-neat": "1.7.1-beta1",
-    "node-sass": "~2.1.1",
+    "node-sass": "^3.4.2",
+    "query-string": "~1.0.0",
+    "react": "~0.13.1",
     "run-sequence": "^0.3.6",
-    "webpack": "~1.8.5",
-    "webpack-dev-server": "~1.8.0",
-    "query-string": "~1.0.0"
+    "sass-loader": "^3.2.0",
+    "style-loader": "~0.10.2",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "crypto-js": "^3.1.6",
     "jquery": "^2.1.3"
   }
 }
