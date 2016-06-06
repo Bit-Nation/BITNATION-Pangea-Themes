@@ -12,9 +12,13 @@ The Pangea application is intended to become the world’s first blockchain juri
 Coordination:
 
 Slack chat (Dev & Pangea channels)
+
 GitHub
+
 Taiga (Dev tasks)
+
 Trello (Non-dev tasks) 
+
 Google Docs (Road Map Revisions)
 
 Further reading:
@@ -26,16 +30,27 @@ Bitnation constitution January 2016
 Key-Contributors to the PoC, Pangea 1, and 2:
 
 @mawo
+
 @magician11
+
 @xsttii
+
 @evok3d
+
 @n00bsys0p
+
 @flexliv
+
 @johan.nygren9
+
 @lucas
+
 @olfox
+
 @sashap
+
 @sgsshankar
+
 @cryptowanderer
 
 … and many others has given and continue to give invaluable input and support
