@@ -9231,8 +9231,8 @@ hr.labeled:after {
 html,
 body {
   height: 100%;
-  background: #e1efbb url('/img/connect.png');
-  background: #fff;
+  background: #eee url('/img/connect.png');
+  background: #eee;
 }
 .layout-rows {
   display: -webkit-box;
@@ -12019,9 +12019,9 @@ highlight {
   padding: 0 22px 0 0;
 }
 .rightnav .toolbar .user-pic img {
-  width: 32px;
-  height: 32px;
-  border-radius: 2px;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
 }
 @media (max-width: 1079px) {
   .rightnav {
