@@ -9551,7 +9551,9 @@ body {
   margin: 8px 10px;
 }
 .channel-list .channel-list-item:hover {
-  background: #f5f5f5;
+  background: #4099FF;
+  color: #fff;
+  padding: 5px;
 }
 .channel-list .channel-list-item.unread {
   color: #E8A541;
