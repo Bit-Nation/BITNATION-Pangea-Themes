@@ -63242,7 +63242,7 @@ var LeftNav = function (_React$Component) {
             _react2.default.createElement(
               'a',
               { onClick: this.onOpenChannelList.bind(this) },
-              _react2.default.createElement('i', { className: 'fa fa-folder-open-o' })
+              _react2.default.createElement('i', { className: 'fa fa-search' })
             ),
             this.state.isChannelListOpen ? _react2.default.createElement('i', { className: 'fa fa-caret-left', style: { color: 'gray', marginLeft: 5 } }) : ''
           )
